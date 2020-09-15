@@ -6,13 +6,18 @@ Ceci est un script temporaire.
 """
 
 def average(tab):
+    
     '''
     
     This funtion calculates the average of a list
+    
     Args : 
         tab: The list of number
+        
+    Returns the mean of the list
     
     '''
+    
     som = 0
     n=0
     for i in range(len(tab)):
@@ -22,4 +27,12 @@ def average(tab):
     moy = som/n
     return(moy)
     
+    '''
+    What happens if som initilization is forgotten ?
+        L'erreur NameError: name 'som' is not defined
+        Il faut donc la déclarer
+        
+    What can you expect if all the values are below zero ?
+        Le calcul ne les prendra pas en compte  
+    '''
     
