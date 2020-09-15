@@ -20,8 +20,10 @@ def average_above_zero(table:list):
         if(table[i] > 0):
             Som += table[i]
             N += 1
-            
-    Moy = Som/N
+    if(N > 0):
+        Moy = Som/N
+    else:
+        raise ValueError("no positive value in the table")
     return Moy
 
 print("Moyenne du tableau : {}".format(average_above_zero(Tab)))
