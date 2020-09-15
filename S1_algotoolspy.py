@@ -20,11 +20,19 @@ def average_above_zero(marks:list):
     average = math.floor(average / len(marks))
     return average
 
+#Question 1 : la variable sum n'existe pas donc erreur
+#Question 2 : erreur pas divisible par 0
+
 
 #print(average_above_zero([10.0, 20.0]))
 
 def max_value(marks:list):
     return max(marks)
 
-print(max_value([10.0, 20.0, 30.0]))
+#print(max_value([10.0, 20.0, 30.0]))
     
+
+def reverse_table(table:list):
+    return table[::-1]
+
+print(reverse_table([10,20]))
