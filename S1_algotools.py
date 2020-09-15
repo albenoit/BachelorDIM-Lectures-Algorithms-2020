@@ -31,10 +31,20 @@ def max_value(table:list):
         if(Max < tableValue):
             Max = tableValue
     return(Max)
-    
-Tab=[10,21,32,43]
+
+def reverse_table(table:list):
+    '''
+        This function reverse a list
+        Parameters:
+            table:list: the list of number.            
+        Returns: 
+            reverse of table:list
+    '''
+    table.reverse()
+    return table
+
+Tab=[10,21,32,43]   #To use list.reverse(), I have change () to []
 print("Moyenne : " + str(average_above_zero(Tab)))
 print("Max : " + str(max_value(Tab)))
 print("Liste avant : "+ str(Tab))
-Tab.reverse()
-print("Liste après : "+ str(Tab))
+print("Liste après : "+ str(reverse_table(Tab)))
