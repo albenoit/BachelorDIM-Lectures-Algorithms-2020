@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import numpy as np
 
 def average_above_zero(table:list):
     '''
@@ -65,8 +66,12 @@ def reverse_table(table:list):
     else:
         raise ValueError('List is empty')
 
-Tab=[0]   #To use list.reverse(), I have change () to []
+Tab=[2,54,-4]   #To use list.reverse(), I have change () to []
 print("Moyenne : " + str(average_above_zero(Tab)))
 print("Max : " + str(max_value(Tab)))
 print("Liste avant : "+ str(Tab))
 print("Liste après : "+ str(reverse_table(Tab)))
+
+arr = np.array([[1, 2, 3, 5, 8, 4, 5], [4, 5, 6, 7, 5, 6, 2], [4, 5, 6, 7, 5, 6, 2]])
+print(np.where(arr == 3))
+print(arr)
