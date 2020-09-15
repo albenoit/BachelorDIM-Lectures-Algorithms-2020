@@ -3,9 +3,9 @@ Created by Yoan ROULEAU
 @author: myself
 """
 
-Tab = [1, 2, 3]
+Tab = [-6, 1, 2]
 
-def getAverage(array):
+def average_above_zero(array):
     '''
     Receives an array as a parameter and calculates its average.
 
@@ -19,11 +19,16 @@ def getAverage(array):
     for i in array:
         if i > 0:
             som = som + i
-            n = n + 1
-    moy = som/n
-    return moy
+            n += 1
+        else:
+            raise ValueError('No positive values found in the array.')
+    if n > 0:
+        moy = som/n
 
-def getMax(array):
+    return float(moy)
+
+
+def max_value(array):
     '''
         Receives an array as a parameter and returns is biggest value
 
@@ -39,8 +44,23 @@ def getMax(array):
 
     return max
 
-print('Average: ' + str(getAverage(Tab)))
-print('Max: ' + str(getMax(Tab)))
+
+def reverse_table(array):
+    '''
+        Gets an array and reverses its values.
+
+        :param
+            array: An array
+        :return:
+            Reversed array
+    '''
+    return array[::-1]
+
+
+print('Average: ' + str(average_above_zero(Tab)))
+print('Max: ' + str(max_value(Tab)))
+print('Reverse: ' + str(reverse_table(Tab)))
+
 
 """
 WHAT HAPPENS IF "SOM" INITIALIZATION IS FORGOTTEN ?
