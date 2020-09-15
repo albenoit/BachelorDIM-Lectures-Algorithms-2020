@@ -6,7 +6,7 @@ Created on Tue Sep 15 14:45:46 2020
 """
 import math
 
-def get_average(marks):
+def algorithm_1(marks):
     average = 0    
     
     for i in marks:
@@ -16,4 +16,4 @@ def get_average(marks):
     return average
 
 
-print(get_average([10, 20]))
+print(algorithm_1([10, 20]))
