@@ -1,11 +1,15 @@
 # -*- coding: utf-8 -*-
-"""
-Éditeur de Spyder
-
-Ceci est un script temporaire.
-"""
 
 def average_above_zero(table:list):
+    '''
+        This function calcul average from number list
+        Only number above zero is add to the average
+        
+        Parameters:
+            table:list: the list of number .
+        Returns: 
+            the average of table:list
+    '''
     Som = 0
     for tableValue in table:
         if(tableValue > 0):
@@ -14,6 +18,14 @@ def average_above_zero(table:list):
     return(Moy)
 
 def max_value(table:list):
+    '''
+        This function find the max value on a number list
+        
+        Parameters:
+            table:list: the list of number.            
+        Returns: 
+            the max number on table:list
+    '''
     Max = 0
     for tableValue in table:
         if(Max < tableValue):
