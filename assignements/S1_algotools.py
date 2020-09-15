@@ -14,8 +14,11 @@ def average_above_zero(table:list):
         if table[i] > 0:
             som = som + table[i]
             n = n + 1
-    Moy = som/n
-    return print(float(Moy))
+    if n > 0:
+        Moy = som/n
+        return print(float(Moy))
+    else:
+        return print("we can't divide by 0")
 
 average_above_zero(list)
 
@@ -33,11 +36,11 @@ average_above_zero(list)
 
 def max_value(table:list):
     '''
-        This function search the maximum value of a table
+        This function search the maximum value of a list
         Parameters:
             table: List of number
         Returns:
-            the maximum value of a table
+            the maximum value of a list
     '''
     max_nb=0
     max_id=0
@@ -50,4 +53,17 @@ def max_value(table:list):
 
 max_value(list)
 
+
+def reverse_table(table:list):
+    '''
+        This function reverse a list
+        Parameters:
+            table: List of number
+        Returns:
+            a reverse list
+    '''
+
+    return print(table[:: -1])
+
+reverse_table(list)
 
