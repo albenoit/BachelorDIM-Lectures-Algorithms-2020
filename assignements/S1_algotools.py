@@ -18,7 +18,7 @@ def average_above_zero(tab):
     # Calculate the average
     average = som / N
 
-    return average # Display in console
+    return average # Return average
 
 # Call the function with array in args
 print('Average : ')
