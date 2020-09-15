@@ -7,6 +7,7 @@ Tab = [1, 2, 3]
 def getAverage(array):
     '''
     Receive an array as a parameter and calculates its average.
+
     :arg
         array: an array
     :returns
@@ -29,6 +30,7 @@ WHAT HAPPENS IF "SOM" INITIALIZATION IS FORGOTTEN ?
 
 WHAT CAN YOU EXPECT IF ALL THE VALUES ARE BELLOW ZERO ?
 -> If your values are bellow zero, you wont be able to access the average calculation since you're testing each 
-values in the array are bellow zero.
+values in the array are bellow zero. In the end, the function will attempt to divide 0 by 0 (default values), and throw
+and error back.
 """
 
