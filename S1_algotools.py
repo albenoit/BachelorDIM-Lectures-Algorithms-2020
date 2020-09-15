@@ -20,6 +20,12 @@ Ceci est un script temporaire.
 # @param table contient une liste de nombre (float)
 # @return retourne la moyenne (float)
 def average_below_zero(table:list):
+    '''
+        This function calculs the average of a list
+        Args:
+            table: a float list
+        Returns the average of a list
+    '''
     som = 0
     n = 0
     for i in range(len(table)):
@@ -35,6 +41,12 @@ def average_below_zero(table:list):
 # @param table contient une liste de nombre (float)
 # @return maxi : la valeur maximale; maxiIndex : index de la valeur maximale de la liste table
 def max_value(table:list):
+    '''
+        This function finds the highest value of a list
+        Args:
+            table: a float list
+        Returns the highest value of a list and its index
+    '''
     maxi = 0
     maxiIndex = None
     for i in range(len(table)):
@@ -42,6 +54,17 @@ def max_value(table:list):
             maxi = table[i]
             maxiIndex = i
     return maxi, maxiIndex
+
+
+
+def reverse_table(table:list):
+    '''
+        This function reverse a list
+        Args:
+            table: a float list
+        Returns a reversed list
+    '''
+    return table[::-1]
 
         
     
