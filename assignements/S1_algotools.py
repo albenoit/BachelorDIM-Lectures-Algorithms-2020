@@ -5,5 +5,31 @@ Created on Tue Sep 15 14:40:04 2020
 @author: cuvellin
 """
 
-som = 0
-N = 10
+Tab = [4,2,45,-4,14,-95,-4,2,87,-56,65,1,3]
+
+def average_above_zero(list_of_numbers):
+    '''
+    One will to compute the average of the positive elements of a table.
+    
+    Parameters:
+        list_of_numbers
+    Raise:
+        Can call a raise ValueError if n == 0
+    Returns:
+        average of the positive elements of a table 
+    '''
+    n = 0
+    som = 0
+    sizeArray = len(list_of_numbers)
+    for i in range(sizeArray):
+        if list_of_numbers[i] > 0:
+            som += list_of_numbers[i]
+            n = n +1
+    if (n != 0):
+        moy = som / n
+    else:
+        raise ValueError('ZeroDivisionError')
+    return float(moy)
+
+print(average_above_zero(Tab))
+        
