@@ -31,5 +31,18 @@ def average_above_zero(list_of_numbers):
         raise ValueError('ZeroDivisionError')
     return float(moy)
 
+def reverse_table(array):
+    '''
+    reverse a table without the use of any other table
+    
+    Parameters:
+        array
+    Returns:
+        reverse of array put in params
+    '''
+    return array[::-1]
+
 print(average_above_zero(Tab))
+
+print(reverse_table([1,2,3,4,5]))
         
