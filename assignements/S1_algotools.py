@@ -50,5 +50,20 @@ def get_maximum_value(table:list):
             rg = i
     return print(float(max), int(rg))
 
+# list = [8, 15, 14, 12, 6, 18, 10, 2]
+# get_maximum_value(list)
+
+def reverse_table(table:list):
+    '''
+    This function reverse a table
+    Parameters :
+        list : the list of numbers
+    
+    Return : 
+        the table reverse
+    '''
+
+    return print(table[:: -1])
+
 list = [8, 15, 14, 12, 6, 18, 10, 2]
-get_maximum_value(list)
+reverse_table(list)
