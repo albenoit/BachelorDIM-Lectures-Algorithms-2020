@@ -1,4 +1,7 @@
 # BachelorDIM-Lectures-Algorithms-2020
+
+Modification of Read.ME
+
 Algorithms, code writing and continuous integration @ DIM Bachelor, Université Savoie Mont Blanc, France
 
 
