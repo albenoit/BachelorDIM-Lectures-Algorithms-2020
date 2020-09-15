@@ -28,15 +28,20 @@ def average_above_zero(table:list):
     average = sum/n
     return average
 
-print(average_above_zero([1, 2, 3]))
+#print(average_above_zero([1, 2, 3]))
 
 def max_value(tab:list):
-    """Variables initialization"""
     max_var = max(tab)
     max_var_index = tab.index(max_var)
     return max_var, max_var_index
 
-print(max_value([1, 2, 3]))
+#print(max_value([1, 2, 3]))
+
+def reverse_table(tab:list):
+    tab=tab[::-1]
+    return tab;
+
+print(reverse_table([1, 2, 3]))
     
             
         
