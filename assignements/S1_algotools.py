@@ -44,3 +44,21 @@ def max_value(tab :list):
 # Call the function with array in args and display the index of max value
 print('# Max value index function #')
 print(max_value([1,10,2,8,11]))
+
+
+def reverse_table(tab :list):
+    '''
+    Function to reverse and return a reversed array
+    Parameters :
+        tab: array of numbers in input
+    Returns :
+        the reversed array
+    '''
+    tab = list(reversed(tab))
+
+    return tab
+
+# Call the function with array in args and display reversed array
+print('# Reverse table function #')
+print(reverse_table([1,10,2,8,11]))
+
