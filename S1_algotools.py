@@ -11,10 +11,15 @@ def average_above_zero(table:list):
             the average of table:list
     '''
     Som = 0
+    positif_element = 0
     for tableValue in table:
-        if(tableValue > 0):
-            Som = Som + tableValue
-    Moy = Som/len(table)
+        if(tableValue>0):
+            Som += tableValue
+            positif_element+=1
+    if(positif_element>0):
+        Moy = Som/positif_element
+    else:
+        raise ValueError('no value greater than 0 in the list')
     return(Moy)
 
 def max_value(table:list):
@@ -43,7 +48,7 @@ def reverse_table(table:list):
     table.reverse()
     return table
 
-Tab=[10,21,32,43]   #To use list.reverse(), I have change () to []
+Tab=[-10,-21,-32,-43]   #To use list.reverse(), I have change () to []
 print("Moyenne : " + str(average_above_zero(Tab)))
 print("Max : " + str(max_value(Tab)))
 print("Liste avant : "+ str(Tab))
