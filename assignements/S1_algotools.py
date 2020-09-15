@@ -1,4 +1,11 @@
 def average_above_zero(table:list):
+    '''
+        This function calculate the average of a list 
+        Parameters:
+            table: List of number
+        Returns:
+            the average
+    '''
     som=1
     n=0
     for i in range(1, len(table)):
@@ -6,10 +13,11 @@ def average_above_zero(table:list):
             som = som + table[i]
             n = n + 1
     Moy = som/n
-    return Moy
+    return print(Moy)
 
 list = [12, 14, 16, 17, 18]
-print(average_above_zero(list))
+average_above_zero(list)
+
 # What happens if Som initialization is forgotten ?
 
 # On a le message d'erreur: NameError: name 'som' is not defined. 
