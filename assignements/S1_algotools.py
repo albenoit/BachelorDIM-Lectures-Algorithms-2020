@@ -31,6 +31,15 @@ def average_above_zero(list_of_numbers):
         raise ValueError('ZeroDivisionError')
     return float(moy)
 
+def max_value(array):
+    max = None
+    for i in array:
+        if max is None or i > max:
+            max = i
+            
+    return max
+        
+
 def reverse_table(array):
     '''
     reverse a table without the use of any other table
@@ -45,4 +54,7 @@ def reverse_table(array):
 print(average_above_zero(Tab))
 
 print(reverse_table([1,2,3,4,5]))
+
+
+print(max_value([8,9,7, -9]))
         
