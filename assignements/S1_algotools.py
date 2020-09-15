@@ -21,10 +21,13 @@ def average_above_zero(array_of_data):
         if i > 0:
             som = som + i
             N = N + 1
-    Moy = som/N
+    if N > 0:
+        Moy = som/N
+    else:
+        raise ValueError('problem, a number is equivalent or under 0')
     return float(Moy)
 
-moy=average_above_zero([14,2,4,20,17])
+moy=average_above_zero([14,16,20,13])
 print(moy)
 
 """
