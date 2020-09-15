@@ -28,11 +28,14 @@ def average_below_zero(table:list):
     '''
     som = 0
     n = 0
-    for i in range(len(table)):
+    for i in range(len(table)): #for element in p_list
         if(table[i] > 0):
             n = n +1
             som = som + table[i]
-    moy = som / n
+    if(n > 0):
+        moy = som / n
+    else:
+        raise ValueError("Division par 0")
     print(moy)
     return moy
 
@@ -46,6 +49,7 @@ def max_value(table:list):
         Args:
             table: a float list
         Returns the highest value of a list and its index
+        Raises
     '''
     maxi = 0
     maxiIndex = None
@@ -65,6 +69,28 @@ def reverse_table(table:list):
         Returns a reversed list
     '''
     return table[::-1]
+
+
+
+import numpy as np
+def roi_bbox(input_image: nympy array):
+    W = 100
+    H = 100
+    Xin = np.zeros((H,W),dtype=float)
+    
+    for c in range(45,56):
+        for l in range(70,91):
+            Xin[l,c] = 1
+    '''
+    ou
+    Xin [70:91,45:56] = npones((20,10)dtype=float)
+    '''
+
+malist = [1,2,3,4,5,6,7,8,9]
+print(reverse_table(malist))
+
+z = [-1]
+average_below_zero(z)
 
         
     
