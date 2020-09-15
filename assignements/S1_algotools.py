@@ -2,10 +2,15 @@ import numpy as np
 
 tab = [1,9,3,4,5,6,7,8,2]
 
-np_tab = np.array([
-    [0,1,0],
-    [1,1,1],
-    [0,1,0]
+np_tab = np.zeros((200,200))
+np_tab[70:90,45:55] = np.ones((20,10))
+
+print(np_tab)
+
+np_random = np.array([
+    ['','',''],
+    ['','',''],
+    ['','','']
 ])
 
 def average_above_zero(tab):
@@ -86,8 +91,16 @@ def bounding_box(np_tab):
     """
     return np.argwhere(np_tab == 1)
 
+def random_array_fill(array,k):
+    for i in range(k):
+        print(array.shape[0])
+        print(array.shape[1])
+
+    #return array
+
 print(average_above_zero(tab))
 print(max_value(tab))
 print(get_index_max_value(tab))
 print(reverse_table(tab))
 print(bounding_box(np_tab))
+print(random_array_fill(np_random,1))
