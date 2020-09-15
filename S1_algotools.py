@@ -32,6 +32,9 @@ def max_value(table:list):
             Max = tableValue
     return(Max)
     
-Tab=(10,21,32,43)
+Tab=[10,21,32,43]
 print("Moyenne : " + str(average_above_zero(Tab)))
 print("Max : " + str(max_value(Tab)))
+print("Liste avant : "+ str(Tab))
+Tab.reverse()
+print("Liste après : "+ str(Tab))
