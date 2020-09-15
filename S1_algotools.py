@@ -12,12 +12,14 @@ def average_above_zero(table:list):
             Som = Som + i
     Moy = Som/len(table)
     return(Moy)
-    
-Tab=(10,221,32,43)
-print(average_above_zero(Tab))
 
-Max = 0
-for i in Tab:
-    if(Max < i):
-        Max = i
-print(Max)
+def max_value(table:list):
+    Max = 0
+    for i in table:
+        if(Max < i):
+            Max = i
+    return(Max)
+    
+Tab=(10,21,32,43)
+print(average_above_zero(Tab))
+print(max_value(Tab))
