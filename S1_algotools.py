@@ -9,6 +9,9 @@ def average_above_zero(table:list):
             table:list: the list of number .
         Returns: 
             the average of table:list
+        Raises:
+            If list is empty
+            If no value abrove zero
     '''
     if(len(table)):
         Som = 0
@@ -33,6 +36,8 @@ def max_value(table:list):
             table:list: the list of number.            
         Returns: 
             the max number on table:list
+        Raises:
+            If list is empty
     '''
     if(len(table)):
         Max = 0
@@ -46,10 +51,13 @@ def max_value(table:list):
 def reverse_table(table:list):
     '''
         This function reverse a list
+        
         Parameters:
             table:list: the list of number.            
         Returns: 
             reverse of table:list
+        Raises:
+            If list is empty
     '''
     if(len(table)):
         table.reverse()
