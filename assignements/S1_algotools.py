@@ -7,6 +7,9 @@ def average_above_zero(table:list):
     
     Return : 
         the average of the list
+
+    Raises : 
+        Value error if no positive value in the division
     '''
     som=0
     n=0
@@ -14,6 +17,8 @@ def average_above_zero(table:list):
         if (table[i] > 0):
             som = som + table[i]
             n = n + 1
+        else:
+            raise ValueError('No positive value in the division')
     moy = som/n
     return print(moy)
 
@@ -35,13 +40,15 @@ def get_maximum_value(table:list):
         list : the list of numbers
     
     Return : 
-        the max value of a list
+        the max value of a list and the position
     '''
     max=0
-    for i in range(1, len(table)) :
-        if (table[i] > max):
+    rg=0
+    for i in range(1, len(table)):
+        if table[i] > 0 and table[i] > max:
             max = table[i]
-    return print(max)
+            rg = i
+    return print(float(max), int(rg))
 
 list = [8, 15, 14, 12, 6, 18, 10, 2]
 get_maximum_value(list)
