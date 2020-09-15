@@ -18,7 +18,7 @@ def average_above_zero(table:list):
         Moy = som/n
         return print(float(Moy))
     else:
-        return print("we can't divide by 0")
+        raise ValueError('no positive value n')
 
 average_above_zero(list)
 
