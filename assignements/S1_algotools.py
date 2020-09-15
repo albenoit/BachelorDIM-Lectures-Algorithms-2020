@@ -13,10 +13,27 @@ def average_above_zero(table:list):
             som = som + table[i]
             n = n + 1
     Moy = som/n
-    return print(Moy)
+    return print(float(Moy))
+
+def max_value(table:list):
+    '''
+        This function search the maximum value of a table
+        Parameters:
+            table: List of number
+        Returns:
+            the maximum value of a table
+    '''
+    max_nb=0
+    for i in range(1, len(table)):
+        if table[i] > 0:
+            if table[i] > max_nb:
+                max_nb = table[i] 
+    return print(float(max_nb),int(max_nb))
+
 
 list = [12, 14, 16, 17, 18]
 average_above_zero(list)
+max_value(list)
 
 # What happens if Som initialization is forgotten ?
 
