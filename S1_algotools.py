@@ -7,17 +7,17 @@ Ceci est un script temporaire.
 
 def average_above_zero(table:list):
     Som = 0
-    for i in table:
-        if(i > 0):
-            Som = Som + i
+    for tableValue in table:
+        if(tableValue > 0):
+            Som = Som + tableValue
     Moy = Som/len(table)
     return(Moy)
 
 def max_value(table:list):
     Max = 0
-    for i in table:
-        if(Max < i):
-            Max = i
+    for tableValue in table:
+        if(Max < tableValue):
+            Max = tableValue
     return(Max)
     
 Tab=(10,21,32,43)
