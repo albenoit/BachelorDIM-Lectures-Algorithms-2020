@@ -7,6 +7,8 @@ def average_above_zero(table:list):
             table: List of number
         Returns:
             the average
+        Raises:
+            Value error if no positive value n
     '''
     som=1
     n=0
@@ -65,5 +67,16 @@ def reverse_table(table:list):
 
     return print(table[:: -1])
 
+
 reverse_table(list)
 
+import numpy as np
+W=1000
+H=100
+Xin = np.zeros((H,W),dtype=float)
+
+for c in range(45,55):
+    for l in range(70,91):
+        Xin[l,c]=1
+
+print(Xin)
