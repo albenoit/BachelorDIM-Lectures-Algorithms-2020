@@ -27,8 +27,9 @@ def average_above_zero(array_of_data):
         raise ValueError('problem, a number is equivalent or under 0')
     return float(Moy)
 
-moy=average_above_zero([14,16,20,13])
-print(moy)
+my_array=[0,6,18]
+moy=average_above_zero(my_array)
+print('my average',moy)
 
 """
     What happens if Som initialization is forgotten ?
