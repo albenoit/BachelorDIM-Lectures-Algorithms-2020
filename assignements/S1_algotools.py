@@ -72,28 +72,57 @@ print("Reverse : " + str(reverse_table(theTab)))
 #////////////////////////////////////////////
 import numpy as np
 
-def roi_bbox(theTab):
+def roi_bbox():
     """
     This function return a Bounding box
     
     Parameters :
         npTab: tab of a numpy array
+        answer: all the coordonates of "1" in npTab
     Returns : 
         the coordinates of "1" in npTab
     """
-    npTab = np.array([
-            [1,0,1],
-            [0,1,0],
-            [1,0,1]
-        ])
+    h = 100
+    w = 100
+    npTab = np.zeros((h,w),dtype = float)
+
+    #for w in range(45,55):
+    #   for h in range(60,85):
+    #       npTab(h,w) = 1
+    # OU
+    npTab[60:85,45:55] = np.ones((25,10),dtype = float)   
     
     answer = np.argwhere(npTab == 1)
     
+    
     return answer
-print("Bounding box : " + str(roi_bbox(theTab)))
+print("Bounding box : " + str(roi_bbox()))
 
 
 #////////////////////////////////////////////
+"""def random_fill_sparse():
+    """
+    This function return an array with random X
+    
+    Parameters :
+    Returns : 
+    """
+   
+    k = 0
+    
+    
+    #return answer
+print("random_fill_sparse : " + str(random_fill_sparse()))
+"""
+
+
+
+
+
+
+
+
+
 
 
 
