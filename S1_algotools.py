@@ -24,7 +24,10 @@ def average(tab):
         if tab[i] > 0:
             som = som + tab[i]
             n = n+1
-    moy = som/n
+    if n>0:
+        moy = som/n
+    else:
+        raise ValueError('no positive value found')
     return(moy)
     
     '''
