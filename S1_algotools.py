@@ -21,5 +21,5 @@ def max_value(table:list):
     return(Max)
     
 Tab=(10,21,32,43)
-print(average_above_zero(Tab))
-print(max_value(Tab))
+print("Moyenne : " + str(average_above_zero(Tab)))
+print("Max : " + str(max_value(Tab)))
