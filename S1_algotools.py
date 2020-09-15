@@ -9,9 +9,14 @@ import math;
 
 ##
 # \package mypackage
-# \author me
-# \brief A one-liner
-# \details Lots and lots of lines of usage information
+# \author viardcrl
+# \details returns the average of an array passed in parameter
+#
+# Question : What happens if Som initialization is forgotten ?
+# UnboundLocalError: local variable 'Som' referenced before assignment
+#
+# Question : What can you expect if all the values are below zero ?
+#
 #
 def average_above_zero(table:list):
     Som = 0;
@@ -24,4 +29,4 @@ def average_above_zero(table:list):
     Moy = math.float(Som / N);
     return Moy;
 
-print(average_above_zero([1,5,3,4,9,5]));
+print(average_above_zero([-1,-5,-3,-4,-9,-5]));
