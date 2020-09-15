@@ -26,8 +26,37 @@ def average_above_zero(Tab):
     for i in Tab :
         if i > 0 :
             Som = Som + i
-             N += 1
+            N = N + 1
     Moy = Som/N
     return Moy
 
 print(average_above_zero([1,2,3]))
+"""
+Propose changes on the previous algorithm to get the maximum value of
+a table.
+"""
+def  max_value_without_index(Tab):
+    Max = 0 
+    for i in Tab :
+        if i > Max :
+            Max = Max                       
+    return Max
+
+print(average_above_zero([1,2,3]))
+"""
+Improve the previous changes by capturing the index of the last maximum
+value.
+"""
+def  max_value(Tab):
+    Max = 0 
+    N=0
+    Index = 0
+    for i in Tab :
+        if i > Max :
+            Max = i
+            Index = N
+        N=N+1     
+                              
+    return (Max,Index)
+
+print(max_value([4,2,3]))
