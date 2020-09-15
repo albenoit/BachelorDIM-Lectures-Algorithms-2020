@@ -24,7 +24,7 @@ def average_above_zero(table:list):
     Moy = Som/N
     return Moy
 
-print(average_above_zero(Tab))
+print("Moyenne du tableau : {}".format(average_above_zero(Tab)))
 # 1. Si Som n'est pas défini, le programme ne fonctionne plus
 # 2. Si toutes les valeus sont en dessous de 0, N restera à 0 et donc une
 #   erreur apparaitra à "Moy = Som/N"
@@ -47,3 +47,13 @@ def maximum_value(table:list):
 (maxi,index) = maximum_value(Tab)
 print("Valeur Max : {} , index de la valeur max : {}".format(maxi,index))
 
+def reverse_table(table:list):
+    '''
+        This funcion return a reversed list
+        Args:
+            table: list of number you want to reverse
+        Returns the reversed list
+    '''
+    return table[::-1]
+
+print("Tableau inversé : {}".format(reverse_table(Tab)))
