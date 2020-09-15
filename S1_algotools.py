@@ -17,14 +17,31 @@ Ceci est un script temporaire.
 #supérieur à 0
 
 # @brief : permet de faire la moyenne d'une liste dont les valeurs supérieur à 0
-# @param list contient une liste de nombre (float)
-# @result affiche la moyenne (float)
-def average_below_zero(p_list):
+# @param table contient une liste de nombre (float)
+# @return retourne la moyenne (float)
+def average_below_zero(table:list):
     som = 0
     n = 0
-    for i in range(len(p_list)):
-        if(p_list[i] > 0):
+    for i in range(len(table)):
+        if(table[i] > 0):
             n = n +1
-            som = som + p_list[i]
+            som = som + table[i]
     moy = som / n
     print(moy)
+    return moy
+
+
+# @brief : permet de trouver la valeur maximale d'une liste de float, ainsi que son index
+# @param table contient une liste de nombre (float)
+# @return maxi : la valeur maximale; maxiIndex : index de la valeur maximale de la liste table
+def max_value(table:list):
+    maxi = 0
+    maxiIndex = None
+    for i in range(len(table)):
+        if(table[i] > maxi):
+            maxi = table[i]
+            maxiIndex = i
+    return maxi, maxiIndex
+
+        
+    
