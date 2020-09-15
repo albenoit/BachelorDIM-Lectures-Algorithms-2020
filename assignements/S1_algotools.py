@@ -4,14 +4,15 @@ Created by Yoan ROULEAU
 """
 
 Tab = [1, 2, 3]
+
 def getAverage(array):
     '''
-    Receive an array as a parameter and calculates its average.
+    Receives an array as a parameter and calculates its average.
 
     :arg
         array: an array
     :returns
-        Its average
+        moy: Its average
     '''
     som = 0
     n = 0
@@ -22,7 +23,24 @@ def getAverage(array):
     moy = som/n
     return moy
 
-print(getAverage(Tab))
+def getMax(array):
+    '''
+        Receives an array as a parameter and returns is biggest value
+
+        :arg
+            array: an array
+        :returns
+            max: the biggest value of the array
+    '''
+    max = 0
+    for value in array:
+        if value > max:
+            max = value
+
+    return max
+
+print('Average: ' + str(getAverage(Tab)))
+print('Max: ' + str(getMax(Tab)))
 
 """
 WHAT HAPPENS IF "SOM" INITIALIZATION IS FORGOTTEN ?
