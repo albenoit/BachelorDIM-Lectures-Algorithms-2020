@@ -41,7 +41,7 @@ def average_above_zero(Tab):
             raise ValueError('division par zero')
     return Moy
 
-print(average_above_zero([-1,-2]))
+print(average_above_zero([1,2]))
 
 
 
@@ -106,3 +106,19 @@ def reverse_table(Tab):
         
 print(reverse_table([1,2,3,4,5,6]))
 
+"""
+Session 1 Bounding box
+"""
+import numpy as np
+W=100
+H=100 
+n = np.zeros((H,W),dtype=float)
+for c in range (45,55):
+    for d in range (70,91):
+        n[c,d]=1
+
+def roi_bbox(image):
+    
+    print("")
+    
+roi_bbox
