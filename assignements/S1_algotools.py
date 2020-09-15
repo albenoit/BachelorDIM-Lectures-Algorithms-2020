@@ -71,12 +71,12 @@ def reverse_table(table:list):
 reverse_table(list)
 
 import numpy as np
-W=1000
-H=100
-Xin = np.zeros((H,W),dtype=float)
 
-for c in range(45,55):
-    for l in range(70,91):
-        Xin[l,c]=1
-
-print(Xin)
+def roi_bbox(input_image:np array):
+    W=10
+    H=10
+    Xin = np.zeros((H,W),dtype=float)
+    for c in range(7,12):
+        for l in range(7,9):
+            Xin[l,c]=1
+roi_bbox(10,10)
