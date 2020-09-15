@@ -39,3 +39,9 @@ def average(tab):
         Le calcul ne les prendra pas en compte  
     '''
     
+def max_value(tab):
+    max=tab[0]
+    for i in tab:
+        if i >= max:
+            max=i
+    print(max)
