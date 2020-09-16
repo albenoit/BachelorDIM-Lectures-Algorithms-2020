@@ -130,7 +130,13 @@ def random_fill_sparse(tab, k:int):
 
 tab = np.empty((5, 5), dtype=str)
 #print(tab)
-print(random_fill_sparse(tab, 4))
+#print(random_fill_sparse(tab, 4))
+
+def remove_whitespace(string:str):
+    return string.replace(' ', '')
+        
+string = "Coucou tout le monde"
+print(remove_whitespace(string))
 
 '''     
 for a in range(2,5):
