@@ -110,9 +110,9 @@ def roi_bbox(img):
 phrase = "phrase avec espaces"
 def remove_whitespace(string):
     '''
-        This function paste the words 
+        This function delete the spaces in a sentence
         Parameters:
-            string: sentence
+            string: the sentence
         Returns:
             the sentence without wthitespace
     '''
