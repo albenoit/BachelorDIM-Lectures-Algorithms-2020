@@ -191,6 +191,18 @@ Xin = np.zeros((H,W),dtype=str)
 print(random_fill_sparse(Xin,5))
 
 
+def remove_whitespace(table:str):
+    '''
+        This function removes white space
+        Arg:
+            table: string, is a sentence
+        Return a string, table without white space
+    '''
+    return table.replace(' ','')
+
+print(remove_whitespace("bonjour les amis"))
+
+
 
         
     
