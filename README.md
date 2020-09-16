@@ -1,7 +1,7 @@
-﻿# BachelorDIM-Lectures-Algorithms-2020
-Algorithms, code writing and continuous integration @ DIM Bachelor, Université Savoie Mont Blanc, France
-
 [![Coverage Status](https://coveralls.io/repos/github/IceCrew-Source/BachelorDIM-Lectures-Algorithms-2020/badge.svg?branch=master)](https://coveralls.io/github/IceCrew-Source/BachelorDIM-Lectures-Algorithms-2020?branch=master)
+
+# BachelorDIM-Lectures-Algorithms-2020
+Algorithms, code writing and continuous integration @ DIM Bachelor, Université Savoie Mont Blanc, France
 
 Those lessons are addressed to the "Développeur Informatique Multisupports" (DIM) Bachelor proposed at Université Savoie Mont Blanc in France.
 Students are expected to be familiar with programming. The aim is to get more familiar with code quality, maintainability and efficacy... and Python.
@@ -22,5 +22,3 @@ Evaluation will consist in continuous control and a mid term test.
 Evaluation will take into account your code quality and assignements coverage but also github pull request and commits naming conventions and code comments...
 
 Prefer better quality code, ready to be shared and enhanced by others, instead of too rapidly written code, unreadable, un-commented that people will throw to trash and completely rewrite !
-
-Test readme
