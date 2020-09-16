@@ -170,17 +170,12 @@ def dice_game():
             while play_again != "O" or play_again != "o" or play_again != "N" or play_again != "N":
                 print("Erreur! Voulez-vous rejouez ? (O/N)")
                 play_again = input()
-            while play_again == "O" or play_again =="o":
+            if play_again == "O" or play_again =="o":
                 result_dice = random.randint(1,6)
                 result_score += result_dice
                 print("Vous avez fait un {}".format(result_dice))
-                if result_dice == 1
-                print("Voulez-vous rejouez ? (O/N)")
-            play_again = input()
+                if result_dice == 1:
+                    print("Voulez-vous rejouez ? (O/N)")
+                    play_again = input()
             if play_again == "N" or play_again =="n":
                 turn == 0
-        elif turn ==0:
-            
-              
-
-
