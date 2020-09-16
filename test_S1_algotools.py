@@ -65,13 +65,16 @@ def test_roi_bbox_exception_2():
         
 #------------------------random_fill_sparse
         
-def test_roi_bbox_OK():
+def test_random_fill_sparse_OK():
     H = 12
     L = 10
     K = 10
     matrix = np.zeros((H,L))
-    position = np.argwhere(random_fill_sparse(matrix, K))
+    matrix = S1.random_fill_sparse(matrix, K)
+    position = np.argwhere(matrix)
     assert (np.size(position)/2) == K
+
+    
     
     
 
