@@ -1,4 +1,5 @@
 ﻿# BachelorDIM-Lectures-Algorithms-2020
+[![Coverage Status](https://coveralls.io/repos/github/Vapie/BachelorDIM-Lectures-Algorithms-2020/badge.svg?branch=master)](https://coveralls.io/github/Vapie/BachelorDIM-Lectures-Algorithms-2020?branch=master)
 Algorithms, code writing and continuous integration @ DIM Bachelor, Université Savoie Mont Blanc, France
 testyo
 
