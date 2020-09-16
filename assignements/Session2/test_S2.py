@@ -1,15 +1,5 @@
 import Function as algo
 import pytest
-import numpy as np
-H=18
-W=18
-Xin = np.zeros((H,W),dtype=float)
-Xin[4:7,2:4]=np.ones((1,1))
-for c in range(12,14):
-    for l in range(13,15):
-        Xin[l,c]=1
-testTable=[1 ,3 ,5 ,7 ,9 ,2 ,4 ,6 ,8 ]
-testTable2=[-13 ,-57 ,92 ,-46 ,8 ]
 
 def test_answer():
     assert algo.onemore(3) == 4

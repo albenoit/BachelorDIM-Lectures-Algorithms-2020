@@ -52,14 +52,14 @@ def reverse_table(table:list):
     '''
     return print(table[:: -1])
 
-import numpy as np
-H=15
-W=15
-Xin = np.zeros((H,W),dtype=float)
-Xin[6:7,8:9]=np.ones((1,1))
-for c in range(7,10):
-    for l in range(7,10):
-        Xin[l,c]=1
+# import numpy as np
+# H=15
+# W=15
+# Xin = np.zeros((H,W),dtype=float)
+# Xin[6:7,8:9]=np.ones((1,1))
+# for c in range(7,10):
+#     for l in range(7,10):
+#         Xin[l,c]=1
 
 # def roi_bbox(img): 
 #     '''
