@@ -94,14 +94,26 @@ print(max_value([4,2,3]))
 """
 Session 1 Reverse a table 
 """
-def reverse_table(Tab):
+def reverse_table(tab):
     '''
     This function reverse a table
     Parameters:
         Tab: a table of numner 
     Returns: a reversed table 
     '''
-    return Tab[::-1]
+    #ce code consome beaucoup plus de mémoire a cause de pop et insert 
+    #listlen = len(tab)
+    #for i in range (listlen):
+    #    last=tab[-1]
+    #    tab.pop(listlen-1)
+    #    tab.insert(i,last)
+    listlen = len(tab)
+    for i in range(listlen//2):
+        tmp=tab[i]
+        endid=listlen-i-1
+        tab[i] = tab [endid]
+        tab[endid]=tmp
+    return tab
  
         
 print(reverse_table([1,2,3,4,5,6]))
@@ -111,10 +123,10 @@ Session 1 Bounding box
 """
 
 import numpy as np
-H=100
+H=1000
 W=1000
-n = np.zeros((W,H),dtype=float)
-n[45:450,70:91] = 1
+n = np.zeros((H,W),dtype=np.uint8)
+n[45:200,70:91] = 1
 #on peut aussi écrire: 
 #n[2:4,3:5] = np.ones((2,2)) avec deux tableau de même taille
 #trop lent 
@@ -122,33 +134,75 @@ n[45:450,70:91] = 1
 #    for d in range (70,91):
 #        n[c,d]=1
 
+def find_top_y(matrix):
+    for y in range(matrix.shape[0]):
+        if np.sum(matrix[y,:]):
+            return y
+    raise ValueError("no non null value found")
+    
+def find_top_x(matrix):
+    for x in range(matrix.shape[1]):
+        if np.sum(matrix[:,x]):
+            return x
+    raise ValueError("no non null value found")
+
+def find_down_y(matrix):
+    for y in range(matrix.shape[0])[::-1]:
+        if np.sum(matrix[y,:]):
+            return y
+    raise ValueError("no non null value found")
+
+def find_down_x(matrix):
+    for x in range(matrix.shape[1])[::-1]:
+        if np.sum(matrix[:,x]):
+            return x
+    raise ValueError("no non null value found")
+
 def roi_bbox(image):
     '''
     This function return a numpy array with the coord of a bounding box
     Parameters:
-        Tab: a list of number 
-    Returns: highest value and it's index (highestvalue,Index)
+        image: a numpy array  
+    Returns: a numpy array with 4 coordinates
     '''
+    #en créant 4 fonctions on peut lancer plusieurs thread pour l'éxécution
+    return np.array([find_top_x(image),find_top_y(image),find_down_x(image),find_down_y(image)])
     
-    upper_x =image.shape[1]+1
-    upper_y =image.shape[0]+1
-    lower_x =0
-    lower_y =0
-    x=0
-    y=0
-    for ligne in image:       
-        for point in ligne:          
-            if point != 0:
-                if upper_x > x:
-                    upper_x = x
-                if upper_y > y:
-                    upper_y = y
-                if lower_x < x:
-                    lower_x = x
-                if lower_y < y:
-                    lower_y = y                                
-            y+=1
-        y=0
-        x+=1
-    return np.array([upper_x,upper_y,lower_x,lower_y])
+
+    #upper_x =image.shape[1]+1
+    #upper_y =image.shape[0]+1
+    #lower_x =0
+    #lower_y =0
+    #x=0
+    #y=0
+    #for ligne in image:       
+    #    for point in ligne:          
+    #        if point != 0:
+    #            if upper_x > x:
+    #                upper_x = x
+    #            if upper_y > y:
+    #                upper_y = y
+    #            if lower_x < x:
+    #                lower_x = x
+    #            if lower_y < y:
+    #                lower_y = y                                
+    #        y+=1
+    #    y=0
+    #    x+=1
+    
+    #return np.array([upper_x,upper_y,lower_x,lower_y])
 print(roi_bbox(n))
+
+"""
+Session 1 Random array filling 
+
+"""
+#random.sample
+import random
+n = np.empty((40,40),dtype=str)
+def random_fill_sparse(table,K):
+    coordinatestable = [random.randint(0,table.shape[0]),random.randint(0,table.shape[1])]
+    
+
+    return coordinatestable
+print(random_fill_sparse(n,12))
