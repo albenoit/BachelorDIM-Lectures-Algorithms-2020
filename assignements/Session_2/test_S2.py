@@ -5,9 +5,9 @@ Created on Wed Sep 16 14:37:36 2020
 @author: vanhouta
 """
 import function as functest
-import sys
+#import sys
 #from Session_1 import Exo_1 as funcS1
-sys.path.insert(1, '../Session_1')
+#sys.path.insert(1, '../Session_1')
 
 #import S1_algotools as funcS1
 
