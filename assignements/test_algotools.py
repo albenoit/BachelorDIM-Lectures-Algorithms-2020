@@ -50,3 +50,11 @@ def test_max_value_positive():
 def test_reverse_chars():
     with pytest.raises(TypeError):
         tobetested.max_value([2,'a'])==['a',2]
+        
+        
+"""
+    mapping matrice
+"""
+
+def test_map_mat():
+    assert tobetested.create_image_matrice([1,1])
