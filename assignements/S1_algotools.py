@@ -104,5 +104,21 @@ def roi_bbox(img):
                     y2 = c_temp
 
     return np.array([x1,y1,x2,y2])
-print(matrix)
-print(roi_bbox(matrix))
+# print(matrix)
+# print(roi_bbox(matrix))
+
+phrase = "phrase avec espaces"
+def remove_whitespace(string):
+    '''
+        This function paste the words 
+        Parameters:
+            string: sentence
+        Returns:
+            the sentence without wthitespace
+    '''
+    phrase2 = ""
+    for i in string:
+        if i != ' ':
+            phrase2+=i
+    return phrase2
+print(remove_whitespace(phrase))
