@@ -1,3 +1,5 @@
+﻿test
+
 # BachelorDIM-Lectures-Algorithms-2020
 Algorithms, code writing and continuous integration @ DIM Bachelor, Université Savoie Mont Blanc, France
 
