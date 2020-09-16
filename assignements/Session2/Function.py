@@ -60,7 +60,7 @@ def reverse_table(table:list):
 # for c in range(7,10):
 #     for l in range(7,10):
 #         Xin[l,c]=1
-
+#
 # def roi_bbox(img): 
 #     '''
 #         This function return boundingbox
