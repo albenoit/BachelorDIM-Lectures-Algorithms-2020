@@ -80,7 +80,14 @@ def reverse_table(tab):
         tab[endid]=tmp
     #tab=tab[::-1]
     return(tab)
-    
+
+
+matrix=np.zeros((12,10),dtype=bool)
+for c in range (7,9):
+    for l in range (4,9):
+        matrix[l,c]=1
+
+
 def roi_bbox(array):
     '''
     This function returns a numpy array of shape 4x2 filled with the four 2D coordinates
@@ -89,7 +96,10 @@ def roi_bbox(array):
         
     Returns a numpy array of shape 4x2 filled with the four 2D coordinates
     '''
-    
-    
-    
+    matrice = np.nonzero(array)
+    coordinates=np.array([
+            [np.min(matrice[0]),np.min(matrice[1])],
+            [np.max(matrice[0]),np.max(matrice[1])]
+            ])
+    return(coordinates)
     
