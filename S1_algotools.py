@@ -112,6 +112,14 @@ char_matrix_empty=np.empty([10,10],dtype=str)
 
 
 def random_fill_sparse(matrice,k):
+    '''
+    This function fills randomly an empty str np array of X
+    
+    Args :
+        matrice: Empty np array of str type
+        k : int corresponding to the number of X that will be placed in matrice
+    '''
+    
     xmax=len(matrice)
     ymax=len(matrice[1])
     for loop in range(k):
