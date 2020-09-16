@@ -62,6 +62,17 @@ def test_roi_bbox_exception_2():
     matrix = np.zeros((H,L))
     with pytest.raises(ValueError):
         S1.roi_bbox(matrix)
+        
+#------------------------random_fill_sparse
+        
+def test_roi_bbox_OK():
+    H = 12
+    L = 10
+    K = 10
+    matrix = np.zeros((H,L))
+    position = np.argwhere(random_fill_sparse(matrix, K))
+    assert (np.size(position)/2) == K
+    
     
 
     
