@@ -42,6 +42,30 @@ tab = [100, 'abc', 437, 'def', 123]
 tab.reverse()
 print(tab)
 
+# Reverse a table V2
+tab = [100, 200, 300, 400]
+listlen = len(tab)
+for i in range(len(tab)//2):
+    tmp = tab[i]
+    endid = listlen - i - 1
+    tab[i] = tab[endid]
+    tab[endid] = tmp
+
+print(tab)
+
+
+# Bounding box
+
+import numpy as np
+
+def bounding_box(matrix):
+    h = 12
+    w = 10
+    matrix = np.zeros((h, w))
+
+a = np.array([1,2,4])
+print(a)
+
 
 
 
