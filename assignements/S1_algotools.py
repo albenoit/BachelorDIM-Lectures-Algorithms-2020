@@ -66,11 +66,37 @@ def reverse_table(tab):
         tab[endid] = tmp
     return tab
 
+def roi_bbox(input_image):
+    '''
+    algorithm able to compute the bounding box coordinates of the object
+    
+    Parameters:
+        input_image as numpy tab
+    Returns:
+        a numpy array of shape 4x1 filled with the four 2D coordinates
+    '''
+    matrix_found_bb = np.where(matrix_bounding_box > 0)
+    
+    x1 = matrix_found_bb[0][0]
+    y1 = matrix_found_bb[1][0]
+    x2 = matrix_found_bb[0][len(matrix_found_bb[0])-1]
+    y2 = matrix_found_bb[1][len(matrix_found_bb[1])-1]
+    
+    return np.array([x1,y1,x2,y2])
+     
+
 Tab = [4,2,45,-4,14,-95,-4,2,87,-56,65,1,3]
-#print(average_above_zero(Tab))
+print(average_above_zero(Tab))
 
 print(reverse_table([1,2,3,4,5]))
 
 
 print(max_value([8,9,7, -9]))
 
+matrix_bounding_box = np.array([[0,0,1,1,0,0,0,0,0,0],
+                                [0,0,1,1,0,0,0,0,0,0],
+                                [0,0,0,0,0,1,1,0,0,0],
+                                [0,0,0,0,0,1,1,0,0,0],
+                                [0,0,0,0,0,0,0,0,0,0]])
+
+print(roi_bbox(matrix_bounding_box))
