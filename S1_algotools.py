@@ -45,3 +45,19 @@ def max_value(tab):
         if i >= max:
             max=i
     print(max)
+    
+    
+def reverse_table(tab):
+    '''
+    
+    This function returns the reverse of the input table
+    
+    Args :
+        tab: input table
+        
+    Returns the inverted table
+    
+    '''
+    
+    tab=tab[::-1]
+    return(tab)
