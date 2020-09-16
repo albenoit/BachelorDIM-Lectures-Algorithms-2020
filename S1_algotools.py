@@ -80,10 +80,28 @@ print("Liste après : "+ str(reverse_table(Tab)))
 '''
 H = 12
 L = 10
+x1=255
+y1=255
+x2=0
+y2=0
+index = 0
+
 matrix = np.zeros((H,L))
-matrix[8:10, 7:9] = np.ones((2,2))
+matrix[0:2, 7:9] = np.ones((2,2))
 matrix[2:4, 3:5] = np.ones((2,2))*2
 position = np.argwhere(matrix)
-print(position[0])
+for c in position:
+    if(x1>c[0]):
+        x1=c[0]
+    if(y1>c[1]):
+        y1=c[1]
+    if(x2<c[0]):
+        x2=c[0]
+    if(y2<c[1]):
+        y2=c[1]        
+bounding_box[0][0] = 11
+print("bounding_box : " + str(bounding_box))
+print("Ligne : " + str(x1) + " - colonne : " + str(y1))
+print("Ligne : " + str(x2) + " - colonne : " + str(y2))
 print(position[len(position)-1])
 print(matrix)
