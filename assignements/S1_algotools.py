@@ -106,6 +106,9 @@ def random_fill_parse(matrix, K):
     for i in range(0, K):
         print("Test")
 
+def my_addition(a, b):
+    return a+b
+
 #Matrix used for bbox
 H = 12
 W = 10
