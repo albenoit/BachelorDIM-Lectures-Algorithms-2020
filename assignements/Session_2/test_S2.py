@@ -9,7 +9,7 @@ import sys
 #from Session_1 import Exo_1 as funcS1
 sys.path.insert(1, '../Session_1')
 
-import S1_algotools as funcS1
+#import S1_algotools as funcS1
 
 
 def test_answer():
