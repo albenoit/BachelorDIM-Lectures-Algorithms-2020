@@ -71,7 +71,17 @@ print("Moyenne : " + str(average_above_zero(Tab)))
 print("Max : " + str(max_value(Tab)))
 print("Liste avant : "+ str(Tab))
 print("Liste après : "+ str(reverse_table(Tab)))
+'''
+Tab = 3
+print("Moyenne : " + str(average_above_zero(Tab)))
+print("Max : " + str(max_value(Tab)))
+print("Liste avant : "+ str(Tab))
+print("Liste après : "+ str(reverse_table(Tab)))
+'''
+H = 12
+L = 10
+matrix = np.zeros((H,L))
+matrix[8:10, 7:9] = np.ones((2,2))
+matrix[2:4, 3:5] = np.ones((2,2))*2
 
-arr = np.array([[1, 2, 3, 5, 8, 4, 5], [4, 5, 6, 7, 5, 6, 2], [4, 5, 6, 7, 5, 6, 2]])
-print(np.where(arr == 3))
-print(arr)
+print(matrix)
