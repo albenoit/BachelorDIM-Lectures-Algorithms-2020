@@ -11,4 +11,9 @@ addons:
 script:
   - pytest -v --cov .
   #- sonar-scanner
+<<<<<<< HEAD
   - coveralls
+=======
+  - coveralls
+
+>>>>>>> 427266ff67e81e85167919c2f5876b954f6e013a
