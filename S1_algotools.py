@@ -41,12 +41,14 @@ def average_above_zero(table:list):
     '''
     Som = 0;
     N = 0;
-    
-    for i in table:
-        if i > 0:
-            Som += i;
-            N += 1;
-    Moy = math.floor(Som / N);
+    try:
+        for i in table:
+            if i > 0:
+                Som += i;
+                N += 1;
+        Moy = math.floor(Som / N);
+    except:
+        raise Exception('Error : divide by zero is impossible')
     return Moy;
 
 print('Average : ', average_above_zero([1,5,3,4,9,5]));
