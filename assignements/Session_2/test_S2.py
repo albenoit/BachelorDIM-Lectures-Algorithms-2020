@@ -22,5 +22,10 @@ def test_addition_integers_2():
         func.addition('a',2)
         
 Tab = [10,10,19]
+Tab2 = [-55,-8,-63]
 def test_average_above_zero():
-    assert func.average_above_zero(Tab) == 14,5
+    assert func.average_above_zero(Tab) == 14.5
+
+def test_average_above_zero2():
+    with pytest.raises(TypeError):
+        func.average_above_zero(Tab2)
