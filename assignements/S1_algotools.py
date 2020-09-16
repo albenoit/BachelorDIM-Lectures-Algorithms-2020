@@ -35,13 +35,13 @@ def average_above_zero(Tab):
         if i > 0 :
             Som = Som + i
             N = N + 1
-        if N>0:
-            Moy = Som/N
-        else:
-            raise ValueError('division par zero')
+    if N>0:
+        Moy = Som/N
+    else:
+        raise ValueError('division par zero')
     return Moy
 
-print(average_above_zero([1,2]))
+print(average_above_zero([-1,2]))
 
 
 
@@ -66,7 +66,7 @@ def  max_value_without_index(Tab):
             Max = Max                       
     return Max
 
-print(average_above_zero([1,2,3]))
+print(max_value_without_index([1,2,3]))
 """
 Improve the previous changes by capturing the index of the last maximum
 value.
