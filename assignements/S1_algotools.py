@@ -43,8 +43,6 @@ def average_above_zero(Tab):
 
 
 print(average_above_zero([-1, 2]))
-
-print('trouloulou')
 """
 Session 1 Table maximum value
 """
