@@ -25,14 +25,12 @@ def average_above_zero(table:list):
         if table[x]>0:
             sum += table[x]
             n += 1
+        else:
+            raise Exception("Can't be below 0. The value of x was: {}".format(x))
     average = sum/n
     return average
 
-def test_average(table):
-    assert average_above_zero(1,2,3) == 2
-    
-
-#print(average_above_zero([1, 2, 3]))
+#print(average_above_zero([1, -2, 3]))
     
 """
 Q1 / Si on oublie l'initialisation de la variable on ne pourra pas l'utiliser 
@@ -100,10 +98,9 @@ def roi_bbox(input_image):
 rows = 5
 cols = 5
 input_image = np.zeros((rows, cols))   
-#print(roi_bbox(input_image))
 input_image[1:3,2:5] = np.ones((2, 3))
 #print(input_image)
-#print(roi_bbox(input_image))
+print(roi_bbox(input_image))
 
 def alea(n):
     """
@@ -126,10 +123,15 @@ def random_fill_sparse(tab, k:int):
     returns:
         z : coordonées de la forme encadrant les 1
     """
-    for i in range(k):
-        row = tab[alea(k)]
-        row[(alea(len(row)-1))] = "X"
-
+    nbX = 0
+    while(nbX < k): 
+        row = tab[alea(len(tab)-1)]
+        random = alea(len(row)-1)
+        if(row[random] == "X"):
+            pass
+        else:
+            row[random] = "X"
+            nbX += 1
     return tab
 
 tab = np.empty((5, 5), dtype=str)
