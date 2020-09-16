@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import numpy as np
+from random import *
 
 def average_above_zero(table:list):
     '''
@@ -83,7 +84,7 @@ def roi_bbox(input_image:np):
         x2=0
         y2=0
         bounding_box = np.zeros((4,2))
-        position = np.argwhere(input_image)
+        position = np.argwhere(input_image)         #Trouve toutes les positions != 0
         if(len(position)):
             for c in position:
                 x=c[0]
@@ -127,9 +128,26 @@ matrix = np.zeros((H,L))
 H = 12
 L = 10
 matrix = np.zeros((H,L))
-'''
+
 matrix[0:2, 7:9] = np.ones((2,2))
 matrix[2:4, 3:5] = np.ones((2,2))*2
-'''
+
 print(matrix)
 print(roi_bbox(matrix))
+
+
+matrix = np.zeros((H,L))
+K=10
+i=0
+while i<K:
+    x=randint(0,len(matrix[0])-2)
+    y=randint(0,len(matrix)-2)
+    print(matrix[y,x]==0)
+    if((matrix[y,x])==0):
+        matrix[y:(y+1),x:(x+1)] = 12
+        i+=1
+    print("i : " + str(i) + " - x : " + str(x) + " - y : " + str(y))
+print(matrix)
+position = np.argwhere(matrix)
+print(len(position))
+
