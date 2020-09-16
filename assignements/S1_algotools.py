@@ -25,8 +25,9 @@ def average_above_zero(tab :list):
 
 # Call the function with array in args and display the average
 print('# Average above zero function # ')
-print(average_above_zero([1,-10,-2,-8,12]))
-
+print('T1 : average = ' , average_above_zero([1,10,2,8,12])) #Only positive numbers
+print('T2 : average = ' , average_above_zero([1,-10,-2,-8,12])) #With positive and negative numbers
+print('T3 : average = ' , average_above_zero([-1,-10,-2,-8,-12])) #Only negative numbers
 
 def max_value(tab :list):
     '''
@@ -61,4 +62,4 @@ def reverse_table(tab :list):
 # Call the function with array in args and display reversed array
 print('# Reverse table function #')
 print(reverse_table([1,10,2,8,11]))
-
+    
