@@ -68,7 +68,7 @@ def reverse_table(tab):
     Returns the inverted table
     
     '''
-    
+    #tab=[1,2,3]
     tab=tab[::-1]
     return(tab)
     
