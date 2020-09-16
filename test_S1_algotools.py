@@ -47,10 +47,16 @@ def test_roi_bbox_OK():
     position[3:4, 0:1] = 3
     position[3:4, 1:2] = 8
     tab = S1.roi_bbox(matrix)
-    
     assert np.prod(tab == position)
     
+def test_roi_bbox_exception_1():
+    H = 0
+    L = 0
+    matrix = np.zeros((H,L))
+    with pytest.raises(ValueError):
+        S1.roi_bbox(matrix)
     
+
     
     
     
