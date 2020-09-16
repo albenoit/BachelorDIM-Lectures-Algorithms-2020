@@ -14,10 +14,6 @@ import test_S2
 #------------------------------ EXERCISE 1 ------------------------------#
 #------------------------------------------------------------------------#
 
-print('\n ----------------------------------\n',
-      '------------Exercise 1------------\n',
-      '----------------------------------\n')
-
 '''
     Question : What happens if Som initialization is forgotten ?
         UnboundLocalError: local variable 'Som' referenced before assignment
@@ -39,27 +35,26 @@ def average_above_zero(table:list):
         Returns:
             returns the average of an array passed in parameter
     '''
-    Som = 0;
-    N = 0;
-    try:
-        for i in table:
-            if i > 0:
-                Som += i;
-                N += 1;
-        Moy = math.floor(Som / N);
-    except:
-        raise Exception('Error : divide by zero is impossible')
-    return Moy;
-
-print('Average : ', average_above_zero([1,5,3,4,9,5]));
+    Som = 0
+    N = 0
+    
+    for i in table:
+        if i > 0:
+            Som += i
+            N += 1
+        elif i < 0:
+            raise Exception('Negative value')
+        elif i == 0:
+            raise ZeroDivisionError('Divide by zero is impossible', ZeroDivisionError)
+        elif isinstance(i,int) == False and isinstance(i,float) == False:
+            raise TypeError('It isn\'t an integer or a float', TypeError)
+        elif i == None:
+            raise TypeError('None value detected', TypeError)
+    return math.floor(Som / N);
 
 #------------------------------------------------------------------------#
 #------------------------------ EXERCISE 2 ------------------------------#
 #------------------------------------------------------------------------#
-
-print('\n ----------------------------------\n',
-      '------------Exercise 2------------\n',
-      '----------------------------------\n')
 
 def max_value(table:list):
     '''
@@ -72,17 +67,17 @@ def max_value(table:list):
         Returns:
             returns the index and max value of an array passed in parameter
     '''
-    return table.index(max(table));
-
-print('Index : ', max_value([1,5,3,4,9,5]));
+    for value in table:
+        if value == None:
+            raise TypeError('None value detected', TypeError)
+        elif isinstance(value,int) == False and isinstance(value,float) == False:
+            raise TypeError('It isn\'t an integer or a float', TypeError)
+    return table.index(max(table))
 
 #------------------------------------------------------------------------#
 #------------------------------ EXERCISE 3 ------------------------------#
 #------------------------------------------------------------------------#
 
-print('\n ----------------------------------\n',
-      '------------Exercise 3------------\n',
-      '----------------------------------\n')
 
 def reverse_table(table:list):
     '''
@@ -95,17 +90,16 @@ def reverse_table(table:list):
         Returns:
             returns an inversed array
     '''
+    for value in table:
+        if value == None:
+            raise TypeError('None value detected', TypeError)
+        elif isinstance(value,int) == False and isinstance(value,float) == False:
+            raise TypeError('It isn\'t an integer or a float', TypeError)
     return table[::-1];
-
-print('Reversed Table : ', reverse_table([1,5,3,4,9,5]));
 
 #------------------------------------------------------------------------#
 #------------------------------ EXERCISE 4 ------------------------------#
 #------------------------------------------------------------------------#
-
-print('\n ----------------------------------\n',
-      '------------Exercise 4------------\n',
-      '----------------------------------\n')
 
 def roi_bbox(input_image:np.array):
     '''
@@ -129,15 +123,9 @@ def roi_bbox(input_image:np.array):
     
     return [columnMin, columnMax],[rowMin, rowMax];
 
-print('\nCoordonates : ',roi_bbox(np.zeros((10,10), dtype=float)));
-
 #------------------------------------------------------------------------#
 #------------------------------ EXERCISE 5 ------------------------------#
 #------------------------------------------------------------------------#
-
-print('\n ----------------------------------\n',
-      '------------Exercise 5------------\n',
-      '----------------------------------\n')
 
 def random_fill_sparse(table:np.array, K:int):
     '''
@@ -174,16 +162,9 @@ for row in table:
     for column in row:
         caseNumber += 1;
 
-print('Case number :',caseNumber);
-print('Table : \n', random_fill_sparse(table,rd.randint(1,caseNumber)));
-
 #------------------------------------------------------------------------#
 #------------------------------ EXERCISE 6 ------------------------------#
 #------------------------------------------------------------------------#
-
-print('\n ----------------------------------\n',
-      '------------Exercise 6------------\n',
-      '----------------------------------\n')
 
 def remove_whitespace(sentence:str):
     '''
@@ -199,20 +180,11 @@ def remove_whitespace(sentence:str):
     '''
     return sentence.replace(" ", "");
 
-print('Sentence without space : \'', remove_whitespace('I love Python and Alexandre Benoit'), '\'');
-
 #------------------------------------------------------------------------#
 #------------------------------ EXERCISE 7 ------------------------------#
 #------------------------------------------------------------------------#
-
-print('\n ----------------------------------\n',
-      '------------Exercise 7------------\n',
-      '----------------------------------\n')
 
 def shuffle(list_in:list):
     return list_in;
 
 stuff = ['Baptiste', 'Car', 'Cutecumber']
-
-print(shuffle(stuff));
-
