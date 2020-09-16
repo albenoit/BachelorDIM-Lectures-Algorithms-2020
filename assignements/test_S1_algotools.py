@@ -6,13 +6,19 @@ Created on Wed Sep 16 15:13:01 2020
 """
 
 import pytest
-import S1_algotools as test
+import S1_algotools as algotools
 
 def test_average_above_zero_add_intergers():
     Tab = [4,2,45,-4,14,-95,-4,2,87,-56,65,1,3]
-    assert test.average_above_zero(Tab) == 24.77777777777778
+    assert algotools.average_above_zero(Tab) == 24.77777777777778
     
 def test_average_above_zero_only_negative_numbers():
     Tab = [-4,-95,-4,-56]
     with pytest.raises(ValueError):
-        test.average_above_zero(Tab) == 24.77777777777778
+        algotools.average_above_zero(Tab) == 24.77777777777778
+        
+def test_max_value():
+    assert algotools.max_value([1,84,5,14,2,-546]) == 84
+    
+def test_max_value_fail():
+    assert algotools.max_value([1,84,5,14,2,-546]) != 2
