@@ -75,6 +75,7 @@ def reverse_table(table:list):
     return table
 
 #print(reverse_table([10,20,30,40]))
+    
  
 def roi_bbox(input_image:np):
     '''
@@ -116,6 +117,7 @@ def alea(min:int, max:int):
         raise Exception("alea_value is null or empty")
     return alea_value
 
+
 def random_fill_sparse(table:np, K:int):
     '''
     Get random numpy with random X in
@@ -152,6 +154,7 @@ def remove_whitespace(string_value:str):
     return string_value
 
 #print(remove_whitespace("Je suis une patate"))
+    
 
 def function_shuffle(list_in:list):
     '''
