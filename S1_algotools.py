@@ -83,7 +83,13 @@ def reverse_table(table:list):
             table: a float list
         Returns a reversed list
     '''
-    return table[::-1]
+    for i in range(len(table)//2): # // permet de faire une division entière
+        tmp = table[i]
+        table[i] = table[len(table) - i -1]
+        table[len(table) - i -1] = tmp
+    
+    #return table[::-1]
+    return table
 
 z = [1,2,3,4,5,6,7,8,9]
 if(reverse_table(z) == [9,8,7,6,5,4,3,2,1]):
@@ -102,21 +108,26 @@ def roi_bbox(input_image: np.array):
         Returns a 4x2 numpy.array which got the coordinate (X,Y) of the square
         which got the entire '1' area
     '''
-    minX = input_image.shape[0]
     maxX = 0
-    minY = input_image.shape[1]
     maxY = 0
-    for i in range(input_image.shape[0]):
-        for j in range(input_image.shape[1]):
-            if(input_image[i,j] == 1):
-                if(i < minX):
-                    minX = i
-                if(i > maxX):
-                    maxX = i
-                if(j < minY):
-                    minY = j
-                if(j > maxY):
-                    maxY = j
+    if(1 in input_image):
+        minX = input_image.shape[0]       
+        minY = input_image.shape[1]       
+        for i in range(input_image.shape[0]):
+            for j in range(input_image.shape[1]):
+                if(input_image[i,j] == 1):
+                    if(i < minX):
+                        minX = i
+                    if(i > maxX):
+                        maxX = i
+                    if(j < minY):
+                        minY = j
+                    if(j > maxY):
+                        maxY = j
+    else: #S'il n'y a pas de 1 dans le np.array, alors on retourne toutes
+          # les coordonnées à 0.
+        minX = 0      
+        minY = 0  
     return np.array([[minX,minY],[maxX,minY],[minX,maxY],[maxX,maxY]])
 
 #Test                
