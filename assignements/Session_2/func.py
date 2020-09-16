@@ -8,3 +8,6 @@ Created on Wed Sep 16 15:15:49 2020
 
 def plusone(x):
     return x+1
+
+def addition(a,b):
+    return a+b
