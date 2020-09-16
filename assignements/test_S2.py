@@ -61,5 +61,10 @@ for c in range(5,8):
         matrix[l,c] = 1
 bbox_real = np.array([3, 1, 8, 7])
 bbox = tFile.roi_bbox(matrix)
-def test_bounding_box():
+
+def test_bounding_box_V1():
     assert np.prod(bbox_real == bbox)
+
+bboxV2 = tFile.roi_bbox_V2(matrix)
+def test_bounding_box_V2():
+    assert np.prod(bbox_real == bboxV2)

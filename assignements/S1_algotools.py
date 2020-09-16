@@ -185,7 +185,7 @@ import random
 
 RandomArray = np.zeros((10,10))
 K = 200
-print(RandomArray)
+# print(RandomArray)
 
 def random_fill_sparse(matrix, k):
     '''
@@ -201,7 +201,7 @@ def random_fill_sparse(matrix, k):
     if k > maxRandomNumber:
         raise ValueError('Too randoms numbers will be create')
 
-    print(maxRandomNumber)
+    # print(maxRandomNumber)
 # Set a length of the list to 10
 # for i in range(0, k):
 #     # any random numbers from 0 to 1000
