@@ -133,10 +133,27 @@ tab = np.empty((5, 5), dtype=str)
 #print(random_fill_sparse(tab, 4))
 
 def remove_whitespace(string:str):
+    """
+    Fonction qui supprime les espaces dans une string
+    param:
+        string : chaine de caractères
+    returns:
+        string.replace : renvoie la phrase sans les espaces
+    """
     return string.replace(' ', '')
         
 string = "Coucou tout le monde"
-print(remove_whitespace(string))
+#print(remove_whitespace(string))
+
+def shuffle(list_in):
+    """
+    Fonction qui mélange les éléments d'une liste
+    param:
+        list_in : liste d'éléments
+    returns:
+        random.shuffle(list_in) : renvoie la liste mélangée aléatoirement
+    """
+    return random.shuffle(list_in)
 
 '''     
 for a in range(2,5):
