@@ -7,6 +7,7 @@ Created on 14/09/2020
 """
 
 import numpy as np
+import random
 
 a=1
 # b='e'+a
@@ -97,6 +98,15 @@ def roi_bbox(mtrx):
     return x1, y1, x2, y2
 
 def roi_bbox_2(mtrx):
+    '''
+    Finds the bounding box of an array
+
+    Parameters:
+        mtrx: The matrix of 0 and 1
+
+    Returns: The coordinates of all corners
+    '''
+
     x1 = 0
     x2 = 0
     y1 = 0
@@ -139,6 +149,38 @@ def roi_bbox_2(mtrx):
 
     return x1, y1, x2, y2
 
+def alea(max):
+    '''
+    Returns a random number between 0 and max
+
+    Parameters:
+        max: Integer
+
+    Returns: Random number defined by max
+    '''
+    return random.randrange(0, max)
+
+def random_fill_parse(mtrx, nbr):
+    '''
+    Fill matrix at random positions with random values only when cell is empty
+
+    Parameters:
+        mtrx: The empty matrix
+        nbr: The number of iteration
+
+    Returns: An array filled with random numbers at random positions
+    '''
+    for i in range(nbr):
+        rdmX = alea(len(mtrx[0]))
+        rdmY = alea(len(mtrx))
+        # rdmX = random.randrange(0, len(mtrx[0]))
+        # rdmY = random.randrange(0, len(mtrx))
+        if mtrx[rdmY, rdmX] <= 0:
+            mtrx[rdmY, rdmX] =  alea(100)
+            
+
+    return mtrx
+
 
 nbr_list = [1, -5, 3]
 h = 12
@@ -146,8 +188,10 @@ w = 10
 mtrx = np.zeros((h, w))
 mtrx[0:1, 3:5] = np.ones(1)
 mtrx[2:5, 1:3] = np.ones(1)
+mtrx2 = np.zeros((h, w))
 
 print('Average of list is: ' + str(average_above_zero(nbr_list)))
 print('Max biggest number index is: ' + str(max_value(nbr_list)))
 print('Reversed table is: ' + str(reverse_table(nbr_list)))
 print('Bounding box of matrix is: ' + str(roi_bbox_2(mtrx)))
+print(random_fill_parse(mtrx2, 100))
