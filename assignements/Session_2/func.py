@@ -6,5 +6,5 @@ Created on Wed Sep 16 15:15:49 2020
 """
 
 
-def func(x):
+def plusone(x):
     return x+1

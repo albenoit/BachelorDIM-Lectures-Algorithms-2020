@@ -4,13 +4,12 @@ Created on Wed Sep 16 14:37:36 2020
 
 @author: vanhouta
 """
-import function as functest
+import func
 
 
 def test_answer():
-    assert functest.func(3) == 4
+    assert func.plusone(3) == 4
     
 def test_answer2():
-    assert functest.func(14) == 15
+    assert func.plusone(14) == 15
     
-print(functest.func(4))
