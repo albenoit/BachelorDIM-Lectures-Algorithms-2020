@@ -117,6 +117,15 @@ def random_fill_sparse(numpy_array, k):
 def isSquare (m): return all (len (row) == len (m) for row in m)
 
 def remove_whitespace(text:str):
+    '''
+     algorithm able to parse a string and remove all its whitespace
+    
+    Parameters:
+        numpy_array
+        text : string
+    Returns:
+        string without space
+    '''
     new_text = ''
     for c in text:
         if c != ' ':
