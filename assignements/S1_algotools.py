@@ -25,6 +25,7 @@ def average_above_zero(table:list):
     moy = som/n
     return print(moy)
 
+# list = [8, 15, 14, 12, 6, 18, 10, 2, 20]
 # average_above_zero(list)
 
 # What happens if Som initialization is forgotten ?

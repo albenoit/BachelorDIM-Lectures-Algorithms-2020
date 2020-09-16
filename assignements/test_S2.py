@@ -14,7 +14,4 @@ def test_myaddition_wrong_input():
         tobetested.my_addition('a',2)
 
 def test_average_above_zero_divisionByZero():
-    if n != 0 :
-        moy = som/n
-    else :
-        raise ZeroDivisionError()
+    assert tobetested.average_above_zero(list) == 12.125
