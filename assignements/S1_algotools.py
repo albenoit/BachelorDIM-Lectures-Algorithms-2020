@@ -137,11 +137,46 @@ def roi_bbox(img):
     targets = np.argwhere(img > 0)
     # print(targets)
 
-    x1 = targets[0][1]
-    y1 = targets[0][0]
-    x2 = targets[len(targets) - 1][1]
-    y2 = targets[len(targets) - 1][0]
-    print(np.array([x1, y1, x2, y2]))
+    x1 = targets[0][0]
+    y1 = targets[0][1]
+    x2 = targets[len(targets) - 1][0]
+    y2 = targets[len(targets) - 1][1]
+    return(np.array([x1, y1, x2, y2]))
 
-roi_bbox(matrix)
+# Call the function with matrix in args and display img coordinates
+print('# Bounding box function V1 #')
+print('T1 : img coordinate = ',roi_bbox(matrix))
+
+def roi_bbox_V2(img):
+    '''
+    Function to get coordinates of img in matrix V2
+    Parameters :
+        img: matrix of img
+    Returns :
+        the coordinates of img
+    '''
+    W = img.shape[0] - 1
+    H = img.shape[1] - 1
+    x1 = W
+    y1 = H
+    x2 = 0
+    y2 = 0
+    for x in range(0,W):
+        for y in range(0,H):
+            # print(x,y)
+            if img[x,y]:
+                if x < x1:
+                    x1 = x
+                if y < y1:
+                    y1 = y 
+                if y > y2:
+                    y2 = y
+                if x > x2:
+                    x2 = x
+    return(np.array([x1, y1, x2, y2]))
+
+# Call the function with matrix in args and display img coordinates
+print('# Bounding box function V2 #')
+print('T2 : img coordinate = ',roi_bbox_V2(matrix))
+
 
