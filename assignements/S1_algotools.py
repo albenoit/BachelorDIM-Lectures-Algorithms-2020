@@ -126,3 +126,13 @@ def remove_whitespace(string):
     return ChaineF
 print(remove_whitespace(chaine))
 
+import random 
+def shuffle(list_in:list):
+    for i in range(len(list_in)-1, 0, -1): 
+        j = random.randint(0, i + 1)  
+        list_in[i], list_in[j] = list_in[j], list_in[i]  
+
+    return list_in
+
+list=[1, 4, 5, 6, 3] 
+print(shuffle(list))
