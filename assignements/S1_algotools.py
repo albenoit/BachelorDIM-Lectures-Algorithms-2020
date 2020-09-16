@@ -45,11 +45,9 @@ def max_value(array_of_data):
     """
         Function who work with an array of numbers greater than 0
         Parameters:
-            som: the addition of all number average
             N: the number of iterations (équivalant to the size of the array)
-            Moy: the sum of all numbers divided by the number of itérations
         Returns:
-            The average calculated with the variable Moy
+            highest_number: the max value of the array is returned as float
     """
     N=0
     highest_number=0
