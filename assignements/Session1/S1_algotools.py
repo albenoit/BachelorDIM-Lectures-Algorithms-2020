@@ -24,6 +24,7 @@ def average_above_zero(table:list):
 
 average_above_zero(list)
 
+
 # What happens if Som initialization is forgotten ?
 
 # On a le message d'erreur: NameError: name 'som' is not defined. 
@@ -77,7 +78,7 @@ Xin[6:7,8:9]=np.ones((1,1))
 for c in range(7,10):
     for l in range(7,10):
         Xin[l,c]=1
-        
+
 def roi_bbox(img): 
     '''
         This function return boundingbox

@@ -8,8 +8,8 @@ Xin[4:7,2:4]=np.ones((1,1))
 for c in range(12,14):
     for l in range(13,15):
         Xin[l,c]=1
-list=[1,3,5,7,9,2,4,6,8]
-list2=[-13,-57,92,-46,8]
+testTable=[1 ,3 ,5 ,7 ,9 ,2 ,4 ,6 ,8 ]
+testTable2=[-13 ,-57 ,92 ,-46 ,8 ]
 
 def test_answer():
     assert algo.onemore(3) == 4
@@ -25,17 +25,17 @@ def test_myaddition_wrong_input():
         algo.my_addition('a',2)
 
 def test_average_above_zero():
-    assert algo.average_above_zero(list) == 5.625
-
+    testTable=[1 ,3 ,5 ,7 ,9 ,2 ,4 ,6 ,8 ]
+    assert algo.average_above_zero(testTable) == 5.625
 # def test_average_above_zero2():
 #     with pytest.raises(TypeError):
 #         algo.average_above_zero(testTable2)
 
 def test_max_value():
-    assert algo.max_value(list) == (9,4)
+    assert algo.max_value(testTable) == (9,4)
 
 def test_reverse_table():
-    assert algo.reverse_table(list) == [8, 6, 4, 2, 9, 7, 5, 3, 1]
+    assert algo.reverse_table(testTable) == [8, 6, 4, 2, 9, 7, 5, 3, 1]
 
 # def roi_bbox():
 #     assert algo.roi_bbox(Xin) == [2 4 13 14]
