@@ -18,7 +18,14 @@ et donc on essaye de faire une division par 0 ce qui renvoie une erreur.
 import numpy as np
 
 def average_above_zero(table:list):
-    """Variables initialization"""
+    """
+    Fonction qui calcule la moyenne des valeurs d'un tableau donné, en 
+    sélectionnant seulement les valeurs positives
+    param:
+        tab : tableau donné par l'utilisateur
+    returns:
+        average : moyenne avec les valeurs positives de tab
+    """
     sum = 0
     n = 0
     tab_size = len(table)
@@ -33,6 +40,14 @@ def average_above_zero(table:list):
 #print(average_above_zero([1, 2, 3]))
 
 def max_value(tab:list):
+    """
+    Fonction qui renvoie la valeur max d'un tableau ainsi que son index
+    param:
+        tab : tableau donné par l'utilisateur
+    returns:
+        max_var : valeur max du tableau
+        max_var_index : index de la valeur max du tableau
+    """
     max_var = max(tab)
     max_var_index = tab.index(max_var)
     return max_var, max_var_index
@@ -40,6 +55,13 @@ def max_value(tab:list):
 #print(max_value([1, 2, 3]))
 
 def reverse_table(tab:list):
+    """
+    Fonction qui inverse le tableau
+    param:
+        tab : tableau donné par l'utilisateur
+    returns:
+        tab : tableau inversé
+    """
     tab=tab[::-1]
     return tab;
 
@@ -47,27 +69,38 @@ def reverse_table(tab:list):
 
     
 def roi_bbox(input_image): 
-    
+    """
+    Fonction qui encadre une zone définie de 1
+    param:
+        input_image : matrice donnée de 0 avec une zone de 1
+    returns:
+        z : coordonées de la forme encadrant les 1
+    """
+
     #Variables
-    rows = input_image.shape[0]
-    cols = input_image.shape[1]
+    rows = np.where(input_image == 1)[0]
+    cols = np.where(input_image == 1)[1]
     
     #Each coordinates
-    left_up = [0,0]
-    left_down = [(rows-1),0]
-    right_up = [0, (cols-1)]
-    right_down = [(rows-1), (cols-1)]
+    left_up = [rows[0], cols[0]]
+    left_down = [rows[-1], cols[0]]
+    right_up = [rows[0], cols[-1]]
+    #-1 récupère la dernière valeur du tableau 
+    right_down = [rows[-1], cols[-1]]
     
     #Return
     z = ([left_up, right_up], [right_down, left_down])
     return z
     
-lines = 5
+rows = 5
 cols = 5
-input_image = np.zeros((lines, cols))   
+input_image = np.zeros((rows, cols))   
 #print(roi_bbox(input_image))
-test = input_image[1:3,2:4] = np.ones((2, 3))
-print(test)
+input_image[1:3,2:5] = np.ones((2, 3))
+print(input_image)
+print(roi_bbox(input_image))
+
+
 '''     
 for a in range(2,5):
     for b in range(1, 3):
