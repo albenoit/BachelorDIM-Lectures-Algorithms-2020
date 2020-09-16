@@ -98,7 +98,7 @@ def create_image_matrice(rows,cols):
         Returns:
             mat: matrice returned created filled only with 0
     """
-    mat=np.zeros((rows,cols))
+    mat=np.zeros((rows,cols),dtype=int)
     return mat
 
 
@@ -121,9 +121,17 @@ def add_ones_to_matrice(mat,x1,x2,y1,y2):
     return mat
 
 
+
 matrice = create_image_matrice(6,6)
 matrice=add_ones_to_matrice(matrice,2,4,2,6)
+print(matrice)
 
-print (matrice)
+
+def roi_bbox(mat):
     
+    for x in range(mat.shape[1]):
+        for y in range(mat.shape[0]):
+            print(mat[y,x])
+    return 0
     
+roi_bbox(matrice)
