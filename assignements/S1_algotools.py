@@ -65,3 +65,24 @@ max_val=max_value(my_array)
 print('the max value is',max_val)
 
 
+
+
+
+def reverse_table(array_of_data):
+    """
+        Function who reverse the array given (using function array[::-1])
+        Parameters:
+            array_of_data: array given by the user not reversed
+        Returns:
+            res: array of data reversed
+    """
+    res = array_of_data[::-1]
+    return list(res)
+    
+table_not_revesed=my_array
+table_reversed=reverse_table(my_array)
+print('Array not reversed is :',table_not_revesed)  
+print('Array reversed is :',table_reversed)   
+    
+    
+    
