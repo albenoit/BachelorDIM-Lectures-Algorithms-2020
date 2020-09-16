@@ -21,7 +21,6 @@ What can you expect if all the values are below zero ?
 Translate this algorithm in the python3.x language within script of name:
 """
 
-
 def average_above_zero(Tab):
     '''
     This function return th average of all he numbers above 0 in array
@@ -45,6 +44,7 @@ def average_above_zero(Tab):
 
 print(average_above_zero([-1, 2]))
 
+print('trouloulou')
 """
 Session 1 Table maximum value
 """
