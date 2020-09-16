@@ -230,7 +230,7 @@ def shuffle(list_in:list):
         listIndex.append(rdmIndex)
     return resultat
         
-
+#Test
 #z = [5,1,2,3,4,9,4,7,5]
 z = [1,2,3,4,5,6,7,8,9]
 print(shuffle(z))
