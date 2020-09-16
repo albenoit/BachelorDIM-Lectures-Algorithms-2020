@@ -40,6 +40,16 @@ def average(tab):
     '''
     
 def max_value(tab):
+    
+    '''
+    This funtion returns the maximum value of a list
+    
+    Args :
+        tab : Input list 
+        
+    Returns the max value
+    '''
+    
     max=tab[0]
     for i in tab:
         if i >= max:
@@ -61,3 +71,5 @@ def reverse_table(tab):
     
     tab=tab[::-1]
     return(tab)
+    
+    
