@@ -98,16 +98,24 @@ def roi_bbox(img):
                 # elif img[c,l]==1 and check==0:
                     # x2=l
                     # y2=c
-                lTemp = l
-                cTemp = c
-                if lTemp<x1:
-                    x1=lTemp
-                if cTemp<y1:
-                    y1=cTemp
-                if lTemp>x2:
-                    x2=lTemp
-                if cTemp>y2:
-                    y2=cTemp
+                if l<x1:
+                    x1=l
+                if c<y1:
+                    y1=c
+                if l>x2:
+                    x2=l
+                if c>y2:
+                    y2=c
     return np.array([x1,y1,x2,y2])
 print(Xin)
 print(roi_bbox(Xin))
+    
+chaine = "Kentucky Fried Chicken"
+def remove_whitespace(string):
+    ChaineF = ""
+    for i in string:
+        if i != ' ':
+            ChaineF+=i
+    return ChaineF
+print(remove_whitespace(chaine))
+
