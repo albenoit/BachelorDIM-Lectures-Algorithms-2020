@@ -67,6 +67,16 @@ def reverse_table(table:list):
         raise ValueError('List is empty')
 
 def roi_bbox(input_image:np):
+    '''
+        This function find border of bounding box
+        
+        Parameters:
+            input_image:np: array numpy.            
+        Returns: 
+            bounding box of input_image
+        Raises:
+            If input_image is empty
+    '''
     if(len(input_image)):
         x1=len(input_image[0])           #nombre de lignes
         y1=len(input_image)             #nombre de colonnes
@@ -75,14 +85,16 @@ def roi_bbox(input_image:np):
         bounding_box = np.zeros((4,2))
         position = np.argwhere(input_image)
         for c in position:
-            if(x1>c[0]):
-                x1=c[0]
-            if(y1>c[1]):
-                y1=c[1]
-            if(x2<c[0]):
-                x2=c[0]
-            if(y2<c[1]):
-                y2=c[1]
+            x=c[0]
+            y=c[1]
+            if(x1>x):
+                x1=x
+            if(y1>y):
+                y1=y
+            if(x2<x):
+                x2=x
+            if(y2<y):
+                y2=y
         bounding_box[0] = [x1,y1]           #Haut gauche
         bounding_box[1] = [x1,y2]           #Haut droit
         bounding_box[2] = [x2,y1]           #Bas gauche
