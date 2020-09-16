@@ -4,12 +4,10 @@ Created on Wed Sep 16 14:37:36 2020
 
 @author: vanhouta
 """
-
-def func(x):
-    return x+1
+import function as functest
 
 def test_answer():
-    assert func(3) == 4
+    assert functest.func(3) == 4
     
 def test_answer2():
-    assert func(14) == 15
+    assert functest.func(14) == 15
