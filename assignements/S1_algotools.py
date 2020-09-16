@@ -182,10 +182,10 @@ print("Average : "            + str(average_above_zero(theTab)))
 my_list=[0,2,-3]
 average = average_above_zero(my_list)
 print("T1 Average : " + str(average))
-
 my_list=9
 average = average_above_zero(my_list)
 print("T2 Average : " + str(average))
+
 '''
 print("Max : "                + str(max_value(theTab)))
 print("Reverse : "            + str(reverse_table(theTab)))
