@@ -60,3 +60,23 @@ def test_random_fill_sparse(empty_tab):
     #on compte le nb de X pour vérifier que cela correspond au nb indiqué
     assert np.where(filled_mat == "X")[0].shape[0] == 4
     
+"""
+Remove whitespaces
+"""
+@pytest.fixture
+def string():
+    string = "Coucou tout le monde"
+    return string
+
+def test_remove_whitespace(string):
+    assert main.remove_whitespace(string) == "Coucoutoutlemonde"
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
