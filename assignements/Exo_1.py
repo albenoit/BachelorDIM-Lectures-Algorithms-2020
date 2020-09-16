@@ -5,6 +5,8 @@ Created on Tue Sep 15 15:26:05 2020
 @author: vanhouta
 """
 
+import numpy as np
+
 Tab = [1,5,9,8,7,5,9,6,7,2]
 
 ## Documentation for average_above_zero
@@ -59,3 +61,58 @@ def reverse_table(table:list):
     return table[::-1]
 
 print("Tableau inversé : {}".format(reverse_table(Tab)))
+
+W=150
+H=200
+W2 = 12
+H2 = 10
+
+Xin = np.zeros((H,W),dtype=float)
+Xin2 = np.zeros((H2,W2),dtype=float)
+
+for yXin in range(45,56):
+    for xXin in range(70,91):
+        Xin[xXin,yXin]=1
+
+for yXin2 in range(7,10):
+    for xXin2 in range(6,9):
+        Xin2[xXin2,yXin2]=1
+Xin2[5,8]=1
+Xin2[7,10]=1
+
+def roi_bbox(img):
+    '''
+        This funcion compute bounding box coordinates of an object
+        Args:
+            img: Binary image
+        Returns the bounding box in numpy array
+    '''
+    (y,x)=img.shape
+    x1 = x
+    y1 = y
+    x2 = 0
+    y2 = 0
+    for yImg in range(0,y):
+        for xImg in range(0,x):
+            if(img[yImg,xImg] == 1):
+#                null = 0
+#            elif(img[yImg,xImg] == 1 and null == 0):
+                xtmp = xImg
+                ytmp = yImg
+                if(xtmp < x1):
+                    x1 = xtmp
+                if(ytmp < y1):
+                    y1 = ytmp
+                if(xtmp > x2):
+                    x2 = xtmp
+                if(ytmp > y2):
+                    y2 = ytmp
+                
+    return np.array([x1,y1,x2,y2])
+
+print(roi_bbox(Xin))
+print(Xin2)
+print(roi_bbox(Xin2))
+
+def remove_whitespace(strin):
+    return 0
