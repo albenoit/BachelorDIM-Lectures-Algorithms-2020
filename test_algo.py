@@ -1,4 +1,6 @@
 import S1_algotools as algo 
+import pytest
+import numpy as np
 
 tab_positive=[1,2,3,4,5]
 tab_negative=[-1,-2,-3,-4,-5]
@@ -12,8 +14,8 @@ def test_average_1():
     assert algo.average(tab_positive)==3
 
 def test_average_2():
-    assert algo.average(tab_negative)=='no positive value found'
-
+    with pytest.raises(ValueError):
+        assert algo.average(tab_negative)
 def test_max_value():
     assert algo.max_value(tab_positive)==5
 
