@@ -90,14 +90,16 @@ def bounding_box(np_tab):
     Returns :
         return the bounding box of true values
     """
-    matrice = np.where(np_tab != 0)
+    lx, ly = np.where(np_tab != 0)
+    if lx is None or ly is None:
+        raise ValueError('X or Y is null')
+    else:
+        return np.array([
+            [np.min(lx),np.min(ly)],
+            [np.max(lx),np.max(ly)]
+        ])
 
-    return np.array([
-        [np.min(matrice[0]),np.max(matrice[0])],
-        [np.min(matrice[1]),np.max(matrice[1])]
-    ])
-
-def alea(x):
+def alea(x,min=None):
     """
     This function generate a random number
 
@@ -106,7 +108,10 @@ def alea(x):
     Returns :
         return random nuumber
     """
-    return random.randint(0, x)
+    if min != None:
+        return random.randint(min, x)
+    else:
+        return random.randint(0, x)
 
 def random_array_fill(array,k):
     """
@@ -123,9 +128,39 @@ def random_array_fill(array,k):
 
     return array
 
+def remove_whitespace(string):
+    """
+    This function remove space
+
+    Parameters :
+        string: the string
+    Returns :
+        return string witout space
+    """
+    return string.replace(' ','')
+
+def shuffle(tab):
+    """
+    This function remove space
+
+    Parameters :
+        string: the string
+    Returns :
+        return string without space
+    """
+    array = []
+    for i in range(len(tab)):
+        random = alea(len(tab)-1)
+        array.append(tab[random])
+        tab.pop(random)
+    return array
+        
+
 print(average_above_zero(tab))
 print(max_value(tab))
 print(get_index_max_value(tab))
 print(reverse_table(tab))
 print(bounding_box(np_tab))
-print(random_array_fill(np.empty([100,100], dtype=str),50))
+print(random_array_fill(np.empty([alea(30,2),alea(30,2)], dtype=str),alea(50,1)))
+print(remove_whitespace('Python c\'est trop cool !'))
+print(shuffle(tab))
