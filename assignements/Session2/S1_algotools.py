@@ -126,7 +126,8 @@ def roi_bbox(input_image: np.array):
                         maxY = j
     else:
         raise ValueError("La matrice ne possède pas de '1'")
-    return np.array([[minX,minY],[maxX,minY],[minX,maxY],[maxX,maxY]])
+    #return np.array([[minX,minY],[maxX,minY],[minX,maxY],[maxX,maxY]])
+    return minX,maxX,minY,maxY
 #On peut, en python, renvoyer plusieurs données comme ceci:
     #return x,y,z
 #Pour les récupérer, il suffit de faire:
