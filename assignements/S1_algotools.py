@@ -67,6 +67,13 @@ print(reverse_table([1,10,2,8,11]))
 
 # Reverse table V2
 def reverse_table_V2(tab : list):
+    '''
+    Function to reverse and return a reversed array
+    Parameters :
+        tab: array of numbers in input
+    Returns :
+        the reversed array
+    '''
     for i in range(-1, -len(tab) - 1, -1):
         n = tab[i]
         tab.pop(i)
@@ -76,3 +83,5 @@ def reverse_table_V2(tab : list):
 # Call the function with array in args and display reversed array 
 print('# Reverse table function V2 #')
 print(reverse_table_V2([1,10,2,8,11]))
+
+
