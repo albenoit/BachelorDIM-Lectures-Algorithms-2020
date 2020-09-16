@@ -140,9 +140,41 @@ def shuffle(list_in):
 
 print(shuffle(listshuffle))
 
+def a_dice_game():
+    userscore = 0
+    computerscore = 0
+    maxDice = 6
+    randChoiceComputer = 2
+    winScore = 100
+    turn = 0 #0 = user 1 = computer
+    sumDiceScore = 0
+    decision = ""
+
+    while(userscore <= winScore or computerscore <= winScore):
+        if(turn == 0):
+            print("Votre score total est de {}".format(userscore))
+            print("Votre score sur ce tour est de {}".format(sumDiceScore))
+            print("Voulez vous lancer un dé ? (O/N)")
+            decision = input()
+            print(decision)
+            while(decision != 'N' or decision != 'n' or decision != 'O' or decision != 'o'):
+                print("Erreur. Voulez vous rejouez ? (O/N)")
+                decision = input()
+            
+            if(decision == "N" or decision == "n"):
+                userscore += sumDiceScore
+            elif(decision == "O" or decision == "o"):
+                dice = random.randint(1,maxdice)
+                print("Vous avez fait un lancé de {}".format(dice))
+                if(dice == 1):
+                    print("Votre score sur ce tout est perdu")
+                    sumDiceScore = 0
+                    turn = 1
+                else:
+                    sumDiceScore =+ dice
 
 
-
+a_dice_game()
 
 
 
