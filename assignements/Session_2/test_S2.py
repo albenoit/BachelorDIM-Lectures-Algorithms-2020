@@ -10,3 +10,6 @@ def func(x):
 
 def test_answer():
     assert func(3) == 4
+    
+def test_answer():
+    assert func(14) == 15
