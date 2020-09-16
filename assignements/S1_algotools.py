@@ -89,19 +89,30 @@ def roi_bbox(input_image):
     return np.array([x1,y1,x2,y2])
 
 def random_fill_sparse(numpy_array, k):
+    '''
+    an algorithm able to fill a specified number of K cells
+    with 0X0 values at random positions while the others cells should remain empty
     
+    Parameters:
+        numpy_array
+        k : number
+    Returns:
+        numpy_array with 'X'
+    '''
     if not isSquare(numpy_array):
         raise ValueError('Your matrix is not a square')
         
-    blank = np.where(numpy_array == '')
+    blank = np.where(numpy_array == '') # get all values empty in numpy_array
     
     if k > len(blank[0]) :
         raise ValueError('Not enought entry empty')
         
+    list_random = random.sample(range(0, len(blank[0])), k) # between 0 and k
     
-    random.uniform(0, k)
+    for i in range(k):
+        numpy_array[blank[0][list_random[i]], blank[1][list_random[i]]] = 'X'
     
-    return blank
+    return numpy_array
 
 def isSquare (m): return all (len (row) == len (m) for row in m)
 
@@ -123,4 +134,4 @@ matrix_bounding_box = np.array([[False,False,True, True, False,False,False,False
 print("Bounding box : ", roi_bbox(matrix_bounding_box))
 
 test_array = np.empty([3,3], dtype=str)
-print("random_fill_sparse : ", random_fill_sparse(test_array, 2))
+print("random_fill_sparse : ", random_fill_sparse(test_array, 4))
