@@ -23,3 +23,5 @@ Evaluation will take into account your code quality and assignements coverage bu
 Prefer better quality code, ready to be shared and enhanced by others, instead of too rapidly written code, unreadable, un-commented that people will throw to trash and completely rewrite !
 
 modification test :D
+
+[![Coverage Status](https://coveralls.io/repos/github/Antoine01100/BachelorDIM-Lectures-Algorithms-2020/badge.svg?branch=master)](https://coveralls.io/github/Antoine01100/BachelorDIM-Lectures-Algorithms-2020?branch=master)
