@@ -79,8 +79,8 @@ def roi_bbox(input_image):
     """
 
     #Tableaux 
-    rows = np.where(input_image == 1)[0]
-    cols = np.where(input_image == 1)[1]
+    rows = np.where(input_image == 1)[0] #renvoie les coordonnées x des 1
+    cols = np.where(input_image == 1)[1] #renvoie les coordonnées y des 1
     
     #Each coordinates
     left_up = [rows[0], cols[0]]
@@ -112,16 +112,25 @@ def alea(n):
     """
     return randint(0, n)
 
-def random_fill_sparse(tab, K):
+def random_fill_sparse(tab, k:int):
     """
-    Fonction qui remplit un table de N*N avec des valeurs 
+    Fonction qui remplit un table de N*N avec des 'X' à des positions 
+    aléatoires
     param:
-        input_image : matrice donnée de 0 avec une zone de 1
+        tab : tableau donné
+        k : nombre de cellules à remplir de valeurs aléatoires
     returns:
         z : coordonées de la forme encadrant les 1
     """
-    
-print(alea(3))
+    for i in range(k):
+        row = tab[alea(k)]
+        row[(alea(len(row)-1))] = "X"
+
+    return tab
+
+tab = np.empty((5, 5), dtype=str)
+#print(tab)
+print(random_fill_sparse(tab, 4))
 
 '''     
 for a in range(2,5):
