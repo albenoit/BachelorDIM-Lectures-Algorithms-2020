@@ -108,9 +108,9 @@ def roi_bbox(input_image: np.array):
         Returns a 4x2 numpy.array which got the coordinate (X,Y) of the square
         which got the entire '1' area
     '''
-    maxX = 0
-    maxY = 0
     if(1 in input_image):
+        maxX = 0
+        maxY = 0
         minX = input_image.shape[0]       
         minY = input_image.shape[1]       
         for i in range(input_image.shape[0]):
@@ -124,10 +124,8 @@ def roi_bbox(input_image: np.array):
                         minY = j
                     if(j > maxY):
                         maxY = j
-    else: #S'il n'y a pas de 1 dans le np.array, alors on retourne toutes
-          # les coordonnées à 0.
-        minX = 0      
-        minY = 0  
+    else:
+        raise ValueError("La matrice ne possède pas de '1'")
     return np.array([[minX,minY],[maxX,minY],[minX,maxY],[maxX,maxY]])
 
 #Test                
@@ -154,6 +152,43 @@ for c in range(5,11):
 #    print("test1 roi_bbox: Incorrect")
 print(roi_bbox(Xin))
 
+
+from random import *
+def alea(v):
+    '''
+        This function generates a random int
+        Arg:
+            v: int, this is the maximum value of the random
+        Returns an int, a random number between 0 and v
+    '''
+    return randint(0,v)
+
+def random_fill_sparse(table:np.array, k:int):
+    '''
+        This function fill a chosen number of cell with a 'X' in a matrice
+        Args:
+            table: numpy.array, is a matrice
+            k: int, is the number of cell we want to fill with a 'X'
+        Returns the matrice with k 'X'
+    '''
+    if(k > table.size): #dans le cas où K est supérieur à la taille de la matrice
+    #alors on remplit toute la matrice
+        table = np.full(shape=(table.shape[0],table.shape[0]),fill_value="X")
+    else:
+        for i in range(k):
+            rdmX = alea(table.shape[0]-1)
+            rdmY = alea(table.shape[0]-1)            
+            while(table[rdmX,rdmY] == "X"):
+                rdmX = alea(table.shape[0]-1)
+                rdmY = alea(table.shape[0]-1) 
+            table[rdmX,rdmY] = "X"
+    return table
+    
+#Test                
+W = 5
+H = 5
+Xin = np.zeros((H,W),dtype=str)
+print(random_fill_sparse(Xin,5))
 
 
 
