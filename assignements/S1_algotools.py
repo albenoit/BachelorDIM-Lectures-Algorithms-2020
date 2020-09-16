@@ -13,7 +13,7 @@ Q1 :If "som" isn't initialized, I have an error because the
 Q2 :I have an error, I can't split by 0 
     "ZeroDivisionError: division by zero"
 """
-def average_above_zero(theTab):
+def average_above_zero(theTab:int):
     """
     This function calculates the average of the table
     
@@ -28,12 +28,16 @@ def average_above_zero(theTab):
     for i in theTab :
         if i > 0 :
             som += i
-            n   += 1  
-            
-    if  n > 0  :  
-        Moy = som / n
-    else:
-        raise ValueError("No positive value found")
+            n   += 1 
+        elif i < 0:
+            raise Exception("No positive value found")
+        elif i == 0:
+            raise ZeroDivisionError("You can't divide by zero",ZeroDivisionError)
+        elif type(i) != "int" or i == None:
+            raise TypeError("Not an integer",TypeError)
+        
+             
+    Moy = som / n
     return Moy
 
 #////////////////////////////////////////////
@@ -83,10 +87,10 @@ def roi_bbox(npTab:np.array):
         the coordinates max and min in x and y for 
         create a bounding box
     """
-    x1 = None
-    y1 = None
-    x2 = None
-    y2 = None
+    #x1 = None
+    #y1 = None
+    #x2 = None
+    #y2 = None
     
     #for w in range(45,55):
     #   for h in range(60,85):
@@ -106,16 +110,14 @@ def roi_bbox(npTab:np.array):
         if y2 is None or i[1] > y2:
             y2 = i[1] 
     """
-    matrice = np.where(npTab == 1)
-    x1      = np.min(matrice[1])
-    y1      = np.min(matrice[0])
-    x2      = np.max(matrice[1])
-    y2      = np.max(matrice[0])
-    
-    if matrice is None:
-        raise ValueError("no nonNull found value")
-    
-    return np.array([x1, y1, x2, y2])
+    lx, ly = np.where(npTab != 0)
+    if lx is None or ly is None:
+        raise ValueError('X or Y is null')
+    else:
+        return np.array([
+            [np.min(lx),np.min(ly)],
+            [np.max(lx),np.max(ly)]
+        ])
 
 #////////////////////////////////////////////
 def alea(mini,maxi):
