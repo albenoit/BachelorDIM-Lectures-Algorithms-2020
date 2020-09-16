@@ -89,7 +89,9 @@ index = 0
 matrix = np.zeros((H,L))
 matrix[0:2, 7:9] = np.ones((2,2))
 matrix[2:4, 3:5] = np.ones((2,2))*2
+
 position = np.argwhere(matrix)
+print(position)
 for c in position:
     if(x1>c[0]):
         x1=c[0]
@@ -98,9 +100,14 @@ for c in position:
     if(x2<c[0]):
         x2=c[0]
     if(y2<c[1]):
-        y2=c[1]        
-bounding_box[0][0] = 11
-print("bounding_box : " + str(bounding_box))
+        y2=c[1]
+bounding_box = np.zeros((4,2))
+bounding_box[0] = [x1,y1]
+bounding_box[1] = [x2,y2]
+bounding_box[2] = [x1,y2]
+bounding_box[3] = [x2,y1]
+
+print(bounding_box)
 print("Ligne : " + str(x1) + " - colonne : " + str(y1))
 print("Ligne : " + str(x2) + " - colonne : " + str(y2))
 print(position[len(position)-1])
