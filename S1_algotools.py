@@ -51,8 +51,9 @@ def reverse_table(table:list):
  Returns :  value of the list
  '''
  i = 0
- j = len(table) - 1
- for i in range(int(j/2)):
+ j = len(table)  - 1
+ 
+ for i in range(int((j+1)/2)):
      permut = table[i]
      table[i] = table[j]
      table[j] = permut
@@ -166,8 +167,8 @@ def random_array_filling(table:np.array,k:int):
  return table
   
 
-maTable = [1,2,3,4,5,6,7,8,9,10,11,12,13]
-'''print(reverse_table(maTable))'''
+maTable = [1,2,3,4]
+print(reverse_table(maTable))
 '''print(max_value(maTable))'''
 '''print(average_above_zero(maTable))'''
 '''
@@ -178,5 +179,5 @@ monImage[8:10,7:9] = np.ones((2,2))
 monImage[2:4,3:5] = np.ones((2,2))*2
 print(roi_bbox(monImage))'''
 maMatriceChar = np.zeros((10,10))
-print(random_array_filling(maMatriceChar,10))
+'''print(random_array_filling(maMatriceChar,10))'''
 
