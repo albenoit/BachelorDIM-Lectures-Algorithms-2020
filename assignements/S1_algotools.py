@@ -112,6 +112,13 @@ print(roi_bbox(Xin))
     
 chaine = "Kentucky Fried Chicken"
 def remove_whitespace(string):
+    '''
+        This function paste the words 
+        Parameters:
+            string: sentence
+        Returns:
+            the sentence without wthitespace
+    '''
     ChaineF = ""
     for i in string:
         if i != ' ':
