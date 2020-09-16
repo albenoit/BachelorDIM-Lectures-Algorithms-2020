@@ -12,3 +12,9 @@ def test_myaddition_wrong_inpute():
         tobetested.my_addition('a', 4)
 
 
+def test_average_above_zero():
+    assert tobetested.average_above_zero([1, 3, 2]) == 2
+
+def test_average_above_zero_noPositiveValues():
+    with pytest.raises(ValueError):
+        tobetested.average_above_zero([-1, -3, -2])
