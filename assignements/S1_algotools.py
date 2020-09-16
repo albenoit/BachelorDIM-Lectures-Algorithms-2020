@@ -77,6 +77,9 @@ def roi_bbox(input_image):
     '''
     matrix_found_bb = np.where(matrix_bounding_box != False)
     
+    if len(matrix_found_bb[0]) == 0 or len(matrix_found_bb[1]) == 0 :
+        raise ValueError('No pixel found')
+    
     x1 = matrix_found_bb[0][0]
     y1 = matrix_found_bb[1][0]
     x2 = matrix_found_bb[0][len(matrix_found_bb[0])-1]
