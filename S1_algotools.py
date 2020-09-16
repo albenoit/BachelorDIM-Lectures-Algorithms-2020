@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 """
-Éditeur de Spyder
+Created on Wed Sep 15 14:39:41 2020
 
-Ceci est un script temporaire.
+@author: derbaghc
 """
 
 import numpy as np
