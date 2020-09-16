@@ -14,4 +14,4 @@ def test_myaddition_wrong_input():
         tobetested.my_addition('a',2)
 
 def test_average_above_zero_divisionByZero():
-    assert tobetested.average_above_zero(list) == 12.125
+    assert tobetested.average_above_zero(list) == -12.125
