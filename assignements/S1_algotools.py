@@ -86,12 +86,12 @@ def roi_bbox(input_image):
      
 
 Tab = [4,2,45,-4,14,-95,-4,2,87,-56,65,1,3]
-print(average_above_zero(Tab))
+print("Averaging above zero : ", average_above_zero(Tab))
 
-print(reverse_table([1,2,3,4,5]))
+print("Reverse a table : ", reverse_table([1,2,3,4,5]))
 
 
-print(max_value([8,9,7, -9]))
+print("Table maximum value : ", max_value([8,9,7, -9]))
 
 matrix_bounding_box = np.array([[0,0,1,1,0,0,0,0,0,0],
                                 [0,0,1,1,0,0,0,0,0,0],
@@ -99,4 +99,4 @@ matrix_bounding_box = np.array([[0,0,1,1,0,0,0,0,0,0],
                                 [0,0,0,0,0,1,1,0,0,0],
                                 [0,0,0,0,0,0,0,0,0,0]])
 
-print(roi_bbox(matrix_bounding_box))
+print("Bounding box : ", roi_bbox(matrix_bounding_box))
