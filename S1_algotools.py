@@ -9,6 +9,14 @@ import math;
 import numpy as np
 import random as rd
 
+#------------------------------------------------------------------------#
+#------------------------------ EXERCISE 1 ------------------------------#
+#------------------------------------------------------------------------#
+
+print('\n ----------------------------------\n',
+      '------------Exercise 1------------\n',
+      '----------------------------------\n')
+
 '''
     Question : What happens if Som initialization is forgotten ?
         UnboundLocalError: local variable 'Som' referenced before assignment
@@ -38,10 +46,17 @@ def average_above_zero(table:list):
             Som += i;
             N += 1;
     Moy = math.floor(Som / N);
-    return "Average :", Moy;
+    return Moy;
 
-print(average_above_zero([1,5,3,4,9,5]));
+print('Average : ', average_above_zero([1,5,3,4,9,5]));
 
+#------------------------------------------------------------------------#
+#------------------------------ EXERCISE 2 ------------------------------#
+#------------------------------------------------------------------------#
+
+print('\n ----------------------------------\n',
+      '------------Exercise 2------------\n',
+      '----------------------------------\n')
 
 def max_value(table:list):
     '''
@@ -54,10 +69,17 @@ def max_value(table:list):
         Returns:
             returns the index and max value of an array passed in parameter
     '''
-    return "Index :", table.index(max(table)), "Value :", max(table);
+    return table.index(max(table));
 
-print(max_value([1,5,3,4,9,5]));
+print('Index : ', max_value([1,5,3,4,9,5]));
 
+#------------------------------------------------------------------------#
+#------------------------------ EXERCISE 3 ------------------------------#
+#------------------------------------------------------------------------#
+
+print('\n ----------------------------------\n',
+      '------------Exercise 3------------\n',
+      '----------------------------------\n')
 
 def reverse_table(table:list):
     '''
@@ -70,10 +92,17 @@ def reverse_table(table:list):
         Returns:
             returns an inversed array
     '''
-    return "Reversed Table :", table[::-1];
+    return table[::-1];
 
-print(reverse_table([1,5,3,4,9,5]));
+print('Reversed Table : ', reverse_table([1,5,3,4,9,5]));
 
+#------------------------------------------------------------------------#
+#------------------------------ EXERCISE 4 ------------------------------#
+#------------------------------------------------------------------------#
+
+print('\n ----------------------------------\n',
+      '------------Exercise 4------------\n',
+      '----------------------------------\n')
 
 def roi_bbox(input_image:np.array):
     '''
@@ -87,7 +116,7 @@ def roi_bbox(input_image:np.array):
             returns 
     '''
     input_image[2:5,2:5] = np.ones((3,3),dtype=float);
-    print(input_image);
+    print('Numpy array :\n', input_image);
     
     row = np.any(input_image, axis=1);
     column = np.any(input_image, axis=0);
@@ -97,7 +126,15 @@ def roi_bbox(input_image:np.array):
     
     return [columnMin, columnMax],[rowMin, rowMax];
 
-print(roi_bbox(np.zeros((10,10), dtype=float)));
+print('\nCoordonates : ',roi_bbox(np.zeros((10,10), dtype=float)));
+
+#------------------------------------------------------------------------#
+#------------------------------ EXERCISE 5 ------------------------------#
+#------------------------------------------------------------------------#
+
+print('\n ----------------------------------\n',
+      '------------Exercise 5------------\n',
+      '----------------------------------\n')
 
 def random_fill_sparse(table:np.array, K:int):
     '''
@@ -112,23 +149,40 @@ def random_fill_sparse(table:np.array, K:int):
             returns 
     '''
     
-    def alea(xMin:int, xMax:int):
-        return rd.randint(xMin, xMax);
-    
-    print('K number :', K);
-    for kNumber in range(K):
-        row = table[alea(0,len(table)-1)]
-        row[alea(0, len(row)-1)] = 'K';
+    print('X number :', K);
+    xNumber = 0;
+    while(xNumber < K):
+        row = table[alea(0,len(table)-1)];
+        randomNumber = alea(0, len(row)-1);
+        if(row[randomNumber] == 'X'):
+            pass
+        else:
+            row[randomNumber] = 'X';
+            xNumber += 1;
     return table;
 
-table = [['','','','',''],['','','','','','']];
-case = 0;
+def alea(xMin:int, xMax:int):
+        return rd.randint(xMin, xMax);
+
+table = np.empty((alea(1,10), alea(1,10)), dtype=str);
+
+caseNumber = 0;
 for row in table:
     for column in row:
-        case += 1;
-print(random_fill_sparse(table,rd.randint(1,case)));
+        caseNumber += 1;
 
-def remove_whitespace(sentence):
+print('Case number :',caseNumber);
+print('Table : \n', random_fill_sparse(table,rd.randint(1,caseNumber)));
+
+#------------------------------------------------------------------------#
+#------------------------------ EXERCISE 6 ------------------------------#
+#------------------------------------------------------------------------#
+
+print('\n ----------------------------------\n',
+      '------------Exercise 6------------\n',
+      '----------------------------------\n')
+
+def remove_whitespace(sentence:str):
     '''
         package:
             math, numpy, random
@@ -142,5 +196,20 @@ def remove_whitespace(sentence):
     '''
     return sentence.replace(" ", "");
 
-print(remove_whitespace('I love Python and Alexandre Benoit'));
+print('Sentence without space : \'', remove_whitespace('I love Python and Alexandre Benoit'), '\'');
+
+#------------------------------------------------------------------------#
+#------------------------------ EXERCISE 7 ------------------------------#
+#------------------------------------------------------------------------#
+
+print('\n ----------------------------------\n',
+      '------------Exercise 7------------\n',
+      '----------------------------------\n')
+
+def shuffle(list_in:list):
+    return list_in;
+
+stuff = ['Baptiste', 'Car', 'Cutecumber']
+
+print(shuffle(stuff));
 
