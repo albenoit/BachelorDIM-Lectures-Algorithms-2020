@@ -39,6 +39,15 @@ def average_below_zero(table:list):
     print(moy)
     return moy
 
+#Test
+z = [1,2,5,4]
+if(average_below_zero(z) == 3):
+    print("test1 average_below_zero: Correct")
+else:
+    print("test1 average_below_zero: Incorrect")
+#test raise
+#z = [-1]
+
 
 # @brief : permet de trouver la valeur maximale d'une liste de float, ainsi que son index
 # @param table contient une liste de nombre (float)
@@ -59,6 +68,12 @@ def max_value(table:list):
             maxiIndex = i
     return maxi, maxiIndex
 
+#Test
+z = [5,1,3,12,4,7,8,9,2]
+if(max_value(z) == (12,3)):
+    print("test1 max_value: Correct")
+else:
+    print("test1 max_value: Incorrect")
 
 
 def reverse_table(table:list):
@@ -70,27 +85,66 @@ def reverse_table(table:list):
     '''
     return table[::-1]
 
+z = [1,2,3,4,5,6,7,8,9]
+if(reverse_table(z) == [9,8,7,6,5,4,3,2,1]):
+    print("test1 reverse_table: Correct")
+else:
+    print("test1 reverse_table: Incorrect")
 
 
 import numpy as np
-def roi_bbox(input_image: nympy array):
-    W = 100
-    H = 100
-    Xin = np.zeros((H,W),dtype=float)
+def roi_bbox(input_image: np.array):
+    '''
+        This function find out the coordinate of a square which got the entire
+        '1' area
+        Args:
+            input_image: is a numpy.array of 0 and 1 values
+        Returns a 4x2 numpy.array which got the coordinate (X,Y) of the square
+        which got the entire '1' area
+    '''
+    minX = input_image.shape[0]
+    maxX = 0
+    minY = input_image.shape[1]
+    maxY = 0
+    for i in range(input_image.shape[0]):
+        for j in range(input_image.shape[1]):
+            if(input_image[i,j] == 1):
+                if(i < minX):
+                    minX = i
+                if(i > maxX):
+                    maxX = i
+                if(j < minY):
+                    minY = j
+                if(j > maxY):
+                    maxY = j
+    return np.array([[minX,minY],[maxX,minY],[minX,maxY],[maxX,maxY]])
+
+#Test                
+W = 100
+H = 100
+Xin = np.zeros((H,W),dtype=float)
     
-    for c in range(45,56):
-        for l in range(70,91):
-            Xin[l,c] = 1
+for c in range(45,56):
+    for l in range(70,91):
+        Xin[l,c] = 1   
+        
+for c in range(5,11):
+    for l in range(75,86):
+        Xin[l,c] = 1   
     '''
     ou
     Xin [70:91,45:56] = npones((20,10)dtype=float)
     '''
 
-malist = [1,2,3,4,5,6,7,8,9]
-print(reverse_table(malist))
+#Test
+#if(roi_bbox(Xin) == np.array([[70,5],[90,5],[70,90],[90,55]])):
+#    print("test1 roi_bbox: Correct")
+#else:
+#    print("test1 roi_bbox: Incorrect")
+print(roi_bbox(Xin))
 
-z = [-1]
-average_below_zero(z)
+
+
 
         
     
