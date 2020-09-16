@@ -3,11 +3,10 @@
 Created on Tue Sep 15 15:28:10 2020
 
 @author: vibertvg
-"""
-
+ """
 import numpy as np
 
-my_array=[6,18]
+my_array=[-5,-10,0]
 
 def average_above_zero(array_of_data):
     """
@@ -31,8 +30,13 @@ def average_above_zero(array_of_data):
         raise ValueError('problem, a number is equivalent or under 0')
     return float(Moy)
 
+
+"""
+
 moy=average_above_zero(my_array)
 print('my average',moy)
+
+"""
 
 """
     What happens if Som initialization is forgotten ?
@@ -62,10 +66,10 @@ def max_value(array_of_data):
         raise ValueError('problem, a number is equivalent or under 0')
     return float(highest_number)
 
-
+"""
 max_val=max_value(my_array)
 print('the max value is',max_val)
-
+"""
 
 
 
@@ -80,12 +84,13 @@ def reverse_table(array_of_data):
     """
     res = array_of_data[::-1]
     return list(res)
-    
+  
+"""
 table_not_revesed=my_array
 table_reversed=reverse_table(my_array)
 print('Array not reversed is :',table_not_revesed)  
 print('Array reversed is :',table_reversed)   
-    
+"""    
 
 
 
@@ -121,12 +126,12 @@ def add_ones_to_matrice(mat,x1,x2,y1,y2):
     return mat
 
 
-
+"""
 matrice = create_image_matrice(6,6)
 matrice=add_ones_to_matrice(matrice,2,4,2,6)
 print(matrice)
-
-
+"""
+"""
 def roi_bbox(mat):
     
     for x in range(mat.shape[1]):
@@ -135,3 +140,4 @@ def roi_bbox(mat):
     return 0
     
 roi_bbox(matrice)
+"""
