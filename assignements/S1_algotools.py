@@ -128,6 +128,13 @@ print(remove_whitespace(chaine))
 
 import random 
 def shuffle(list_in:list):
+    '''
+        This function mix the value of a list
+        Parameters:
+            list_in: List of number
+        Returns:
+            a shuffle list
+    '''
     for i in range(len(list_in)-1, 0, -1): 
         j = random.randint(0, i + 1)  
         list_in[i], list_in[j] = list_in[j], list_in[i]  
