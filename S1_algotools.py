@@ -67,29 +67,32 @@ def reverse_table(table:list):
         raise ValueError('List is empty')
 
 def roi_bbox(input_image:np):
-    x1=255
-    y1=255
-    x2=0
-    y2=0
-    bounding_box = np.zeros((4,2))
-    position = np.argwhere(input_image)
-    for c in position:
-        if(x1>c[0]):
-            x1=c[0]
-        if(y1>c[1]):
-            y1=c[1]
-        if(x2<c[0]):
-            x2=c[0]
-        if(y2<c[1]):
-            y2=c[1]
-    bounding_box[0] = [x1,y1]           #Haut gauche
-    bounding_box[1] = [x1,y2]           #Haut droit
-    bounding_box[2] = [x2,y1]           #Bas gauche
-    bounding_box[3] = [x2,y2]           #Bas droit
-    return bounding_box
+    if(len(input_image)):
+        x1=255
+        y1=255
+        x2=0
+        y2=0
+        bounding_box = np.zeros((4,2))
+        position = np.argwhere(input_image)
+        for c in position:
+            if(x1>c[0]):
+                x1=c[0]
+            if(y1>c[1]):
+                y1=c[1]
+            if(x2<c[0]):
+                x2=c[0]
+            if(y2<c[1]):
+                y2=c[1]
+        bounding_box[0] = [x1,y1]           #Haut gauche
+        bounding_box[1] = [x1,y2]           #Haut droit
+        bounding_box[2] = [x2,y1]           #Bas gauche
+        bounding_box[3] = [x2,y2]           #Bas droit
+        return bounding_box
+    else:
+        raise ValueError('Image is empty')
 
 
-Tab=[2,54,-4]   #To use list.reverse(), I have change () to []
+Tab=[2,54,-4]
 print("Moyenne : " + str(average_above_zero(Tab)))
 print("Max : " + str(max_value(Tab)))
 print("Liste avant : "+ str(Tab))
@@ -101,11 +104,16 @@ print("Max : " + str(max_value(Tab)))
 print("Liste avant : "+ str(Tab))
 print("Liste après : "+ str(reverse_table(Tab)))
 '''
+'''
+H = 0
+L = 0
+matrix = np.zeros((H,L))
+'''
 H = 12
 L = 10
-
 matrix = np.zeros((H,L))
 matrix[0:2, 7:9] = np.ones((2,2))
 matrix[2:4, 3:5] = np.ones((2,2))*2
+
 print(matrix)
 print(roi_bbox(matrix))
