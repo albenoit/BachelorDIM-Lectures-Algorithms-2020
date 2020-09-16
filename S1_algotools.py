@@ -5,16 +5,6 @@
 Ceci est un script temporaire.
 """
 
-"""
-Q1 / Si on oublie l'initialisation de la variable on ne pourra pas l'utiliser 
-dans le for ensuite.
-"""
-
-"""
-Q2 / Si toutes les variables sont en dessous de 0, on ne passe pas dans le if, 
-et donc on essaye de faire une division par 0 ce qui renvoie une erreur.
-"""
-
 import numpy as np
 
 def average_above_zero(table:list):
@@ -38,6 +28,16 @@ def average_above_zero(table:list):
     return average
 
 #print(average_above_zero([1, 2, 3]))
+    
+"""
+Q1 / Si on oublie l'initialisation de la variable on ne pourra pas l'utiliser 
+dans le for ensuite.
+"""
+
+"""
+Q2 / Si toutes les variables sont en dessous de 0, on ne passe pas dans le if, 
+et donc on essaye de faire une division par 0 ce qui renvoie une erreur.
+"""
 
 def max_value(tab:list):
     """
@@ -77,7 +77,7 @@ def roi_bbox(input_image):
         z : coordonées de la forme encadrant les 1
     """
 
-    #Variables
+    #Tableaux 
     rows = np.where(input_image == 1)[0]
     cols = np.where(input_image == 1)[1]
     
@@ -97,8 +97,18 @@ cols = 5
 input_image = np.zeros((rows, cols))   
 #print(roi_bbox(input_image))
 input_image[1:3,2:5] = np.ones((2, 3))
-print(input_image)
-print(roi_bbox(input_image))
+#print(input_image)
+#print(roi_bbox(input_image))
+
+def random_fill_sparse(tab, K):
+    """
+    Fonction qui remplit un table de N*N avec des valeurs 
+    param:
+        input_image : matrice donnée de 0 avec une zone de 1
+    returns:
+        z : coordonées de la forme encadrant les 1
+    """
+    
 
 
 '''     
