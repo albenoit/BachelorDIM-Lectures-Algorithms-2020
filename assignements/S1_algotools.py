@@ -62,32 +62,65 @@ def reverse_table(array):
     return array
 
 def roi_bbox(matrix):
-    bottomX = matrix.shape[0]
-    bottomY = matrix.shape[1]
-    topX = 0
-    topY = 0
-    for line in matrix:
-        for value in line:
-            if value == 2:
-                print('yes')
-            else:
-                topX+=1
-    print(topX)
+    '''
 
 
-Tab = [50, 1, 2, 85]
-matrix = np.zeros((15,10))
+    :param
+        matrix: A matrix
+        w: matrix's width
+        h: matrix's height
+        x1: right bound x coord
+        y1: right bound y coord
+        x2: left bound x coord
+        y2: left bound y coord
+    :return:
+        x1, y1, x2, y2
+    '''
+    w = matrix.shape[1]
+    h = matrix.shape[0]
+    x1 = w
+    y1 = h
+    x2 = 0
+    y2 = 0
+    x = 0
+    y = 0
+    for x in range(w):
+        for y in range(h):
+            if matrix[y, x]:
+                if x < x1:
+                    x1 = x
+                    print("bound entry x1: ", x1)
+                if y < y1:
+                    y1 = y
+                    print("bound entry y1: ", y1)
+                if x2 < x:
+                    x2 = x
+                    print("bound entry x2: ", x2)
+                if y2 < y:
+                    y2 = y
+                    print("bound entry y2: ", y2)
+    return(x1, y1, x2, y2)
+
+
+#def random_fill_parse():
+
+
+H = 12
+W = 10
+matrix = np.zeros((H,W), dtype=bool)
 for c in range(7, 10):
     for l in range(6, 9):
         matrix[l, c] = 1
-matrix[2:4, 2:5] = np.ones((2, 3))*2
+matrix[2:4, 2:5] = np.ones((2, 3), dtype=bool)
 
+Tab = [50, 1, 2, 85]
 average = average_above_zero(Tab)
 print('Average: ', average)
 print('Max: ' + str(max_value(Tab)))
 print('Reverse: ' + str(reverse_table(Tab)))
 
 bbox = roi_bbox(matrix)
+print(bbox)
 
 
 
