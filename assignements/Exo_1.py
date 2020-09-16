@@ -79,7 +79,7 @@ for yXin2 in range(7,10):
         Xin2[xXin2,yXin2]=1
 Xin2[5,8]=1
 Xin2[7,10]=1
-
+Xin2[9,8]=1
 def roi_bbox(img):
     '''
         This funcion compute bounding box coordinates of an object
@@ -97,16 +97,14 @@ def roi_bbox(img):
             if(img[yImg,xImg] == 1):
 #                null = 0
 #            elif(img[yImg,xImg] == 1 and null == 0):
-                xtmp = xImg
-                ytmp = yImg
-                if(xtmp < x1):
-                    x1 = xtmp
-                if(ytmp < y1):
-                    y1 = ytmp
-                if(xtmp > x2):
-                    x2 = xtmp
-                if(ytmp > y2):
-                    y2 = ytmp
+                if(xImg < x1):
+                    x1 = xImg
+                if(yImg < y1):
+                    y1 = yImg
+                if(xImg > x2):
+                    x2 = xImg
+                if(yImg > y2):
+                    y2 = yImg
                 
     return np.array([x1,y1,x2,y2])
 
@@ -114,5 +112,27 @@ print(roi_bbox(Xin))
 print(Xin2)
 print(roi_bbox(Xin2))
 
-def remove_whitespace(strin):
-    return 0
+chaine = "As de Pique"
+def remove_whitespace(string):
+    '''
+        This funcion romeve whitespace in a string
+        Args:
+            string: String with character
+        Returns the string without whitespace
+    '''
+    strFinal = ""
+    for i in string:
+        if(i != " "):
+            strFinal += i
+    return strFinal
+    #return string.replace(" ","")
+
+print(remove_whitespace(chaine))
+
+
+
+
+
+
+
+
