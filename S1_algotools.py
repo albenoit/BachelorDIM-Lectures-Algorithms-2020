@@ -4,6 +4,7 @@
 
 Ceci est un script temporaire.
 """
+import numpy as np
 
 def average(tab):
     
@@ -16,6 +17,8 @@ def average(tab):
         
     Returns the mean of the list
     
+    Raises:
+        Value error if no positive value is find
     '''
     
     som = 0
@@ -42,20 +45,21 @@ def average(tab):
 def max_value(tab):
     
     '''
-    This funtion returns the maximum value of a list
+    
+    This function returns the maximum value of a list
     
     Args :
-        tab : Input list 
+        tab: The list of number
         
-    Returns the max value
+    Returns the maximum value of the list given
+    
     '''
     
     max=tab[0]
     for i in tab:
         if i >= max:
             max=i
-    print(max)
-    
+    return(max)
     
 def reverse_table(tab):
     '''
@@ -68,8 +72,24 @@ def reverse_table(tab):
     Returns the inverted table
     
     '''
-    #tab=[1,2,3]
-    tab=tab[::-1]
+    listlen=len(tab)
+    for i in range (len(tab)//2):
+        tmp=tab[i]
+        endid=listlen-i-1
+        tab[i]=tab[endid]
+        tab[endid]=tmp
+    #tab=tab[::-1]
     return(tab)
+    
+def roi_bbox(array):
+    '''
+    This function returns a numpy array of shape 4x2 filled with the four 2D coordinates
+    
+    Args:
+        
+    Returns a numpy array of shape 4x2 filled with the four 2D coordinates
+    '''
+    
+    
     
     
