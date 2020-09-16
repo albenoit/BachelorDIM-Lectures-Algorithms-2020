@@ -126,3 +126,17 @@ def random_fill_sparse(matrice,k):
         x,y=randint(0,xmax-1),randint(0,ymax-1)
         matrice[x,y]='X'
     return matrice
+
+def remove_whitespace(string):
+    '''
+    This function remove whitespaces from a string
+    
+    Args :
+        string: input string that you have to treate
+        
+    Raises :
+        TypeError : string is str type only
+    '''
+    
+    return(string.replace(' ',''))
+    
