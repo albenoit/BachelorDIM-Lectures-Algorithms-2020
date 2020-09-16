@@ -170,4 +170,4 @@ def function_shuffle(list_in:list):
         raise Exception("list_in is null or empty")
     return list_in
 
-#print(function_shuffle([10,20,30,40,50]))
+print(function_shuffle([10,20,30,40,50]))
