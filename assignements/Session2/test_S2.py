@@ -10,6 +10,9 @@ for c in range(12,14):
         Xin[l,c]=1
 testTable=[1,3,5,7,9,2,4,6,8]
 
+def test_answer():
+    assert algo.onemore(3) == 4
+
 def test_myaddition_intergers_1():
     assert algo.my_addition(10,2) == 12
 
