@@ -170,15 +170,21 @@ def random_fill_parse(mtrx, nbr):
 
     Returns: An array filled with random numbers at random positions
     '''
-    for i in range(nbr):
+
+    i=0
+
+    if nbr > mtrx.size:
+        print("Erreur: Le nombre est trop grand par rapport à la taille de la matrice.")
+        return
+
+    while i < nbr:
         rdmX = alea(len(mtrx[0]))
         rdmY = alea(len(mtrx))
-        # rdmX = random.randrange(0, len(mtrx[0]))
-        # rdmY = random.randrange(0, len(mtrx))
+
         if mtrx[rdmY, rdmX] <= 0:
             mtrx[rdmY, rdmX] =  alea(100)
+            i=i+1
             
-
     return mtrx
 
 
@@ -194,4 +200,5 @@ print('Average of list is: ' + str(average_above_zero(nbr_list)))
 print('Max biggest number index is: ' + str(max_value(nbr_list)))
 print('Reversed table is: ' + str(reverse_table(nbr_list)))
 print('Bounding box of matrix is: ' + str(roi_bbox_2(mtrx)))
-print(random_fill_parse(mtrx2, 100))
+print(random_fill_parse(mtrx2, 121))
+print(mtrx2.size)
