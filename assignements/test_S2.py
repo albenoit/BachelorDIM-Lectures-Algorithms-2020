@@ -1,5 +1,6 @@
 import S1_algotools as tFile
 import pytest
+import numpy as np
 
 # Average above zero function
 def test_average_above_zero_with_only_positive_numbers():
@@ -47,3 +48,18 @@ def test_reserse_table_V2():
 
 def test_reserse_table_V3():
     assert tFile.reverse_table_V3([1,10,2,8,11]) == [11,8,2,10,1]
+
+# Bounding box
+H=12
+W=10
+matrix=np.zeros((H,W))
+for c in range(1,3):
+    for l in range(3,5):
+        matrix[l,c] = 1
+for c in range(5,8):
+    for l in range(6,9):
+        matrix[l,c] = 1
+bbox_real = np.array([3, 1, 8, 7])
+bbox = tFile.roi_bbox(matrix)
+def test_bounding_box():
+    assert np.prod(bbox_real == bbox)
