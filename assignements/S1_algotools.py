@@ -2,7 +2,6 @@ import numpy as np
 import random
 
 tab = [1,9,3,4,5,6,7,8,2]
-
 np_tab = np.zeros((200,200))
 np_tab[70:90,45:55] = np.ones((20,10))
 
@@ -154,7 +153,6 @@ def shuffle(tab):
         array.append(tab[random])
         tab.pop(random)
     return array
-        
 
 print(average_above_zero(tab))
 print(max_value(tab))
