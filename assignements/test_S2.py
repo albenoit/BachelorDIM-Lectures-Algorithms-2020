@@ -1,7 +1,7 @@
 import S1_algotools as tobetested
 import pytest
 
-list = [8, 15, 14, 12, 6, 18, 10, 2, 20]
+liste = [8, 15, 14, 12, 6, 18, 10, 2, 20]
 
 def test_myaddition_integers_1():
     assert tobetested.my_addition(10,2) == 12
@@ -14,4 +14,4 @@ def test_myaddition_wrong_input():
         tobetested.my_addition('a',2)
 
 def test_average_above_zero_divisionByZero():
-    assert tobetested.average_above_zero(list) == -12.125
+    assert tobetested.average_above_zero(liste) == 12.125
