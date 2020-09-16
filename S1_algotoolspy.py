@@ -61,13 +61,19 @@ def reverse_table(table:list):
         list reverse
     '''
     try:
-        reverse_table = table[::-1]
+        #reverse_table = table[::-1]
+        lenght = len(table)
+        for i in range(lenght//2):
+            tmp = table[i]
+            endindex = lenght-i-1
+            table[i] = table[endindex]
+            table[endindex] = tmp
     except:
         raise Exception("Sorry table is null or empty")
         
-    return reverse_table
+    return table
 
-#print(reverse_table([10,20]))
+print(reverse_table([10,20,30,40]))
  
 ##
 #   \package algo_4
@@ -97,5 +103,5 @@ def roi_bbox(input_image:np):
         
     return  input_image, ([rmin, cmin], [rmax, cmax])
 
-print(roi_bbox(np.zeros((10,10), dtype=float)))
+#print(roi_bbox(np.zeros((10,10), dtype=float)))
 
