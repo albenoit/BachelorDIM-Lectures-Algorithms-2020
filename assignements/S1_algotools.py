@@ -141,6 +141,17 @@ def random_fill_sparse(table:np.array,k:int):
 
     return table
     
+#////////////////////////////////////////////
+def remove_whitespace(phrase):
+    """
+    This function remove all the whitespace of a string
+
+    Parameters :
+        phrase: the string
+    Returns :
+        return string whitout whitespace
+    """
+    return phrase.replace(' ', '')
 
 
 
@@ -160,24 +171,6 @@ print("Max : "                + str(max_value(theTab)))
 print("Reverse : "            + str(reverse_table(theTab)))
 print("Bounding box : "       + str(roi_bbox(np.zeros([100,100],dtype = float))))
 print("random_fill_sparse : " + str(random_fill_sparse(np.empty([alea(1,10),alea(1,10)], dtype=str), alea(1,10))))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+print("remove_whitespace : "  + str(remove_whitespace("J'adore python, mettez moi 20, merci :D")))
 
 
