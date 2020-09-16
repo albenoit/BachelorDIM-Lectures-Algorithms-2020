@@ -174,7 +174,7 @@ def a_dice_game():
                     sumDiceScore =+ dice
 
 
-a_dice_game()
+#a_dice_game()
 
 
 
