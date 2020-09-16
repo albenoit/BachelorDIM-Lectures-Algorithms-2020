@@ -9,15 +9,27 @@ import S1_algotools as main
 import numpy as np
 import pytest
 
+"""
+Average
+"""
 def test_average():
     assert main.average_above_zero([1,2,3]) == 2
-    
+
+"""
+Max value
+"""
 def test_max_value():
     assert main.max_value([1,2,5,48,3]) == (48, 3)
-   
+    
+"""
+Reverse
+"""
 def test_reverse_table():
     assert main.reverse_table([1, 2, 3]) == [3,2,1]
 
+"""
+Bounding box
+"""
 @pytest.fixture
 def input_image():
     rows = 5
@@ -29,9 +41,15 @@ def input_image():
 def test_roi_bbox(input_image):
     assert main.roi_bbox(input_image) == ([[1, 2], [1, 4]], [[2, 4], [2, 2]])
     
+"""
+Aleatoire
+"""
 def test_alea():
-    assert main.alea(5)
+    assert main.alea(5) 
     
+"""
+Random fill with X
+"""
 @pytest.fixture
 def empty_tab():
     empty_tab = np.empty((5, 5), dtype=str)
