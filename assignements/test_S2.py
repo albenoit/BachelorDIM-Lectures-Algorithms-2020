@@ -12,6 +12,18 @@ def test_average_above_zero_with_only_negative_numbers():
     with pytest.raises(ValueError):
         tFile.average_above_zero([-2,-3,-4,-8,-3])
 
+def test_average_above_zero_with_char_in_tab_error():
+    with pytest.raises(Exception):
+        tFile.average_above_zero(['azerty',-3,-4,-8,-3])
+
+def test_average_above_zero_with_no_tab_error():
+    with pytest.raises(Exception):
+        tFile.average_above_zero('azerty')
+
+def test_average_above_zero_with_empty_error():
+    with pytest.raises(Exception):
+        tFile.average_above_zero('')
+
 # Max Values function
 def test_max_value_with_only_positive_numbers():
     assert tFile.max_value([1,10,2,8,11]) == (4,11) #Only positive numbers
