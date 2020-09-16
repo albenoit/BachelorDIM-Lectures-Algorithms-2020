@@ -17,20 +17,20 @@ def average_above_zero(marks:list):
         average of list
     '''
     average = 0  
-    try :
-        for i in marks:
-            average += i
-        
+    for i in marks:
+        average += i
+    
+    if len(marks) > 0:
         average = math.floor(average / len(marks))
-    except:
-        raise Exception("Sorry average is null or equal 0") 
+    else:
+        raise Exception("Sorry marks is null, empty or equal 0") 
     
     return average
 
 #Question 1 : la variable sum n'existe pas donc erreur
 #Question 2 : erreur pas divisible par 0
 
-#print(average_above_zero([10.0,20.0]))
+#print(average_above_zero([]))
 
 
 def max_value(marks:list):
@@ -74,7 +74,7 @@ def reverse_table(table:list):
         
     return table
 
-#print(reverse_table([10,20,30,40]))
+#print(reverse_table([]))
     
  
 def roi_bbox(input_image:np):
@@ -170,4 +170,4 @@ def function_shuffle(list_in:list):
         raise Exception("list_in is null or empty")
     return list_in
 
-print(function_shuffle([10,20,30,40,50]))
+#print(function_shuffle([10,20,30,40,50]))
