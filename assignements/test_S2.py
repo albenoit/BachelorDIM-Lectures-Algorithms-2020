@@ -26,3 +26,4 @@ def test_max_value():
 def test_max_value_wrong_input():
     with pytest.raises(TypeError):
         tobetested.max_value('a', 65, 125)
+

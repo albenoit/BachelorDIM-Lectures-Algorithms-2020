@@ -2,6 +2,8 @@
 Created by Yoan ROULEAU
 @author: myself
 """
+from random import randint
+
 import numpy as np
 
 def average_above_zero(array):
@@ -63,7 +65,7 @@ def reverse_table(array):
 
 def roi_bbox(matrix):
     '''
-
+    Get the bounds of an "square" assembly in a matrix.
 
     :param
         matrix: A matrix
@@ -103,8 +105,29 @@ def roi_bbox(matrix):
 
 
 def random_fill_parse(matrix, K):
-    for i in range(0, K):
-        print("Test")
+    '''
+    Function that fills an empty matrix with a specific number of Xs given with the function.
+
+    :param
+        matrix: Empty matrix given with the function call
+        K: Numbers of awaited Xs in the matrix
+    :return:
+        Filled matrix with Xs
+    '''
+    if K < matrix.shape[0] * matrix.shape[1]:
+        i = 0
+        while True:
+            randH = randint(0, matrix.shape[0]-1)
+            randW = randint(0, matrix.shape[1]-1)
+            if matrix[randH, randW] != 'X':
+                matrix[randH, randW] = 'X'
+                i += 1
+            if i == K:
+                break
+    else:
+        raise ValueError('Numbers of Xs exceeding matrix size.')
+
+    return matrix
 
 def my_addition(a, b):
     return a+b
@@ -121,8 +144,7 @@ matrix[2:4, 2:5] = np.ones((2, 3), dtype=bool)
 #Matrix used for randomFillParse
 H2 = 15
 W2 = 15
-matrix = np.zeros((H2,W2))
-
+matrix = np.zeros((H2,W2), dtype=str)
 
 Tab = [50, 1, 2, 85]
 average = average_above_zero(Tab)
@@ -132,6 +154,10 @@ print('Reverse: ' + str(reverse_table(Tab)))
 
 bbox = roi_bbox(matrix)
 print(bbox)
+
+randomXMatrix = random_fill_parse(matrix, 25)
+print(randomXMatrix)
+print(np.where(matrix == 'X')[0].shape[0])
 
 
 """
