@@ -7,6 +7,6 @@ def test_average():
 
 def test_max_value():
     assert algo.max_value(tab) == 9
-
+#test
 def test_get_index_max_value():
     assert algo.get_index_max_value(tab) == 2
