@@ -78,11 +78,11 @@ def  max_value(Tab):
         Tab: a list of number 
     Returns: highest value and it's index (highestvalue,Index)
     '''
-    Max = 0 
+    Max = Tab[0]
     N=0
     Index = 0
     for i in Tab :
-        if i > Max :
+        if i >= Max :
             Max = i
             Index = N
         N+=1     
@@ -232,8 +232,12 @@ print(random_fill_sparse(n,10))
 Session 1 Remove whitespace in string
 
 """
-def remove_whitespace(table):
-    return table
+def remove_whitespace(mystr):
+    newchar=""
+    for c in mystr:
+        if c != ' ':
+            newchar += c
+    return(newchar)
 """
 Session 1 Random item selection 
 
