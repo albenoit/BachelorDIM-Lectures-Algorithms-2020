@@ -109,16 +109,46 @@ print(reverse_table([1,2,3,4,5,6]))
 """
 Session 1 Bounding box
 """
+
 import numpy as np
-W=100
-H=100 
-n = np.zeros((H,W),dtype=float)
-for c in range (45,55):
-    for d in range (70,91):
-        n[c,d]=1
+H=100
+W=1000
+n = np.zeros((W,H),dtype=float)
+n[45:450,70:91] = 1
+#on peut aussi écrire: 
+#n[2:4,3:5] = np.ones((2,2)) avec deux tableau de même taille
+#trop lent 
+#for c in range (45,55):
+#    for d in range (70,91):
+#        n[c,d]=1
 
 def roi_bbox(image):
+    '''
+    This function return a numpy array with the coord of a bounding box
+    Parameters:
+        Tab: a list of number 
+    Returns: highest value and it's index (highestvalue,Index)
+    '''
     
-    print("")
-    
-roi_bbox
+    upper_x =image.shape[1]+1
+    upper_y =image.shape[0]+1
+    lower_x =0
+    lower_y =0
+    x=0
+    y=0
+    for ligne in image:       
+        for point in ligne:          
+            if point != 0:
+                if upper_x > x:
+                    upper_x = x
+                if upper_y > y:
+                    upper_y = y
+                if lower_x < x:
+                    lower_x = x
+                if lower_y < y:
+                    lower_y = y                                
+            y+=1
+        y=0
+        x+=1
+    return np.array([upper_x,upper_y,lower_x,lower_y])
+print(roi_bbox(n))
