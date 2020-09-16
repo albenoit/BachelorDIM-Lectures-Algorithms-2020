@@ -83,7 +83,19 @@ def roi_bbox(img):
     return np.array([x1,y1,x2,y2])
 
 
-
+def remove_whitespace(string):
+    '''
+        This funcion romeve whitespace in a string
+        Args:
+            string: String with character
+        Returns the string without whitespace
+    '''
+    strFinal = ""
+    for i in string:
+        if(i != " "):
+            strFinal += i
+    return strFinal
+    #return string.replace(" ","")
 
 
 

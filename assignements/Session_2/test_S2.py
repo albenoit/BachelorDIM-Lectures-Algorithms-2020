@@ -64,12 +64,17 @@ Xin2[9,8]=1
 def test_roi_bbox():
       assert np.prod(func.roi_bbox(Xin) == np.array([45,70,55,90]))
       
+def test_roi_bbox_2():
+      assert np.prod(func.roi_bbox(Xin2) == np.array([7,5,10,9]))
       
-      
-      
-      
-      
-      
+chaine = "Ace Of Spades"
+chaine2 = "Spyder cochon"
+
+def test_remove_whitespace():
+      assert func.remove_whitespace(chaine) == 'AceOfSpades'
+
+def test_remove_whitespace_2():
+      assert func.remove_whitespace(chaine2) == 'Spydercochon'  
       
       
       
