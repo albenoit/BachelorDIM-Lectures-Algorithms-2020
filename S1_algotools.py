@@ -127,6 +127,15 @@ def roi_bbox(input_image: np.array):
     else:
         raise ValueError("La matrice ne possède pas de '1'")
     return np.array([[minX,minY],[maxX,minY],[minX,maxY],[maxX,maxY]])
+#On peut, en python, renvoyer plusieurs données comme ceci:
+    #return x,y,z
+#Pour les récupérer, il suffit de faire:
+    #a,b,c = roi_bbox(Xin)
+#ou
+    #mybbox = roi_bbox(Xin)
+    #a = mybbox[0]
+    #b = mybbox[1]
+    #c = mybbox[2]
 
 #Test                
 W = 100
@@ -200,9 +209,28 @@ def remove_whitespace(table:str):
     '''
     return table.replace(' ','')
 
+#Test
 print(remove_whitespace("bonjour les amis"))
 
 
-
+def shuffle(list_in:list):
+    '''
+        This function shuffle a list
+        Arg:
+            list_in: a list of items
+        Return a suffled list
+    '''
+    rdmIndex = alea(len(list_in) -1)
+    resultat = [list_in[rdmIndex]]
+    listIndex = [rdmIndex]
+    for i in range(len(list_in) -1):
+        while rdmIndex in(listIndex):
+            rdmIndex = alea(len(list_in) -1)
+        resultat.append(list_in[rdmIndex])
+        listIndex.append(rdmIndex)
+    return resultat
         
-    
+
+#z = [5,1,2,3,4,9,4,7,5]
+z = [1,2,3,4,5,6,7,8,9]
+print(shuffle(z))
