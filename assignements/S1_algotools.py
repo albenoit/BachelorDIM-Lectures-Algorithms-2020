@@ -89,10 +89,13 @@ def bounding_box(matrix):
 
     return (x1, y1, x2, y2)
 
+# Random array filling
+
+# def random_array_filling(tab, k):
 
 # Test
-a = np.array([1, 2, 4])
-print(a)
+# a = np.array([1, 2, 4])
+# print(a)
 
 
 
