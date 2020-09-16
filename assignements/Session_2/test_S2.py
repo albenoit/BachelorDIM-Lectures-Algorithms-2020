@@ -18,6 +18,6 @@ def test_answer():
 def test_answer2():
     assert functest.func(14) == 15
     
-def test_average_above_zero():
+'''def test_average_above_zero():
     Tab = [1,5,9,8,7,5,9,6,7,2]
-    assert funcS1.average_above_zero(Tab) == 6.444444444444445
+    assert funcS1.average_above_zero(Tab) == 6.444444444444445'''
