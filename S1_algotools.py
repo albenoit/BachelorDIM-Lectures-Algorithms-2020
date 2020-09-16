@@ -93,13 +93,17 @@ def roi_bbox(array):
     This function returns a numpy array of shape 4x2 filled with the four 2D coordinates
     
     Args:
-        
+        lx, ly : Gives x and y coordinates of non null values
+        coordinates: np.array that contains coordinates of the object
     Returns a numpy array of shape 4x2 filled with the four 2D coordinates
     '''
-    matrice = np.nonzero(array)
-    coordinates=np.array([
-            [np.min(matrice[0]),np.min(matrice[1])],
-            [np.max(matrice[0]),np.max(matrice[1])]
-            ])
+    lx, ly = np.nonzero(array)
+    if lx is None or ly is None:
+        raise ValeurError("no non null value found")
+    else:
+        coordinates=np.array([
+                [np.min(lx),np.min(ly)],
+                [np.max(lx),np.max(ly)]
+                ])
     return(coordinates)
     
