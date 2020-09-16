@@ -2,8 +2,7 @@
 Created by Yoan ROULEAU
 @author: myself
 """
-
-Tab = [-6, 1, 2]
+import numpy as np
 
 def average_above_zero(array):
     '''
@@ -15,17 +14,17 @@ def average_above_zero(array):
         moy: Its average
     '''
     som = 0
-    n = 0
+    positive_element_count=0
     for i in array:
         if i > 0:
-            som = som + i
-            n += 1
-        else:
-            raise ValueError('No positive values found in the array.')
-    if n > 0:
-        moy = som/n
+            som += i
+            positive_element_count+=1
 
-    return float(moy)
+    if positive_element_count > 0:
+        average = som/positive_element_count
+    else:
+        raise ValueError('No positive values found in the array.')
+    return average
 
 
 def max_value(array):
@@ -54,12 +53,44 @@ def reverse_table(array):
         :return:
             Reversed array
     '''
-    return array[::-1]
+    arrlength = len(array)
+    for i in range(arrlength//2):
+        tmp = array[i]
+        endValueIndex = arrlength - i - 1
+        array[i] = array[endValueIndex]
+        array[endValueIndex] = tmp
+    return array
+
+def roi_bbox(matrix):
+    bottomX = matrix.shape[0]
+    bottomY = matrix.shape[1]
+    topX = 0
+    topY = 0
+    for line in matrix:
+        for value in line:
+            if value == 2:
+                print('yes')
+            else:
+                topX+=1
+    print(topX)
 
 
-print('Average: ' + str(average_above_zero(Tab)))
+Tab = [50, 1, 2, 85]
+matrix = np.zeros((15,10))
+for c in range(7, 10):
+    for l in range(6, 9):
+        matrix[l, c] = 1
+matrix[2:4, 2:5] = np.ones((2, 3))*2
+
+average = average_above_zero(Tab)
+print('Average: ', average)
 print('Max: ' + str(max_value(Tab)))
 print('Reverse: ' + str(reverse_table(Tab)))
+
+bbox = roi_bbox(matrix)
+
+
+
 
 
 """
