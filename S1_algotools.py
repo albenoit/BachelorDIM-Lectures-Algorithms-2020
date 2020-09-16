@@ -80,11 +80,7 @@ def roi_bbox(input_image: np.array):
        break
   if stop == 1:
    break
-
  stop = 0
-   
- print("///////////////////")
- 
  '''coin haut droit'''
  for i in range(len(input_image)):
   for j in reversed(range(len(input_image[0]))):
@@ -95,8 +91,6 @@ def roi_bbox(input_image: np.array):
   if stop == 1:
    break
  stop = 0
- print("///////////////////")
- 
  '''coin bas droit'''
  for i in reversed(range(len(input_image))):
   for j in reversed(range(len(input_image[0]))):
@@ -107,9 +101,6 @@ def roi_bbox(input_image: np.array):
   if stop == 1:
    break
  stop = 0
-       
- print("///////////////////")
- 
  '''coin bas droit'''
  for i in reversed(range(len(input_image))):
   for j in range(len(input_image[0])):
@@ -120,30 +111,29 @@ def roi_bbox(input_image: np.array):
   if stop == 1:
    break
  stop = 0
-
+ '''
  print (CHG,CHD,CBG,CBD)
- 
- '''bounding_box = 0
- if CHG[0] < CBD[0]:
-  bounding_box = str(CHG) + " " + str(CBD)
-  print(bounding_box)
- if CHG[0] > CBD[0]: 
-  bounding_box = str(CHD) + " " + str(CBG)
-  print(bounding_box)
- ''' 
-  
+ '''
  if CHG[1] < CBD[1]:
       newCHD = CHG[0],CBD[1]
       newCBG = CBG[0],CHG[1]
-      
- print(CHG,newCHD,newCBG,CBD)     
+ myResult = np.zeros((4,2))   
+ myResult[0,0] = CHG[0]
+ myResult[0,1] = CHG[1]
+ myResult[1,0] = newCHD[0]
+ myResult[1,1] = newCHD[1]
+ myResult[2,0] = newCBG[0]
+ myResult[2,1] = newCBG[1]
+ myResult[3,0] = CBD[0]
+ myResult[3,1] = CBD[1]
+
  '''
       x1>x   x1 = 0
       y<y1   y1 =y
       x2 < x x2 = x
       y2 < y y2=y
   '''
- return input_image
+ return myResult
 
 def alea(v:int):
  return randint(1,v)  
@@ -173,13 +163,13 @@ maTable = [1,2,3,4]
 '''print(reverse_table(maTable))'''
 '''print(max_value(maTable))'''
 '''print(average_above_zero(maTable))'''
-'''
+
 H = 12
 W = 10
 monImage = np.zeros((H,W))
 monImage[8:10,7:9] = np.ones((2,2))
 monImage[2:4,3:5] = np.ones((2,2))*2
-print(roi_bbox(monImage))'''
-maMatriceChar = np.zeros((10,10))
-print(random_array_filling(maMatriceChar,10))
+print(roi_bbox(monImage))
+'''maMatriceChar = np.zeros((10,10))'''
+'''print(random_array_filling(maMatriceChar,10))'''
 

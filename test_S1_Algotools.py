@@ -11,6 +11,9 @@ import S1_algotools as S1
 
 myTestTab = [1,58,67,1054]
 myTestMatriceChar = np.zeros((10,10))
+myImage = np.zeros((12,10))
+myImage[6:8,5:7] = np.ones((2,2))
+myImage[1:3,2:4] = np.ones((2,2))*2
 
 #---------------------------
 
@@ -36,6 +39,11 @@ def test_reverse_table():
     
     assert S1.reverse_table(myTestTab) == [1054,67,58,1]
 #---------------------------test_random_array_filling
-def test_randow_array_filling():
+def test_random_array_filling():
     table = S1.random_array_filling(myTestMatriceChar,10)
     assert np.size(np.argwhere(table))/2 == 10
+#---------------------------test_roi_bbox 
+'''def test_roi_bbox():'''
+    
+    
+    
