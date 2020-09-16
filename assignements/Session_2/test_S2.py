@@ -5,7 +5,12 @@ Created on Wed Sep 16 14:37:36 2020
 @author: vanhouta
 """
 import function as functest
-import Session_1.Exo_1 as funcS1
+import sys
+#from Session_1 import Exo_1 as funcS1
+sys.path.insert(1, '../Session_1')
+
+import S1_algotools as funcS1
+
 
 def test_answer():
     assert functest.func(3) == 4

@@ -29,7 +29,8 @@ def average_above_zero(table:list):
         raise ValueError("no positive value in the table")
     return Moy
 
-print("Moyenne du tableau : {}".format(average_above_zero(Tab)))
+#print("Moyenne du tableau : {}".format(average_above_zero(Tab)))
+
 # 1. Si Som n'est pas défini, le programme ne fonctionne plus
 # 2. Si toutes les valeus sont en dessous de 0, N restera à 0 et donc une
 #   erreur apparaitra à "Moy = Som/N"
@@ -50,7 +51,7 @@ def maximum_value(table:list):
     return maxValue,index
     
 (maxi,index) = maximum_value(Tab)
-print("Valeur Max : {} , index de la valeur max : {}".format(maxi,index))
+#print("Valeur Max : {} , index de la valeur max : {}".format(maxi,index))
 
 def reverse_table(table:list):
     '''
@@ -61,7 +62,7 @@ def reverse_table(table:list):
     '''
     return table[::-1]
 
-print("Tableau inversé : {}".format(reverse_table(Tab)))
+#print("Tableau inversé : {}".format(reverse_table(Tab)))
 
 W=150
 H=200
@@ -110,9 +111,9 @@ def roi_bbox(img):
                 
     return np.array([x1,y1,x2,y2])
 
-print(roi_bbox(Xin))
+'''print(roi_bbox(Xin))
 print(Xin2)
-print(roi_bbox(Xin2))
+print(roi_bbox(Xin2))'''
 
 chaine = "Ace Of Spades"
 def remove_whitespace(string):
@@ -129,7 +130,7 @@ def remove_whitespace(string):
     return strFinal
     #return string.replace(" ","")
 
-print(remove_whitespace(chaine))
+#print(remove_whitespace(chaine))
 
 listshuffle = [1,2,3,4,5,6,7]
 def shuffle(list_in):
@@ -138,7 +139,7 @@ def shuffle(list_in):
         list_in[i], list_in[randIndex] = list_in[randIndex], list_in[i]  
     return list_in
 
-print(shuffle(listshuffle))
+#print(shuffle(listshuffle))
 
 def a_dice_game():
     userscore = 0
