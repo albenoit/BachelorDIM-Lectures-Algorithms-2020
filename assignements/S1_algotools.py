@@ -48,7 +48,7 @@ print('T1 = ', max_value([1,10,2,8,11])) #Only positive numbers
 print('T2 = ', max_value([1,10,2,8,-11])) #With positive and negative numbers
 print('T3 = ', max_value([-1,-10,-2,-8,-11])) #Only negative numbers
 
-
+# Reverse table V1
 def reverse_table(tab :list):
     '''
     Function to reverse and return a reversed array
@@ -64,4 +64,15 @@ def reverse_table(tab :list):
 # Call the function with array in args and display reversed array
 print('# Reverse table function #')
 print(reverse_table([1,10,2,8,11]))
-    
+
+# Reverse table V2
+def reverse_table_V2(tab : list):
+    for i in range(-1, -len(tab) - 1, -1):
+        n = tab[i]
+        tab.pop(i)
+        tab.append(n)
+    return tab
+
+# Call the function with array in args and display reversed array 
+print('# Reverse table function V2 #')
+print(reverse_table_V2([1,10,2,8,11]))
