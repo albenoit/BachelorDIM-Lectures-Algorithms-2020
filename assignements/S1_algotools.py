@@ -116,6 +116,14 @@ def random_fill_sparse(numpy_array, k):
 
 def isSquare (m): return all (len (row) == len (m) for row in m)
 
+def remove_whitespace(text:str):
+    new_text = ''
+    for c in text:
+        if c != ' ':
+            new_text += c
+            
+    return new_text
+
      
 
 Tab = [4,2,45,-4,14,-95,-4,2,87,-56,65,1,3]
@@ -135,3 +143,5 @@ print("Bounding box : ", roi_bbox(matrix_bounding_box))
 
 test_array = np.empty([3,3], dtype=str)
 print("random_fill_sparse : ", random_fill_sparse(test_array, 4))
+
+print(remove_whitespace("ceci est un test"))

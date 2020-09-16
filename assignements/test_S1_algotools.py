@@ -29,3 +29,5 @@ def test_random_fill_sparse():
     matrix = algotools.random_fill_sparse(test, 2)
     assert np.where(matrix == 'X')[0].shape[0] == 9
     
+def test_remove_whitespace():
+    assert algotools.remove_whitespace("this is a test") == "thisisatest"
