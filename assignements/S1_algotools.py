@@ -28,6 +28,10 @@ def average_above_zero(table:list):
     average = sum/n
     return average
 
+def test_average(table):
+    assert average_above_zero(1,2,3) == 2
+    
+
 #print(average_above_zero([1, 2, 3]))
     
 """
