@@ -34,7 +34,11 @@ def test_max_value_with_only_negative_numbers():
 def test_max_value_with_positive_and_negative_numbers():
     assert tFile.max_value([1,10,2,8,-11]) == (1,10) #With positive and negative numbers
 
-# Reverse tablen V1 function
+def test_max_value_with_char_in_tab_error():
+    with pytest.raises(Exception):
+        tFile.max_value(['azerty',-3,-4,-8,-3])
+
+# Reverse table V1 function
 def test_reserse_table_V1():
     assert tFile.reverse_table([1,10,2,8,11]) == [11,8,2,10,1]
 
