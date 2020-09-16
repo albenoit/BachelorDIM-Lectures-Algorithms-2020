@@ -6,7 +6,7 @@ Created on Tue Sep 15 14:45:46 2020
 """
 import math
 import numpy as np
-
+import random
 
 def average_above_zero(marks:list):
     '''
@@ -62,6 +62,7 @@ def reverse_table(table:list):
     '''
     try:
         #reverse_table = table[::-1]
+        #or
         lenght = len(table)
         for i in range(lenght//2):
             tmp = table[i]
@@ -73,14 +74,8 @@ def reverse_table(table:list):
         
     return table
 
-print(reverse_table([10,20,30,40]))
+#print(reverse_table([10,20,30,40]))
  
-##
-#   \package algo_4
-#   \autor polletb
-#   \brief get 
-#   \params @table = array
-#
 def roi_bbox(input_image:np):
     '''
     Get bouding box of numpy array with value equal 1
@@ -104,4 +99,32 @@ def roi_bbox(input_image:np):
     return  input_image, ([rmin, cmin], [rmax, cmax])
 
 #print(roi_bbox(np.zeros((10,10), dtype=float)))
+    
 
+def alea(min:int, max:int):
+    '''
+    Get random number
+    Parameters:
+            min: int
+            max: int
+    Returns :
+        alea_value as int
+    '''
+    alea_value = random.randint(min, max)
+    return alea_value
+
+def random_fill_sparse(table:np, K:int):
+    '''
+    Get random numpy with random X in
+    Parameters:
+            table: numpy
+            K: int
+    Returns :
+        table as numpy
+    '''
+    for i in range(K):
+        row = table[alea(0,len(table)-1)]
+        row[alea(0,len(row)-1)] = 'X'
+    return table
+
+print(random_fill_sparse(np.empty((alea(1,10),alea(1,10)), dtype=str), 5))
