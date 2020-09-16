@@ -102,9 +102,10 @@ def roi_bbox(matrix):
     return(x1, y1, x2, y2)
 
 
-#def random_fill_parse():
+def random_fill_parse():
 
 
+#Matrix used for bbox
 H = 12
 W = 10
 matrix = np.zeros((H,W), dtype=bool)
@@ -112,6 +113,11 @@ for c in range(7, 10):
     for l in range(6, 9):
         matrix[l, c] = 1
 matrix[2:4, 2:5] = np.ones((2, 3), dtype=bool)
+
+#Matrix used for randomFillParse
+H2 = 15
+W2 = 15
+matrix = np.zeros((H2,W2))
 
 Tab = [50, 1, 2, 85]
 average = average_above_zero(Tab)
@@ -121,9 +127,6 @@ print('Reverse: ' + str(reverse_table(Tab)))
 
 bbox = roi_bbox(matrix)
 print(bbox)
-
-
-
 
 
 """
