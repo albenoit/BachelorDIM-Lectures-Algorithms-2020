@@ -6,6 +6,7 @@ Ceci est un script temporaire.
 """
 
 import numpy as np
+from random import *
 
 def average_above_zero(table:list):
     """
@@ -100,6 +101,17 @@ input_image[1:3,2:5] = np.ones((2, 3))
 #print(input_image)
 #print(roi_bbox(input_image))
 
+def alea(n):
+    """
+    Fonction qui encadre une zone définie de 1
+    param:
+        n : nombre de chiffres que l'on veut générer et max de la valeur (non 
+        incluse)
+    returns:
+        z : coordonées de la forme encadrant les 1
+    """
+    return randint(0, n)
+
 def random_fill_sparse(tab, K):
     """
     Fonction qui remplit un table de N*N avec des valeurs 
@@ -109,7 +121,7 @@ def random_fill_sparse(tab, K):
         z : coordonées de la forme encadrant les 1
     """
     
-
+print(alea(3))
 
 '''     
 for a in range(2,5):
