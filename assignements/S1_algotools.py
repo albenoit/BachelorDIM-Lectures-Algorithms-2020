@@ -59,11 +59,39 @@ print(tab)
 import numpy as np
 
 def bounding_box(matrix):
-    h = 12
-    w = 10
-    matrix = np.zeros((h, w))
+    """
+    Compute the bounding box coordinates of an object
+    Parameters
+        matrix
+    Returns numpy array of shape 4x2 filled with the four 2d coordinates
+    """
+    w = matrix.shape[1]
+    h = matrix.shape[0]
+    x1 = w
+    y1 = h
+    x2 = 0
+    y2 = 0
+    for x in range(w):
+        for y in range(h):
+            if matrix[y, x]:
+                if x < x1:
+                    x1 = x
+                    print("bound entry x1: ", x1)
+                if y < y1:
+                    y1 = y
+                    print("bound entry y1: ", y1)
+                if x2 < x:
+                    x2 = x
+                    print("bound entry x2: ", x2)
+                if y2 < y:
+                    y2 = y
+                    print("bound entry y2: ", y2)
 
-a = np.array([1,2,4])
+    return (x1, y1, x2, y2)
+
+
+# Test
+a = np.array([1, 2, 4])
 print(a)
 
 
