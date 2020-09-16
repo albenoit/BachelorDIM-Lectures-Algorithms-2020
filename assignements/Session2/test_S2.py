@@ -32,7 +32,7 @@ def test_myaddition_wrong_input():
 #         algo.average_above_zero(testTable2)
 
 # def test_max_value():
-#     assert algo.max_value(testTable) == 9
+#     assert algo.max_value(testTable) == (9,4)
 
 # def test_reverse_table():
 #     assert algo.reverse_table(testTable) == [8, 6, 4, 2, 9, 7, 5, 3, 1]
