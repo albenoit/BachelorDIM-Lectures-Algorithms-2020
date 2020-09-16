@@ -94,14 +94,26 @@ print(max_value([4,2,3]))
 """
 Session 1 Reverse a table 
 """
-def reverse_table(Tab):
+def reverse_table(tab):
     '''
     This function reverse a table
     Parameters:
         Tab: a table of numner 
     Returns: a reversed table 
     '''
-    return Tab[::-1]
+    #ce code consome beaucoup plus de mémoire a cause de pop et insert 
+    #listlen = len(tab)
+    #for i in range (listlen):
+    #    last=tab[-1]
+    #    tab.pop(listlen-1)
+    #    tab.insert(i,last)
+    listlen = len(tab)
+    for i in range(listlen//2):
+        tmp=tab[i]
+        endid=listlen-i-1
+        tab[i] = tab [endid]
+        tab[endid]=tmp
+    return tab
  
         
 print(reverse_table([1,2,3,4,5,6]))
@@ -126,8 +138,8 @@ def roi_bbox(image):
     '''
     This function return a numpy array with the coord of a bounding box
     Parameters:
-        Tab: a list of number 
-    Returns: highest value and it's index (highestvalue,Index)
+        image: a numpy array  
+    Returns: a numpy array with 4 coordinates
     '''
     
     upper_x =image.shape[1]+1
