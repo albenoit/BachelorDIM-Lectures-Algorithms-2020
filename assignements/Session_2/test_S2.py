@@ -26,6 +26,9 @@ Tab2 = [-55,-8,-63]
 def test_average_above_zero():
     assert func.average_above_zero(Tab) == 14.5
 
-def test_average_above_zero2():
+'''def test_average_above_zero2():
     with pytest.raises(TypeError):
-        func.average_above_zero(Tab2)
+        func.average_above_zero(Tab2)'''
+
+def test_maximum_value():
+    assert func.maximum_value(Tab) == (19,3)

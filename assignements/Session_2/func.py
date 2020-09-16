@@ -28,3 +28,18 @@ def average_above_zero(table:list):
     else:
         raise ValueError("no positive value in the table")
     return Moy
+
+def maximum_value(table:list):
+    '''
+        This function find the highest value in the list
+        Args:
+            table: list of number
+        Returns the maximum value of a list
+    '''
+    maxValue = 0
+    index = 0
+    for i in range (1,len(table)):
+        if(table[i] > maxValue):
+            maxValue = table[i]
+            index = i+1
+    return maxValue,index
