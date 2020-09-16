@@ -22,7 +22,7 @@ def average_above_zero(table:list):
     moy = som/n
     return print(moy)
 
-# list = [8, 15, 14, 12, 6, 18, 10, 2, 20]
+list = [8, 15, 14, 12, 6, 18, 10, 2, 20]
 # average_above_zero(list)
 
 # What happens if Som initialization is forgotten ?
@@ -50,7 +50,6 @@ def get_maximum_value(table:list):
             rg = i
     return print(float(max), int(rg))
 
-# list = [8, 15, 14, 12, 6, 18, 10, 2]
 # get_maximum_value(list)
 
 def reverse_table(table:list):
@@ -65,5 +64,45 @@ def reverse_table(table:list):
 
     return print(table[:: -1])
 
-list = [8, 15, 14, 12, 6, 18, 10, 2]
-reverse_table(list)
+# reverse_table(list)
+
+import numpy as np 
+
+H=10
+W=10
+matrix=np.zeros((H,W), dtype=float)
+matrix[2:4, 3:5]=np.ones((2,2), dtype=float)
+for c in range(7,10):
+    for l in range(7,10):
+        matrix[l,c] = 1
+
+def roi_bbox(img):
+
+    '''
+    This function return the bounding box coordinates of a matrix
+    Parameters :
+        img : the matrix
+    
+    Return : 
+        the coordinates of the bounding box
+    '''
+
+    (x,y)=img.shape
+    x1=x; y1=y; x2=0; y2=0
+    for c in range(0,x):
+        for l in range(0,y):
+            if img[c,l]==1:
+                l_temp = l
+                c_temp = c
+                if l_temp < x1:
+                    x1 = l_temp
+                if c_temp < y1:
+                    y1 = c_temp
+                if l_temp > x2:
+                    x2 = l_temp
+                if c_temp > y2:
+                    y2 = c_temp
+
+    return np.array([x1,y1,x2,y2])
+print(matrix)
+print(roi_bbox(matrix))
