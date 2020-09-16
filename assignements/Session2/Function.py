@@ -28,20 +28,6 @@ def average_above_zero(table:list):
     else:
         raise ValueError('no positive value n')
 
-# average_above_zero(list)
-
-# What happens if Som initialization is forgotten ?
-
-# On a le message d'erreur: NameError: name 'som' is not defined. 
-# Celle-ci signifie que la variable som n'est pas défini avant d'etre utilisé 
-
-
-# What can you expect if all the values are below zero ?
-
-#  On a le message d'erreur: ZeroDivisionError: division by zero
-# Cela arrive quand l'on ne rentre pas dans la condition p_list[i] > 0 et donc que n reste nulle 
-
-
 def max_value(table:list):
     '''
         This function search the maximum value of a list
@@ -56,11 +42,7 @@ def max_value(table:list):
         if table[i] > 0 and table[i] > max_nb:
             max_nb = table[i] 
             max_id = i
-    return print(float(max_nb),int(max_id))
-
-
-# max_value(list)
-
+    return print(int(max_nb),int(max_id))
 
 def reverse_table(table:list):
     '''
@@ -71,9 +53,6 @@ def reverse_table(table:list):
             a reverse list
     '''
     return print(table[:: -1])
-
-
-# reverse_table(list)
 
 import numpy as np
 H=15
@@ -113,8 +92,6 @@ def roi_bbox(img):
                 if c>y2:
                     y2=c
     return np.array([x1,y1,x2,y2])
-# print(Xin)
-# print(roi_bbox(Xin))
     
 chaine = "Kentucky Fried Chicken"
 def remove_whitespace(string):
@@ -130,7 +107,6 @@ def remove_whitespace(string):
         if i != ' ':
             ChaineF+=i
     return ChaineF
-# print(remove_whitespace(chaine))
 
 import random 
 def shuffle(list_in:list):
@@ -146,42 +122,3 @@ def shuffle(list_in:list):
         list_in[i], list_in[j] = list_in[j], list_in[i]  
 
     return list_in
-
-list=[1, 4, 5, 6, 3] 
-# print(shuffle(list))
-
-# matrix = np.random.randint(10, size=(3, 4))  # Tableau de dimension 2
-# def random_fill_sparse(table:np.array, K:int):
-#     for i in range(K):
-#         table(random.randint(0,9))
-#     return table
-
-# random_fill_sparse(matrix,5)
-
-def dice_game():
-    userscore=0
-    computerscore=0
-    WinScore=100
-    turn =1 # 0=computer 1=user 
-    result_score=0
-    while userscore <= WinScore or computerscore <= WinScore:
-        if turn ==1:
-            result_dice = random.randint(1,6)
-            result_score += result_dice
-            print("Vous avez fait un {}".format(result_dice))
-            print("Votre score total est de {}".format(userscore))
-            print("votre score a ce tour-ci est de {}".format(result_score))
-            print("Voulez-vous rejouez ? (O/N)")
-            play_again = input()
-            while play_again != "O" or play_again != "o" or play_again != "N" or play_again != "N":
-                print("Erreur! Voulez-vous rejouez ? (O/N)")
-                play_again = input()
-            if play_again == "O" or play_again =="o":
-                result_dice = random.randint(1,6)
-                result_score += result_dice
-                print("Vous avez fait un {}".format(result_dice))
-                if result_dice == 1:
-                    print("Voulez-vous rejouez ? (O/N)")
-                    play_again = input()
-            if play_again == "N" or play_again =="n":
-                turn == 0
