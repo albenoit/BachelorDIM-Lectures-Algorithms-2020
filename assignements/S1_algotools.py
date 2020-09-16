@@ -119,7 +119,7 @@ for c in range(1,3):
 for c in range(5,8):
     for l in range(6,9):
         matrix[l,c] = 1
-print(matrix)
+# print(matrix)
 
 def roi_bbox(img):
     '''
@@ -144,8 +144,8 @@ def roi_bbox(img):
     return(np.array([x1, y1, x2, y2]))
 
 # Call the function with matrix in args and display img coordinates
-print('# Bounding box function V1 #')
-print('T1 : img coordinate = ',roi_bbox(matrix))
+# print('# Bounding box function V1 #')
+# print('T1 : img coordinate = ',roi_bbox(matrix))
 
 def roi_bbox_V2(img):
     '''
@@ -176,7 +176,37 @@ def roi_bbox_V2(img):
     return(np.array([x1, y1, x2, y2]))
 
 # Call the function with matrix in args and display img coordinates
-print('# Bounding box function V2 #')
-print('T2 : img coordinate = ',roi_bbox_V2(matrix))
+# print('# Bounding box function V2 #')
+# print('T2 : img coordinate = ',roi_bbox_V2(matrix))
 
+
+# Random array filling
+import random
+
+RandomArray = np.zeros((10,10))
+K = 200
+print(RandomArray)
+
+def random_fill_sparse(matrix, k):
+    '''
+    Function to insert X values in random cells of matrix
+    Parameters :
+        matrix: matrix of where insert X values
+        k: numbers of cells
+    Returns :
+        a np.array with X values inserted
+    '''
+    randomList = []
+    maxRandomNumber = (matrix.shape[0]) * (matrix.shape[1])
+    if k > maxRandomNumber:
+        raise ValueError('Too randoms numbers will be create')
+
+    print(maxRandomNumber)
+# Set a length of the list to 10
+# for i in range(0, k):
+#     # any random numbers from 0 to 1000
+#     randomList.append(random.randint(0, 1000))
+
+# print("Printing list of 10 random numbers")
+# print(randomList)
 
