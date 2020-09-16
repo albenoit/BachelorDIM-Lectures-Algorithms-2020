@@ -214,8 +214,9 @@ def random_fill_sparse(table,K):
     '''
     This function return a numpy array with random cross in the array
     Parameters:
-        image: a numpy array  
-    Returns: a numpy array with 4 coordinates
+        table: an empty table
+        K: number of cross
+    Returns: the table with crosses inside 
     '''
     numberofcase = table.shape[0]*table.shape[1]
     if numberofcase > K:      
@@ -226,3 +227,16 @@ def random_fill_sparse(table,K):
         raise ValueError("too much cross for the table")        
     return table
 print(random_fill_sparse(n,10))
+
+"""
+Session 1 Remove whitespace in string
+
+"""
+def remove_whitespace(table):
+    return table
+"""
+Session 1 Random item selection 
+
+"""
+
+
