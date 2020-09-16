@@ -7,6 +7,7 @@ Created on Tue Sep 15 14:44:40 2020
 
 import math;
 import numpy as np
+import random as rd
 
 '''
     Question : What happens if Som initialization is forgotten ?
@@ -74,7 +75,7 @@ def reverse_table(table:list):
 print(reverse_table([1,5,3,4,9,5]));
 
 
-def roi_bbox(input_image:np):
+def roi_bbox(input_image:np.array):
     '''
         package:
             math, numpy
@@ -86,7 +87,41 @@ def roi_bbox(input_image:np):
             returns 
     '''
     input_image[2:5,2:5] = np.ones((3,3),dtype=float);
-    return input_image;
+    print(input_image);
+    
+    row = np.any(input_image, axis=1);
+    column = np.any(input_image, axis=0);
+    
+    rowMin, rowMax = np.where(row)[0][[0, -1]];
+    columnMin, columnMax = np.where(column)[0][[0, -1]];
+    
+    return [columnMin, columnMax],[rowMin, rowMax];
 
 print(roi_bbox(np.zeros((10,10), dtype=float)));
+
+def random_fill_sparse(table:np.array, K:int):
+    '''
+        package:
+            math, numpy, random
+        author:
+            viardcrl
+        Parameters:
+            table:np.array
+            K:int
+        Returns:
+            returns 
+    '''
+    
+    def alea(xMin:int, xMax:int):
+        return rd.randint(xMin, xMax);
+    
+    print('K number :', K);
+    for kNumber in range(K):
+        row = table[alea(0,len(table)-1)]
+        row[alea(0, len(row)-1)] = 'K';
+        print('k');
+    return table;
+
+table = [['','','','',''],['','','','','','']];
+print(random_fill_sparse(table,rd.randint(1,5)));
 
