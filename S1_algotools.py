@@ -68,8 +68,8 @@ def reverse_table(table:list):
 
 def roi_bbox(input_image:np):
     if(len(input_image)):
-        x1=255
-        y1=255
+        x1=len(input_image[0])           #nombre de lignes
+        y1=len(input_image)             #nombre de colonnes
         x2=0
         y2=0
         bounding_box = np.zeros((4,2))
