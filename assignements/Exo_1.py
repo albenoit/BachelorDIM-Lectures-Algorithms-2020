@@ -6,6 +6,7 @@ Created on Tue Sep 15 15:26:05 2020
 """
 
 import numpy as np
+import random 
 
 Tab = [1,5,9,8,7,5,9,6,7,2]
 
@@ -105,6 +106,7 @@ def roi_bbox(img):
                     x2 = xImg
                 if(yImg > y2):
                     y2 = yImg
+    
                 
     return np.array([x1,y1,x2,y2])
 
@@ -112,7 +114,7 @@ print(roi_bbox(Xin))
 print(Xin2)
 print(roi_bbox(Xin2))
 
-chaine = "As de Pique"
+chaine = "Ace Of Spades"
 def remove_whitespace(string):
     '''
         This funcion romeve whitespace in a string
@@ -128,6 +130,16 @@ def remove_whitespace(string):
     #return string.replace(" ","")
 
 print(remove_whitespace(chaine))
+
+listshuffle = [1,2,3,4,5,6,7]
+def shuffle(list_in):
+    for i in range(len(list_in)-1, 0, -1): 
+        randIndex = random.randint(0, i + 1)  
+        list_in[i], list_in[randIndex] = list_in[randIndex], list_in[i]  
+    return list_in
+
+print(shuffle(listshuffle))
+
 
 
 
