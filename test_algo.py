@@ -13,6 +13,8 @@ for c in range (7,9):
 null_matrix=np.zeros((10,10),dtype= bool)
 char_matrix_empty=np.empty([10,10],dtype=str)
 
+phrase ='Bonjour comment'
+
 def test_average_1():
     assert algo.average(tab_positive)==3
 
@@ -39,3 +41,6 @@ def test_roi_bbox_ValueError():
 def test_random_fill_sparse():
     a=algo.random_fill_sparse(char_matrix_empty,4)
     assert len(np.where(a=='X')[0])==4
+
+def test_remove_whitespace():
+    assert algo.remove_whitespace(phrase)=='Bonjourcomment'
