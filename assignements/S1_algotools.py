@@ -32,6 +32,14 @@ def average_above_zero(list_of_numbers):
     return float(moy)
 
 def max_value(array):
+    '''
+    get the max value in array put in params
+    
+    Parameters:
+        array
+    Returns:
+        max value in array put in params
+    '''
     max = None
     for i in array:
         if max is None or i > max:
