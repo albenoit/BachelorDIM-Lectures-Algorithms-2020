@@ -55,6 +55,13 @@ def test_roi_bbox_exception_1():
     matrix = np.zeros((H,L))
     with pytest.raises(ValueError):
         S1.roi_bbox(matrix)
+        
+def test_roi_bbox_exception_2():
+    H = 12
+    L = 10
+    matrix = np.zeros((H,L))
+    with pytest.raises(ValueError):
+        S1.roi_bbox(matrix)
     
 
     
