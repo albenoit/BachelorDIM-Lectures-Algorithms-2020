@@ -74,7 +74,13 @@ def test_random_fill_sparse_OK():
     position = np.argwhere(matrix)
     assert (np.size(position)/2) == K
 
-    
+def test_random_fill_sparse_exception_1():
+    H = 12
+    L = 10
+    K = 1000
+    matrix = np.zeros((H,L))
+    with pytest.raises(ValueError):
+        S1.random_fill_sparse(matrix, K)
     
     
 
