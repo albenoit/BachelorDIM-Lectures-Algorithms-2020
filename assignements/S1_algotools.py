@@ -5,6 +5,8 @@ Created on Tue Sep 15 15:28:10 2020
 @author: vibertvg
 """
 
+import numpy as np
+
 my_array=[6,18]
 
 def average_above_zero(array_of_data):
@@ -84,5 +86,44 @@ table_reversed=reverse_table(my_array)
 print('Array not reversed is :',table_not_revesed)  
 print('Array reversed is :',table_reversed)   
     
+
+
+
+def create_image_matrice(rows,cols):
+    """
+        Function who create a matrice of 0
+        Parameters:
+            rows: size of rows (int) both given by the user
+            cols: size of cols (int)
+        Returns:
+            mat: matrice returned created filled only with 0
+    """
+    mat=np.zeros((rows,cols))
+    return mat
+
+
+def add_ones_to_matrice(mat,x1,x2,y1,y2):
+    """
+        Function who add 1 in a matrice already created
+        Parameters:
+            x1: first point x who significate the beginning of number 1 création
+            y1: first point y who significate the beginning of number 1 création
+            x2: second point x who end the création of ones
+            y2: second point x who end the création of ones
+            size_x: Size x of number 1 matrice 
+            size_y: Size y of number 1 matrice 
+        Returns:
+            mat: matrice returned created filled with 1
+    """
+    size_x = x2 - x1
+    size_y = y2 - y1
+    mat[y1:y2,x1:x2]=np.ones((size_y,size_x))
+    return mat
+
+
+matrice = create_image_matrice(6,6)
+matrice=add_ones_to_matrice(matrice,2,4,2,6)
+
+print (matrice)
     
     
