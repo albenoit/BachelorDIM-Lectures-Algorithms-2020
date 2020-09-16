@@ -84,22 +84,25 @@ def roi_bbox(input_image:np):
         y2=0
         bounding_box = np.zeros((4,2))
         position = np.argwhere(input_image)
-        for c in position:
-            x=c[0]
-            y=c[1]
-            if(x1>x):
-                x1=x
-            if(y1>y):
-                y1=y
-            if(x2<x):
-                x2=x
-            if(y2<y):
-                y2=y
-        bounding_box[0] = [x1,y1]           #Haut gauche
-        bounding_box[1] = [x1,y2]           #Haut droit
-        bounding_box[2] = [x2,y1]           #Bas gauche
-        bounding_box[3] = [x2,y2]           #Bas droit
-        return bounding_box
+        if(len(position)):
+            for c in position:
+                x=c[0]
+                y=c[1]
+                if(x1>x):
+                    x1=x
+                if(y1>y):
+                    y1=y
+                if(x2<x):
+                    x2=x
+                if(y2<y):
+                    y2=y
+            bounding_box[0] = [x1,y1]           #Haut gauche
+            bounding_box[1] = [x1,y2]           #Haut droit
+            bounding_box[2] = [x2,y1]           #Bas gauche
+            bounding_box[3] = [x2,y2]           #Bas droit
+            return bounding_box
+        else:
+            raise ValueError('No value found')
     else:
         raise ValueError('Image is empty')
 
@@ -124,8 +127,9 @@ matrix = np.zeros((H,L))
 H = 12
 L = 10
 matrix = np.zeros((H,L))
+'''
 matrix[0:2, 7:9] = np.ones((2,2))
 matrix[2:4, 3:5] = np.ones((2,2))*2
-
+'''
 print(matrix)
 print(roi_bbox(matrix))
