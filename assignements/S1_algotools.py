@@ -5,6 +5,7 @@ Created on Tue Sep 15 14:40:04 2020
 @author: cuvellin
 """
 import numpy as np
+import random
 
 def average_above_zero(list_of_numbers):
     '''
@@ -86,13 +87,30 @@ def roi_bbox(input_image):
     y2 = matrix_found_bb[1][len(matrix_found_bb[1])-1]
     
     return np.array([x1,y1,x2,y2])
+
+def random_fill_sparse(numpy_array, k):
+    
+    if not isSquare(numpy_array):
+        raise ValueError('Your matrix is not a square')
+        
+    blank = np.where(numpy_array == '')
+    
+    if k > len(blank[0]) :
+        raise ValueError('Not enought entry empty')
+        
+    
+    random.uniform(0, k)
+    
+    return blank
+
+def isSquare (m): return all (len (row) == len (m) for row in m)
+
      
 
 Tab = [4,2,45,-4,14,-95,-4,2,87,-56,65,1,3]
 print("Averaging above zero : ", average_above_zero(Tab))
 
 print("Reverse a table : ", reverse_table([1,2,3,4,5]))
-
 
 print("Table maximum value : ", max_value([8,9,7, -9]))
 
@@ -103,3 +121,6 @@ matrix_bounding_box = np.array([[False,False,True, True, False,False,False,False
                                 [False,False,False,False,False,False,False,False,False,False]])
 
 print("Bounding box : ", roi_bbox(matrix_bounding_box))
+
+test_array = np.empty([3,3], dtype=str)
+print("random_fill_sparse : ", random_fill_sparse(test_array, 2))
