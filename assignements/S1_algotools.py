@@ -112,6 +112,9 @@ def roi_bbox(npTab:np.array):
     x2      = np.max(matrice[1])
     y2      = np.max(matrice[0])
     
+    if matrice is None:
+        raise ValueError("no nonNull found value")
+    
     return np.array([x1, y1, x2, y2])
 
 #////////////////////////////////////////////
@@ -126,6 +129,7 @@ def alea(mini,maxi):
     """
     return random.randint(mini, maxi)
 
+#////////////////////////////////////////////
 def random_fill_sparse(table:np.array,k:int):
     """
     This function fill random cells with X
@@ -153,6 +157,22 @@ def remove_whitespace(phrase):
     """
     return phrase.replace(' ', '')
 
+#////////////////////////////////////////////
+def shuffle(list_in):
+    """
+    This function remove all the whitespace of a string
+
+    Parameters :
+        phrase: the string
+    Returns :
+        return string whitout whitespace
+    """
+    answer=[]
+    for i in range(len(list_in)):
+        random = alea(0,len(list_in)-1)
+        answer.append(list_in[random])
+        list_in.pop(random)
+    return answer
 
 
 #////////////////////////////////////////////
@@ -172,5 +192,6 @@ print("Reverse : "            + str(reverse_table(theTab)))
 print("Bounding box : "       + str(roi_bbox(np.zeros([100,100],dtype = float))))
 print("random_fill_sparse : " + str(random_fill_sparse(np.empty([alea(1,10),alea(1,10)], dtype=str), alea(1,10))))
 print("remove_whitespace : "  + str(remove_whitespace("J'adore python, mettez moi 20, merci :D")))
+print("shuffle : "            + str(shuffle(theTab)))
 
 
