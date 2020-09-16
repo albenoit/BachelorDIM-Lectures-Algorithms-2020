@@ -74,15 +74,32 @@ import numpy as np
 H=15
 W=15
 Xin = np.zeros((H,W),dtype=float)
-def roi_bbox(input_image:narray):
-    for c in range(7,12):
-        for l in range(7,9):
-            if l > H:
-                if c > W:
-                    Xin[l,c]=1
-                else:
-                    raise ValueError("Width is to small")
-            else:
-                raise ValueError("Height is to small")
-    return print(Xin)
-roi_bbox(5,7,6,9)
+Xin[1:4,2:5]=np.ones((3,3))
+for c in range(8,10):
+    for l in range(7,11):
+        Xin[l,c]=1
+
+def roi_bbox(img): 
+    '''
+        This function return boundingbox
+        Parameters:
+            table: List of number
+        Returns:
+            a reverse list
+    '''
+    (x,y)=img.shape
+    x1=0;y1=0;x2=x;y2=y
+    check=1
+    for c in range(0,x):
+        for l in range(0,y):
+            if check==1 and img[c,l]==1:
+                x1=l+1
+                y1=c+1
+                check=0
+            elif img[c,l]==1 and check==0:
+                x2=l+1
+                y2=c+1
+
+    return np.array([x1,y1,x2,y2])
+print(Xin)
+print(roi_bbox(Xin))
