@@ -75,7 +75,7 @@ def roi_bbox(input_image):
     Returns:
         a numpy array of shape 4x1 filled with the four 2D coordinates
     '''
-    matrix_found_bb = np.where(matrix_bounding_box > 0)
+    matrix_found_bb = np.where(matrix_bounding_box != False)
     
     x1 = matrix_found_bb[0][0]
     y1 = matrix_found_bb[1][0]
@@ -93,10 +93,10 @@ print("Reverse a table : ", reverse_table([1,2,3,4,5]))
 
 print("Table maximum value : ", max_value([8,9,7, -9]))
 
-matrix_bounding_box = np.array([[0,0,1,1,0,0,0,0,0,0],
-                                [0,0,1,1,0,0,0,0,0,0],
-                                [0,0,0,0,0,1,1,0,0,0],
-                                [0,0,0,0,0,1,1,0,0,0],
-                                [0,0,0,0,0,0,0,0,0,0]])
+matrix_bounding_box = np.array([[False,False,True, True, False,False,False,False,False,False],
+                                [False,False,True, True, False,False,False,False,False,False],
+                                [False,False,False,False,False,True, True, False,False,False],
+                                [False,False,False,False,False,True, True, False,False,False],
+                                [False,False,False,False,False,False,False,False,False,False]])
 
 print("Bounding box : ", roi_bbox(matrix_bounding_box))
