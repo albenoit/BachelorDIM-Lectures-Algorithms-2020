@@ -102,8 +102,9 @@ def roi_bbox(matrix):
     return(x1, y1, x2, y2)
 
 
-def random_fill_parse():
-
+def random_fill_parse(matrix, K):
+    for i in range(0, K):
+        print("Test")
 
 #Matrix used for bbox
 H = 12
@@ -118,6 +119,7 @@ matrix[2:4, 2:5] = np.ones((2, 3), dtype=bool)
 H2 = 15
 W2 = 15
 matrix = np.zeros((H2,W2))
+
 
 Tab = [50, 1, 2, 85]
 average = average_above_zero(Tab)
