@@ -18,6 +18,7 @@ def test_average_1():
 def test_average_2():
     with pytest.raises(ValueError):
         assert algo.average(tab_negative)
+        
 def test_max_value():
     assert algo.max_value(tab_positive)==5
 

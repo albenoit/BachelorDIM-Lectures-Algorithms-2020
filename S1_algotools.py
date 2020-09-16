@@ -100,7 +100,7 @@ def roi_bbox(array):
     '''
     lx, ly = np.nonzero(array)
     if lx is None or ly is None:
-        raise ValeurError("no non null value found")
+        raise ValueError("no non null value found")
     else:
         coordinates=np.array([
                 [np.min(lx),np.min(ly)],
