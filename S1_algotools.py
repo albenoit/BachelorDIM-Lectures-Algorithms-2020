@@ -140,3 +140,7 @@ def remove_whitespace(string):
     
     return(string.replace(' ',''))
     
+    
+def shuffle(list):
+    lenlist=len(list)
+    
