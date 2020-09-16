@@ -5,6 +5,7 @@
 Ceci est un script temporaire.
 """
 import numpy as np
+from random import *
 
 def average(tab):
     
@@ -82,10 +83,10 @@ def reverse_table(tab):
     return(tab)
 
 
-matrix=np.zeros((12,10),dtype=bool)
+boolean_matrix=np.zeros((12,10),dtype=bool)
 for c in range (7,9):
     for l in range (4,9):
-        matrix[l,c]=1
+        boolean_matrix[l,c]=1
 
 
 def roi_bbox(array):
@@ -107,3 +108,13 @@ def roi_bbox(array):
                 ])
     return(coordinates)
     
+char_matrix_empty=np.empty([10,10],dtype=str)
+
+
+def random_fill_sparse(matrice,k):
+    xmax=len(matrice)
+    ymax=len(matrice[1])
+    for loop in range(k):
+        x,y=randint(0,xmax-1),randint(0,ymax-1)
+        matrice[x,y]='X'
+    return matrice
