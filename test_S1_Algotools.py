@@ -4,19 +4,23 @@ Created on Wed Sep 16 15:11:11 2020
 
 @author: fuchsca
 """
-
+import numpy as np
 import S1_algotools as S1
 
 #---------------------------Global var
 
 myTestTab = [1,58,67,1054]
+myTestMatriceChar = np.zeros((10,10))
 
 #---------------------------
 
 #---------------------------test alea
-def test_alea_integers():
+def test_alea_integers_Ok():
     assert S1.alea(5) == 4
 
+def test_alea_integers_Exception():
+    with pytest.raises(ValueError):
+        S1.reverse_table([])
 #---------------------------test max value
 def test_max_value():
     
@@ -31,3 +35,7 @@ def test_average_above_zero():
 def test_reverse_table():
     
     assert S1.reverse_table(myTestTab) == [1054,67,58,1]
+#---------------------------test_random_array_filling
+def test_randow_array_filling():
+    table = S1.random_array_filling(myTestMatriceChar,10)
+    assert np.size(np.argwhere(table))/2 == 10

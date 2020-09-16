@@ -151,24 +151,26 @@ def alea(v:int):
 
 def random_array_filling(table:np.array,k:int):
  malist = []
- for i in range(k):
+ i = 1
+ while i <= k:
   x = alea(len(table) - 1)
   y = alea(len(table[0]) - 1)
-  print(malist)
+  
   if (x,y) in malist:
-      print("doublon")
-      i = i -1
+      '''print("doublon")'''
   else:
     table[x,y] = alea(100) 
-  malist.insert(0,(x,y))  
+    i = i + 1
+  malist.insert(0,(x,y))
+  
 
- position = np.argwhere(table)
- print(len(position))    
+ 
+   
  return table
   
 
 maTable = [1,2,3,4]
-print(reverse_table(maTable))
+'''print(reverse_table(maTable))'''
 '''print(max_value(maTable))'''
 '''print(average_above_zero(maTable))'''
 '''
@@ -179,5 +181,5 @@ monImage[8:10,7:9] = np.ones((2,2))
 monImage[2:4,3:5] = np.ones((2,2))*2
 print(roi_bbox(monImage))'''
 maMatriceChar = np.zeros((10,10))
-'''print(random_array_filling(maMatriceChar,10))'''
+print(random_array_filling(maMatriceChar,10))
 
