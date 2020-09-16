@@ -116,14 +116,12 @@ def random_fill_parse(matrix, K):
     '''
     if K < matrix.shape[0] * matrix.shape[1]:
         i = 0
-        while True:
+        while i < K:
             randH = randint(0, matrix.shape[0]-1)
             randW = randint(0, matrix.shape[1]-1)
             if matrix[randH, randW] != 'X':
                 matrix[randH, randW] = 'X'
                 i += 1
-            if i == K:
-                break
     else:
         raise ValueError('Numbers of Xs exceeding matrix size.')
 
@@ -152,12 +150,13 @@ print('Average: ', average)
 print('Max: ' + str(max_value(Tab)))
 print('Reverse: ' + str(reverse_table(Tab)))
 
+
 bbox = roi_bbox(matrix)
 print(bbox)
 
 randomXMatrix = random_fill_parse(matrix, 25)
 print(randomXMatrix)
-print(np.where(matrix == 'X')[0].shape[0])
+
 
 
 """
