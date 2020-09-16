@@ -87,18 +87,27 @@ def roi_bbox(img):
             boundingBox in numby array
     '''
     (x,y)=img.shape
-    x1=0;y1=0;x2=x;y2=y
-    check=1
+    x1=x;y1=x;x2=0;y2=0
+    # check=1
     for c in range(0,x):
         for l in range(0,y):
-            if check==1 and img[c,l]==1:
-                x1=l
-                y1=c
-                check=0
-            elif img[c,l]==1 and check==0:
-                x2=l
-                y2=c
-
+            if img[c,l]==1:
+                    # x1=l
+                    # y1=c
+                    # check=0
+                # elif img[c,l]==1 and check==0:
+                    # x2=l
+                    # y2=c
+                lTemp = l
+                cTemp = c
+                if lTemp<x1:
+                    x1=lTemp
+                if cTemp<y1:
+                    y1=cTemp
+                if lTemp>x2:
+                    x2=lTemp
+                if cTemp>y2:
+                    y2=cTemp
     return np.array([x1,y1,x2,y2])
 print(Xin)
 print(roi_bbox(Xin))
