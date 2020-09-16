@@ -18,3 +18,11 @@ def test_average_above_zero():
 def test_average_above_zero_noPositiveValues():
     with pytest.raises(ValueError):
         tobetested.average_above_zero([-1, -3, -2])
+
+
+def test_max_value():
+    assert tobetested.max_value([25, 67, 42, 69]) == 69
+
+def test_max_value_wrong_input():
+    with pytest.raises(TypeError):
+        tobetested.max_value('a', 65, 125)
