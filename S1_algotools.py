@@ -83,5 +83,7 @@ L = 10
 matrix = np.zeros((H,L))
 matrix[8:10, 7:9] = np.ones((2,2))
 matrix[2:4, 3:5] = np.ones((2,2))*2
-
+position = np.argwhere(matrix)
+print(position[0])
+print(position[len(position)-1])
 print(matrix)
