@@ -6,6 +6,8 @@ tab_under_zero = [0,-1,-3,-2]
 
 def test_average():
     assert algo.average_above_zero(tab) == 5
+
+def test_average_neg():
     with pytest.raises(ValueError):
         assert algo.average_above_zero(tab_under_zero)
 
