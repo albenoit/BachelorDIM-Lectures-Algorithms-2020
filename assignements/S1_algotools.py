@@ -24,10 +24,10 @@ def average_above_zero(tab :list):
     return average # Return average
 
 # Call the function with array in args and display the average
-print('# Average above zero function # ')
-print('T1 : average = ' , average_above_zero([1,10,2,8,12])) #Only positive numbers
-print('T2 : average = ' , average_above_zero([1,-10,-2,-8,12])) #With positive and negative numbers
-print('T3 : average = ' , average_above_zero([-1,-10,-2,-8,-12])) #Only negative numbers
+# print('# Average above zero function # ')
+# print('T1 : average = ' , average_above_zero([1,10,2,8,12])) #Only positive numbers
+# print('T2 : average = ' , average_above_zero([1,-10,-2,-8,12])) #With positive and negative numbers
+# print('T3 : average = ' , average_above_zero([-1,-10,-2,-8,-12])) #Only negative numbers
 
 def max_value(tab :list):
     '''
@@ -44,7 +44,9 @@ def max_value(tab :list):
 
 # Call the function with array in args and display the index of max value
 print('# Max value index function #')
-print(max_value([1,10,2,8,11]))
+print('T1 = ', max_value([1,10,2,8,11])) #Only positive numbers
+print('T2 = ', max_value([1,10,2,8,-11])) #With positive and negative numbers
+print('T3 = ', max_value([-1,-10,-2,-8,-11])) #Only negative numbers
 
 
 def reverse_table(tab :list):
