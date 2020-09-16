@@ -108,6 +108,20 @@ def roi_bbox(input_image:np):
         raise ValueError('Image is empty')
 
 
+def random_fill_sparse(table:np, K:int):
+    if (K<(len(table)*len(table[0]))):
+        i=0
+        while i<K:
+            x=randint(0,len(matrix[0])-2)
+            y=randint(0,len(matrix)-2)
+            if((matrix[y,x])==0):
+                matrix[y:(y+1),x:(x+1)] = randint(1, 255)
+                i+=1
+        return table
+    else:
+        raise ValueError('K abrove table size')
+
+
 Tab=[2,54,-4]
 print("Moyenne : " + str(average_above_zero(Tab)))
 print("Max : " + str(max_value(Tab)))
@@ -137,17 +151,6 @@ print(roi_bbox(matrix))
 
 
 matrix = np.zeros((H,L))
-K=10
-i=0
-while i<K:
-    x=randint(0,len(matrix[0])-2)
-    y=randint(0,len(matrix)-2)
-    print(matrix[y,x]==0)
-    if((matrix[y,x])==0):
-        matrix[y:(y+1),x:(x+1)] = 12
-        i+=1
-    print("i : " + str(i) + " - x : " + str(x) + " - y : " + str(y))
-print(matrix)
-position = np.argwhere(matrix)
-print(len(position))
+
+print(random_fill_sparse(matrix, 10))
 
