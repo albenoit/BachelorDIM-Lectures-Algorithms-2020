@@ -1,3 +1,6 @@
+def my_addition(a,b):
+    return (a+b)
+
 def average_above_zero(table:list):
     '''
     This function calculate the average of a list of numbers
@@ -121,4 +124,4 @@ def remove_whitespace(string):
         if i != ' ':
             phrase2+=i
     return phrase2
-print(remove_whitespace(phrase))
+# print(remove_whitespace(phrase))
