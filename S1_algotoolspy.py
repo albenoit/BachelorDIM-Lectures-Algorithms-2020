@@ -110,7 +110,10 @@ def alea(min:int, max:int):
     Returns :
         alea_value as int
     '''
-    alea_value = random.randint(min, max)
+    try:
+        alea_value = random.randint(min, max)
+    except:
+        raise Exception("alea_value is null or empty")
     return alea_value
 
 def random_fill_sparse(table:np, K:int):
@@ -122,9 +125,46 @@ def random_fill_sparse(table:np, K:int):
     Returns :
         table as numpy
     '''
-    for i in range(K):
-        row = table[alea(0,len(table)-1)]
-        row[alea(0,len(row)-1)] = 'X'
+    try:
+        for i in range(K):
+            row = table[alea(0,len(table)-1)]
+            row[alea(0,len(row)-1)] = 'X'
+    except:
+        raise Exception("table or K is null or empty")
     return table
 
-print(random_fill_sparse(np.empty((alea(1,10),alea(1,10)), dtype=str), 5))
+#print(random_fill_sparse(np.empty((alea(1,10),alea(1,10)), dtype=str), 5))
+    
+
+def remove_whitespace(string_value:str):
+    '''
+    Remove whitespace in string
+    Parameters:
+            string_value: str
+    Returns :
+        string_value as str
+    '''
+    try:
+        string_value.replace(" ","")
+    except:
+        raise Exception("string_value is null")
+        
+    return string_value
+
+#print(remove_whitespace("Je suis une patate"))
+
+def function_shuffle(list_in:list):
+    '''
+    Shuffle list
+    Parameters:
+            list_in: list
+    Returns :
+        list_in as list
+    '''
+    try:
+        random.shuffle(list_in)
+    except:
+        raise Exception("list_in is null or empty")
+    return list_in
+
+#print(function_shuffle([10,20,30,40,50]))
