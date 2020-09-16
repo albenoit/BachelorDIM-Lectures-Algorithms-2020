@@ -238,5 +238,8 @@ def remove_whitespace(table):
 Session 1 Random item selection 
 
 """
+def shuffle(list_in) :
+    return list_in
+
 
 
