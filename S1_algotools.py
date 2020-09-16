@@ -119,9 +119,28 @@ def random_fill_sparse(table:np.array, K:int):
     for kNumber in range(K):
         row = table[alea(0,len(table)-1)]
         row[alea(0, len(row)-1)] = 'K';
-        print('k');
     return table;
 
 table = [['','','','',''],['','','','','','']];
-print(random_fill_sparse(table,rd.randint(1,5)));
+case = 0;
+for row in table:
+    for column in row:
+        case += 1;
+print(random_fill_sparse(table,rd.randint(1,case)));
+
+def remove_whitespace(sentence):
+    '''
+        package:
+            math, numpy, random
+        author:
+            viardcrl
+        Parameters:
+            table:np.array
+            K:int
+        Returns:
+            returns 
+    '''
+    return sentence.replace(" ", "");
+
+print(remove_whitespace('I love Python and Alexandre Benoit'));
 
