@@ -7,6 +7,7 @@ Created on Wed Sep 16 15:13:01 2020
 
 import pytest
 import S1_algotools as algotools
+import numpy as np
 
 def test_average_above_zero_add_intergers():
     Tab = [4,2,45,-4,14,-95,-4,2,87,-56,65,1,3]
@@ -22,3 +23,9 @@ def test_max_value():
     
 def test_max_value_fail():
     assert algotools.max_value([1,84,5,14,2,-546]) != 2
+    
+def test_random_fill_sparse():
+    test = np.array([['','', 'X','X'], ['','', 'X', 'X'], ['X','','',''], ['','','X','X']])
+    matrix = algotools.random_fill_sparse(test, 2)
+    assert np.where(matrix == 'X')[0].shape[0] == 9
+    
