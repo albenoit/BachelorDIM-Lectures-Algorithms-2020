@@ -4,8 +4,7 @@ Created on Tue Sep 15 14:40:04 2020
 
 @author: cuvellin
 """
-
-Tab = [4,2,45,-4,14,-95,-4,2,87,-56,65,1,3]
+import numpy as np
 
 def average_above_zero(list_of_numbers):
     '''
@@ -48,21 +47,30 @@ def max_value(array):
     return max
         
 
-def reverse_table(array):
+def reverse_table(tab):
     '''
     reverse a table without the use of any other table
     
     Parameters:
-        array
+        tab
     Returns:
-        reverse of array put in params
+        reverse of tab put in params
     '''
-    return array[::-1]
+    listlen = len(tab)
+    
+    for i in range(len(tab)//2):
+        tmp = tab[i]
+        endid = listlen-i-1
+        tab[i] = tab[listlen-1]
+        tab[i] = tab[endid]
+        tab[endid] = tmp
+    return tab
 
-print(average_above_zero(Tab))
+Tab = [4,2,45,-4,14,-95,-4,2,87,-56,65,1,3]
+#print(average_above_zero(Tab))
 
 print(reverse_table([1,2,3,4,5]))
 
 
 print(max_value([8,9,7, -9]))
-        
+
