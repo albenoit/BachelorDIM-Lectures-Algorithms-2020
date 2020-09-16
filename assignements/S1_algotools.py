@@ -197,12 +197,32 @@ print(roi_bbox(n))
 Session 1 Random array filling 
 
 """
+
+    
 #random.sample
 import random
-n = np.empty((40,40),dtype=str)
+def fill_a_rand_cell(table):
+    coord = (random.randint(0,table.shape[0]-1),random.randint(0,table.shape[1]-1))
+    if table[coord] == "" : 
+        table[coord] = "X"
+    else:
+        table = fill_a_rand_cell(table)
+    return table
+        
+n = np.full((20,20),[""],dtype=str)
 def random_fill_sparse(table,K):
-    coordinatestable = [random.randint(0,table.shape[0]),random.randint(0,table.shape[1])]
-    
-
-    return coordinatestable
-print(random_fill_sparse(n,12))
+    '''
+    This function return a numpy array with random cross in the array
+    Parameters:
+        image: a numpy array  
+    Returns: a numpy array with 4 coordinates
+    '''
+    numberofcase = table.shape[0]*table.shape[1]
+    if numberofcase > K:      
+        for x in range(K):
+            table = fill_a_rand_cell(table)
+            print("yo")
+    else:
+        raise ValueError("too much cross for the table")        
+    return table
+print(random_fill_sparse(n,10))
