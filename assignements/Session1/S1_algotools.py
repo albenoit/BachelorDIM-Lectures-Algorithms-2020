@@ -1,4 +1,4 @@
-list = [1,3,5,7,9,2,4,6,8]
+list = [1,3,5,7]
 
 def average_above_zero(table:list):
     '''
