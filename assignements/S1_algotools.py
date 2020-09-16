@@ -64,7 +64,6 @@ def reverse_table(table:list):
         Returns:
             a reverse list
     '''
-
     return print(table[:: -1])
 
 
@@ -74,18 +73,18 @@ import numpy as np
 H=15
 W=15
 Xin = np.zeros((H,W),dtype=float)
-Xin[1:4,2:5]=np.ones((3,3))
-for c in range(8,10):
-    for l in range(7,11):
+Xin[6:7,8:9]=np.ones((1,1))
+for c in range(7,10):
+    for l in range(7,10):
         Xin[l,c]=1
 
 def roi_bbox(img): 
     '''
         This function return boundingbox
         Parameters:
-            table: List of number
+            img: Binary image
         Returns:
-            a reverse list
+            boundingBox in numby array
     '''
     (x,y)=img.shape
     x1=0;y1=0;x2=x;y2=y
@@ -93,12 +92,12 @@ def roi_bbox(img):
     for c in range(0,x):
         for l in range(0,y):
             if check==1 and img[c,l]==1:
-                x1=l+1
-                y1=c+1
+                x1=l
+                y1=c
                 check=0
             elif img[c,l]==1 and check==0:
-                x2=l+1
-                y2=c+1
+                x2=l
+                y2=c
 
     return np.array([x1,y1,x2,y2])
 print(Xin)
