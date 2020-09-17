@@ -242,8 +242,15 @@ def remove_whitespace(mystr):
 Session 1 Random item selection 
 
 """
-def shuffle(list_in) :
-    return list_in
-
+def shuffle(tab) :
+    listlen = len(tab)
+    for i in range(listlen):
+        tmp=tab[i]
+        endid=random.randint(0,listlen-1)
+        tab[i] = tab[endid]
+        tab[endid]=tmp
+ 
+    return tab
+print(shuffle([1,2,3,4]))
 
 
