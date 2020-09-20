@@ -91,15 +91,12 @@ def bounding_box(matrix):
 
 # Random array filling
 
-# def random_array_filling(tab, k):
+# Personal test for testing numpy with Pycharm
+a = np.array([1, 2, 4])
+print(a)
 
-# Test
-# a = np.array([1, 2, 4])
-# print(a)
+# My Addition function
+def my_addition(a, b):
+    return a+b
 
-
-
-
-
-
-
+print('10+2=12 ?',my_addition(10,2))

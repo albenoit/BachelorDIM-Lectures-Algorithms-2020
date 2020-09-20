@@ -4,7 +4,6 @@ import pytest
 def test_myaddition_integers_1():
     assert tobetested.my_addition(10,2) == 12
 
-
 def test_myaddition_integers_2():
     assert tobetested.my_addition(-1,2) == 1
 
