@@ -5,6 +5,9 @@ Algorithms, code writing and continuous integration @ DIM Bachelor, Université 
 Those lessons are addressed to the "Développeur Informatique Multisupports" (DIM) Bachelor proposed at Université Savoie Mont Blanc in France.
 Students are expected to be familiar with programming. The aim is to get more familiar with code quality, maintainability and efficacy... and Python.
 
+# Coveralls Badge 
+[![Coverage Status](https://coveralls.io/repos/github/Fabien-Vauclin/BachelorDIM-Lectures-Algorithms-2020/badge.svg?branch=master)](https://coveralls.io/github/Fabien-Vauclin/BachelorDIM-Lectures-Algorithms-2020?branch=master)
+
 **Lessons organisation draft :**
 
 1. Get familiar with maintainable codes using git, sonarcloud and doxygen. *Introduction* slides [here](https://docs.google.com/presentation/d/1xXrdokfxOUP-3b1fEPRfieUhOEez7FJeUtauMpjV4bk/edit?usp=sharing)
