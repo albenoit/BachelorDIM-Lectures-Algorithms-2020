@@ -43,15 +43,21 @@ tab.reverse()
 print(tab)
 
 # Reverse a table V2
-tab = [100, 200, 300, 400]
-listlen = len(tab)
-for i in range(len(tab)//2):
+def reverse_table(tab):
+    """
+        Reverse a table
+        Parameters
+            table
+        Returns reversed table
+        """
+    for i in range(len(tab)//2):
+        list_len = len(tab)
     tmp = tab[i]
-    endid = listlen - i - 1
+    endid = list_len - i - 1
     tab[i] = tab[endid]
     tab[endid] = tmp
 
-print(tab)
+print(reverse_table([100, 200, 300, 400]))
 
 
 # Bounding box
