@@ -47,15 +47,18 @@ def reverse_table(tab):
     """
         Reverse a table
         Parameters
-            table
+            table of numbers
         Returns reversed table
-        """
+    """
     for i in range(len(tab)//2):
         list_len = len(tab)
-    tmp = tab[i]
-    endid = list_len - i - 1
-    tab[i] = tab[endid]
-    tab[endid] = tmp
+        tmp = tab[i]
+        endid = list_len - i - 1
+        tab[i] = tab[list_len - 1]
+        tab[i] = tab[endid]
+        tab[endid] = tmp
+    return tab
+
 
 print(reverse_table([100, 200, 300, 400]))
 
