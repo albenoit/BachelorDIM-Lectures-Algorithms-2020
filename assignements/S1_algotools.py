@@ -114,6 +114,22 @@ def remove_whitespace(string):
 string = ' l p d i m '
 print(remove_whitespace(string))
 
+# Random item selection
+import random
+
+def random_item(list:any):
+
+    """
+         Randomly select item of a list
+         Parameters
+             list
+         Returns one item of the list
+    """
+    return random.choice(list)
+
+
+list = 1, 6, "b", 12, "k", 8, "LP DIM", 2020, "Overkiz", "Hr Team"
+print(random_item(list))
 
 # Personal test for testing numpy with Pycharm
 a = np.array([1, 2, 4])
