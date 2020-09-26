@@ -100,6 +100,21 @@ def bounding_box(matrix):
 
 # Random array filling
 
+#Remove whitespace characters in a string:
+def remove_whitespace(string):
+    """
+        Parse a string and remove all its whitespace
+        Parameters
+            string
+        Returns string without whitespaces
+    """
+    return string.replace(" ", "")
+
+
+string = ' l p d i m '
+print(remove_whitespace(string))
+
+
 # Personal test for testing numpy with Pycharm
 a = np.array([1, 2, 4])
 print(a)
