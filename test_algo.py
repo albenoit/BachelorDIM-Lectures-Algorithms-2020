@@ -44,3 +44,16 @@ def test_random_fill_sparse():
 
 def test_remove_whitespace():
     assert algo.remove_whitespace(phrase)=='Bonjourcomment'
+
+
+def test_invert_color_numpy_None():
+    with pytest.raises(ValueError):
+        algo.invert_color_numpy(None)
+    
+def test_invert_color_numpy_Aray():
+    with pytest.raises(TypeError):
+        algo.invert_color_numpy(1)
+        
+def test_invert_color_numpy_uint8():
+    with pytest.raises(TypeError):
+        algo.invert_color_numpy(null_matrix)
