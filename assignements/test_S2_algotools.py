@@ -7,6 +7,7 @@ Created on Wed Sep 16 15:13:01 2020
 
 import pytest
 import S1_algotools as algotools
+import S3_imgproc_tools as imgproc
 import numpy as np
 
 def test_average_above_zero_add_intergers():
@@ -49,3 +50,15 @@ def test_roi_bbox_no_pixel_found():
                                 [False,False]])
     with pytest.raises(ValueError, match="No pixel found"):
         algotools.roi_bbox(matrix_bounding_box)
+    
+def test_test_invert_colors_numpy_none():
+    with pytest.raises(AttributeError):
+        imgproc.invert_colors_numpy(None)
+        
+def test_test_invert_colors_numpy_not_an_array():
+    with pytest.raises(AttributeError):
+        imgproc.invert_colors_numpy(1)
+
+def test_test_invert_colors_numpy_not_an_uint8():
+    with pytest.raises(TypeError):
+        imgproc.invert_colors_numpy(np.zeros((2,2), dtype=np.float32))

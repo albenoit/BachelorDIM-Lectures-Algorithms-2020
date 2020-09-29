@@ -38,12 +38,25 @@ def invert_colors_numpy(input_img) :
     Returns:
         matrix
     '''
+    '''
+    if input_img is None:
+        raise AttributeError('expected an uint8 nd array')
+    if not(isinstance(input_img, np.ndarray)):
+        raise TypeError('expected an nd array')
+    '''
+    if input_img.dtype!=np.dtype(np.uint8):
+        raise TypeError('expected uint8 typed nd array')
+    
     return (255-input_img)
-   
+
+def invert_colors_opencv(input_img):
+    return cv2.bitwise_not(input_img)
    
 invert_manual_img = invert_colors_manual(img)
 invert_img = invert_colors_numpy(img)
+invert_opencv = invert_colors_opencv(img)
 
 cv2.imshow('invert_manual_img', invert_manual_img)
 cv2.imshow('input', invert_img)
+cv2.imshow('invert opencv', invert_opencv)
 cv2.waitKey()
