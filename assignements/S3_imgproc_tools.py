@@ -13,7 +13,7 @@ cv2.waitKey()
 
 def invert_color_manual(input_image):
     '''
-    This function takes an image and reverse its color.
+    This function takes an image and reverse its color by looping on each pixels.
 
     :param
         input_image: an image
@@ -23,11 +23,42 @@ def invert_color_manual(input_image):
     img_out = np.zeros(input_image.shape, dtype=np.uint8)
     for row in range(input_image.shape[0]):
         for col in range(input_image.shape[1]):
-            for channel in range(input_image.shape[2]):
-                img_out[row, col, channel] = 255 - input_image[row, col, channel]
+            for color in range(input_image.shape[2]):
+                img_out[row, col, color] = 255 - input_image[row, col, color]
 
     cv2.imwrite("reversed_prophecy.png", img_out)
-    cv2.imshow("reversed colors", img_out)
+    cv2.imshow("reversed colors (manual)", img_out)
     cv2.waitKey()
 
+def invert_color_numpy(input_image):
+    '''
+     This function takes an image and reverse its color by using a numpy operation.
+
+    :param
+        input_image: an image
+    :return:
+        nothing, just print the new image out
+    '''
+    img_out = 255 - input_image
+    cv2.imwrite("reversed_prophecy.png", img_out)
+    cv2.imshow("reversed colors (numpy)", img_out)
+    cv2.waitKey()
+
+def invert_color_opencv(input_image):
+    '''
+    This function takes an image and reverse its color by using a cv2 function.
+
+    :param
+        input_image: an image
+    :return:
+        nothing, just print the new image out
+    '''
+    img_out = cv2.bitwise_not(input_image)
+    cv2.imwrite("reversed_prophecy.png", img_out)
+    cv2.imshow("reversed colors (opencv)", img_out)
+    cv2.waitKey()
+
+
 invert_color_manual(img_bgr)
+#invert_color_numpy(img_bgr)
+#invert_color_opencv(img_bgr)
