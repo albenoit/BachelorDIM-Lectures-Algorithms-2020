@@ -31,4 +31,7 @@ cv2.imshow('img', img)
 cv2.imshow('invers_img', invers_img(img))
 cv2.waitKey()
 
-
+img=cv2.imred('''TODO''')
+img_thresholded = threshold(img)
+img_thresholded_disp = img_thresholded.astype(np.uint8)*255
+cv2.imshow('seuilled image', img_thresholded_disp)
