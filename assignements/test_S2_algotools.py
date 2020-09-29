@@ -37,8 +37,8 @@ def test_random_fill_sparse_not_square():
         
 
 def test_random_fill_sparse_not_enought_entry_empty():
-    test = np.array([['X','X'], ['X','X'], ['X',''], ['X', 'X']])
-    with pytest.raises(ValueError):
+    test = np.array([['X','X'], ['','X']])
+    with pytest.raises(ValueError, match="Not enought entry empty"):
         algotools.random_fill_sparse(test, 5)
     
 def test_remove_whitespace():
