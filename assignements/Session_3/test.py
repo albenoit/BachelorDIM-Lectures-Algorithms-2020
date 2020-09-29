@@ -11,15 +11,15 @@ import pytest
 import S3_imgproc_tools as funcimg
 
 def test_inv_gray_levels_tuNone():
-    with pytest.raises(ValueError):
+    with pytest.raises(AttributeError):
         funcimg.inv_gray_levels(None)
         
 def test_inv_gray_levels_tuArray():
-    with pytest.raises(ValueError):
+    with pytest.raises(AttributeError):
         funcimg.inv_gray_levels(1)
 
 def test_inv_gray_levels_tuuint8():
-    with pytest.raises(ValueError):
+    with pytest.raises(TypeError):
         funcimg.inv_gray_levels(np.zeros((2,2),dtype=np.float))
 
 def test_inv_gray_levels_tuuint8():

@@ -61,14 +61,16 @@ def invert_colors_opencv(img):
     cv2.waitKey()
     return True
 
-def inv_gray_levels(img):
+def inv_gray_levels(img:np.ndarray):
     '''test data type, expecting uint8'''
-    if img is None:
+    '''if img is None:
         raise ValueError('Expected an uint8')
     if img.dtype != np.dtype(np.uint8):
         raise ValueError('Expected uint8 typed nd array')
     if isinstance(img, np.ndarray):
-        raise ValueError('Expected an nd array')
+        raise ValueError('Expected an nd array')'''
+    if img.dtype!=np.dtype(np.uint8):
+        raise TypeError('Expected uint8 typed nd array')
     return 255-img
 
 invert_colors_manual(img)
