@@ -47,6 +47,15 @@ def invert_color_opencv(img : np.ndarray):
         imgRet image inverted
     '''
     return ~img
+
+
+def threshold(img : np.ndarray):
+    threshold_value=128
+    if img.dtype!=np.dtype(np.uint8):
+        raise TypeError('expected uint8 typed nd array')
+    return img > threshold_value
+
+print(threshold(img))
 # stream=cv2.VideoCapture(0)
 
 

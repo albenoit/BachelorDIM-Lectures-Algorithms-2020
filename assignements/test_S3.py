@@ -17,7 +17,8 @@ def test_invert_gray_lvl_image_light_tuuint8():
     with pytest.raises(TypeError):
         tFile.invert_gray_lvl_image_light(np.zeros((2,2), dtype=np.float32))
 
-
+def test_invert_gray_lvl_image_light_process():
+    '''TODO'''
 # 2 - chargement image non array
 # Vérifier le type de img array == uint8
 
