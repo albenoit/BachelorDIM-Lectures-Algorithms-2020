@@ -43,3 +43,9 @@ def test_random_fill_sparse_not_enought_entry_empty():
     
 def test_remove_whitespace():
     assert algotools.remove_whitespace("this is a test") == "thisisatest"
+    
+def test_roi_bbox_no_pixel_found():
+    matrix_bounding_box = np.array([[False,False],
+                                [False,False]])
+    with pytest.raises(ValueError, match="No pixel found"):
+        algotools.roi_bbox(matrix_bounding_box)

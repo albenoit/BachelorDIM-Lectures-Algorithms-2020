@@ -76,7 +76,7 @@ def roi_bbox(input_image):
     Returns:
         a numpy array of shape 4x1 filled with the four 2D coordinates
     '''
-    matrix_found_bb = np.where(matrix_bounding_box != False)
+    matrix_found_bb = np.where(input_image != False)
     
     if len(matrix_found_bb[0]) == 0 or len(matrix_found_bb[1]) == 0 :
         raise ValueError('No pixel found')
