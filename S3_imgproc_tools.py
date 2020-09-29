@@ -60,5 +60,20 @@ def invert_colors_opencv(input_img:np.ndarray):
 """img_invert = invert_colors_numpy(img_bgr)
 cv2.imshow("Invert image opencv", img_invert)"""
 
+
+
+def thresholding_manual(input_img:np.ndarray):
+    output_img = np.zeros(input_img.shape, dtype=np.uint8)
+    
+    return output_img
+
+def thresholding_numpy(input_img:np.ndarray):
+    threshold_value = 128   
+    return input_img>threshold_value
+
+img_thresholding = thresholding_numpy(img_bgr)
+img_thresholding_display = img_thresholding.astype(np.uint8)*255
+cv2.imshow("Thresholding image", img_thresholding_display)
+
 cv2.waitKey()
 
