@@ -74,7 +74,12 @@ def threshold(img:np.ndarray):
             raise TypeError('expected uint8 typed nd array')
     return img<threshold_value
 
-     
+    
+img = cv2.imread('voiture.jpg',1)
+img_thresholded = threshold(img)
+img_thresholded_disp = img_thresholded.astype(np.uint8)*40
+cv2.imshow('seuille image',img_thresholded_disp)
+cv2.waitKey()     
 
 #cv2.imshow("Default",img_8k)   
 #cv2.imshow("Test_Invert",invert_colors_opencv(img_8k))  
