@@ -154,21 +154,19 @@ cv2.waitKey()
 
 """
 
-def invert_color(imgpath):
+def invert_color_manual(imgpath):
     
     ''' 
     This function invert the color of the input image path. This ain't optimized for python and very long to apply.
     
     Args :
         imgpath: input path of the image you want to convert
+        
+    Returns the negative of the image
     '''
 
     get_picture=cv2.imread(imgpath)
-    
-    print("input image shape",get_picture.shape)
-    
-    cv2.imshow('input',get_picture)
-    cv2.waitKey()
+ 
     
     out_picture=np.zeros(get_picture.shape, dtype=np.uint8)
     
@@ -177,22 +175,23 @@ def invert_color(imgpath):
             for channel in range (get_picture.shape[2]):
                 out_picture[row,col,channel]=255-get_picture[row,col,channel]
     
-    cv2.imshow("output",out_picture)
-    cv2.waitKey()
+    return out_picture
 
 
-def invert_color_optimized_for_python(imgpath):
+def invert_color_numpy(imgpath):
     ''' 
     This function invert the color of the input image path. This is kind of optimized for python.
     
     Args :
         imgpath: input path of the image you want to convert
+    
+    Returns the negative of the image
     '''
     
     img = cv2.imread(imgpath)
-    cv2.imshow('input', img)
-    cv2.waitKey()
     img_out = np.zeros(img.shape, dtype=np.uint8)
     img_out=255-img
-    cv2.imshow("output", img_out)
-    cv2.waitKey()
+    return img_out
+   
+   
+   
