@@ -7,7 +7,7 @@ def test_myaddition_integers():
 def test_myaddition_intergers_2():
     assert tobetested.my_addition(-1, 2) == 1
 
-def test_myaddition_wrong_inpute():
+def test_myaddition_wrong_input():
     with pytest.raises(TypeError):
         tobetested.my_addition('a', 4)
 
