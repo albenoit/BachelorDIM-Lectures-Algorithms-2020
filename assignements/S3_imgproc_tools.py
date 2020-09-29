@@ -8,6 +8,9 @@ Created on Tue Sep 29 08:45:28 2020
 import cv2
 import numpy as np 
 
+# =============================================================================
+# Déclaration des variables
+# =============================================================================
 img_gray=cv2.imread('image_test_little.jpg', 0)
 img_rgb=cv2.imread('image_test_little.jpg', 1)
 
@@ -21,23 +24,22 @@ print(img_rgb[1, 1, 2])
 #cv2.waitKey()
 
 
-
+# =============================================================================
+# Fonctions et déclarations des fonctions
+# =============================================================================
 def invert_colors_manual(input_image):
     '''
     Fonction qui inverse les couleurs d'une image (image négative)
     parameters : input_image
-    return : inversed_img
+    return : inverted_img
     '''
     ##Pire solution pour Python (besoin de beaucoup de ressources)
-    inversed_img = np.zeros(input_image.shape, dtype=np.uint8)
+    inverted_img = np.zeros(input_image.shape, dtype=np.uint8)
     for x in range(input_image.shape[0]):
         for y in range(input_image.shape[1]):
             for color in range(input_image.shape[2]):
-                inversed_img[x, y, color] = 255 - input_image[x, y, color]
-    cv2.imshow('Negative image', inversed_img)
-
-        
-#invert_colors_manual(img_rgb)  
+                inverted_img[x, y, color] = 255 - input_image[x, y, color]
+    return inverted_img 
     
     
 
@@ -45,13 +47,11 @@ def invert_colors_numpy(input_image):
     '''
     Fonction qui inverse les couleurs d'une image (image négative)
     parameters : input_image
-    return : inversed_img
+    return : inverted_img
     '''
-    inversed_img = np.zeros(input_image.shape, dtype=np.uint8)
-    inversed_img = 255 - input_image
-    cv2.imshow('Negative image', inversed_img)
-    
-#invert_colors_numpy(img_rgb)
+    inverted_img = 255 - input_image
+    return inverted_img
+
 
 
 def invert_colors_opencv(input_image):
@@ -60,8 +60,10 @@ def invert_colors_opencv(input_image):
     parameters : input_image
     return : inversed_img
     '''
-    inversed_img = cv2.bitwise_not(input_image)
-    cv2.imshow('Negative image', inversed_img)
+    inverted_img = cv2.bitwise_not(input_image)
+    return inverted_img
     
-invert_colors_opencv(img_rgb)
+img_test = invert_colors_manual(img_rgb)
+cv2.imshow('Negative img', img_test)
+cv2.waitKey()
 
