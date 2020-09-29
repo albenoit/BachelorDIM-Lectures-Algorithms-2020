@@ -54,7 +54,7 @@ def invert_colors_opencv(input_img):
 
 def threshlod(img:np.ndarray):
     threshold_value = 128
-    if img.dtype != np.dtype(np.uint8):
+    if not hasattr(img, 'dtype') or img.dtype != np.dtype(np.uint8):
         raise TypeError('expected uint8 typed nd array')
     return img>threshold_value
 
