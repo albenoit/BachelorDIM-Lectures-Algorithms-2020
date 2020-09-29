@@ -8,6 +8,7 @@ Created on Tue Sep 29 08:45:28 2020
 import cv2
 import numpy as np 
 
+
 # =============================================================================
 # Déclaration des variables
 # =============================================================================
@@ -21,6 +22,7 @@ img_rgb=cv2.imread('image_test_little.jpg', 1)
 #cv2.imshow('Gray levels image', img_gray)
 #cv2.imshow('RGB levels image', img_rgb)
 #cv2.waitKey()
+
 
 # =============================================================================
 # Déclencheurs d'erreurs
@@ -87,6 +89,7 @@ def invert_colors_opencv(input_image):
 #img_test = invert_colors_manual(img_rgb)
 #cv2.imshow('Negative img', img_test)
 #cv2.waitKey()
+
 
 # =============================================================================
 # Fonctions de seuil
