@@ -178,7 +178,7 @@ def invert_color_manual(imgpath):
     return out_picture
 
 
-def invert_color_numpy(imgpath):
+def invert_color_numpy(img):
     ''' 
     This function invert the color of the input image path. This is kind of optimized for python.
     
@@ -187,11 +187,15 @@ def invert_color_numpy(imgpath):
     
     Returns the negative of the image
     '''
+    if img is None:
+        raise ValueError('expected an uint8 nd array')
+    if not (isinstance(img,np.ndarray)):
+        raise TypeError('expected nd array')
+    if img.dtype!=np.dtype(np.uint8):
+        raise TypeError('expected uint8 typed nd aray')
     
-    img = cv2.imread(imgpath)
-    img_out = np.zeros(img.shape, dtype=np.uint8)
-    img_out=255-img
-    return img_out
+    return 255-img
+
    
    
    
