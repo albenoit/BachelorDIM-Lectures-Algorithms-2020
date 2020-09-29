@@ -8,7 +8,13 @@ import numpy as np
 import cv2
 
 def invert_colors_manual(img):
-    
+    """
+        Function who return an image with reversed color without using numpy
+        Parameters:
+            img : image to process
+        Returns:
+            img_out: return image with reversed color
+    """
     img_out=np.zeros(img.shape, dtype=np.uint8)    
     for row in range (img.shape[0]):
         for col in range (img.shape[1]):
@@ -17,11 +23,46 @@ def invert_colors_manual(img):
     return img_out
 
 
+def invert_colors_manualV2(img):
+    """
+        Function who return an image with reversed color without using numpy
+        Parameters:
+            img : image to process
+        Returns:
+            return image with reversed color
+    """
+    return 255-img
+
+
+def invert_colors_numpy(img):
+    """
+        Function who return an image with reversed color using numpy
+        Parameters:
+            img : image to process
+        Returns:
+            return image with reversed color
+    """
+    return np.invert(img)
+
+
+def invert_colors_opencv(img):
+    """
+        Function who return an image with reversed color using OpenCv
+        Parameters:
+            img : image to process
+        Returns:
+            return image with reversed color
+    """
+    
+    return cv2.bitwise_not(img - 255)
+
 
 img_url = 'Magician.png'
 img_reversed=cv2.imread(img_url,1)
-cv2.imshow("BGR image", invert_colors_manual(img_reversed))
+cv2.imshow("BGR image", invert_colors_numpy(img_reversed))
 cv2.waitKey()
+
+
 
 """
 img_gray=cv2.imread(img_url,0)
