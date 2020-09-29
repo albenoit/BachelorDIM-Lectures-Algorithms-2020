@@ -20,10 +20,7 @@ cv2.waitKey()
 
 
 def invert_colors_manual(img):
-    '''
     img_out = np.zeros(img.shape, dtype=np.uint8)
-    img_out = 255 - img
-    '''
     for i in range(img.shape[0]):
         for j in range(img.shape[1]):
             for k in range(img.shape[2]):
@@ -47,4 +44,4 @@ def invert_colors_opencv(img):
 
 
 
-invert_colors_opencv(img)
+invert_colors_manual(img)
