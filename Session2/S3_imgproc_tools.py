@@ -69,6 +69,9 @@ def threshold_image_manual(input_img):
                     img_out[row, col, i] = valueCouleur #Coloration (des trois cannaux)
     return img_out
 
+def threshold_image_manual_numpy(input_img):
+    return input_img > (255/2)
+
 
 #Test:  
 #img_gray = cv2.imread('C:/Users/TEMP/Desktop/algo/img.jpg',0)
@@ -84,6 +87,7 @@ img = cv2.imread('C:/Users/TEMP/Desktop/algo/img.jpg',1)
 #imgResultat = invert_colors_manual_numpy(img)
 
 imgResultat = threshold_image_manual(img)
+#imgResultat = threshold_image_manual_numpy(img)
 cv2.imshow('Titre', imgResultat)
 cv2.waitKey()
 
