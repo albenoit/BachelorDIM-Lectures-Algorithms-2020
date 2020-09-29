@@ -1,11 +1,13 @@
 import cv2 
 import numpy as np
 
-def invers_img(image):
+def invers_img(image:np.ndarray):
+    '''
     if(img is None):
         raise ValueError("L'image est vide")
-    if (isinstance(image, np.ndarray)):
+    if not(isinstance(image, np.ndarray)):
         raise TypeError("expected an nd array")
+    '''
     if image.dtype != np.dtype(np.uint8):
         raise TypeError("expected uint8 typed nd array")
     '''
