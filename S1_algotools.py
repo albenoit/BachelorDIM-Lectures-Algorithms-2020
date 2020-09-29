@@ -141,6 +141,35 @@ def remove_whitespace(string):
     return(string.replace(' ',''))
     
     
-def shuffle(list):
-    lenlist=len(list)
+"""
+
+/!\ This is just a test to try cv2 library
+
+test=cv2.imread('test.jpg',0)
+test1=cv2.imread('test.jpg',1)
+cv2.imshow("test",test)
+cv2.imshow("test1",test1)
+cv2.waitKey()
+
+"""
+
+def invert_color(imgpath):
+
+    get_picture=cv2.imread(imgpath)
     
+    print("input image shape",get_picture.shape)
+    
+    cv2.imshow('input',get_picture)
+    cv2.waitKey()
+    
+    out_picture=np.zeros(get_picture.shape, dtype=np.uint8)
+    
+    for row in range (get_picture.shape[0]):
+        for col in range (get_picture.shape[1]):
+            for channel in range (get_picture.shape[2]):
+                out_picture[row,col,channel]=255-get_picture[row,col,channel]
+    
+    cv2.imshow("output",out_picture)
+    cv2.waitKey()
+
+
