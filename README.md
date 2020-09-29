@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 [![Coverage Status](https://coveralls.io/repos/github/BadTripHD/BachelorDIM-Lectures-Algorithms-2020/badge.svg?branch=master)](https://coveralls.io/github/BadTripHD/BachelorDIM-Lectures-Algorithms-2020?branch=master)
-=======
-[![Coverage Status](https://coveralls.io/repos/github/albenoit/BachelorDIM-Lectures-Algorithms-2020/badge.svg?branch=master)](https://coveralls.io/github/albenoit/BachelorDIM-Lectures-Algorithms-2020?branch=master)
->>>>>>> 64c6c9b34d173a0de0caf3174afa7caf566313b6
 
 # BachelorDIM-Lectures-Algorithms-2020
 Algorithms, code writing and continuous integration @ DIM Bachelor, Université Savoie Mont Blanc, France
