@@ -30,9 +30,23 @@ def invert_colors_manual(input_img : np.ndarray) :
      for i in range(3):
       image_sortie[ligne,col,i] = 255 - image_sortie[ligne,col,i]
   return image_sortie
+
   #for row in range img.shape[0]
   #  for col in range img.shape[1]
   #     for channel in range img.shape[2]
+  
+  # En C 50* plus rapide : char * img_out;
+  # En C : char * buffer;
+  #  int cpt,maxcpt = ;
+  #  img_out[cpt] = 255-img[cpt]
+  # for(cpt=0; cpt<maxcpt;cpt++)
+  
+  # En C 50* plus rapide : char * img_out;
+  # En C : char * buffer;
+  #  int cpt,maxcpt = ;
+  #  
+  # for(cpt=max; ---cpt;)
+  #  img_out[cpt] = 255-*img++
 
 def invert_colors_numpy(input_img : np.ndarray) :
  
@@ -46,7 +60,22 @@ def invert_colors_opencv(input_img : np.ndarray) :
   
   return image_sortie
 
+def innv_gray_levels(img :np.ndarray):   
 
-cv2.imshow("Default",img_8k)   
-cv2.imshow("Test_Invert",invert_colors_opencv(img_8k))  
-cv2.waitKey()
+    if img.dtype!=np.dtype(np.uint8):
+        raise TypeError('expected an uint8 typed nd array')
+    return 255-img
+
+
+def threshold(img:np.ndarray):
+    
+    threshold_value = 128
+    if img.dtype!=np.dtype(np.uint8):
+            raise TypeError('expected uint8 typed nd array')
+    return img<threshold_value
+
+     
+
+#cv2.imshow("Default",img_8k)   
+#cv2.imshow("Test_Invert",invert_colors_opencv(img_8k))  
+#cv2.waitKey()
