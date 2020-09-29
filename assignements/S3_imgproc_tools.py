@@ -41,7 +41,7 @@ def invert_color_numpy(input_image):
     '''
     if input_image is None:
         raise ValueError('Expected an uint8 nd array')
-    if isinstance(input_image, np.ndarray):
+    if not(isinstance(input_image, np.ndarray)):
         raise TypeError('Expected an nd array')
     if input_image.dtype != np.dtype(np.unint8):
         raise TypeError('Expected unint8 typed nd array')
