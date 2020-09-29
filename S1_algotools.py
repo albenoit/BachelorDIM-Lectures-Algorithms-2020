@@ -76,7 +76,6 @@ def reverse_table(table:list):
 
 #print(reverse_table([]))
     
- s
 def roi_bbox(input_image:np):
     '''
     Get bouding box of numpy array with value equal 1

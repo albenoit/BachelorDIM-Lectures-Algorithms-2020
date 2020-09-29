@@ -21,29 +21,40 @@ print("BGR image shape = "+str(img_bgr.shape))
 
 
 #Invert manual
-def invert_color_manual(input_img):
+def invert_color_manual(input_img:np.ndarray):
     output_img = np.zeros(input_img.shape, dtype=np.uint8)
     
-    for row in range (input_img.shape[0]):
+    if input_img.dtype != np.dtype(np.uint8):
+        raise TypeError('not an uint8 nd array')
+
+    """for row in range (input_img.shape[0]):
         for col in range (input_img.shape[1]):
             for channel in range (input_img.shape[2]):
-                output_img[row, col, channel] = 255 - input_img[row, col, channel]
+                output_img[row, col, channel] = 255 - input_img[row, col, channel]"""
     
-    """ or output_img = 255 - input_img """
+    output_img = 255 - input_img
                 
     return output_img
 
 """img_invert = invert_color_manual(img_bgr)
 cv2.imshow("Invert image manual", img_invert)"""
 
-def invert_colors_numpy(input_img):
+def invert_colors_numpy(input_img:np.ndarray):
+    
+    if input_img.dtype != np.dtype(np.uint8):
+        raise TypeError('not an uint8 nd array')
+    
     array = np.array(input_img, np.uint8)
     return ~array
 
 """img_invert = invert_colors_numpy(img_bgr)
 cv2.imshow("Invert image numpy", img_invert)"""
 
-def invert_colors_opencv(input_img):   
+def invert_colors_opencv(input_img:np.ndarray):
+    
+    if input_img.dtype != np.dtype(np.uint8):
+        raise TypeError('not an uint8 nd array')
+    
     return cv2.bitwise_not(input_img)
 
 """img_invert = invert_colors_numpy(img_bgr)
