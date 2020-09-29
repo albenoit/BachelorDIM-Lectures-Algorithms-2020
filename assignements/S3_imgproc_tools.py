@@ -4,7 +4,7 @@ img=cv2.imread("BachelorDIM-Lectures-Algorithms-2020/assignements/iuCkR.jpg")
 img_gray=cv2.imread("BachelorDIM-Lectures-Algorithms-2020/assignements/iuCkR.jpg", 0)
 img_bgr=cv2.imread("BachelorDIM-Lectures-Algorithms-2020/assignements/iuCkR.jpg", 1)
 
-def invert_gray_lvl_image(img : np.ndarray):
+def invert_color_manual(img : np.ndarray):
     '''
     Function to invert image colors with highest CPU demanding processing
     Parameters :
@@ -55,7 +55,10 @@ def threshold(img : np.ndarray):
         raise TypeError('expected uint8 typed nd array')
     return img > threshold_value
 
-print(threshold(img))
+thresholded = threshold(img)
+thresholded_display = thresholded.astype(np.uint8)*255
+cv2.imshow('testimg', thresholded_display)
+cv2.waitKey()
 # stream=cv2.VideoCapture(0)
 
 
