@@ -5,6 +5,7 @@
 Ceci est un script temporaire.
 """
 import numpy as np
+import cv2
 from random import *
 
 def average(tab):
@@ -154,6 +155,13 @@ cv2.waitKey()
 """
 
 def invert_color(imgpath):
+    
+    ''' 
+    This function invert the color of the input image path. This ain't optimized for python and very long to apply.
+    
+    Args :
+        imgpath: input path of the image you want to convert
+    '''
 
     get_picture=cv2.imread(imgpath)
     
@@ -173,3 +181,18 @@ def invert_color(imgpath):
     cv2.waitKey()
 
 
+def invert_color_optimized_for_python(imgpath):
+    ''' 
+    This function invert the color of the input image path. This is kind of optimized for python.
+    
+    Args :
+        imgpath: input path of the image you want to convert
+    '''
+    
+    img = cv2.imread(imgpath)
+    cv2.imshow('input', img)
+    cv2.waitKey()
+    img_out = np.zeros(img.shape, dtype=np.uint8)
+    img_out=255-img
+    cv2.imshow("output", img_out)
+    cv2.waitKey()
