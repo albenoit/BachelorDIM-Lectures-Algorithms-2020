@@ -28,6 +28,18 @@ def test_random_fill_sparse():
     test = np.array([['','', 'X','X'], ['','', 'X', 'X'], ['X','','',''], ['','','X','X']])
     matrix = algotools.random_fill_sparse(test, 2)
     assert np.where(matrix == 'X')[0].shape[0] == 9
+	
+	
+def test_random_fill_sparse_not_square():
+    test = np.array([['',''], ['',''], ['X','']])
+    with pytest.raises(ValueError):
+        algotools.random_fill_sparse(test, 2)
+        
+
+def test_random_fill_sparse_not_enought_entry_empty():
+    test = np.array([['X','X'], ['X','X'], ['X',''], ['X', 'X']])
+    with pytest.raises(ValueError):
+        algotools.random_fill_sparse(test, 5)
     
 def test_remove_whitespace():
     assert algotools.remove_whitespace("this is a test") == "thisisatest"
