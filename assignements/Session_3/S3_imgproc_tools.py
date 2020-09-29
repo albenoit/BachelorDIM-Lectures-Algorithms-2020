@@ -73,7 +73,24 @@ def inv_gray_levels(img:np.ndarray):
         raise TypeError('Expected uint8 typed nd array')
     return 255-img
 
-invert_colors_manual(img)
+def threshold_image_manual(img):
+    img_out = np.zeros(img.shape, dtype=np.uint8)
+    for i in range(img.shape[0]):
+        for j in range(img.shape[1]):
+            for k in range(img.shape[2]):
+                if(img[i,j,k] <= 127):
+                    img_out[i,j,k]=0
+                else:
+                    img_out[i,j,0]=255
+                    img_out[i,j,1]=255
+                    img_out[i,j,2]=255
+    cv2.imshow('img_out',img_out)
+    cv2.waitKey()
+    return True
+
+
+threshold_image_manual(img)
+'''invert_colors_manual(img)'''
 
 
 
