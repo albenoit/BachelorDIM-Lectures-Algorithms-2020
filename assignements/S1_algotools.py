@@ -5,7 +5,7 @@ tab = [1,9,3,4,5,6,7,8,2]
 np_tab = np.zeros((200,200))
 np_tab[70:90,45:55] = np.ones((20,10))
 
-def average_above_zero(tab):
+def average_above_zero(tab:int):
     """
     This function calculate the average of list tab
 
@@ -21,6 +21,7 @@ def average_above_zero(tab):
         if i > 0:
             som += i
             n += 1
+
     if n > 0:
         return som / n
     else:
@@ -96,7 +97,7 @@ def bounding_box(np_tab):
         return np.array([
             [np.min(lx),np.min(ly)],
             [np.max(lx),np.max(ly)]
-        ])
+        ])                                                                     
 
 def alea(x,min=None):
     """
@@ -153,8 +154,10 @@ def shuffle(tab):
         array.append(tab[random])
         tab.pop(random)
     return array
-
+    
 print(average_above_zero(tab))
+
+"""
 print(max_value(tab))
 print(get_index_max_value(tab))
 print(reverse_table(tab))
@@ -162,3 +165,5 @@ print(bounding_box(np_tab))
 print(random_array_fill(np.empty([alea(30,2),alea(30,2)], dtype=str),alea(50,1)))
 print(remove_whitespace('Python c\'est trop cool !'))
 print(shuffle(tab))
+
+"""
