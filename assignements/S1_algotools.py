@@ -109,17 +109,21 @@ def reverse_table_V3(tab : list):
 
 
 # Bounding box
-H=12
-W=10
-matrix=np.zeros((H,W))
-# matrix[2:3, 3:5]= np.ones((2,2)) * 2
-for c in range(1,3):
-    for l in range(3,5):
-        matrix[l,c] = 1
-for c in range(5,8):
-    for l in range(6,9):
-        matrix[l,c] = 1
+def run():
+    H=12
+    W=10
+    matrix=np.zeros((H,W))
+    # matrix[2:3, 3:5]= np.ones((2,2)) * 2
+    for c in range(1,3):
+        for l in range(3,5):
+            matrix[l,c] = 1
+    for c in range(5,8):
+        for l in range(6,9):
+            matrix[l,c] = 1
 # print(matrix)
+
+if __name__ ==  "__main__":
+    run()
 
 def roi_bbox(img):
     '''
