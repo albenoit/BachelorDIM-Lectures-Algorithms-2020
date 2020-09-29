@@ -2,6 +2,7 @@ import S1_algotools as algo
 import pytest
 import numpy as np
 
+
 tab_positive=[1,2,3,4,5]
 tab_negative=[-1,-2,-3,-4,-5]
 

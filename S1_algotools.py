@@ -180,10 +180,10 @@ def invert_color_manual(imgpath):
 
 def invert_color_numpy(img):
     ''' 
-    This function invert the color of the input image path. This is kind of optimized for python.
+    This function invert the color of the input image. This is kind of optimized for python.
     
     Args :
-        imgpath: input path of the image you want to convert
+        img: input image you want to convert
     
     Returns the negative of the image
     '''
@@ -196,6 +196,16 @@ def invert_color_numpy(img):
     
     return 255-img
 
+def invert_color_opencv(img):
+    ''' 
+    This function invert the color of the input image. This is kind of optimized for python.
+    
+    Args :
+        img: input image you want to convert
+    
+    Returns the negative of the image
+    '''
+    return cv2.bitwise_not(img,1)
    
    
    
