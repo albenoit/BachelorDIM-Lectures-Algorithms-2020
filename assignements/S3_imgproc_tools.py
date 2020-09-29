@@ -74,11 +74,13 @@ def threshold_image_manual(input_image):
     img_out = np.zeros(input_image.shape, dtype=np.uint8)
     for row in range(input_image.shape[0]):
         for col in range(input_image.shape[1]):
-            for color in range(input_image.shape[2]):
-                if input_image[row, col, color] < (255/2):
-                    img_out[row, col, color] = 255
-                else:
-                    img_out[row, col, color] = 0
+            avgcolor = 0
+            for color in range(input_image.shape[2]):           # Assemble all the color values of the pixel (R,G,B)
+                avgcolor += input_image[row, col, color]
+            avgcolor = avgcolor / 3                             # Get the average of it
+            if avgcolor < (255/2):                              # If the color is between white and grey
+                for i in range(3):
+                    img_out[row, col, i] = 255                  # Change each rgb value to FF so it's white
 
     cv2.imwrite("threshold_prophecy.png", img_out)
     cv2.imshow("Threshold", img_out)
