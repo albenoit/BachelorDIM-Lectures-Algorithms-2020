@@ -58,13 +58,24 @@ def invert_colors_opencv(input_img):
     
     '''
     return cv2.bitwise_not(input_img)
+def innv_gray_levels(img:np.ndarray):
+        """
+        if img is None:
+            raise ValueError ("pas bien g eu none")
+        if not(isinstance(img,np.nparray)):
+            raise ValueError ("pas bien j'ai eu pas lee bon type")
+            """
+        if img.dtype!=np.dtype(np.uint8):
+            raise TypeError ("expected uint8 typed np array")
+        return 255-img
+    
+#img_gray=cv2.imread("testimg.jpg",0)
+#img_bgr=cv2.imread("testimg.jpg",1)
+#img_bgr_reversed = invert_colors_opencv(cv2.imread("testimg.jpg",1))
 
-img_gray=cv2.imread("testimg.jpg",0)
-img_bgr=cv2.imread("testimg.jpg",1)
-img_bgr_reversed = invert_colors_opencv(cv2.imread("testimg.jpg",1))
+#cv2.imshow("Gray levels image", img_gray)
+##cv2.imshow("BGR image", img_bgr)
+#cv2.imshow("BGR image inverted", img_bgr_reversed)
+#cv2.waitKey()
 
-cv2.imshow("Gray levels image", img_gray)
-cv2.imshow("BGR image", img_bgr)
-cv2.imshow("BGR image inverted", img_bgr_reversed)
-cv2.waitKey()
-
+#the tests are 

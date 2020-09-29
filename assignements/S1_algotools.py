@@ -248,7 +248,7 @@ Session 1 Random item selection
 
 """
 def shuffle(tab) :
-        '''
+    '''
     This function return a string without spaces
         mystr: a string of char
     Returns: the string without space
