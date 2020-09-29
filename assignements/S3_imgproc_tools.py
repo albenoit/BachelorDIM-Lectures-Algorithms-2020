@@ -15,12 +15,10 @@ def invert_colors_manual(img):
         Returns:
             img_out: return image with reversed color
     """
-    img_out=np.zeros(img.shape, dtype=np.uint8)    
+    if not img.dtype == np.dtype(np.uint8) :
+        raise TypeError('Dtype is not equal to uint8')
     
-    if not img_out.dtype =='uint8' :
-        raise ValueError('Dtype is not equal to uint8')
-    
-    
+    img_out=np.zeros(img.shape, dtype=np.uint8)        
     for row in range (img.shape[0]):
         for col in range (img.shape[1]):
              for channel in range (img.shape[2]):
@@ -60,6 +58,13 @@ def invert_colors_opencv(img):
     """
     
     return cv2.bitwise_not(img - 255)
+
+
+def threshold(img:np.ndarray):
+    threshold_value=128
+    if img.dtype!=np.dtype(np.uint8):
+        raise TypeError('error')
+    return img>threshold_value
 
 
 img_url = 'Magician.png'
