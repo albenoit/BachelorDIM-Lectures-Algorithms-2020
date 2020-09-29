@@ -20,6 +20,12 @@ def invers_img(image:np.ndarray):
     image_out = ~image
     return image_out
     
+def threshold(img:np.ndarray):
+    threshold_value=128
+    if img.dtype!=np.dtype(np.uint8):
+        raise TypeError("expected uint8 typed nd array")
+    return img>threshold_value
+
 img=cv2.imread('image_test.jpg')
 cv2.imshow('img', img)
 cv2.imshow('invers_img', invers_img(img))
