@@ -20,6 +20,7 @@ cv2.waitKey()
 
 
 def invert_colors_manual(img):
+    '''
     img_out = np.zeros(img.shape, dtype=np.uint8)
     img_out = 255 - img
     '''
@@ -27,11 +28,16 @@ def invert_colors_manual(img):
         for j in range(img.shape[1]):
             for k in range(img.shape[2]):
                 img_out[i,j,k]=255-img[i,j,k]
-    '''
     cv2.imshow('img_out',img_out)
     cv2.waitKey()
     return True
 
+def invert_colors_numpy(img):
+    img_out = np.zeros(img.shape, dtype=np.uint8)
+    img_out = 255 - img
+    cv2.imshow('img_out',img_out)
+    cv2.waitKey()
+    return True
 
 
 
