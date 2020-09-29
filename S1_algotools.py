@@ -78,13 +78,13 @@ def roi_bbox(input_image:np):
         Raises:
             If input_image is empty
     '''
-    if(len(input_image)):
-        x1=len(input_image[0])           #nombre de lignes
-        y1=len(input_image)             #nombre de colonnes
+    if(np.size(input_image)>0):
+        x1=np.size(input_image)
+        y1=np.size(input_image)
         x2=0
         y2=0
         bounding_box = np.zeros((4,2))
-        position = np.argwhere(input_image)         #Trouve toutes les positions != 0
+        position = np.argwhere(input_image>0)         #Trouve toutes les positions != 0
         if(len(position)):
             for c in position:
                 x=c[0]
@@ -109,36 +109,33 @@ def roi_bbox(input_image:np):
 
 
 def random_fill_sparse(table:np, K:int):
-    if (K<(len(table)*len(table[0]))):
+    if (K<(np.size(table))):
         i=0
         while i<K:
-            x=randint(0,len(matrix[0])-2)
-            y=randint(0,len(matrix)-2)
-            if((matrix[y,x])==0):
-                matrix[y:(y+1),x:(x+1)] = randint(1, 255)
+            x=randint(0,len(table[0])-2)
+            y=randint(0,len(table)-2)
+            if((table[y,x])==0):
+                table[y:(y+1),x:(x+1)] = randint(1, 255)
                 i+=1
         return table
     else:
         raise ValueError('K abrove table size')
 
-
+'''
 Tab=[2,54,-4]
 print("Moyenne : " + str(average_above_zero(Tab)))
 print("Max : " + str(max_value(Tab)))
 print("Liste avant : "+ str(Tab))
 print("Liste après : "+ str(reverse_table(Tab)))
-'''
+
 Tab = 3
 print("Moyenne : " + str(average_above_zero(Tab)))
 print("Max : " + str(max_value(Tab)))
 print("Liste avant : "+ str(Tab))
 print("Liste après : "+ str(reverse_table(Tab)))
-'''
-'''
-H = 0
-L = 0
-matrix = np.zeros((H,L))
-'''
+
+
+Tab=[2,54,-4]
 H = 12
 L = 10
 matrix = np.zeros((H,L))
@@ -153,4 +150,4 @@ print(roi_bbox(matrix))
 matrix = np.zeros((H,L))
 
 print(random_fill_sparse(matrix, 10))
-
+'''
