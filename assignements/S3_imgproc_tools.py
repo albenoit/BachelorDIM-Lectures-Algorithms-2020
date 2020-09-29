@@ -27,8 +27,6 @@ def invert_colors_manual(img):
         for col in range (img.shape[1]):
             for channel in range (img.shape[2]):
                 img_out[row, col, channel]=255-img[row, col, channel]
-    cv2.imshow('img_out_manual', img_out)
-    cv2.waitKey()
     return print(img.shape)
 
 def invert_colors_numpy(img):
@@ -43,8 +41,6 @@ def invert_colors_numpy(img):
     '''
     img_out = np.zeros(img.shape, dtype=np.uint8)
     img_out = 255-img
-    cv2.imshow('img_out_numpy', img_out)
-    cv2.waitKey()
     return print(img_out.shape)
 
 
@@ -60,15 +56,23 @@ def invert_colors_opencv(img):
         the transformed image
     '''
     img_out = cv2.bitwise_not(img)
-    cv2.imshow('img_out_opencv', img_out)
-    cv2.waitKey()
 
 def innv_gray_levels(img):
     if img.dtype!=np.dtype(np.uint8):
         raise TypeError('Expected uint8 typed nd array')
     return 255-img
 
+def threshold(img):
+    threshold_value=128
+    if img.dtype!=np.dtype(np.uint8):
+        raise TypeError('Expected uint8 typed nd array')
+    return img>threshold_value
 
 # invert_colors_manual(img)
 # invert_colors_numpy(img)
-invert_colors_opencv(img)
+# invert_colors_opencv(img)
+img_thresholded=threshold(img)
+img_thresholded_disp=img_thresholded.astype(np.uint8)*255
+
+cv2.imshow('img_out', img_thresholded_disp)
+cv2.waitKey()
