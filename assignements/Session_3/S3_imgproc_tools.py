@@ -7,6 +7,7 @@ Created on Tue Sep 29 09:00:56 2020
 
 import cv2 
 import numpy as np 
+
 img_gray=cv2.imread('img/AsDePique.jpg',0) 
 img_bgr=cv2.imread('img/AsDePique.jpg',1) 
 img = cv2.imread('img/AsDePique.jpg')
@@ -20,6 +21,12 @@ cv2.waitKey()
 
 
 def invert_colors_manual(img):
+    '''
+        This function invert the color of img
+        Args:
+            img: img to need to invert
+        Returns the inverted img
+    '''
     img_out = np.zeros(img.shape, dtype=np.uint8)
     for i in range(img.shape[0]):
         for j in range(img.shape[1]):
@@ -30,6 +37,12 @@ def invert_colors_manual(img):
     return True
 
 def invert_colors_numpy(img):
+    '''
+        This function invert the color of img
+        Args:
+            img: img to need to invert
+        Returns the inverted img
+    '''
     img_out = np.zeros(img.shape, dtype=np.uint8)
     img_out = 255 - img
     cv2.imshow('img_out',img_out)
@@ -37,11 +50,29 @@ def invert_colors_numpy(img):
     return True
 
 def invert_colors_opencv(img):
+    '''
+        This function invert the color of img
+        Args:
+            img: img to need to invert
+        Returns the inverted img
+    '''
     img_out = cv2.bitwise_not(img)
     cv2.imshow('img_out',img_out)
     cv2.waitKey()
     return True
 
-
+def inv_gray_levels(img):
+    '''test data type, expecting uint8'''
+    if img is None:
+        raise ValueError('Expected an uint8')
+    if img.dtype != np.dtype(np.uint8):
+        raise ValueError('Expected uint8 typed nd array')
+    if isinstance(img, np.ndarray):
+        raise ValueError('Expected an nd array')
+    return 255-img
 
 invert_colors_manual(img)
+
+
+
+        
