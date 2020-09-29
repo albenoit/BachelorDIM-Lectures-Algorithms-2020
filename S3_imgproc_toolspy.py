@@ -10,8 +10,8 @@ def invers_img(image):
 img=cv2.imread('image_test.jpg')
 
 cv2.imshow('img', img)
-
-img_invers=invers_img(img)
+img_invers = ~img
+#img_invers=invers_img(img)
 cv2.imshow('invers_img', img_invers)
 cv2.waitKey()
 
