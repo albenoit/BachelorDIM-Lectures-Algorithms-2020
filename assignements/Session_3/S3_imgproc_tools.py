@@ -39,6 +39,12 @@ def invert_colors_numpy(img):
     cv2.waitKey()
     return True
 
+def invert_colors_opencv(img):
+    img_out = cv2.bitwise_not(img)
+    cv2.imshow('img_out',img_out)
+    cv2.waitKey()
+    return True
 
 
-invert_colors_manual(img)
+
+invert_colors_opencv(img)
