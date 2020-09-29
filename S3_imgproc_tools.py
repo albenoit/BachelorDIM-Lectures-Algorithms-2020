@@ -35,15 +35,18 @@ def invert_colors_manual(input_img : np.ndarray) :
   #     for channel in range img.shape[2]
 
 def invert_colors_numpy(input_img : np.ndarray) :
-  image = np.asarray(input_img)
-  nb_lignes,nb_colonnes,_ = image.shape
+ 
   image_sortie = np.copy(image)
   image_sortie = 255-image
   return image_sortie
-  #for row in range img.shape[0]
-  #  for col in range img.shape[1]
-  #     for channel in range img.shape[2]
+
+def invert_colors_opencv(input_img : np.ndarray) :
+  
+  image_sortie = cv2.bitwise_not(input_img)
+  
+  return image_sortie
+
 
 cv2.imshow("Default",img_8k)   
-cv2.imshow("Test_Invert",invert_colors_numpy(img_8k))  
+cv2.imshow("Test_Invert",invert_colors_opencv(img_8k))  
 cv2.waitKey()
