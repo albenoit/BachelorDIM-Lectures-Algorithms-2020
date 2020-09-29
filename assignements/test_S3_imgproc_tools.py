@@ -20,9 +20,6 @@ def test_invert_color_TuAray():
 def test_invert_color_TuUint8():
     with pytest.raises(TypeError):
         imgroc.invert_colors_manual(np.zeros((2,2),dtype=np.float32))
-
-"""        
+    
 def test_invert_color_TuProcessOk():
-    with pytest.raises(ValueError):
-        invert_colors_manual(None)
-"""
+    imgroc.invert_colors_manual(np.zeros((2,2,2),dtype=np.uint8))
