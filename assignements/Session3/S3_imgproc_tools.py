@@ -71,8 +71,8 @@ def  invert_colors_opencv(img):
     img_out=cv2.bitwise_not(img)
     return img_out
 
-cv2.imshow('img out ', invert_colors_manual(img))
-cv2.waitKey()
+#cv2.imshow('img out ', invert_colors_manual(img))
+#cv2.waitKey()
 
 
 
@@ -94,3 +94,27 @@ def innv_gray_levels(img:np.ndarray):
 
     return 255-img
 
+def threshold_image_manual(img):
+    img_out=cv2.imread('P:/DIM/algo/BachelorDIM-Lectures-Algorithms-2020/assignements/Session3/images/covid19.jpg') 
+    for row in range (img.shape[0]):
+        for col in range (img.shape[1]):
+            for channel in range (img.shape[2]):
+                if (img[row,col,channel] <=200):
+                    img_out[row,col,channel]=0
+                else:
+                    img_out[row,col,0]=255
+                    img_out[row,col,1]=255
+                    img_out[row,col,2]=255
+
+    return img_out
+
+'''def threshold(img:np.array):
+    test data type, expecting uint8
+    threshold.value=128 in range [0,255]
+    if img.dtype!=np.dtype(np.uint8):
+        raise TypeError('Expected uint8 typed d array')
+    return img>threshold_value
+'''
+
+cv2.imshow('img out ', threshold_image_manual(img))
+cv2.waitKey()
