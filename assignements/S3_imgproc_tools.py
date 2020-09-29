@@ -59,6 +59,14 @@ def invert_colors_opencv(input_img):
     '''
     return cv2.bitwise_not(input_img)
 def innv_gray_levels(img:np.ndarray):
+        '''
+        This function reverse the color of an image 
+        Parameters:
+            input_img: an image
+        Returns: a reversed image as ndarray
+        
+        '''
+    
         """
         if img is None:
             raise ValueError ("pas bien g eu none")
@@ -68,14 +76,30 @@ def innv_gray_levels(img:np.ndarray):
         if img.dtype!=np.dtype(np.uint8):
             raise TypeError ("expected uint8 typed np array")
         return 255-img
+  
+def threshold(img:np.ndarray):
+    """
+    This function apply a threshold on the image given in params 
+    Parameters:
+        img: an image
+    Returns:
+        a thresholded image as a ndarray
     
-#img_gray=cv2.imread("testimg.jpg",0)
-#img_bgr=cv2.imread("testimg.jpg",1)
-#img_bgr_reversed = invert_colors_opencv(cv2.imread("testimg.jpg",1))
+    """
+    threshold_value=128
+    if img.dtype!=np.dtype(np.uint8):
+        raise TypeError("le tableau doit être de type uint 8")
+    return img>threshold_value
 
+
+#img_gray=cv2.imread("testimg.jpg",0)
+
+#img_bgr=cv2.imread("testimg.jpg",1)
+img_bgr_reversed = threshold(cv2.imread("testimg.jpg",1))
+img_bgr_reversed = img_bgr_reversed.astype(np.uint8)*255
 #cv2.imshow("Gray levels image", img_gray)
 ##cv2.imshow("BGR image", img_bgr)
-#cv2.imshow("BGR image inverted", img_bgr_reversed)
-#cv2.waitKey()
+cv2.imshow("BGR image thres", img_bgr_reversed+threshold(cv2.imread("testimg.jpg",1)))
+cv2.waitKey()
 
 #the tests are 

@@ -32,10 +32,8 @@ def test_innv_gray_levels_uint8():
 def test_innv_gray_levels_working():
     img_in = np.array([[[0,255,0], [0,255,0], [0,255,0]],
                 [[0,255,128], [0,255,128], [0,255,128]],
-                [[0,128,255], [0,128,255], [0,128,255]]])
+                [[0,128,255], [0,128,255], [0,128,255]]],dtype=np.uint8)
     img_out = np.array([[[255,0,255], [255,0,255], [255,0,255]],
                 [[255,0,127], [255,0,127], [255,0,127]],
-                [[255,127,0], [255,127,0], [255,127,0]]])
-    img_out.dtype=np.uint8
-    img_in.dtype=np.uint8
+                [[255,127,0], [255,127,0], [255,127,0]]],dtype=np.uint8)
     assert np.prod(S3.innv_gray_levels(img_in) == np.array(img_out))
