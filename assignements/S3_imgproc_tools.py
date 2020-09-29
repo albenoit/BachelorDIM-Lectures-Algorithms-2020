@@ -40,3 +40,16 @@ cv2.imshow("BGR image inverted", img_bgr_reversed)
 cv2.waitKey()
 
 
+img = cv2.imread("/home/fabien/Pictures/algo_img.jpg")
+def inv_gray_levels(img):
+    if img is None:
+        raise ValueError("expected an uint8 and array")
+    if not (isinstance(img, np.ndarray)):
+        raise TypeError("expected and nd array")
+    if img.dtype!=np.dtype(np.uint8):
+        raise TypeError("expected uint8 typed nd array")
+    return 255-img
+print(inv_gray_levels(img))
+
+
+
