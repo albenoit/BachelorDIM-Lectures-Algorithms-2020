@@ -59,16 +59,17 @@ def threshlod(img:np.ndarray):
     return img>threshold_value
 
 
-   
-#invert_manual_img = invert_colors_manual(img)
-#invert_img = invert_colors_numpy(img)
-#invert_opencv = invert_colors_opencv(img)
+"""   
+invert_manual_img = invert_colors_manual(img)
+invert_img = invert_colors_numpy(img)
+invert_opencv = invert_colors_opencv(img)
 
-#cv2.imshow('invert_manual_img', invert_manual_img)
-#cv2.imshow('input', invert_img)
-#cv2.imshow('invert opencv', invert_opencv)
+cv2.imshow('invert_manual_img', invert_manual_img)
+cv2.imshow('input', invert_img)
+cv2.imshow('invert opencv', invert_opencv)
 
 threshlod_img = threshlod(img)
 threshlod_img_disp= threshlod_img.astype(np.uint8)*255
 cv2.imshow('threshlod_img', threshlod_img_disp)
 cv2.waitKey()
+"""
