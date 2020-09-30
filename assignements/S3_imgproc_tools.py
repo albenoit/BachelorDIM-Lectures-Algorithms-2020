@@ -69,7 +69,7 @@ def threshold(img: np.ndarray):
         raise TypeError('expected uint8 typed nd array')
     return img > threshold_value
 
-
+"""
 invert_manual_img = invert_colors_manual(img)
 invert_img = invert_colors_numpy(img)
 invert_opencv = invert_colors_opencv(img)
@@ -82,3 +82,4 @@ threshold_img = threshold(img)
 threshold_img_disp = threshold_img.astype(np.uint8) * 255
 cv2.imshow('threshold_img', threshold_img_disp)
 cv2.waitKey()
+"""
