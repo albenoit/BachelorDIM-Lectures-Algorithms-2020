@@ -8,9 +8,13 @@ import cv2
 import numpy as np
 
 # IMG_PATH = 'P:/bg/bg.jpg'
-IMG_PATH = 'C:/Users/VM Nathan/Documents/LPDIM/BachelorDIM-Lectures-Algorithms-2020/img/one_pixel_red.jpg'
+#IMG_PATH = 'C:/Users/VM Nathan/Documents/LPDIM/BachelorDIM-Lectures-Algorithms-2020/img/one_pixel_red.jpg'
 
-img = cv2.imread(IMG_PATH)
+# img = cv2.imread(IMG_PATH)
+img = np.array([[[0, 0, 254]]], dtype=np.uint8)
+
+print("img")
+print(img)
 
 
 def invert_colors_manual(input_img):
