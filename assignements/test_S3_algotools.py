@@ -15,6 +15,11 @@ def test_invert_colors_manual():
     assert (imgproc.invert_colors_manual(img) == np.full((1, 1), 255)).all()
 
 
+def test_invert_colors_manual_not_uint8():
+    with pytest.raises(TypeError):
+        imgproc.invert_colors_manual(1)
+
+
 def test_invert_colors_numpy():
     img = np.zeros((1, 1, 3), np.uint8)
     assert (imgproc.invert_colors_numpy(img) == np.full((1, 1), 255)).all()
