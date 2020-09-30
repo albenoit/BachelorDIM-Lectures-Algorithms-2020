@@ -26,7 +26,7 @@ def invert_colors_manual(input_img):
     Returns:
         matrix
     """
-    if not hasattr(img, 'dtype') or img.dtype != np.dtype(np.uint8):
+    if not hasattr(input_img, 'dtype') or input_img.dtype != np.dtype(np.uint8):
         raise TypeError('expected uint8 typed nd array')
 
     img_out = np.zeros(input_img.shape, dtype=np.uint8)
