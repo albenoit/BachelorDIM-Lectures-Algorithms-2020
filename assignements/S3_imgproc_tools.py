@@ -86,4 +86,17 @@ def threshold_image_manual(input_image):
     cv2.imshow("Threshold", img_out)
     cv2.waitKey()
 
-threshold_image_manual(img_bgr)
+def threshold_image_numpy(input_image):
+    threshold_value = 255/2
+    if input_image != np.dtype(np.uint8):
+        raise TypeError('Expected uint8 typed nd array')
+
+    if input_image > threshold_value:
+        input_image = 255
+
+    cv2.imwrite("threshold_prophecy.png", input_image)
+    cv2.imshow("Threshold (numpy)", input_image)
+    cv2.waitKey()
+
+threshold_image_numpy(img_bgr)
+# threshold_image_manual(img_bgr)
