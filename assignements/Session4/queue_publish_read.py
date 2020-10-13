@@ -25,6 +25,3 @@ if flags.read:
     simple_queue_read.simple_queue_read(channel, connection)
 else:
     simple_queue_publish.simple_queue_publish(channel, connection)
-
-
-connection.close()
