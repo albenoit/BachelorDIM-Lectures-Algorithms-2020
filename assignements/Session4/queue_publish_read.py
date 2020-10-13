@@ -10,7 +10,7 @@ import pika
 import os 
 import argparse
 import simple_queue_read as reader
-import simple_queue_publish as publish
+import simple_queue_publish as publisher
 
 url = os.environ.get('CLOUDAMQP_url', config.keyAMQP)
 params = pika.URLParameters(url)
@@ -29,14 +29,7 @@ def callback(ch, method, properties, body):
     print(" [X] Received %r" %body)
 
 if FLAGS.read:
-    channel.basic_consume(queue='hello', 
-                          on_message_callback=callback,
-                          auto_ack=True)
-    channel.start_consuming()
+    reader.consume()
 else:
-    channel.basic_publish(exchange='', 
-                          routing_key='hello',
-                          body='Hello World')
-    print(" [X] Sent 'Hello World!'")
-    connection.close()
+    publisher.publish()
     

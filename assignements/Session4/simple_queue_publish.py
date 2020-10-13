@@ -22,4 +22,4 @@ def publish():
                           routing_key='hello',
                           body='Hello World')
     print(" [X] Sent 'Hello World!'")
-connection.close()
+    connection.close()
