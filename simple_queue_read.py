@@ -1,7 +1,7 @@
 import pika
 import os
 import config
-
+counter = 0
 amqp_url=config.AMQP_URL
 url = os.environ.get('CLOUDAMQP_URL',amqp_url)
 params = pika.URLParameters(url)
@@ -10,6 +10,8 @@ connection = pika.BlockingConnection(params) # Connect to CloudAMQP
 channel = connection.channel() 
 
 def callback(ch, method, properties, body):
+    global counter
+    counter+=1
     print(' [X] Received %r' % body)
 channel.basic_publish(exchange='',
                       routing_key='hello',
