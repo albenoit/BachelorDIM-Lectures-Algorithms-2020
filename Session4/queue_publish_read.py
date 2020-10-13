@@ -17,14 +17,22 @@ count = 0
 Function which publish a message to amqp
 @param str message, the message which it publish
 '''
-def publish(message):
+def publish(message,conq):
     connection = pika.BlockingConnection(pika.URLParameters(amqpurl))
     channel = connection.channel()
     channel.queue_declare(queue='hello')
-
-    channel.basic_publish(exchange='',
-                      routing_key='hello',
-                      body=message)
+    
+    if(conq):
+      channel.basic_publish(exchange='',
+                  routing_key='hello',
+                  body=message,
+                  properties = pika.BasicProperties(delivery_mode = 2))
+      print("concurrency")
+    else:
+        channel.basic_publish(exchange='',
+                          routing_key='hello',
+                          body=message)
+        
     print(" [x] Sent 'Hello World!'")
     connection.close()
 
@@ -57,9 +65,10 @@ def read():
 parser = argparse.ArgumentParser(description= "How to")
 parser.add_argument('-read', action='store_true')
 parser.add_argument('-m')
+parser.add_argument('-concurrency', action='store_true')
 FLAGS = parser.parse_args()
 
 if(FLAGS.read):
     read()
 else:
-    publish(FLAGS.m)
+    publish(FLAGS.m, FLAGS.concurrency)
