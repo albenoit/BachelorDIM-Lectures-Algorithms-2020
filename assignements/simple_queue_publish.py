@@ -7,6 +7,8 @@ connection = pika.BlockingConnection(pika.URLParameters(AMQP_url))
 channel = connection.channel()
 channel.queue_declare(queue='presentation')
 
-channel.basic_publish(exchange='', routing_key='presentation', body='Hello World !')
-print(" [x] Sent 'Hello World!'")
+body = 'Coucou'
+
+channel.basic_publish(exchange='', routing_key='presentation', body=body)
+print("[SEND] Sent:", body)
 connection.close()
