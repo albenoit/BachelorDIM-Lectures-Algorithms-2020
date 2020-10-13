@@ -1,1 +1,0 @@
-amqpkey = 'amqps://eyxtwyzy:2SxgrjAJDRehfNWfQskuF_kPeLFprzFA@chinook.rmq.cloudamqp.com/eyxtwyzy'
