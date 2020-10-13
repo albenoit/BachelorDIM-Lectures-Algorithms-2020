@@ -29,9 +29,9 @@ channel.queue_declare(queue='hello')
 
 #Test pour savoir le type d'exucution à effectuer
 if flags.read:
-    simple_queue_read.read_queue(channel, connection)
+    simple_queue_read.read_queue(channel)
 else:
-    simple_queue_publish.publish_queue(channel, connection)
+    simple_queue_publish.publish_queue(channel)
     
 
 connection.close()
