@@ -21,7 +21,7 @@ def publish_queue():
                           routing_key='hello',
                           body='Hello CloudAMQP!')
     print (" [x] Sent 'Hello World'")
-    connection.close()
+ 
     
 def read_queue():
     def callback(ch, method, properties, body):
@@ -33,7 +33,7 @@ def read_queue():
     
     print(' [*] Waiting for messages:')
     channel.start_consuming()
-    connection.close()
+  
 
 
 parser = argparse.ArgumentParser(description='How to')
