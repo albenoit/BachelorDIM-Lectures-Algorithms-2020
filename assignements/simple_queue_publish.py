@@ -5,9 +5,19 @@ Created on Tue Oct 13 13:53:05 2020
 @author: cuvellin
 """
 
-
+count_publish = 0
 def publish(channel):
+    '''
+    publish and show the message write in the body params with incremental number
+    
+    Parameters:
+        channel
+    Return:
+        void
+    '''
+    global count_publish
+    count_publish += 1 
     channel.basic_publish(exchange='',
                           routing_key='hello',
                           body='Hello Word!')
-    print(" [x] Sent 'Hello World !'")
+    print(" [" + str(count_publish) + "] Sent 'Hello World !'")
