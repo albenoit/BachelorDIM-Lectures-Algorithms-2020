@@ -12,10 +12,13 @@ AMQP_URL = mykeys.cloudamplink
 
 connection = pika.BlockingConnection(pika.URLParameters(AMQP_URL))
 channel = connection.channel()
-channel.queue_declare(queue='hello')
+channel.queue_declare(queue='presentation’')
 
 channel.basic_publish(exchange='',
-                     routing_key='hello',
+                     routing_key='presentation’',
                      body='Hello World!')
-print("[x] Sent 'Hello World!")
+print("[Antoine_le_bg] salut la pleb")
 connection.close()
+
+
+
