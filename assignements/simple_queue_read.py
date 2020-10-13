@@ -1,6 +1,7 @@
 import pika
+import mykeys
 
-connection = pika.BlockingConnection(pika.ConnectionParameters(host='localhost'))
+connection = pika.BlockingConnection(pika.URLParameters(mykeys.cloudamqplink))
 channel = connection.channel()
 channel.queue_declare(queue='hellothere')
 
