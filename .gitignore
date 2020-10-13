@@ -2,5 +2,5 @@
 assignements/Session4/config.py
 
 #Ignore le cache 
-assignements/__pycache__
-assignements/.pycache_cache
+assignements/__pycache__/
+assignements/.pycache_cache/
