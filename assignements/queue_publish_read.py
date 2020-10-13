@@ -11,6 +11,11 @@ parser.add_argument("-read", action='store_true')
 FLAGS = parser.parse_args()
 
 def read():
+    '''
+    Get to read all the incoming data of the hellothere queue.
+
+    :return: no returns.
+    '''
     count = 0
     def callback(ch, method, properties, body):
         global count
@@ -24,11 +29,17 @@ def read():
     channel.start_consuming()
 
 def publish():
+    '''
+    Connect to the hellothere route and publish "Hello World" to the RabbitMQ service.
+
+    :return: no returns.
+    '''
     channel.basic_publish(exchange='',
                           routing_key='hellothere',
                           body='Hello World!')
     print(" [x] Sent 'Hello World!'")
     connection.close()
+
 
 if FLAGS.read:
     read()
