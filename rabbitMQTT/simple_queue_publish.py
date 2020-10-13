@@ -17,11 +17,16 @@ params.socket_timeout = 5
 
 connection = pika.BlockingConnection(params) # Connect to CloudAMQPchannel = connection.channel()
 channel = connection.channel()
-channel.queue_declare(queue='hello')
-channel.basic_publish(exchange='',
-                      routing_key='hello',
-                      body='Hello World!')
-print(" [X] Sent 'Hello World!'")
+nomMessage = "MonMessage"
+#corpsmessage = input('Entrez un message : ')
+corpsmessage = 'TestMessage'
+channel.queue_declare(queue=nomMessage)
+
+for i in range(1,10) :
+    channel.basic_publish(exchange='',
+                          routing_key=nomMessage,
+                          body=corpsmessage)
+    print(" [X] Sent " + corpsmessage)
 
 
 connection.close()
