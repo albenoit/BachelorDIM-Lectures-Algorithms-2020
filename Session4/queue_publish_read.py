@@ -13,6 +13,10 @@ amqpurl = mykeys.cloudamqplink
 
 count = 0
 
+'''
+Function which publish a message to amqp
+@param str message, the message which it publish
+'''
 def publish(message):
     connection = pika.BlockingConnection(pika.URLParameters(amqpurl))
     channel = connection.channel()
@@ -23,13 +27,19 @@ def publish(message):
                       body=message)
     print(" [x] Sent 'Hello World!'")
     connection.close()
-  
+
+'''
+Function which display a message from the queue
+'''
 def callback(ch, method, properties, body):
     print (" [x] Received %r" % body)
     global count
     count+=1
     print ('message lu : ', count)
     
+'''
+Function which is going to read every messages in queue
+'''
 def read():    
     connection = pika.BlockingConnection(pika.URLParameters(amqpurl))
     channel = connection.channel()
