@@ -35,4 +35,3 @@ else:
     simple_queue_publish.simple_queue_publish(channel, connection)
 
 
-connection.close()
