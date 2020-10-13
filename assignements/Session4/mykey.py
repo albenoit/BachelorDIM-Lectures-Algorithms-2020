@@ -1,1 +1,0 @@
-cloudlink = 'amqps://goirowzr:vebWIgKsqap5N1-OkK-6AGvn1sWeJX3s@kangaroo.rmq.cloudamqp.com/goirowzr'
