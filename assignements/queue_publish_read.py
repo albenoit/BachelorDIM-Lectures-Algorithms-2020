@@ -10,7 +10,7 @@ import pika
 
 count = 0
         
-def publish(message):
+def publish(message,concurencebool):
     """
     this function upload a message on a queue 
     Params:
@@ -23,10 +23,17 @@ def publish(message):
     connection = pika.BlockingConnection(pika.URLParameters(connec_string))
     channel=connection.channel()
     channel.queue_declare(queue='hello')
-    channel.basic_publish(exchange='',
+    if concurencebool :
+         channel.basic_publish(exchange='',
                           routing_key='hello',
-                          body=str(message))
-    print("[x] Sent 'Hello World'")
+                          body=str(message),
+                          properties=pika.BasicProperties(delivery_mode=2))
+         print("la concu est dure ")
+    else:
+        channel.basic_publish(exchange='',
+                              routing_key='hello',
+                              body=str(message))
+    print("[x] Sent "+str(message))
     connection.close()
 
 def read():
@@ -58,8 +65,9 @@ def read():
 parser = argparse.ArgumentParser()
 parser.add_argument('-read', action='store_true')
 parser.add_argument('-m')
+parser.add_argument('-concurrency', action='store_true')
 args = parser.parse_args()
 if args.read :
     read()
 else:
-    publish(args.m)
+    publish(args.m,args.concurrency)
