@@ -12,10 +12,10 @@ channel.queue_declare(queue='hello1')
 
 def callback(ch,method, properties, body):
     print("[X] recevied %r" %body)
+    print("[X] message processed, acknowledging (to delete message from the queue)")
+    ch.basic_ack(delivery_tag=method.delivery_tag)
 
-
-channel.basic_consume(queue='hello1', on_message_callback=callback, auto_ack=True)
-    
-print("[X] waiting for message. to exit press CTRL+C")
-
-channel.start_consuming()
+def consume():
+    channel.basic_consume(queue='hello1', on_message_callback=callback, auto_ack=True) 
+    print("[X] waiting for message. to exit press CTRL+C")
+    channel.start_consuming()
