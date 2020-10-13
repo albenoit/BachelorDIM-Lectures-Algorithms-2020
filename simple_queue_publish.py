@@ -12,5 +12,3 @@ channel.queue_declare(queue='hello')
 channel.basic_publish(exchange='',
                       routing_key='hello',
                       body="Hello World")
-def callback(ch, method, properties, body):
-    print(" [x] Received %r" % body)
