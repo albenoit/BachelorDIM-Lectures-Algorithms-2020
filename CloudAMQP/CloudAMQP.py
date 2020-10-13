@@ -2,7 +2,6 @@ import pika
 import os
 import keys
 
-print(keys.amqpkey)
 url = os.environ.get('CLOUDAMQP_URL', keys.amqpkey)
 params = pika.URLParameters(url)
 params.socket_timeout = 5
