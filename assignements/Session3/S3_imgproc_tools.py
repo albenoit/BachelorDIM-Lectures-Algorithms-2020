@@ -99,7 +99,7 @@ def threshold_image_manual(img):
     for row in range (img.shape[0]):
         for col in range (img.shape[1]):
             for channel in range (img.shape[2]):
-                if (img[row,col,channel] <=200):
+                if (img[row,col,channel] <=254):
                     img_out[row,col,channel]=0
                 else:
                     img_out[row,col,0]=255
