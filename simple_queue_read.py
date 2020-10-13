@@ -12,10 +12,7 @@ channel = connection.channel()
 def callback(ch, method, properties, body):
     global counter
     counter+=1
-    print(' [X] Received %r' % body)
-channel.basic_publish(exchange='',
-                      routing_key='hello',
-                      body="Hello World")
+    print(' ['+str(counter)+'] Received %r' % body)
 channel.basic_consume(queue='hello',
                       on_message_callback=callback,
                       auto_ack=True)
