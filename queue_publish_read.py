@@ -25,7 +25,7 @@ def publish_queue():
     
 def read_queue():
     def callback(ch, method, properties, body):
-      print(" [x] Received " + str(body))
+      print("["+str(method.delivery_tag) + "]Received " + str(body))
     
     channel.basic_consume('hello',
                           callback,
