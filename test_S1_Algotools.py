@@ -6,6 +6,7 @@ Created on Wed Sep 16 15:11:11 2020
 """
 import numpy as np
 import S1_algotools as S1
+from copy import deepcopy
 
 #---------------------------Global var
 
@@ -48,6 +49,8 @@ def test_random_array_filling():
 #---------------------------test_random_array_filling
 def test_remove_whitespace():  
     assert S1.remove_whitespace("te     s t") == "test"
-#---------------------------test_roi_bbox 
-    
+#---------------------------test_shuffle
+def test_shuffle():  
+    copieMyTestTable = deepcopy(myTestTab)
+    assert S1.shuffle(myTestTab) !=  copieMyTestTable 
     
