@@ -25,7 +25,7 @@ if FLAGS.concurrency:
     properties = pika.BasicProperties(delivery_mode=2)
 
 if FLAGS.read:
-    channel.basic_consume(queue=QUEUE, on_message_callback=callback, auto_ack=True)
+    channel.basic_consume(queue=QUEUE, on_message_callback=callback)
     channel.start_consuming()
 else:
     channel.basic_publish(exchange='', routing_key=QUEUE, body=body, properties=properties)
