@@ -17,7 +17,7 @@ params = pika.URLParameters(url)
 params.socket_timeout = 5
 
 
-connection = pika.BlockingConnection(params)
+baba = pika.BlockingConnection(params)
 channel = connection.channel()
 
 ## CONCURRENCY 
