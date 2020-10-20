@@ -20,12 +20,22 @@ connection = pika.BlockingConnection(params) # Connect to CloudAMQPchannel = con
 channel = connection.channel()
 channel.queue_declare(queue='MonMessage')
 
+#Reception
+counter = 0
+
 def callback(ch, method, properties,body) :
-    print("[X] Received %r" %body)
+    global counter
+    counter = counter + 1
+    print(" [X] Received %r" %body + "il y a eu %r messages" %counter)
+    
+    print("[X] Message Processed, acknoledging(to delete message from queue)")
+    ch.basic_ack(delivery_tag = method.delivery_tag)
     
 channel.basic_consume(queue='MonMessage',
                       on_message_callback=callback,
-                      auto_ack=True)
-print(' [*] Waiting for messages. To Exit press CTRL + C')
+                      auto_ack=False)
+
+#print(' [*] Waiting for messages. To Exit press CTRL + C')
+
 channel.start_consuming()
 connection.close()

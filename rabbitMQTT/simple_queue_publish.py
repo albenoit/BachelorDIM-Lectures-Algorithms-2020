@@ -25,7 +25,9 @@ channel.queue_declare(queue=nomMessage)
 for i in range(1,10) :
     channel.basic_publish(exchange='',
                           routing_key=nomMessage,
-                          body=corpsmessage)
+                          body=corpsmessage,
+                          properties=pika.BasicProperties(delivery_mode = 2,) # make message persistent
+                        )
     print(" [X] Sent " + corpsmessage)
 
 

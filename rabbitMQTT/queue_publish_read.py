@@ -3,12 +3,21 @@
 import pika
 import os
 import config
+import argparse
+
 
 """
 Created on Tue Oct 13 13:55:37 2020
 
 @author: fuchsca
 """
+
+parser = argparse.ArgumentParser(description = 'How to')
+parser.addArgument('-read',action='state_true()')
+FLAGS = parser.parse-flags()
+
+
+
 #Connecting
 
 url = os.environ.get('CLOUDAMQP_URL',config.amqp_url)
