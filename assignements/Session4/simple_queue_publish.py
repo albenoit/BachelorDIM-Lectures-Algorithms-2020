@@ -20,8 +20,6 @@ channel = connection.channel()
 import pika 
 
 def publish(channel, queueName, connection):
-    channel.exchange_declare(exchange='logs', 
-                             exchange_type='fanout')
     channel.basic_publish(exchange='logs', 
                           routing_key='',
                           body='Hello World',

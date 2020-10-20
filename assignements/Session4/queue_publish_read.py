@@ -15,7 +15,7 @@ import simple_queue_publish as publisher
 url = os.environ.get('CLOUDAMQP_url', config.keyAMQP)
 params = pika.URLParameters(url)
 params.socket_timeout = 5
-
+connection = pika.BlockingConnection(pika.URLParameters(config.keyAMQP))
 
 baba = pika.BlockingConnection(params)
 channel = connection.channel()
@@ -29,8 +29,13 @@ channel = connection.channel()
 
 #PUBLISHER
 result = channel.queue_declare(queue='', exclusive=True)
-queueName = 'hello1'
+#queueName = 'hello1'
 
+
+channel.exchange_declare(exchange='logs',
+                         exchange_type='fanout')
+result = channel.queue_declare(queue='', exclusive=True)
+queueName = result.method.queue
 channel.queue_bind(exchange='logs',
                    queue=queueName)
 
