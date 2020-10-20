@@ -4,6 +4,7 @@ import pika
 import os
 import config
 
+
 """
 Created on Tue Oct 13 13:47:56 2020
 
@@ -13,14 +14,16 @@ Created on Tue Oct 13 13:47:56 2020
 
 url = os.environ.get('CLOUDAMQP_URL',config.amqp_url)
 params = pika.URLParameters(url)
-params.socket_timeout = 5
+params.socket_timeout = 600
 
 connection = pika.BlockingConnection(params) # Connect to CloudAMQPchannel = connection.channel()
 channel = connection.channel()
-nomMessage = "MonMessage"
+nomMessage = "task_queue"
 #corpsmessage = input('Entrez un message : ')
 corpsmessage = 'TestMessage'
-channel.queue_declare(queue=nomMessage)
+channel.queue_declare(queue=nomMessage,durable =True)
+#channel.queue_declare(queue=nomMessage)
+
 
 for i in range(1,10) :
     channel.basic_publish(exchange='',
