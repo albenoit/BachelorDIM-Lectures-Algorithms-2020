@@ -172,7 +172,17 @@ def remove_whitespace(table: string) :
         
  return "".join(table) #reconversion en string
      
-
+def shuffle(list_in:list) :  
+   for i in range(len(list_in) -1,0,-1) :
+       maValeur = list_in[i]
+       
+       IndexEchange = randint(0,i)
+       ValeurEchange = list_in[IndexEchange]
+       
+       if IndexEchange != i:
+           list_in[i],list_in[IndexEchange] = ValeurEchange,maValeur
+   return list_in
+    
 maTable = [1,2,3,4]
 '''print(reverse_table(maTable))'''
 '''print(max_value(maTable))'''
@@ -187,5 +197,6 @@ maTable = [1,2,3,4]
 #maMatriceChar = np.zeros((10,10))
 #print(random_array_filling(maMatriceChar,10))
 
-print(remove_whitespace("te     s t"));
+#print(remove_whitespace("te     s t"));
+print(shuffle(maTable))
 

@@ -45,5 +45,9 @@ def test_random_array_filling():
 #---------------------------test_roi_bbox 
 '''def test_roi_bbox():'''
     
+#---------------------------test_random_array_filling
+def test_remove_whitespace():  
+    assert S1.remove_whitespace("te     s t") == "test"
+#---------------------------test_roi_bbox 
     
     
