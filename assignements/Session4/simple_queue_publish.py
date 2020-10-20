@@ -1,6 +1,7 @@
 import pika
 import config
 import os
+import time
 
 def simple_queue_publish(message, concurrency):
     '''
@@ -24,7 +25,7 @@ def simple_queue_publish(message, concurrency):
                             body=message)
     else :
         i = 0
-        while(i <= 50):
+        while(i <= 40):
             message = 'Message %r envoyé' % i
             channel.basic_publish(exchange='',
                             routing_key='presentation',
@@ -33,6 +34,8 @@ def simple_queue_publish(message, concurrency):
                                 delivery_mode=2, #make persistent message
                             ))
             i = i + 1
+            time.sleep(1)
+
 
     print(("  Sent %r" % message))
     connection.close()

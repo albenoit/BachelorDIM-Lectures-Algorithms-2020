@@ -18,6 +18,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument('-read','-r', action='store_true')
 parser.add_argument('-message', '-m', type=str)
 parser.add_argument('-concurrency', action='store_true')
+parser.add_argument('-sleep', action='store_true')
 
 args = parser.parse_args()
 
@@ -31,4 +32,4 @@ if args.read == False:
 else:
     print('Reader mode')
     print('Connexion in progress...')
-    read.simple_queue_read(concurrency = args.concurrency)
+    read.simple_queue_read(concurrency = args.concurrency, sleep = args.sleep)
