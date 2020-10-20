@@ -2,6 +2,17 @@ import argparse
 import pika
 import os
 import config, simple_queue_publish as publish, simple_queue_read as read
+import time
+
+'''
+    File to call read/publish method in console 
+    to publish and read some message with CLOUDAMPQ
+    Arguments:
+        -read: parameter to switch in reader mode
+        -message: parameter to add the message to publish in publish mode
+        -concurrency: parameter to set persitent mode in publish mode 
+                    and acknowledging in read mode
+    '''
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-read','-r', action='store_true')

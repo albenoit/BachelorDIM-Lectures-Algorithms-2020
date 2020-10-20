@@ -6,7 +6,8 @@ def simple_queue_publish(message, concurrency):
     '''
     Function to send message with CLOUDAMPQ
     Parameters :
-        message: the message to sent
+        message: the message to sent,
+        concurrency: parameter to set persistent message option
     '''
     #configuration
     url = os.environ.get('CLOUDAMQP_URL', config.amqp_url)
@@ -29,7 +30,7 @@ def simple_queue_publish(message, concurrency):
                             routing_key='presentation',
                             body=message,
                             properties=pika.BasicProperties(
-                                delivery_mode=2, #makepersistent message
+                                delivery_mode=2, #make persistent message
                             ))
             i = i + 1
 

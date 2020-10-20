@@ -8,6 +8,8 @@ def simple_queue_read(concurrency):
     '''
     Function to received and print in console 
     some message with CLOUDAMPQ
+    Parameters:
+        concurrency: parameter to set acknowledging
     '''
 
     #configuration
