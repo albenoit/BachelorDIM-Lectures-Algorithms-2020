@@ -18,6 +18,7 @@ def callback(ch, method, properties, body):
     global count_read
     count_read += 1
     print(" [" + str(count_read) +  "] Received " + str(body))
+    ch.basic_ack(delivery_tag=method.delivery_tag)
       
 
 def read(channel):
@@ -31,7 +32,7 @@ def read(channel):
     '''
     channel.basic_consume('hello',
                           callback,
-                          auto_ack=True)
+                          auto_ack=False)
     
     print(' [*] Waiting for messages:')
     channel.start_consuming()
