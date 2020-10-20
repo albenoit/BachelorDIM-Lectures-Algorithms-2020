@@ -8,7 +8,8 @@ Created on Wed Sep 15 14:39:41 2020
 import numpy as np
 from random import *
 
-def average_above_zero(table:list):
+
+def average_above_zero(table: list):
     """
     Fonction qui calcule la moyenne des valeurs d'un tableau donné, en 
     sélectionnant seulement les valeurs positives
@@ -22,16 +23,18 @@ def average_above_zero(table:list):
     tab_size = len(table)
     for x in range(0, tab_size):
         """Check if our value is positive"""
-        if table[x]>0:
+        if table[x] > 0:
             sum += table[x]
             n += 1
         else:
             raise Exception("Can't be below 0. The value of x was: {}".format(x))
-    average = sum/n
+    average = sum / n
     return average
 
-#print(average_above_zero([1, -2, 3]))
-    
+
+# print(average_above_zero([1, -2, 3]))
+
+
 """
 Q1 / Si on oublie l'initialisation de la variable on ne pourra pas l'utiliser 
 dans le for ensuite.
@@ -42,7 +45,8 @@ Q2 / Si toutes les variables sont en dessous de 0, on ne passe pas dans le if,
 et donc on essaye de faire une division par 0 ce qui renvoie une erreur.
 """
 
-def max_value(tab:list):
+
+def max_value(tab: list):
     """
     Fonction qui renvoie la valeur max d'un tableau ainsi que son index
     param:
@@ -55,9 +59,11 @@ def max_value(tab:list):
     max_var_index = tab.index(max_var)
     return max_var, max_var_index
 
-#print(max_value([1, 2, 3]))
 
-def reverse_table(tab:list):
+# print(max_value([1, 2, 3]))
+
+
+def reverse_table(tab: list):
     """
     Fonction qui inverse le tableau
     param:
@@ -65,13 +71,14 @@ def reverse_table(tab:list):
     returns:
         tab : tableau inversé
     """
-    tab=tab[::-1]
+    tab = tab[::-1]
     return tab;
 
-#print(reverse_table([1, 2, 3]))
 
-    
-def roi_bbox(input_image): 
+# print(reverse_table([1, 2, 3]))
+
+
+def roi_bbox(input_image):
     """
     Fonction qui encadre une zone définie de 1
     param:
@@ -80,27 +87,29 @@ def roi_bbox(input_image):
         z : coordonées de la forme encadrant les 1
     """
 
-    #Tableaux 
-    rows = np.where(input_image == 1)[0] #renvoie les coordonnées x des 1
-    cols = np.where(input_image == 1)[1] #renvoie les coordonnées y des 1
-    
-    #Each coordinates
+    # Tableaux
+    rows = np.where(input_image == 1)[0]  # renvoie les coordonnées x des 1
+    cols = np.where(input_image == 1)[1]  # renvoie les coordonnées y des 1
+
+    # Each coordinates
     left_up = [rows[0], cols[0]]
     left_down = [rows[-1], cols[0]]
     right_up = [rows[0], cols[-1]]
-    #-1 récupère la dernière valeur du tableau 
+    # -1 récupère la dernière valeur du tableau
     right_down = [rows[-1], cols[-1]]
-    
-    #Return
+
+    # Return
     z = ([left_up, right_up], [right_down, left_down])
     return z
-    
+
+
 rows = 5
 cols = 5
-input_image = np.zeros((rows, cols))   
-input_image[1:3,2:5] = np.ones((2, 3))
-#print(input_image)
+input_image = np.zeros((rows, cols))
+input_image[1:3, 2:5] = np.ones((2, 3))
+# print(input_image)
 print(roi_bbox(input_image))
+
 
 def alea(n):
     """
@@ -113,7 +122,8 @@ def alea(n):
     """
     return randint(0, n)
 
-def random_fill_sparse(tab, k:int):
+
+def random_fill_sparse(tab, k: int):
     """
     Fonction qui remplit un table de N*N avec des 'X' à des positions 
     aléatoires
@@ -124,21 +134,25 @@ def random_fill_sparse(tab, k:int):
         z : coordonées de la forme encadrant les 1
     """
     nbX = 0
-    while(nbX < k): 
-        row = tab[alea(len(tab)-1)]
-        random = alea(len(row)-1)
-        if(row[random] == "X"):
+    while nbX < k:
+        row = tab[alea(len(tab) - 1)]
+        random = alea(len(row) - 1)
+        if row[random] == "X":
             pass
         else:
             row[random] = "X"
             nbX += 1
     return tab
 
-tab = np.empty((5, 5), dtype=str)
-#print(tab)
-#print(random_fill_sparse(tab, 4))
 
-def remove_whitespace(string:str):
+tab = np.empty((5, 5), dtype=str)
+
+
+# print(tab)
+# print(random_fill_sparse(tab, 4))
+
+
+def remove_whitespace(string: str):
     """
     Fonction qui supprime les espaces dans une string
     param:
@@ -147,9 +161,13 @@ def remove_whitespace(string:str):
         string.replace : renvoie la phrase sans les espaces
     """
     return string.replace(' ', '')
-        
+
+
 string = "Coucou tout le monde"
-#print(remove_whitespace(string))
+
+
+# print(remove_whitespace(string))
+
 
 def shuffle(list_in):
     """
@@ -161,6 +179,7 @@ def shuffle(list_in):
     """
     return random.shuffle(list_in)
 
+
 '''     
 for a in range(2,5):
     for b in range(1, 3):
@@ -171,8 +190,3 @@ print(input_image)
 '''
 input_image[1:3,2:4] = np.ones((2, 3))
 '''
-
-
-
-  
-        
