@@ -21,7 +21,7 @@ Use argparse to add argument before execution
 '''
 parser = argp.ArgumentParser(description="How to")
 parser.add_argument('-read', action='store_true')
-parser.add_argument('-durable', action='store_true')
+parser.add_argument('-concurrency', action='store_true')
 flags = parser.parse_args()
 
 '''
@@ -36,20 +36,20 @@ connection = pika.BlockingConnection(params)
 Test type channel with argument
 '''
 channel = connection.channel()
-if flags.durable:
-    channel.queue_declare("task_queue", durable=True)
+if flags.concurrency:
+    queue = channel.queue_declare("task_queue", durable=True)
     channel.basic_qos(prefetch_count=1)
 else:
-    channel.queue_declare(queue='hello')
-
+    queue = channel.queue_declare(queue='hello')
+    #print(queue.method.queue)
 
 '''
 Test for argument
 '''
 if flags.read:
-    simple_queue_read.read_queue(channel)
+    simple_queue_read.read_queue(channel, queue.method.queue)
 else:
-    simple_queue_publish.publish_queue(channel)
+    simple_queue_publish.publish_queue(channel, queue.method.queue)
     
 
 connection.close()

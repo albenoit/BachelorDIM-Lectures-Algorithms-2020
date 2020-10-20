@@ -14,13 +14,14 @@ def callback(ch, method, properties, body):
     print(" [" + str(method.delivery_tag) + "] Received " + str(body))
 
 
-def read_queue(channel):
+def read_queue(channel, queueName:str):
     '''
     Read RabbitMQ Advanced Message Queuing with Pika
     Parameters:
             check official documentation : https://pika.readthedocs.io/en/stable/
+            queueName: str
     '''
-    channel.basic_consume('hello',
+    channel.basic_consume(queueName,
                       callback,
                       auto_ack=True)
 
