@@ -8,7 +8,9 @@ params.socket_timeout = 5
 
 connection = pika.BlockingConnection(params)
 channel = connection.channel()
-channel.queue_declare(queue='hello1')
+channel.queue_declare(queue='task_queue', durable=True)
+channel.basic_qos(prefetch_count=1)
+
 
 def callback(ch,method, properties, body):
     print("[X] recevied %r" %body)
