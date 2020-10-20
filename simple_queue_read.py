@@ -23,7 +23,7 @@ def read_queue(channel, queueName:str):
     '''
     channel.basic_consume(queueName,
                       callback,
-                      auto_ack=True)
+                      auto_ack=False)
 
     print(' [*] Waiting for messages:')
     channel.start_consuming()

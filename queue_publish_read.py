@@ -35,21 +35,26 @@ connection = pika.BlockingConnection(params)
 '''
 Test type channel with argument
 '''
+queueName = "task_queue"
+
 channel = connection.channel()
-if flags.concurrency:
-    queue = channel.queue_declare("task_queue", durable=True)
-    channel.basic_qos(prefetch_count=1)
+if flags.concurrency and flags.read:
+    channel.queue_declare(queue=queueName, durable=True)
+    channel.basic_qos(prefetch_count=10)
+elif flags.concurrency:
+    channel.queue_declare(queue=queueName, durable=True)
 else:
-    queue = channel.queue_declare(queue='hello')
+    channel.queue_declare(queue=queueName)
     #print(queue.method.queue)
 
 '''
 Test for argument
 '''
 if flags.read:
-    simple_queue_read.read_queue(channel, queue.method.queue)
+    simple_queue_read.read_queue(channel, queueName)
 else:
-    simple_queue_publish.publish_queue(channel, queue.method.queue)
+    for i in range(0, 100):
+        simple_queue_publish.publish_queue(channel, queueName)
     
 
 connection.close()
