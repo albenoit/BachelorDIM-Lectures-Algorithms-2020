@@ -22,14 +22,18 @@ channel = connection.channel()
 channel.queue_declare(queue='hello')
 
 parser = argparse.ArgumentParser(description="How to")
-parser.add_argument('-read', action='store_true')
+#parser.add_argument('-read', action='store_true')
+parser.add_argument('-concurrency', action='store_true')
 FLAGS = parser.parse_args()
 
 def callback(ch, method, properties, body):
     print(" [X] Received %r" %body)
 
-if FLAGS.read:
+#read correspond au add_argument
+if FLAGS.concurrency:
     reader.consume()
 else:
     publisher.publish()
+    
+
     
