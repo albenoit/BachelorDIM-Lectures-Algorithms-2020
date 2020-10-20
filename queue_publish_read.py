@@ -22,6 +22,7 @@ Use argparse to add argument before execution
 parser = argp.ArgumentParser(description="How to")
 parser.add_argument('-read', action='store_true')
 parser.add_argument('-concurrency', action='store_true')
+parser.add_argument('-sleep', action='store_true')
 flags = parser.parse_args()
 
 '''
@@ -51,7 +52,7 @@ else:
 Test for argument
 '''
 if flags.read:
-    simple_queue_read.read_queue(channel, queueName)
+    simple_queue_read.read_queue(channel, queueName, flags.sleep)
 else:
     for i in range(0, 100):
         simple_queue_publish.publish_queue(channel, queueName)
