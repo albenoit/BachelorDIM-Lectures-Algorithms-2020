@@ -3,6 +3,8 @@
 import pika
 import os
 import config
+import time
+
 
 """
 Created on Tue Oct 13 13:54:57 2020
@@ -27,7 +29,7 @@ def callback(ch, method, properties,body) :
     global counter
     counter = counter + 1
     print(" [X] Received %r" %body + "il y a eu %r messages" %counter)
-    
+    time.sleep(10);
     print("[X] Message Processed, acknoledging(to delete message from queue)")
     ch.basic_ack(delivery_tag = method.delivery_tag)
     
