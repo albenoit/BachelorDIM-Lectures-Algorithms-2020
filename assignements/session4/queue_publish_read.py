@@ -12,15 +12,19 @@ params.socket_timeout = 5
 
 connection = pika.BlockingConnection(params)
 channel = connection.channel()
-queueName='queueName'
-channel.queue_declare(queue=queueName, durable=True)
+#queueName='queueName'
+#channel.queue_declare(queue=queueName, durable=True)
+
+channel.exchange_declare(exchange='logs', exchange_type='fanout')
 
 
 parser=argparse.ArgumentParser(description="how to")
-parser.add_argument('-concurrency', action='store_true')
+parser.add_argument('-read', action='store_true')
 FLAGS=parser.parse_args()
 
-if FLAGS.concurrency :
-    reader.consume(queueName)
+if FLAGS.read :
+    reader.consume(queue_name)
 else:
-    publisher.publish(queueName)
+    publisher.publish(queue_name)
+    
+    
