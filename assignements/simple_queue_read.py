@@ -33,9 +33,10 @@ def callback (ch, method, properties, body):
     print("[x] Received %r" % body)
     global count
     count += 1
-    print("[x] Message Processed, acknowledging (o delete message from the queue)")
+    print("[x] Message Processed, acknowledging, nb message sent: "+str(count)+" (o delete message from the queue)")
 
 channel.basic_consume(queue='hello',
                       on_message_callback=callback,
                       auto_ack=True)
 channel.start_consuming()
+

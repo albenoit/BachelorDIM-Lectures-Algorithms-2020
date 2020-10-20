@@ -23,6 +23,10 @@ def publish(message,concurencebool):
     Params:
         message: a string that will be uploaded 
     """
+    
+    default_message="Hey"
+    if message != "" and message != None :
+        default_message = message
 
     connection = pika.BlockingConnection(params)
     channel=connection.channel()
@@ -30,14 +34,14 @@ def publish(message,concurencebool):
     if concurencebool :
          channel.basic_publish(exchange='',
                           routing_key='hello',
-                          body=str(message),
+                          body=str(default_message),
                           properties=pika.BasicProperties(delivery_mode=2))
          print("Pouet ")
     else:
         channel.basic_publish(exchange='',
                               routing_key='hello',
-                              body=str(message))
-    print("[x] Sent "+str(message))
+                              body=str(default_message))
+    print("[x] Sent "+str(default_message))
     connection.close()
 
 def read():
@@ -70,3 +74,6 @@ if args.read :
     read()
 else:
     publish(args.m,args.concurrency)
+    
+    
+    """ test """
