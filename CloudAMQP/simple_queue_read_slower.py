@@ -26,18 +26,16 @@ def callback(ch, method, properties, body):
     count = count + 1
     if args.concurrency:
         ch.queue_declare(queue='task_queue', durable=True)
-        ch.basic_ack(delivery_tag=method.delivery_tag)
+        ch.basic_ack(delivery_tag = method.delivery_tag)
         
     ch.basic_qos(prefetch_count=1)
     print(" [X] Received %r" % body)
     print("J'ai recu " + str(count) + " message(s)")
-    time.sleep(0.5)
+    time.sleep(2)
 
 channel.basic_consume(queue='presentation',
     on_message_callback=callback,
-    auto_ack=False,
-    exchange='logs',
-    exchange_type='fanout')
+    auto_ack=False)
 
 print(' [*] Waiting for messages. To exit press CTRL+C')
 channel.start_consuming()
