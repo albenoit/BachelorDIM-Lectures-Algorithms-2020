@@ -1,6 +1,7 @@
 from random import *
 import numpy as np
 import string
+from copy import deepcopy
 '''
 a=1
 b='e'+a
@@ -173,6 +174,7 @@ def remove_whitespace(table: string) :
  return "".join(table) #reconversion en string
      
 def shuffle(list_in:list) :  
+    #Fisher-Yates
    for i in range(len(list_in) -1,0,-1) :
        maValeur = list_in[i]
        
@@ -198,5 +200,9 @@ maTable = [1,2,3,4]
 #print(random_array_filling(maMatriceChar,10))
 
 #print(remove_whitespace("te     s t"));
-print(shuffle(maTable))
+
+copiemaTable = deepcopy(maTable)
+if(shuffle(maTable) != copiemaTable):
+  print(shuffle(maTable))
+  print(copiemaTable)
 
