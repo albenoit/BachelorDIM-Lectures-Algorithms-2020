@@ -11,7 +11,7 @@ channel = connection.channel()
 queueName='queueName'
 channel.queue_declare(queue=queueName, durable=True)
 
-def publish():
+def publish(queueName):
     channel.basic_publish(exchange='', routing_key=queueName, body='hello world', properties=pika.BasicProperties(delivery_mode=2))
     print ("[x] sent hello world")
     connection.close()

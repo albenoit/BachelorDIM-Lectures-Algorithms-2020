@@ -23,4 +23,4 @@ FLAGS=parser.parse_args()
 if FLAGS.concurrency :
     reader.consume(queueName)
 else:
-    publisher.publish()
+    publisher.publish(queueName)
