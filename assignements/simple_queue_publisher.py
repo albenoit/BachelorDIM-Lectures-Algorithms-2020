@@ -1,17 +1,26 @@
 import mykeys
 import pika
 import os
+count=0
 
-url = os.environ.get('CLOUDAMQP_URL',mykeys.cloudamqplink)
-params = pika.URLParameters(url)
-params.socket_timeout = 5
-connection = pika.BlockingConnection(params)
+def simple_queue_publish(channel, connection,name_queue):
+    '''
+        publish all messages
+        Parameters:
+            channel, connection
+        Returns:
+            void
+        Raises:
+            no raise
+    '''
+    global count
+    count +=1
+    channel.basic_publish(exchange='',
+                          routing_key=name_queue,
+                          body='Hello World!',
+                          properties=pika.BasicProperties(
+                              delivery_mode = 2,
+                          ))
 
-channel = connection.channel()
-channel.queue_declare(queue='hello')
-
-channel.basic_publish(exchange='',
-                        routing_key='hello',
-                        body='Hello world!')
-
-print(" [x] Sent 'Hello World!'")
+    print(" [x] Sent 'Hello World!'")
+    connection.close()
