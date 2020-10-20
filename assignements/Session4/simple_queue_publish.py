@@ -19,17 +19,16 @@ def simple_queue_publish(message, concurrency):
     connection = pika.BlockingConnection(params)
     channel = connection.channel()
     channel.queue_declare(queue='presentation')
-    channel.exchange_declare(exchange='logs', exchange_type='fanout')
-
+    
     if(concurrency == False):
-        channel.basic_publish(exchange='logs',
+        channel.basic_publish(exchange='',
                             routing_key='presentation',
                             body=message)
     else :
         i = 0
         while(i <= 50):
             message = 'Message %r envoyé' % i
-            channel.basic_publish(exchange='logs',
+            channel.basic_publish(exchange='',
                             routing_key='presentation',
                             body=message,
                             properties=pika.BasicProperties(

@@ -4,10 +4,7 @@ import os
 import time
 
 '''
-Function to send message with CLOUDAMPQ
-Parameters :
-    message: the message to sent,
-    concurrency: parameter to set persistent message option
+Function to send message with fanout mode
 '''
 #configuration
 url = os.environ.get('CLOUDAMQP_URL', config.amqp_url)
@@ -17,7 +14,6 @@ params.socket_timeout = 5
 #connexion
 connection = pika.BlockingConnection(params)
 channel = connection.channel()
-channel.queue_declare(queue='presentation')
 channel.exchange_declare(exchange='posts', exchange_type='fanout')
 
 ti = 1
