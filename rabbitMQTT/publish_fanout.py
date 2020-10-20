@@ -1,4 +1,11 @@
 # -*- coding: utf-8 -*-
+"""
+Created on Tue Oct 20 11:53:22 2020
+
+@author: fuchsca
+"""
+
+# -*- coding: utf-8 -*-
 #!/usr/bin/en python
 import pika
 import os
@@ -22,14 +29,13 @@ channel = connection.channel()
 nomMessage = "task_queue"
 #corpsmessage = input('Entrez un message : ')
 corpsmessage = 'TestMessage'
-channel.queue_declare(queue=nomMessage,durable =True)
-#channel.queue_declare(queue=nomMessage)
 
+channel.exchange_declare(exchange='logs',exchange_type='fanout')
 
 for i in range(1,10) :
     
-    channel.basic_publish(exchange='',
-                          routing_key=nomMessage,
+    channel.basic_publish(exchange='logs',
+                          routing_key='',
                           body=corpsmessage,
                           properties=pika.BasicProperties(delivery_mode = 2,) # make message persistent
                         )

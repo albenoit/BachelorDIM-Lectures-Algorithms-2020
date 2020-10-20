@@ -12,11 +12,10 @@ Created on Tue Oct 13 13:55:37 2020
 @author: fuchsca
 """
 
-parser = argparse.ArgumentParser(description = 'How to')
-parser.add_argument('-read',action='state_true()')
-parser.add_argument('-concurrency');
+parser = argparse.ArgumentParser(description = 'Switch Mode Publish/Read')
+parser.add_argument('-read',action='store_true')
 FLAGS = parser.parse_args();
-print('flags');
+print(FLAGS);
 
 
 #Connecting
@@ -47,11 +46,14 @@ def callback(ch, method, properties,body) :
     counter = counter + 1
     
     print(" [X] Received %r" %body + "il y a eu %r messages" %counter)
-    
-channel.basic_consume(queue=nomMessage,
+  
+if FLAGS.read :
+    channel.basic_consume(queue=nomMessage,
                       on_message_callback=callback,
                       auto_ack=True)
-
+    print("il y a eu %r messages" %counter)
+    print(' [*] Waiting for messages. To Exit press CTRL + C')
+    channel.start_consuming()
 #res = channel.queue_declare(
 #        callback=on_callback,
 #        queue=nomMessage,
@@ -62,9 +64,7 @@ channel.basic_consume(queue=nomMessage,
 #
 #print ("Messages in queue %r" (res.method.message_count))
 
-print("il y a eu %r messages" %counter)
-print(' [*] Waiting for messages. To Exit press CTRL + C')
-channel.start_consuming()
+    
 
 connection.close()
 
