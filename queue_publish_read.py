@@ -10,6 +10,8 @@ import pika
 import os
 import simple_queue_publish
 import simple_queue_read
+import publish_fanout
+import read_fanout
 
 '''
 Use Python-decouple for .env file
@@ -23,6 +25,7 @@ parser = argp.ArgumentParser(description="How to")
 parser.add_argument('-read', action='store_true')
 parser.add_argument('-concurrency', action='store_true')
 parser.add_argument('-sleep', action='store_true')
+parser.add_argument('-fanout', action='store_true')
 flags = parser.parse_args()
 
 '''
@@ -39,11 +42,19 @@ Test type channel with argument
 queueName = "task_queue"
 
 channel = connection.channel()
+
 if flags.concurrency and flags.read:
     channel.queue_declare(queue=queueName, durable=True)
     channel.basic_qos(prefetch_count=10)
 elif flags.concurrency:
     channel.queue_declare(queue=queueName, durable=True)
+elif flags.fanout:
+    channel.exchange_declare(exchange='logs',
+                             exchange_type='fanout')
+    result = channel.queue_declare(exclusive=True)
+    queueName = result.method.queue
+    channel.queue_bind(exchange='logs',
+                       queue=queueName)
 else:
     channel.queue_declare(queue=queueName)
     #print(queue.method.queue)
@@ -52,10 +63,16 @@ else:
 Test for argument
 '''
 if flags.read:
-    simple_queue_read.read_queue(channel, queueName, flags.sleep)
+    if flags.fanout:
+        read_fanout.read_queue_fanout(channel, queueName, flags.sleep)
+    else:
+        simple_queue_read.read_queue(channel, queueName, flags.sleep)
 else:
-    for i in range(0, 100):
-        simple_queue_publish.publish_queue(channel, queueName)
+    if flags.fanout:
+        publish_fanout.publish_queue_fanout(channel)
+    else:
+        for i in range(0, 100):
+            simple_queue_publish.publish_queue(channel, queueName)
     
 
 connection.close()
