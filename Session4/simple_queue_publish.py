@@ -12,10 +12,12 @@ amqpurl = mykeys.cloudamqplink
 
 connection = pika.BlockingConnection(pika.URLParameters(amqpurl))
 channel = connection.channel()
-channel.queue_declare(queue='hello')
+channel.queue_declare(queue='myWorkingQueue', durable=True)
 
 channel.basic_publish(exchange='',
-                      routing_key='hello',
-                      body='Hello World! Bonjour tout le monde!')
+                      routing_key='myWorkingQueue',
+                      body='Hello World! Bonjour tout le monde!',
+                      properties = pika.BasicProperties(delivery_mode = 2))
+
 print(" [x] Sent 'Hello World!'")
 connection.close()
