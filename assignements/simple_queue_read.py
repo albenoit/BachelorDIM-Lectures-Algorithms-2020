@@ -22,10 +22,11 @@ def callback(ch,method,properties,body):
     global count
     count +=1
     print("number of received event : " + str(count))
+    ch.basic_ack(delivery_tag=method.delivery_tag)
     
 
 channel.basic_consume(queue='hello',
                       on_message_callback = callback,
-                      auto_ack=True)
+                      auto_ack=False)
 print(' [*] Waiting for messages. o exit press CTRL+C')
 channel.start_consuming()
