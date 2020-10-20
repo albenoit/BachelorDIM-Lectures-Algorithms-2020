@@ -19,16 +19,24 @@ params.socket_timeout = 5
 
 connection = pika.BlockingConnection(params)
 channel = connection.channel()
+
+## CONCURRENCY 
+channel = connection.channel()
+channel.queue_declare(queue='hello1', durable=True)
+channel.basic_qos(prefetch_count=1)
+
+#channel.exchange_declare(exchange='logs',
+#                         exchange_type='fanout')
+#result = channel.queue_declare(queue='', exclusive=True)
 queueName = 'hello1'
-channel.queue_declare(queue=queueName, durable=True)
+
+#channel.queue_bind(exchange='logs',
+#                   queue=queueName)
 
 parser = argparse.ArgumentParser(description="Persistent message")
-#parser.add_argument('-read', action='store_true')
 parser.add_argument('-concurrency', action='store_true')
+#parser.add_argument('-read', action='store_true')
 FLAGS = parser.parse_args()
-
-def callback(ch, method, properties, body):
-    print(" [X] Received %r" %body)
 
 #read correspond au add_argument
 if FLAGS.concurrency:

@@ -15,15 +15,14 @@ params.socket_timeout = 5
 
 connection = pika.BlockingConnection(pika.URLParameters(config.keyAMQP))
 channel = connection.channel()
-channel.queue_declare(queue='hello1', durable=True)
 
 
 def publish(queueName):
     #channel.exchange_declare(exchange='logs', 
-     #                        exchange_type='fanout')
+      #                       exchange_type='fanout')
     channel.basic_publish(exchange='', 
-                          routing_key=queueName,
-                          body='Hello World', 
+                          routing_key='hello1',
+                          body='Hello World',
                           properties=pika.BasicProperties(
                                   delivery_mode = 2 
                           ))

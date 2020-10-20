@@ -14,10 +14,7 @@ params = pika.URLParameters(url)
 params.socket_timeout = 5
 
 connection = pika.BlockingConnection(params)
-
 channel = connection.channel()
-channel.queue_declare(queue='hello1', durable=True)
-channel.basic_qos(prefetch_count=1)
 
 
 def callback(ch, method, properties, body):
@@ -28,7 +25,7 @@ def callback(ch, method, properties, body):
         
     
 def consume(queueName):
-    channel.basic_consume(queue=queueName, 
+    channel.basic_consume(queue=queueName,
                           on_message_callback=callback,
                           auto_ack=False)
     print(' [*] Waiting for messages. To exit press CTRL+C')
