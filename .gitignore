@@ -1,0 +1,12 @@
+#Ignorer le fichier config.py
+assignements/Session4/config.py
+
+#Ignore les caches
+assignements/__pycache__/
+assignements/.pycache_cache/
+
+assignements/Session1/__pycache__/
+assignements/Session1/.pycache_cache/
+
+assignements/Session4/__pycache__/
+assignements/Session4/.pycache_cache/
