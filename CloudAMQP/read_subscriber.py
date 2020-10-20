@@ -20,6 +20,12 @@ count = 0
 connection = pika.BlockingConnection(params)
 channel = connection.channel()
 channel.queue_declare(queue='presentation')
+channel.exchange_declare(exchange='posts', exchange_type='fanout')
+
+result = channel.queue_declare(queue='', exclusive=True)
+queue_name = result.method.queue
+
+channel.queue_bind(exchange='posts', queue=queue_name)
 
 def callback(ch, method, properties, body):
     global count
@@ -33,9 +39,7 @@ def callback(ch, method, properties, body):
     print("J'ai recu " + str(count) + " message(s)")
     time.sleep(0.5)
 
-channel.basic_consume(queue='presentation',
-    on_message_callback=callback,
-    auto_ack=False)
+channel.basic_consume(queue=queue_name, on_message_callback=callback, auto_ack=False)
 
 print(' [*] Waiting for messages. To exit press CTRL+C')
 channel.start_consuming()
