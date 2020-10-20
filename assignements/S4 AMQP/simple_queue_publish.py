@@ -5,16 +5,17 @@ Created on Tue Oct 13 14:03:45 2020
 @author: vibertvg
 """
 
-
-def simple_queue_publish(channel, connection): 
-    """
-    Function who write the messages and send it to queue
+   
+    
+def publish_queue(channel, queueName:str):
+    '''
+    Publish to RabbitMQ Advanced Message Queuing with Pika
     Parameters:
-        channel : channel to send
-        Connetion: connect to queue
-    Returns:
-        return sending message hello world
-    """
+            check official documentation : https://pika.readthedocs.io/en/stable/
+            queueName: str
+    '''
     channel.basic_publish(exchange='',
-                          routing_key='hello',
+                          routing_key=queueName,
                           body='Hello World!')
+    
+    print(" [x] Sent 'Hello World!'")

@@ -5,17 +5,14 @@ Created on Tue Oct 13 14:43:47 2020
 @author: vibertvg
 """
 
-from decouple import config 
+import mykey as mk
 import argparse as argp
 import pika
 import os
 import simple_queue_publish
 import simple_queue_read
 
-'''
-Use Python-decouple for .env file
-'''
-AMQP_URL = config('AMQP_URL')
+
 
 '''
 Use argparse to add argument before execution
@@ -28,7 +25,7 @@ flags = parser.parse_args()
 '''
 Connect params to cloudAMQP with Pika
 '''
-url = os.environ.get('CLOUDAMQP_URL', AMQP_URL)
+url = os.environ.get('CLOUDAMQP_URL',mk.cloudlink)
 params = pika.URLParameters(url)
 params.socket_timeout = 5
 connection = pika.BlockingConnection(params)

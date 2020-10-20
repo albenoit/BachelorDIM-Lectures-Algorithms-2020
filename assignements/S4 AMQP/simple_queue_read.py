@@ -4,33 +4,35 @@ Created on Tue Oct 13 14:14:44 2020
 
 @author: vibertvg
 """
-count = 0
+import time
+sleep = None
 
 def callback(ch, method, properties, body):
-  """
-  Function who write the messages recieved
-  Parameters:
-      body: message recieved
-  Returns:
-      return message recieved in print and the number of message recieved
-  """
-  print(" [x] Received " + str(body))
-  global count
-  count = count +1
-  print(count)
-
-
-def simple_queue_read(channel, connection):
-    """
-    Function who write the messages recieved
+    '''
+    Callback for read message
     Parameters:
-        body: message recieved
-    Returns:
-        return message recieved in print and the number of message recieved
-    """
-    channel.basic_consume('hello',
-                      on_message_callback=callback,
-                      auto_ack=True)
+            check official documentation : https://pika.readthedocs.io/en/stable/
+    '''
+    print(" [" + str(method.delivery_tag) + "] Received " + str(body))
+    if sleep:
+        time.sleep(2)
+
+
+def read_queue(channel, queueName:str, sleepValue:str):
+    '''
+    Read RabbitMQ Advanced Message Queuing with Pika
+    Parameters:
+            check official documentation : https://pika.readthedocs.io/en/stable/
+            queueName: str
+            sleep: str
+    '''
+    global sleep
+    if sleepValue:
+        sleep = True
+    channel.basic_consume(queueName,
+                      callback,
+                      auto_ack=False)
+
     print(' [*] Waiting for messages:')
     channel.start_consuming()
-    
+ 
