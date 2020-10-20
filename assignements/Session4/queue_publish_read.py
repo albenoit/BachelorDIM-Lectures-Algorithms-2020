@@ -22,13 +22,16 @@ channel = connection.channel()
 
 
 if flags.concurrency:
-    channel.queue_declare(queue='t  ',durable=True)
+    channel.exchange_declare(exchange='logs',
+                            exchange_type='fanout')
+    task = channel.queue_declare(queue='task_queue',durable=True)
     channel.basic_qos(prefetch_count=1)
-    simple_queue_publish.simple_queue_publish(channel, connection)
-#Test pour savoir le type d'exucution à effectuer
-elif flags.read:
-    channel.queue_declare(queue='hello')
-    simple_queue_read.simple_queue_read(channel, connection)
 else:
-    channel.queue_declare(queue='hello')
-    simple_queue_publish.simple_queue_publish(channel, connection)
+    task = channel.queue_declare(queue='hello')
+
+
+#Test pour savoir le type d'exucution à effectuer
+if flags.read:
+    simple_queue_read.simple_queue_read(channel, connection,task.method.queue)
+else:
+    simple_queue_publish.simple_queue_publish(channel, connection,task.method.queue)

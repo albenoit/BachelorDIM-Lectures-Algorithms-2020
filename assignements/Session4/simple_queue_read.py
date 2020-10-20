@@ -12,7 +12,7 @@ def callback(ch, method, properties, body):
   ch.basic_ack(delivery_tag = method.delivery_tag)
 
 
-def simple_queue_read(channel, connection):
+def simple_queue_read(channel, connection,name_queue):
   '''
         read all messages
         Parameters:
@@ -22,7 +22,7 @@ def simple_queue_read(channel, connection):
         Raises:
             no raise
   '''
-  channel.basic_consume('hello',
+  channel.basic_consume(name_queue,
                     on_message_callback=callback,
                     auto_ack=False)
   print(' [*] Waiting for messages:')

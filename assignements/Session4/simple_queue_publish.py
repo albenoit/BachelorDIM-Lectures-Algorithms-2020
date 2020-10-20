@@ -1,6 +1,6 @@
 import pika
-
-def simple_queue_publish(channel, connection):
+count=0
+def simple_queue_publish(channel, connection,name_queue):
     '''
         publish all messages
         Parameters:
@@ -10,10 +10,10 @@ def simple_queue_publish(channel, connection):
         Raises:
             no raise
     '''
-    #channel.exchange_declare(exchange='',
-    #                        exchange_type='fanout')
+    global count
+    count +=1
     channel.basic_publish(exchange='',
-                          routing_key='hello',
+                          routing_key=name_queue,
                           body='Hello World!',
                           properties=pika.BasicProperties(
                               delivery_mode = 2,
