@@ -10,6 +10,8 @@ def callback(ch, method, properties, body):
     global count
     count += 1
     print("Count: " + str(count) + " ; [x] Received %r" % body)
+    print(" [x] Message Processed, aknowledging (to delete message from the queue)")
+    channel.basic_ack(delivery_tag= method.delivery_tag)
 
 channel.basic_consume(queue='hellothere',
                       on_message_callback=callback,

@@ -32,7 +32,7 @@ def publishWithConcurrency():
                           routing_key='hellothere',
                           body='Hello World!',
                           properties=pika.BasicProperties(
-                              delivery_mode=2
+                              delivery_mode=2,
                           ))
     print(" [x] Sent 'Hello World!'")
     connection.close()
