@@ -13,9 +13,10 @@ Created on Tue Oct 13 13:55:37 2020
 """
 
 parser = argparse.ArgumentParser(description = 'How to')
-parser.addArgument('-read',action='state_true()')
-FLAGS = parser.parse-flags()
-
+parser.add_argument('-read',action='state_true()')
+parser.add_argument('-concurrency');
+FLAGS = parser.parse_args();
+print('flags');
 
 
 #Connecting

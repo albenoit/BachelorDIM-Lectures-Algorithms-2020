@@ -21,7 +21,12 @@ params.socket_timeout = 600
 connection = pika.BlockingConnection(params) # Connect to CloudAMQPchannel = connection.channel()
 channel = connection.channel()
 #channel.queue_declare(queue='MonMessage')
-channel.queue_declare(queue='task_queue',durable=True)
+#channel.queue_declare(queue='task_queue',durable=True)
+channel.exchange_declare(exchange='logs',exchange_type='fanout')
+result = channel.queue_declare(queue='',exclusive=True)
+queue_name = result.method.queue
+
+channel.queue_bind(exchange='logs',queue=queue_name)
 
 #Reception
 counter = 0
@@ -35,7 +40,7 @@ def callback(ch, method, properties,body) :
     ch.basic_ack(delivery_tag = method.delivery_tag)
  
 channel.basic_qos(prefetch_count=1)    
-channel.basic_consume(queue="task_queue",
+channel.basic_consume(queue=queue_name,
                       on_message_callback=callback
                       ,auto_ack=False
                       )
