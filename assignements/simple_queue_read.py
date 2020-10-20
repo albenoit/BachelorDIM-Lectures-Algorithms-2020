@@ -21,7 +21,7 @@ def callback(ch, method, properties, body):
     ch.basic_ack(delivery_tag=method.delivery_tag)
       
 
-def read(channel):
+def read(channel, queue_name: str):
     '''
     Read all new messages
     
@@ -30,7 +30,16 @@ def read(channel):
     Return:
         void
     '''
-    channel.basic_consume('hello',
+    if queue_name == 'task_queue':
+        channel.exchange_declare(exchange='logs',
+                             exchange_type='fanout')
+        result = channel.queue_declare(queue='', exclusive=True)
+        queue_name = result.method.queue
+        
+        channel.queue_bind(exchange='logs',
+                          queue=queue_name)
+    
+    channel.basic_consume(queue_name,
                           callback,
                           auto_ack=False)
     
