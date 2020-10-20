@@ -13,9 +13,10 @@ def callback(ch, method, properties, body):
     global counter
     counter+=1
     print(' ['+str(counter)+'] Received %r' % body)
+    channel.basic_ack(delivery_tag=method.delivery_tag)
 channel.basic_consume(queue='hello',
                       on_message_callback=callback,
-                      auto_ack=True)
+                      auto_ack=False)
 print(' [*] Waiting for messages. To exit press Ctrl+C')
 channel.start_consuming()
 connection.close()
