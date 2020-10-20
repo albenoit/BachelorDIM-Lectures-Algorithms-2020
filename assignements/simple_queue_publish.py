@@ -13,7 +13,7 @@ FLAGS = parser.parse_args()
 
 connection = pika.BlockingConnection(pika.URLParameters(mykeys.cloudamqplink))
 channel = connection.channel()
-channel.queue_declare(queue='hellothere')
+channel.queue_declare(queue='myWorkingQueue', durable=True)
 
 def publish():
     '''
@@ -22,14 +22,14 @@ def publish():
     :return: no returns.
     '''
     channel.basic_publish(exchange='',
-                          routing_key='hellothere',
+                          routing_key='myWorkingQueue',
                           body='Hello World!')
     print(" [x] Sent 'Hello World!'")
     connection.close()
 
 def publishWithConcurrency():
     channel.basic_publish(exchange='',
-                          routing_key='hellothere',
+                          routing_key='myWorkingQueue',
                           body='Hello World!',
                           properties=pika.BasicProperties(
                               delivery_mode=2,
