@@ -12,12 +12,16 @@ def simple_queue_publish(channel, connection,name_queue):
     '''
     global count
     count +=1
-    channel.basic_publish(exchange='',
+    if (name_queue == 'task_queue'):
+        exchange='logs'
+    else:
+        exchange=''
+    channel.basic_publish(exchange=exchange,
                           routing_key=name_queue,
                           body='Hello World!',
                           properties=pika.BasicProperties(
                               delivery_mode = 2,
                           ))
-
-    print(" [x] Sent 'Hello World!'")
+    
+    print(" [" + str(count) + "] Sent 'Hello World!'")
     connection.close()

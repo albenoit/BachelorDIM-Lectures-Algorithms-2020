@@ -22,8 +22,6 @@ channel = connection.channel()
 
 
 if flags.concurrency:
-    channel.exchange_declare(exchange='logs',
-                            exchange_type='fanout')
     task = channel.queue_declare(queue='task_queue',durable=True)
     channel.basic_qos(prefetch_count=1)
 else:
