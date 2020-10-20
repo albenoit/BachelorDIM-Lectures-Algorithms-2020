@@ -1,5 +1,6 @@
 from random import *
 import numpy as np
+import string
 '''
 a=1
 b='e'+a
@@ -157,19 +158,34 @@ def random_array_filling(table:np.array,k:int):
  
    
  return table
-  
+
+def remove_whitespace(table: string) :
+ table = list(table) #transformation string -> table
+ i = 0
+ k = len(table)
+ while i < k :
+     if (table[i] == " ") :
+           del table[i]
+           k = k -1
+           i = i -1
+     i = i +1
+        
+ return "".join(table) #reconversion en string
+     
 
 maTable = [1,2,3,4]
 '''print(reverse_table(maTable))'''
 '''print(max_value(maTable))'''
 '''print(average_above_zero(maTable))'''
 
-H = 12
-W = 10
-monImage = np.zeros((H,W))
-monImage[8:10,7:9] = np.ones((2,2))
-monImage[2:4,3:5] = np.ones((2,2))*2
-print(roi_bbox(monImage))
-'''maMatriceChar = np.zeros((10,10))'''
-'''print(random_array_filling(maMatriceChar,10))'''
+#H = 12
+#W = 10
+#monImage = np.zeros((H,W))
+#monImage[8:10,7:9] = np.ones((2,2))
+#monImage[2:4,3:5] = np.ones((2,2))*2
+'''print(roi_bbox(monImage))'''
+#maMatriceChar = np.zeros((10,10))
+#print(random_array_filling(maMatriceChar,10))
+
+print(remove_whitespace("te     s t"));
 
