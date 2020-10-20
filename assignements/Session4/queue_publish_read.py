@@ -12,6 +12,7 @@ import argparse
 import simple_queue_read as reader
 import simple_queue_publish as publisher
 
+#Connexion à Cloud AMQP
 url = os.environ.get('CLOUDAMQP_url', config.keyAMQP)
 params = pika.URLParameters(url)
 params.socket_timeout = 5
@@ -20,18 +21,16 @@ connection = pika.BlockingConnection(pika.URLParameters(config.keyAMQP))
 baba = pika.BlockingConnection(params)
 channel = connection.channel()
 
-## CONCURRENCY 
-#channel = connection.channel()
-#channel.queue_declare(queue='hello1', durable=True)
-#channel.basic_qos(prefetch_count=1)
+'''
+#Partie Concurrency
 
-##ONE MESSAGE TO MANY QUEUES
+channel.queue_declare(queue='hello1', durable=True)
+channel.basic_qos(prefetch_count=1)
+'''
 
-#PUBLISHER
-result = channel.queue_declare(queue='', exclusive=True)
 #queueName = 'hello1'
 
-
+##One messages to many queue
 channel.exchange_declare(exchange='logs',
                          exchange_type='fanout')
 result = channel.queue_declare(queue='', exclusive=True)
@@ -39,7 +38,7 @@ queueName = result.method.queue
 channel.queue_bind(exchange='logs',
                    queue=queueName)
 
-##ARGUMENTS
+##Arguments
 parser = argparse.ArgumentParser(description="Persistent message")
 #arser.add_argument('-concurrency', action='store_true')
 parser.add_argument('-read', action='store_true')
@@ -50,6 +49,7 @@ if FLAGS.read:
     reader.consume(channel, queueName)
 else:
     publisher.publish(channel, queueName, connection)
+
     
 
     

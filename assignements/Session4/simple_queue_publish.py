@@ -19,6 +19,11 @@ channel = connection.channel()
 """
 import pika 
 
+'''
+Fonction qui envoie un message à un exchange
+params : channel, queueName, connection 
+return : print le message envoyé 
+'''
 def publish(channel, queueName, connection):
     channel.basic_publish(exchange='logs', 
                           routing_key='',
@@ -28,3 +33,20 @@ def publish(channel, queueName, connection):
                           ))
     print(" [X] Sent 'Hello World!'")
     connection.close()
+
+'''
+Fonction qui envoie un message à une queue en divisant les tâches 
+params : channel, queueName, connection
+return : print le message envoyé
+'''
+'''
+def publish(channel, queueName, connection):
+    channel.basic_publish(exchange='logs',
+                          routing_key='',
+                          body='Hello World',
+                          properties=pika.BasicProperties(
+                              delivery_mode=2
+                          ))
+    print(" [X] Sent 'Hello World!'")
+    connection.close()
+'''
