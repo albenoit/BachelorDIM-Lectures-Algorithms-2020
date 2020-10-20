@@ -9,8 +9,8 @@ import numpy as np
 import cv2
 
 
-img_gray=cv2.imread('code.png',0) #load an image in gray levels
-img_bgr=cv2.imread('code.png',1) #load an image in Blue Green Red
+img_gray=cv2.imread('code.png', 0) #load an image in gray levels
+img_bgr=cv2.imread('code.png', 1) #load an image in Blue Green Red
 
 print("Gray levels image shape = "+str(img_gray.shape))
 print("BGR image shape = "+str(img_bgr.shape))
@@ -22,6 +22,13 @@ print("BGR image shape = "+str(img_bgr.shape))
 
 #Invert manual
 def invert_color_manual(input_img:np.ndarray):
+    '''
+    Invert color image manual
+    Parameters:
+            input_img: np.ndarray
+    Returns :
+        ndarray with image invert
+    '''
     output_img = np.zeros(input_img.shape, dtype=np.uint8)
     
     if input_img.dtype != np.dtype(np.uint8):
@@ -40,7 +47,13 @@ def invert_color_manual(input_img:np.ndarray):
 cv2.imshow("Invert image manual", img_invert)"""
 
 def invert_colors_numpy(input_img:np.ndarray):
-    
+    '''
+    Invert color image with numpy
+    Parameters:
+            input_img: np.ndarray
+    Returns :
+        np.array with image invert
+    '''
     if input_img.dtype != np.dtype(np.uint8):
         raise TypeError('not an uint8 nd array')
     
@@ -51,7 +64,13 @@ def invert_colors_numpy(input_img:np.ndarray):
 cv2.imshow("Invert image numpy", img_invert)"""
 
 def invert_colors_opencv(input_img:np.ndarray):
-    
+    '''
+    Invert color with opencv
+    Parameters:
+            input_img: np.ndarray
+    Returns :
+        array with image invert
+    '''
     if input_img.dtype != np.dtype(np.uint8):
         raise TypeError('not an uint8 nd array')
     
@@ -63,11 +82,25 @@ cv2.imshow("Invert image opencv", img_invert)"""
 
 
 def thresholding_manual(input_img:np.ndarray):
+    '''
+    Thresholding image manual
+    Parameters:
+            input_img: np.ndarray
+    Returns :
+        array with image thresholding
+    '''
     output_img = np.zeros(input_img.shape, dtype=np.uint8)
     
     return output_img
 
 def thresholding_numpy(input_img:np.ndarray):
+    '''
+    Thresholding image numpy
+    Parameters:
+            input_img: np.ndarray
+    Returns :
+        np.array with image thresholding
+    '''
     threshold_value = 128   
     return input_img>threshold_value
 

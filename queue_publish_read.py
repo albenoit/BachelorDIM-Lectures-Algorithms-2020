@@ -11,23 +11,41 @@ import os
 import simple_queue_publish
 import simple_queue_read
 
+'''
+Use Python-decouple for .env file
+'''
 AMQP_URL = config('AMQP_URL')
 
+'''
+Use argparse to add argument before execution
+'''
 parser = argp.ArgumentParser(description="How to")
 parser.add_argument('-read', action='store_true')
+parser.add_argument('-durable', action='store_true')
 flags = parser.parse_args()
 
-#flags.read = True
-
+'''
+Connect params to cloudAMQP with Pika
+'''
 url = os.environ.get('CLOUDAMQP_URL', AMQP_URL)
 params = pika.URLParameters(url)
 params.socket_timeout = 5
 connection = pika.BlockingConnection(params)
+
+'''
+Test type channel with argument
+'''
 channel = connection.channel()
-channel.queue_declare(queue='hello')
+if flags.durable:
+    channel.queue_declare("task_queue", durable=True)
+    channel.basic_qos(prefetch_count=1)
+else:
+    channel.queue_declare(queue='hello')
 
 
-#Test pour savoir le type d'exucution à effectuer
+'''
+Test for argument
+'''
 if flags.read:
     simple_queue_read.read_queue(channel)
 else:
