@@ -7,8 +7,10 @@ Created on Tue Oct 13 13:06:29 2020
 compteur = 0
 
 def callback(ch, method, properties, body):
-  print(" [x] Received " + str(body))
-  compteur+=1
+  global compteur
+  print(" [" + str(compteur) + "] Received " + str(body))
+  compteur = compteur + 1
+
 
 def read_queue(channel):
     channel.basic_consume('hello',

@@ -13,7 +13,7 @@ import simple_queue_read
 
 AMQP_URL = config('AMQP_URL')
 
-parser= argp.ArgumentParser(description="How to")
+parser = argp.ArgumentParser(description="How to")
 parser.add_argument('-read', action='store_true')
 flags = parser.parse_args()
 
