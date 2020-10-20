@@ -21,28 +21,30 @@ connection = pika.BlockingConnection(params)
 channel = connection.channel()
 
 ## CONCURRENCY 
-channel = connection.channel()
-channel.queue_declare(queue='hello1', durable=True)
-channel.basic_qos(prefetch_count=1)
+#channel = connection.channel()
+#channel.queue_declare(queue='hello1', durable=True)
+#channel.basic_qos(prefetch_count=1)
 
-#channel.exchange_declare(exchange='logs',
-#                         exchange_type='fanout')
-#result = channel.queue_declare(queue='', exclusive=True)
+##ONE MESSAGE TO MANY QUEUES
+
+#PUBLISHER
+result = channel.queue_declare(queue='', exclusive=True)
 queueName = 'hello1'
 
-#channel.queue_bind(exchange='logs',
-#                   queue=queueName)
+channel.queue_bind(exchange='logs',
+                   queue=queueName)
 
+##ARGUMENTS
 parser = argparse.ArgumentParser(description="Persistent message")
-parser.add_argument('-concurrency', action='store_true')
-#parser.add_argument('-read', action='store_true')
+#arser.add_argument('-concurrency', action='store_true')
+parser.add_argument('-read', action='store_true')
 FLAGS = parser.parse_args()
 
 #read correspond au add_argument
-if FLAGS.concurrency:
-    reader.consume(queueName)
+if FLAGS.read:
+    reader.consume(channel, queueName)
 else:
-    publisher.publish(queueName)
+    publisher.publish(channel, queueName, connection)
     
 
     

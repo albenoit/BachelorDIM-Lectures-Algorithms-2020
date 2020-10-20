@@ -4,10 +4,11 @@ Created on Tue Oct 13 13:48:25 2020
 
 @author: derbaghc
 """
-
+"""
 import config
 import pika
 import os
+
 
 url = os.environ.get('CLOUDAMQP_url', config.keyAMQP)
 params = pika.URLParameters(url)
@@ -15,7 +16,7 @@ params.socket_timeout = 5
 
 connection = pika.BlockingConnection(params)
 channel = connection.channel()
-
+"""
 
 def callback(ch, method, properties, body):
     print(" [X] Received %r" %body)
@@ -24,7 +25,7 @@ def callback(ch, method, properties, body):
     ch.basic_ack(delivery_tag = method.delivery_tag)
         
     
-def consume(queueName):
+def consume(channel, queueName):
     channel.basic_consume(queue=queueName,
                           on_message_callback=callback,
                           auto_ack=False)
