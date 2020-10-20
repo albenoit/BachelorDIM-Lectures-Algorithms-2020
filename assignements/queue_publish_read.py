@@ -25,16 +25,16 @@ def publish(message,concurencebool):
     
     connection = pika.BlockingConnection(pika.URLParameters(connec_string))
     channel=connection.channel()
-    channel.queue_declare(queue='hello')
+    channel.queue_declare(queue='gigadurable',durable=True)
     if concurencebool :
          channel.basic_publish(exchange='',
-                          routing_key='hello',
+                          routing_key='gigadurable',
                           body=str(messagetext),
                           properties=pika.BasicProperties(delivery_mode=2))
          print("la concu est dure ")
     else:
         channel.basic_publish(exchange='',
-                              routing_key='hello',
+                              routing_key='gigadurable',
                               body=str(messagetext))
     print("[x] Sent "+str(messagetext))
     connection.close()
@@ -49,7 +49,8 @@ def read(concurencebool):
     print(connec_string)
     connection = pika.BlockingConnection(pika.URLParameters(connec_string))
     channel=connection.channel()
-    channel.queue_declare(queue='hello')   
+    channel.queue_declare(queue='gigadurable',durable=True)  
+    channel.basic_qos(prefetch_count=1)
     if concurencebool:
         def callback(ch,method,properties,body):
             print(" [x] Received %r" % body)
@@ -57,7 +58,7 @@ def read(concurencebool):
             count +=1
             print("number of received event : " + str(count))
             ch.basic_ack(delivery_tag=method.delivery_tag)
-        channel.basic_consume(queue='hello',
+        channel.basic_consume(queue='gigadurable',
                           on_message_callback = callback,
                           auto_ack=False)
         
@@ -67,7 +68,7 @@ def read(concurencebool):
             global count
             count +=1
             print("number of received event : " + str(count))
-        channel.basic_consume(queue='hello',
+        channel.basic_consume(queue='gigadurable',
                           on_message_callback = callback,
                           auto_ack=True)
    

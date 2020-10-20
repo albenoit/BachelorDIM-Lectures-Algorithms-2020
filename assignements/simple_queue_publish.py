@@ -25,16 +25,16 @@ if message != "" and message != None :
 
 connection = pika.BlockingConnection(pika.URLParameters(connec_string))
 channel=connection.channel()
-channel.queue_declare(queue='hello')
+channel.queue_declare(queue='gigadurable',durable=True)
 if concurencebool :
      channel.basic_publish(exchange='',
-                      routing_key='hello',
+                      routing_key='gigadurable',
                       body=str(messagetext),
                       properties=pika.BasicProperties(delivery_mode=2))
      print("la concu est dure ")
 else:
     channel.basic_publish(exchange='',
-                          routing_key='hello',
+                          routing_key='gigadurable',
                           body=str(messagetext))
 print("[x] Sent "+str(messagetext))
 connection.close()

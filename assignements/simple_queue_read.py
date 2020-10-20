@@ -15,8 +15,8 @@ connec_string = f.read()
 print(connec_string)
 connection = pika.BlockingConnection(pika.URLParameters(connec_string))
 channel=connection.channel()
-channel.queue_declare(queue='hello')
-
+channel.queue_declare(queue='gigadurable',durable=True)
+channel.basic_qos(prefetch_count=1)
 def callback(ch,method,properties,body):
     print(" [x] Received %r" % body)
     global count
@@ -25,7 +25,7 @@ def callback(ch,method,properties,body):
     ch.basic_ack(delivery_tag=method.delivery_tag)
     
 
-channel.basic_consume(queue='hello',
+channel.basic_consume(queue='gigadurable',
                       on_message_callback = callback,
                       auto_ack=False)
 print(' [*] Waiting for messages. o exit press CTRL+C')
