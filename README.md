@@ -23,3 +23,7 @@ Evaluation will consist in continuous control and a mid term test.
 Evaluation will take into account your code quality and assignements coverage but also github pull request and commits naming conventions and code comments...
 
 Prefer better quality code, ready to be shared and enhanced by others, instead of too rapidly written code, unreadable, un-commented that people will throw to trash and completely rewrite !
+
+modification test :D
+
+[![Coverage Status](https://coveralls.io/repos/github/Antoine01100/BachelorDIM-Lectures-Algorithms-2020/badge.svg?branch=master)](https://coveralls.io/github/Antoine01100/BachelorDIM-Lectures-Algorithms-2020?branch=master)
