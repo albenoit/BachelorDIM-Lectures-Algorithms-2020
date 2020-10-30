@@ -15,6 +15,14 @@ print("BGR image", str(img_bgr.shape))
 # jusqu'a 128 = invert
 
 def invert_color_manual(input_img):
+    '''
+    Invert colors of a given image
+
+    Parameters:
+        input_img: the image you want to invert colors
+
+    Returns: the inverted colors image
+    '''
     if input_img is None:
         raise ValueError('expected an uint8 nd array')
     # if isinstance(input_img, np.ndarray()):
@@ -34,6 +42,14 @@ def invert_color_manual(input_img):
     return 255 - input_img
 
 def threshold_image_manual(input_img):
+    '''
+    Threshold the colors of a given image
+
+    Parameters:
+        input_img: the image you want to threshold colors
+
+    Returns: the threshold colors image
+    '''
     threshold_img = np.zeros(input_img.shape, dtype=np.uint8)
     threshold_value = 128
 

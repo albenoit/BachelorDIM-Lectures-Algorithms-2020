@@ -10,6 +10,12 @@ args = parser.parse_args()
 print(args.concurrency)
 
 def sendMessage(message = "Hello World"):
+    '''
+    Send message using MQTT
+
+    Parameters:
+        message: the message you want to send (default = "Hello World")
+    '''
     url = os.environ.get('CLOUDAMQP_URL', keys.amqpkey)
     params = pika.URLParameters(url)
     params.socket_timeout = 5
