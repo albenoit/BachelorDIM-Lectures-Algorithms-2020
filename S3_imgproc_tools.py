@@ -8,9 +8,9 @@ Created on Tue Sep 29 08:48:56 2020
 import cv2
 import numpy as np
 
-#img_gray=cv2.imread('fond-gris.jpg',0)
-#img_bgr=cv2.imread('voiture.jpg',1)
-img_8k=cv2.imread('8k.jpg',1)
+#img_gray=cv2.imread('images/fond-gris.jpg',0)
+#img_bgr=cv2.imread('images/voiture.jpg',1)
+img_8k=cv2.imread('images/8k.jpg',1)
 
 
 #print("Gray levels image shape ="+ str(img_gray.shape))
@@ -75,7 +75,7 @@ def threshold(img:np.ndarray):
     return img<threshold_value
 
     
-img = cv2.imread('voiture.jpg',1)
+img = cv2.imread('images/voiture.jpg',1)
 img_thresholded = threshold(img)
 img_thresholded_disp = img_thresholded.astype(np.uint8)*40
 cv2.imshow('seuille image',img_thresholded_disp)
