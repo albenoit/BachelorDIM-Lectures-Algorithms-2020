@@ -15,6 +15,8 @@ myTestMatriceChar = np.zeros((10,10))
 myImage = np.zeros((12,10))
 myImage[6:8,5:7] = np.ones((2,2))
 myImage[1:3,2:4] = np.ones((2,2))*2
+myTestSorting = [68,1,13,45]
+resultSorting = [1,13,45,68]
 
 #---------------------------
 
@@ -53,4 +55,12 @@ def test_remove_whitespace():
 def test_shuffle():  
     copieMyTestTable = deepcopy(myTestTab)
     assert S1.shuffle(myTestTab) !=  copieMyTestTable 
+#---------------------------test_Selective
+def test_sorting_selective():  
+    copieMyTestSorting = deepcopy(myTestSorting)
+    assert S1.sorting_selective(copieMyTestSorting) == resultSorting
+#---------------------------test_Bubble
+def test_sorting_bubble():  
+    copieMyTestSorting = deepcopy(myTestSorting)
+    assert S1.sorting_bubble(copieMyTestSorting) == resultSorting
     

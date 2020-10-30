@@ -184,7 +184,41 @@ def shuffle(list_in:list) :
        if IndexEchange != i:
            list_in[i],list_in[IndexEchange] = ValeurEchange,maValeur
    return list_in
+
+def sort_selective(list_in:list) :
+    for i in range(len(list_in)):
+       min = i
+       for j in range(i+1, len(list_in)):
+           if list_in[min] > list_in[j]:
+               min = j
+                
+       tmp = list_in[i]
+       list_in[i] = list_in[min]
+       list_in[min] = tmp
+    return list_in
+#b) oui c) 6 parcours du vecteurs [10, 15, 7, 1, 3, 3, 9] [1, 15, 7, 10, 3, 3, 9] [1, 3, 7, 10, 15, 3, 9] [1, 3, 3, 10, 15, 7, 9] [1, 3, 3, 7, 15, 10, 9] [1, 3, 3, 7, 9, 10, 15]
+#d)6 e) nombre de comparaison = taille vecteur * taille vecteur 
+#f) simple algorythm
+#g) 2500 comparaisons,10000,250 000
+
+def sort_bubble(list_in:list) :
+    n = len(list_in)
+    # Traverser tous les éléments du tableau
+    for i in range(n):
+        print(i)
+        for j in range(0, n-i-1):
+            # échanger si l'élément trouvé est plus grand que le suivant
+            if list_in[j] > list_in[j+1] :
+                print("permuté")
+                list_in[j], list_in[j+1] = list_in[j+1], list_in[j]
+    return list_in
+#b) oui c) 6 parcours du vecteurs [10, 15, 7, 1, 3, 3, 9] [10, 7, 15, 1, 3, 3, 9] 1 permutation [10, 7, 1, 15, 3, 3, 9] 1permutation [10, 7, 1, 15, 3, 3, 9] 1permutation deuxieme loop [7, 10, 1, 15, 3, 3, 9] 1 permutation [7, 1, 10, 15, 3, 3, 9] 1 permutation [7, 1, 10, 13, 15, 3, 9] 1 permutation  
+#d)7 e) 13
+#f) more complex
+   
     
+    
+maTable2 =[10, 15, 7, 1, 3, 3, 9]
 maTable = [1,2,3,4]
 '''print(reverse_table(maTable))'''
 '''print(max_value(maTable))'''
@@ -201,8 +235,13 @@ maTable = [1,2,3,4]
 
 #print(remove_whitespace("te     s t"));
 
-copiemaTable = deepcopy(maTable)
-if(shuffle(maTable) != copiemaTable):
-  print(shuffle(maTable))
-  print(copiemaTable)
+#copiemaTable = deepcopy(maTable)
+#if(shuffle(maTable) != copiemaTable):
+#  print(shuffle(maTable))
+#  print(copiemaTable)
+
+#print(sort_selective(maTable2))
+
+print(sort_bubble(maTable2))
+
 
