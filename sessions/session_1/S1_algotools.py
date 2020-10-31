@@ -8,7 +8,6 @@ Created on Tue Sep 15 14:44:40 2020
 import math;
 import numpy as np
 import random as rd
-import test_S2
 
 #------------------------------------------------------------------------#
 #------------------------------ EXERCISE 1 ------------------------------#
@@ -177,13 +176,14 @@ def remove_whitespace(sentence:str):
         Returns:
             returns 
     '''
-    return sentence.replace(" ", "");
+    return sentence.replace(" ", "")
 
 #------------------------------------------------------------------------#
 #------------------------------ EXERCISE 7 ------------------------------#
 #------------------------------------------------------------------------#
 
 def shuffle(list_in:list):
-    return list_in;
+    rd.shuffle(list_in)
+    return list_in
 
 stuff = ['Baptiste', 'Car', 'Cutecumber']
