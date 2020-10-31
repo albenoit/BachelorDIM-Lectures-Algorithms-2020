@@ -1,4 +1,4 @@
-[![Coverage Status](https://coveralls.io/repos/github/albenoit/BachelorDIM-Lectures-Algorithms-2020/badge.svg?branch=master)](https://coveralls.io/github/albenoit/BachelorDIM-Lectures-Algorithms-2020?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/BadTripHD/BachelorDIM-Lectures-Algorithms-2020/badge.svg?branch=master)](https://coveralls.io/github/BadTripHD/BachelorDIM-Lectures-Algorithms-2020?branch=master)
 
 # BachelorDIM-Lectures-Algorithms-2020
 Algorithms, code writing and continuous integration @ DIM Bachelor, Université Savoie Mont Blanc, France
@@ -23,3 +23,6 @@ Evaluation will consist in continuous control and a mid term test.
 Evaluation will take into account your code quality and assignements coverage but also github pull request and commits naming conventions and code comments...
 
 Prefer better quality code, ready to be shared and enhanced by others, instead of too rapidly written code, unreadable, un-commented that people will throw to trash and completely rewrite !
+
+
+Hello world !!
