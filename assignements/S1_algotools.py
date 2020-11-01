@@ -111,7 +111,7 @@ def reverse_table(tab):
     for i in range(listlen//2):
         tmp=tab[i]
         endid=listlen-i-1
-        tab[i] = tab [endid]
+        tab[i] = tab[endid]
         tab[endid]=tmp
     return tab
  
@@ -264,3 +264,55 @@ def shuffle(tab) :
 print(shuffle([1,2,3,4]))
 
 
+def sort_selective(list):
+    """
+    Questions
+        b: oui, ça dépend du contenu, plus il y aura d'éléments plus les étapes seront longues
+        c: autrant que le nombre d'items dans la liste
+        d: autant que d'items dans la liste
+        e:le nombre d'item dans la liste au carré
+        f: suite a la question précédente on peut sire que sa complexité est de n²
+
+    """
+    """
+    this function sort a list
+    params:
+        a list of numbers
+    returns: a list of sorted numbers
+
+    """
+    for item_index in range(len(list)):
+        minimum_index = item_index
+        for items_index in range(item_index, len(list)):
+            if list[items_index] < list[minimum_index]:
+                minimum_index = items_index
+        temp = list[minimum_index]
+        list[minimum_index] = list[item_index]
+        list[item_index] = temp
+    return list
+print(sort_selective([3,2,1,4,6]))
+
+def sort_bubble(list):
+    """
+    b oui car si les nombres ne sont pas à inverser on ne les intervertis pas
+    c  = 1 + 2 + 3 + 4 ... n-1
+    d  ça dépend de la liste de départ, si elle est déja dans le bon ordre, zéro
+    e autant que d'iterration
+    f n² aussi mais moins lourd que le sort_selective
+
+    """
+    """
+    this function sort a list
+    params:
+        a list of numbers
+    returns: a list of sorted numbers
+    """
+    for i in range(len(list)-1):
+        for item_index in range(i):
+            if list[item_index] > list[item_index+1]:
+                temp = list[item_index+1]
+                list[item_index+1] = list[item_index]
+                list[item_index] = temp
+    return list
+
+print(sort_bubble([3,2,1,4,6]))
