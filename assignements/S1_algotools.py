@@ -307,12 +307,12 @@ def sort_bubble(list):
         a list of numbers
     returns: a list of sorted numbers
     """
-    for i in range(len(list)-1):
-        for item_index in range(i):
-            if list[item_index] > list[item_index+1]:
-                temp = list[item_index+1]
-                list[item_index+1] = list[item_index]
-                list[item_index] = temp
+    for index in range(len(list) - 1, 0, -1):
+        for i in range(index):
+            if list[i] > list[i + 1]:
+                temp = list[i]
+                list[i] = list[i + 1]
+                list[i + 1] = temp
     return list
 
-print(sort_bubble([3,2,1,4,6]))
+print(sort_bubble([3,2,1,4,6,2]))

@@ -60,7 +60,11 @@ def test_random_fill_sparse_false():
 def test_remove_whitespace_phrase():
     assert S1.remove_whitespace("yomonbrocomment ça va")=="yomonbrocommentçava"
 
-def test_shuffle_():
+def test_shuffle():
     assert S1.shuffle([1,2,3,4,5,6,7,8,9,10,11,12]) != [1,2,3,4,5,6,7,8,9,10,11,12]
 
+def test_sort_selective():
+    assert S1.sort_selective([1,5,4,3,2]) == [1,2,3,4,5]
 
+def test_sort_bubble():
+    assert S1.sort_bubble([1,5,4,3,2]) == [1,2,3,4,5]
