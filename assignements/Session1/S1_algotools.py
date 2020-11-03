@@ -55,12 +55,22 @@ def max_value(tab: list):
         max_var : valeur max du tableau
         max_var_index : index de la valeur max du tableau
     """
+    """
+    version courte :
     max_var = max(tab)
     max_var_index = tab.index(max_var)
     return max_var, max_var_index
+    """
+    size = len(tab)
+    max_var = tab[0]
+    max_var_index = 0
+    for i in range(size):
+        if(tab[i] > max_var):
+            max_var = tab[i]
+            max_var_index = i
+    return max_var, max_var_index
 
-
-# print(max_value([1, 2, 3]))
+#print(max_value([1, 7, 3]))
 
 
 def reverse_table(tab: list):
@@ -70,12 +80,22 @@ def reverse_table(tab: list):
         tab : tableau donné par l'utilisateur
     returns:
         tab : tableau inversé
+
     """
+    """
+    méthode courte: 
     tab = tab[::-1]
     return tab;
+    """
+    size = len(tab)
+    for i in range(size//2):
+        tmp = tab[i]
+        last = (size-1) - i
+        tab[i] = tab[last]
+        tab[last] = tmp
+    return tab
 
-
-# print(reverse_table([1, 2, 3]))
+#print(reverse_table([1, 2, 3]))
 
 
 def roi_bbox(input_image):
@@ -108,7 +128,7 @@ cols = 5
 input_image = np.zeros((rows, cols))
 input_image[1:3, 2:5] = np.ones((2, 3))
 # print(input_image)
-print(roi_bbox(input_image))
+#print(roi_bbox(input_image))
 
 
 def alea(n):
