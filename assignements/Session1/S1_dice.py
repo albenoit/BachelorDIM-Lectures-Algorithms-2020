@@ -34,10 +34,10 @@ def shuffle(list_in:list, player_score, computer_score, tour):
                 print("Score joueur :" + str(player_score))
                 choice = input("Voulez-vous continuer ? y/n ")
 
-            print("Votre tour est fini. Score total : " + str(player_score))
             if (player_score >= 100):
                 print("Bravo, vous avez gagné ! Le jeu a duré " + str(tour) + " tours")
                 return
+            print("Votre tour est fini. Score total : " + str(player_score))
             tour += 1
         print("C'est au tour de l'ordinateur")
 
@@ -53,17 +53,14 @@ def shuffle(list_in:list, player_score, computer_score, tour):
             score = main.alea(6)
             print("Dé : " + str(score))
             computer_score += score
-        print("Le tour de l'ordinateur est fini. Score total : " + str(computer_score))
         if (computer_score >= 100):
-            print("La prochaine, vous gagnerez ! Le jeu a duré " + str(tour) + " tours")
+            print("La prochaine, vous gagnerez ! Le jeu a duré " + str(tour) + " tours et l'ordinateur a fait " + str(computer_score))
             return
+        print("Le tour de l'ordinateur est fini. Score total : " + str(computer_score))
         tour += 1
 
     print("C'est à votre tour")
     shuffle(list_in, player_score, computer_score, tour)
-
-
-
 
 
 print("Quel est votre nom ?")
