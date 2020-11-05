@@ -133,12 +133,14 @@ input_image[1:3, 2:5] = np.ones((2, 3))
 
 def alea(n):
     """
-    Fonction qui encadre une zone définie de 1
+    Fonction qui tire aléatoirement un chiffre en 0 et n
     param:
-        n : nombre de chiffres que l'on veut générer et max de la valeur (non 
-        incluse)
+        n : nombre max. On choisira aléatoirement un chiffre entre 0 et n
     returns:
-        z : coordonées de la forme encadrant les 1
+        nb : nombre aléatoire
+    """
+    """
+    version courte :
     """
     return randint(0, n)
 
@@ -193,7 +195,7 @@ def remove_whitespace(string: str):
 
 string = "Coucou tout le monde"
 
-print(remove_whitespace(string))
+#print(remove_whitespace(string))
 
 
 def shuffle(list_in):
@@ -217,7 +219,7 @@ def shuffle(list_in):
         list_in[i] = tmp
     return list_in
 
-print(shuffle([1, 2, 3, 4, 5, 6]))
+#print(shuffle([1, 2, 3, 4, 5, 6]))
 
 '''     
 for a in range(2,5):
