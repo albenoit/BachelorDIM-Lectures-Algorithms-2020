@@ -180,13 +180,20 @@ def remove_whitespace(string: str):
     returns:
         string.replace : renvoie la phrase sans les espaces
     """
+    """
+    version courte :
     return string.replace(' ', '')
-
+    """
+    res = ""
+    for spaces in string:
+        #si le caractère est différent d'un espace, on l'ajoute à notre réponse
+        if(spaces != " "):
+            res += spaces
+    return res
 
 string = "Coucou tout le monde"
 
-
-# print(remove_whitespace(string))
+print(remove_whitespace(string))
 
 
 def shuffle(list_in):
@@ -196,9 +203,21 @@ def shuffle(list_in):
         list_in : liste d'éléments
     returns:
         random.shuffle(list_in) : renvoie la liste mélangée aléatoirement
+        version longue : list_in -> renvoie la liste mélangée
     """
+    """
+    version courte :
     return random.shuffle(list_in)
+    """
+    size = len(list_in)
+    for i in range(size):
+        nb = alea(size-1)
+        tmp = list_in[nb]
+        list_in[nb] = list_in[i]
+        list_in[i] = tmp
+    return list_in
 
+print(shuffle([1, 2, 3, 4, 5, 6]))
 
 '''     
 for a in range(2,5):
