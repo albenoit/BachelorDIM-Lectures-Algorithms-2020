@@ -144,6 +144,14 @@ Expecting [-2,-3,5,6] from [5,-3,-2,6]
 '''
 def test_sort_selective_negativeValues():
     assert dice.sort_selective([5,-3,-2,6]) == [-2,-3,5,6]
+
+# ---- sort_bubble ----- #
+'''
+Test if the function order the list from input
+Expecting [1, 3, 3, 7, 9, 10, 15] from [10, 15, 7, 1, 3, 3, 9]
+'''
+def test_sort_bubble_Right():
+    assert dice.sort_bubble([10, 15, 7, 1, 3, 3, 9]) == [1, 3, 3, 7, 9, 10, 15]
             
             
             
