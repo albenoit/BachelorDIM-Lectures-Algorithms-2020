@@ -153,7 +153,12 @@ Expecting [1, 3, 3, 7, 9, 10, 15] from [10, 15, 7, 1, 3, 3, 9]
 def test_sort_bubble_Right():
     assert dice.sort_bubble([10, 15, 7, 1, 3, 3, 9]) == [1, 3, 3, 7, 9, 10, 15]
             
-            
+'''
+Test if the function order the list if the list contains only the same numbers
+Expecting [1,1,1,1,1] from [1,1,1,1,1]
+'''
+def test_sort_bubble_SameNumbers():
+    assert dice.sort_bubble([1,1,1,1,1]) == [1,1,1,1,1]            
             
             
             
