@@ -137,6 +137,13 @@ Expecting [1,1,1,1,1] from [1,1,1,1,1]
 '''
 def test_sort_selective_SameNumbers():
     assert dice.sort_selective([1,1,1,1,1]) == [1,1,1,1,1]
+
+'''
+Test if the function order the list when it contains negative values
+Expecting [-2,-3,5,6] from [5,-3,-2,6]
+'''
+def test_sort_selective_negativeValues():
+    assert dice.sort_selective([5,-3,-2,6]) == [-2,-3,5,6]
             
             
             
