@@ -123,7 +123,13 @@ def test_alea_Right():
     result = sa.alea(10)
     assert result <= 10 and result >= 0
          
-            
+# ----- sort_selective ----- #
+'''
+Test if the function order the list from input
+Expecting [1, 3, 3, 7, 9, 10, 15] from [10, 15, 7, 1, 3, 3, 9]
+'''
+def test_sort_selective_Right():
+    assert dice.sort_selective([10, 15, 7, 1, 3, 3, 9]) == [1, 3, 3, 7, 9, 10, 15]
             
             
             
