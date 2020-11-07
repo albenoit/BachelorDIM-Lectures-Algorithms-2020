@@ -231,3 +231,53 @@ print(input_image)
 '''
 input_image[1:3,2:4] = np.ones((2, 3))
 '''
+
+"""
+SORTING
+"""
+"""
+a) Illustration du tri par sélection sur 10, 15, 7, 1, 3, 3, 9
+    1. On recherche sur 0 - 6 le minimum : c'est 1
+    On a 1, 15, 7, 10, 3, 3, 9
+    
+    2. Sur 1 - 6 le minimum : 3
+    On a 1, 3, 7, 10, 15, 3, 9
+    
+    3. Sur 2 - 6 le minimum : 3
+    On a 1, 3, 3, 10, 15, 7, 9
+    
+    4. Sur 3 - 6 le minimum : 7
+    On a 1, 3, 3, 7, 15, 10, 9
+    
+    5. Sur 4 - 6 le minimum : 9
+    On a 1, 3, 3, 7, 9, 10, 15
+    
+    6. Sur 5 - 6 le minimum : 10 
+    Le tableau était déjà trié. Fin. 
+"""
+def selection_sort(list):
+    size = len(list)
+    for i in range(size-1):
+        index_min = i
+        tmp = list[i]
+        for j in range(i+1, size):
+            if(list[index_min] > list[j]):
+                index_min = j
+        list[i], list[index_min] = list[index_min], list[i]
+    return list
+
+list = [10, 15, 7, 1, 3, 3, 9]
+print(selection_sort(list))
+
+
+
+
+
+
+"""
+b) Oui, le nb d'itérations dépend du contenu. 
+c) Dans ce cas là, 6, donc j'en déduis qu'il en faut le nombre de la taille. 
+d) Ici on a fait 5 permutations. 
+e) Il y a autant de comparaisons qu'il y a de permutations 
+f) Je dirais qu'il a une complexité O(n2)
+"""
