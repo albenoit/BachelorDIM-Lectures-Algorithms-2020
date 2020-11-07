@@ -113,6 +113,52 @@ def sort_selective(list_in:list):
 listTest = [10, 15, 7, 1, 3, 3, 9]
 print(sort_selective(listTest))
 
+'''
+2.a)
+- 10, 15, 7, 1, 3, 3, 9
+- 10, 15, 7, 1, 3, 3, 9
+- 10, 7, 15, 1, 3, 3, 9
+- 10, 7, 1, 15, 3, 3, 9
+- 10, 7, 1, 3, 15, 3, 9
+- 10, 7, 1, 3, 3, 15, 9
+- 10, 7, 1, 3, 3, 9, 15
+#seconde wave
+- 7, 10, 1, 3, 3, 9, 15
+- 7, 1, 10, 3, 3, 9, 15
+- 7, 1, 3, 10, 3, 9, 15
+- 7, 1, 3, 3, 10, 9, 15
+- 7, 1, 3, 3, 9, 10, 15
+- 7, 1, 3, 3, 9, 10, 15
+#third wave
+- 1, 7, 3, 3, 9, 10, 15
+- 1, 3, 7, 3, 9, 10, 15
+- 1, 3, 3, 7, 9, 10, 15
+- 1, 3, 3, 7, 9, 10, 15
+- 1, 3, 3, 7, 9, 10, 15
+- 1, 3, 3, 7, 9, 10, 15
+'''
+
+'''
+function which order a list using the bubble way
+@param: list_in (list), list of integers
+@return an ordered ASC list
+'''
+def sort_bubble(list_in:list):
+    n = len(list_in) 
+    for i in range(n): 
+        # Last i elements are already in place 
+        for j in range(0, n-i-1): 
+            #If it is greater
+            if list_in[j] > list_in[j+1] :
+                #Swap values
+                list_in[j], list_in[j+1] = list_in[j+1], list_in[j]
+    return list_in
+
+#Test
+listTest = [10, 15, 7, 1, 3, 3, 9]
+print(sort_bubble(listTest))
+#Source: https://www.geeksforgeeks.org/bubble-sort/
+
 
 
 
