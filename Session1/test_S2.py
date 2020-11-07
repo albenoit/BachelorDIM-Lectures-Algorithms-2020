@@ -159,7 +159,13 @@ Expecting [1,1,1,1,1] from [1,1,1,1,1]
 '''
 def test_sort_bubble_SameNumbers():
     assert dice.sort_bubble([1,1,1,1,1]) == [1,1,1,1,1]            
-            
+
+'''
+Test if the function order the list when it contains negative values
+Expecting [-2,-3,5,6] from [5,-3,-2,6]
+'''
+def test_sort_bubble_negativeValues():
+    assert dice.sort_bubble([5,-3,-2,6]) == [-2,-3,5,6]
             
             
             
