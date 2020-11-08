@@ -241,3 +241,18 @@ def remove_whitespace(text: str):
 
 
 # print(remove_whitespace("a bcdefghij;;;  kl  eudjj"))
+
+
+def shuffle(tab: list):
+    """
+    Function to shuffle tab
+    Parameters :
+        tab: tab
+    Returns :
+       tab: tab shuffled
+    """
+    random.shuffle(tab)
+    return tab
+
+
+# print(shuffle(["abc", "def", "ghi", "jkl"]))
