@@ -18,53 +18,69 @@ def main():
     players.append(Player("User", 0))
     players.append(Player("Computer", 0))
     current_player = players[0]
+    first_roll = True
     exit_roll = False
     no_one = True
     current_score = 0
+
     # Start game with user
     print("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
     print("+              Dice Game Player vs Computer             +")
     print("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
     print("")
     print("")
-    print("User is played")
 
-    while no_one == True:
-        if exit_roll == False:
-            exit_roll = True
+    while no_one == True or exit_roll == False:
+        print("")
+        print("%s is played" % current_player.name)
+
+        if first_roll == True:
+            first_roll = False
             enter = input("ENTER to roll the dice: ")
 
         else:
-            again = input(
+            enter = input(
                 "Do you want to play again or stop and add %d to your score? (C to continue / S to stop)"
                 % current_score
             )
-            if again == "C":
-                exit_roll = False
+
+        if enter == "" or (
+            first_roll == False and (enter == "C" or enter == "c")
+        ):  # hitting enter == ''  empty string
+            roll = dice_roll(current_player.name)
+            if roll != 1:
+                current_score = current_score + roll
             else:
-                current_player.score = current_player.score + current_score
-                exit_roll = False
-                current_score = 0
                 if current_player.name == "User":
                     current_player = players[1]
                 else:
                     current_player = players[0]
                 print("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
-                print("                      SCORE                              ")
+                print("+                    Faillllllll                        +")
                 print("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
-                print("%s ===> %d pts" % (players[0].name, players[0].score))
-                print("%s ===> %d pts" % (players[1].name, players[1].score))
                 print("")
+                print(
+                    "You roll a one, you loose %d pts. %s play"
+                    % (current_score, current_player.name)
+                )
 
-        if enter == "":  # hitting enter == ''  empty string
-            roll = dice_roll(current_player.name)
-            if roll != 1:
-                current_score = current_score + roll
-            else:
-                exit()
         else:
-            print("exiting program.")
-            exit()
+            current_player.score = current_player.score + current_score
+            first_roll = True
+            exit_roll = True
+            current_score = 0
+            if current_player.name == "User":
+                current_player = players[1]
+            else:
+                current_player = players[0]
+
+            print("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+            print("+                    Current Scores                     +")
+            print("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+            print("")
+            print("%s ====> %s pts" % (players[0].name, players[0].score))
+            print("%s ====> %s pts" % (players[1].name, players[1].score))
+            print("")
 
 
 main()
