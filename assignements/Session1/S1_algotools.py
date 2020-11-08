@@ -256,5 +256,3 @@ def shuffle(tab: list):
 
 
 # print(shuffle(["abc", "def", "ghi", "jkl"]))
-
-de dice
