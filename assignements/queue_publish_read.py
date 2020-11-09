@@ -10,6 +10,7 @@ import config, pika, os, argparse, simple_queue_publish, simple_queue_read
 parser = argparse.ArgumentParser("How to")
 parser.add_argument("-read", help="read messages", action="store_true")
 parser.add_argument("-concurrency", help="multiple concurrent queue readers", action="store_true")
+parser.add_argument("-delay", help="add delay to the concurrent queue readers", action="store_true")
 args = parser.parse_args()
 
 url = os.environ.get('CLOUDAMQP_URL', config.amqp_url)
@@ -26,7 +27,12 @@ else:
     queue = channel.queue_declare(queue='hello')
 
 if args.read:
-    simple_queue_read.read(channel, queue.method.queue)
+    delay = 0
+    if args.delay:
+        delay = 0.5
+        print("/!\\ 0.5 second of delay /!\\ ")
+    simple_queue_read.read(channel, queue.method.queue, delay)
+
 else:
     #  simple_queue_publish.publish(channel, queue.method.queue)
     simple_queue_publish.publish_thounsand_messages(channel, queue.method.queue)
