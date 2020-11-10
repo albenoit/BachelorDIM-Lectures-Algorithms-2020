@@ -1,8 +1,8 @@
 import cv2
 import numpy as np
 
-img = cv2.imread("BachelorDIM-Lectures-Algorithms-2020/assignements/IMG_0825.JPG")
-print(img)
+# img = cv2.imread("BachelorDIM-Lectures-Algorithms-2020/assignements/IMG_0825.JPG")
+img = img = np.array([[[0, 0, 254]]], dtype=np.uint8)
 img_gray = cv2.imread(
     "BachelorDIM-Lectures-Algorithms-2020/assignements/IMG_0825.JPG", 0
 )

@@ -1,5 +1,5 @@
 import numpy as np
-import S1_dice
+import S1_dice as diceGame
 
 
 def average_above_zero(tab: list):
@@ -258,4 +258,4 @@ def shuffle(tab: list):
 
 # print(shuffle(["abc", "def", "ghi", "jkl"]))
 
-S1_dice.dice_game()
+diceGame.dice_game()
