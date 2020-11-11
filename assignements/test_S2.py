@@ -56,15 +56,41 @@ def test_random_fill_sparse_false():
     n = np.full((20,20),[""],dtype=str)
     val = 5
     assert np.where(S1.random_fill_sparse(n,val+1)=='X')[0].shape[0]!=val
-    
+def test_random_fill_sparse_false_too_much_cross():
+    n = np.full((20, 20), [""], dtype=str)
+    val =4000
+    with pytest.raises(ValueError):
+        S1.random_fill_sparse(n,val+1)
 def test_remove_whitespace_phrase():
     assert S1.remove_whitespace("yomonbrocomment ça va")=="yomonbrocommentçava"
+
+def test_remove_whitespace_phrase_error():
+    with pytest.raises(TypeError):
+        S1.remove_whitespace(1)
 
 def test_shuffle():
     assert S1.shuffle([1,2,3,4,5,6,7,8,9,10,11,12]) != [1,2,3,4,5,6,7,8,9,10,11,12]
 
+def test_shuffle_error():
+    with pytest.raises(TypeError):
+        S1.shuffle(1)
+
 def test_sort_selective():
     assert S1.sort_selective([1,5,4,3,2]) == [1,2,3,4,5]
 
+def test_sort_selective_false():
+    assert S1.sort_selective([1,5,4,3,2]) != [1,2,3,5,4]
+
+def test_sort_selective_error():
+    with pytest.raises(TypeError):
+        S1.sort_selective(1)
+
 def test_sort_bubble():
     assert S1.sort_bubble([1,5,4,3,2]) == [1,2,3,4,5]
+
+def test_sort_bubble_false():
+    assert S1.sort_bubble([1,5,4,3,2]) != [1,2,3,5,4]
+
+def test_sort_bubble_error():
+    with pytest.raises(TypeError):
+        S1.sort_bubble(1)
