@@ -1,0 +1,4 @@
+# Lines starting with `#` are comments.
+
+# Ignore files called 'file.ext'
+rabbitMQTT/config.py
