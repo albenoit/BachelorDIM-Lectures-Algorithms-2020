@@ -188,7 +188,7 @@ def random_fill_parse(mtrx, nbr):
     return mtrx
 
 def remove_whitespace(strlist):
-    if type(strlist) is list:
+    if isinstance(strlist, list):
         for i in range(0, len(strlist)):
             strlist[i] = strlist[i].strip()
 
@@ -196,7 +196,7 @@ def remove_whitespace(strlist):
 
 def shuffle(shuffleList):
     shuffledList = []
-    if type(shuffleList) is list:
+    if isinstance(shuffleList, list):
         for i in range(0, len(shuffleList)):
             pick = random.randint(0, len(shuffleList) - 1)
             shuffledList.append(shuffleList[pick])
@@ -220,5 +220,5 @@ shufflearray = [0,1,2,3,4,5,6,7,8,9]
 # print('Bounding box of matrix is: ' + str(roi_bbox_2(mtrx)))
 # print(random_fill_parse(mtrx2, 121))
 # print(mtrx2.size)
-# print("wsarray without whitespace is: " + str(remove_whitespace(wsarray)))
-print("Randomized optimized array: " + str(shuffle(shufflearray)))
+print("wsarray without whitespace is: " + str(remove_whitespace(wsarray)))
+# print("Randomized optimized array: " + str(shuffle(shufflearray)))
