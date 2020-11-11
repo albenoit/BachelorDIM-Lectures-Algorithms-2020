@@ -187,18 +187,38 @@ def random_fill_parse(mtrx, nbr):
             
     return mtrx
 
+def remove_whitespace(strlist):
+    if type(strlist) is list:
+        for i in range(0, len(strlist)):
+            strlist[i] = strlist[i].strip()
 
-nbr_list = [1, -5, 3]
-h = 12
-w = 10
-mtrx = np.zeros((h, w))
-mtrx[0:1, 3:5] = np.ones(1)
-mtrx[2:5, 1:3] = np.ones(1)
-mtrx2 = np.zeros((h, w))
+    return strlist
 
-print('Average of list is: ' + str(average_above_zero(nbr_list)))
-print('Max biggest number index is: ' + str(max_value(nbr_list)))
-print('Reversed table is: ' + str(reverse_table(nbr_list)))
-print('Bounding box of matrix is: ' + str(roi_bbox_2(mtrx)))
-print(random_fill_parse(mtrx2, 121))
-print(mtrx2.size)
+def shuffle(shuffleList):
+    shuffledList = []
+    if type(shuffleList) is list:
+        for i in range(0, len(shuffleList)):
+            pick = random.randint(0, len(shuffleList) - 1)
+            shuffledList.append(shuffleList[pick])
+            shuffleList.pop(pick)
+    return shuffledList
+
+
+# nbr_list = [1, -5, 3]
+# h = 12
+# w = 10
+# mtrx = np.zeros((h, w))
+# mtrx[0:1, 3:5] = np.ones(1)
+# mtrx[2:5, 1:3] = np.ones(1)
+# mtrx2 = np.zeros((h, w))
+wsarray = [" test", "test2 ", "   test3  "]
+shufflearray = [0,1,2,3,4,5,6,7,8,9]
+
+# print('Average of list is: ' + str(average_above_zero(nbr_list)))
+# print('Max biggest number index is: ' + str(max_value(nbr_list)))
+# print('Reversed table is: ' + str(reverse_table(nbr_list)))
+# print('Bounding box of matrix is: ' + str(roi_bbox_2(mtrx)))
+# print(random_fill_parse(mtrx2, 121))
+# print(mtrx2.size)
+# print("wsarray without whitespace is: " + str(remove_whitespace(wsarray)))
+print("Randomized optimized array: " + str(shuffle(shufflearray)))
