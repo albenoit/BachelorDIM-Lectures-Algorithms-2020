@@ -377,8 +377,8 @@ def bubble_sort(list_in:list):
     return list_in
 
 #list = [10, 15, 7, 1, 3, 3, 9]
-list=[alea(500) for i in range(500)]
-print(bubble_sort(list))
+#list=[alea(500) for i in range(500)]
+#print(bubble_sort(list))
 
 """
 b) Oui, plus il y aura de valeurs, et plus il y aura d'itérations pour mettre le max à la fin
