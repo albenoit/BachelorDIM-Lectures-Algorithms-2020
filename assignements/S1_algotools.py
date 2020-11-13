@@ -188,6 +188,14 @@ def random_fill_parse(mtrx, nbr):
     return mtrx
 
 def remove_whitespace(strlist):
+    '''
+    Remove all trailing spaces of a list of string
+
+    Parameters:
+        strlist: The list of strings
+
+    Returns: A list of string without trailing spaces
+    '''
     if isinstance(strlist, list):
         for i in range(0, len(strlist)):
             strlist[i] = strlist[i].strip()
@@ -195,6 +203,14 @@ def remove_whitespace(strlist):
     return strlist
 
 def shuffle(shuffleList):
+    '''
+    Shuffle a list without picking an item twice
+
+    Parameters:
+        shuffleList: The list that needs to be shuffled
+
+    Returns: A list of shuffled items
+    '''
     shuffledList = []
     if isinstance(shuffleList, list):
         for i in range(0, len(shuffleList)):
@@ -204,21 +220,21 @@ def shuffle(shuffleList):
     return shuffledList
 
 
-# nbr_list = [1, -5, 3]
-# h = 12
-# w = 10
-# mtrx = np.zeros((h, w))
-# mtrx[0:1, 3:5] = np.ones(1)
-# mtrx[2:5, 1:3] = np.ones(1)
-# mtrx2 = np.zeros((h, w))
+nbr_list = [1, -5, 3]
+h = 12
+w = 10
+mtrx = np.zeros((h, w))
+mtrx[0:1, 3:5] = np.ones(1)
+mtrx[2:5, 1:3] = np.ones(1)
+mtrx2 = np.zeros((h, w))
 wsarray = [" test", "test2 ", "   test3  "]
 shufflearray = [0,1,2,3,4,5,6,7,8,9]
 
-# print('Average of list is: ' + str(average_above_zero(nbr_list)))
-# print('Max biggest number index is: ' + str(max_value(nbr_list)))
-# print('Reversed table is: ' + str(reverse_table(nbr_list)))
-# print('Bounding box of matrix is: ' + str(roi_bbox_2(mtrx)))
-# print(random_fill_parse(mtrx2, 121))
+print('Average of list is: ' + str(average_above_zero(nbr_list)))
+print('Max biggest number index is: ' + str(max_value(nbr_list)))
+print('Reversed table is: ' + str(reverse_table(nbr_list)))
+print('Bounding box of matrix is: ' + str(roi_bbox_2(mtrx)))
+print(random_fill_parse(mtrx2, 120))
 # print(mtrx2.size)
 print("wsarray without whitespace is: " + str(remove_whitespace(wsarray)))
-# print("Randomized optimized array: " + str(shuffle(shufflearray)))
+print("Randomized optimized array: " + str(shuffle(shufflearray)))
