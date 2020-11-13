@@ -44,7 +44,7 @@ def test_random_fill_sparse_not_square():
 
 def test_random_fill_sparse_not_enought_entry_empty():
     test = np.array([['X', 'X'], ['', 'X']])
-    with pytest.raises(ValueError, match="Not enought entry empty"):
+    with pytest.raises(ValueError, match="Not enough entry empty"):
         algotools.random_fill_sparse(test, 5)
 
 
@@ -58,3 +58,8 @@ def test_roi_bbox_no_pixel_found():
     with pytest.raises(ValueError, match="No pixel found"):
         algotools.roi_bbox(matrix_bounding_box)
 
+
+def test_shuffle():
+    list_data = ['test1', 'test2']
+    shuffle_data = algotools.shuffle(list_data)
+    assert shuffle_data == ['test1', 'test2'] or shuffle_data == ['test2', 'test1']

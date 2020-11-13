@@ -140,6 +140,24 @@ def remove_whitespace(text: str):
     return new_text
 
 
+def shuffle(list_in: list):
+    """
+     shuffle a list
+
+    Parameters:
+        list_in
+    Returns:
+        shuffle list
+    """
+    random_list_number = random.sample(range(0, len(list_in)), len(list_in))
+
+    new_list = []
+    for i in random_list_number:
+        new_list.append(list_in[i])
+
+    return new_list
+
+
 Tab = [4, 2, 45, -4, 14, -95, -4, 2, 87, -56, 65, 1, 3]
 print("Averaging above zero : ", average_above_zero(Tab))
 
@@ -159,3 +177,5 @@ test_array = np.empty([3, 3], dtype=str)
 print("random_fill_sparse : ", random_fill_sparse(test_array, 4))
 
 print(remove_whitespace("ceci est un test"))
+
+print(shuffle(['test1', 'test2']))
