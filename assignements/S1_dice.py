@@ -23,15 +23,37 @@ class colors:
     UNDERLINE = '\033[4m'
 
 def printc(str):
+    '''
+    Prints text with colors
+
+    Parameters:
+        str: The strings that will be printed with colors
+
+    Returns: A colored printed text
+    '''
     return print(colors.HEADER + str + colors.ENDC)
 
 def inputc(str):
+    '''
+    Prints input text with colors
+
+    Parameters:
+        str: The strings that will be printed with colors
+
+    Returns: A colored input text
+    '''
     if tour % 2 == 1:
         return input(colors.HEADER + str + colors.ENDC)
     else:
         return input(colors.OKGREEN + str + colors.ENDC)
 
 def getComputerAction():
+    '''
+    Pick an action for the computer
+    1 in 4 chance of not playing
+
+    Returns: A choice between "q" and an empty string
+    '''
     choice = ""
     if random.randint(1,4) == 1:
         choice = "q"
@@ -39,6 +61,14 @@ def getComputerAction():
     return choice
 
 def shuffle(dice):
+    '''
+    Pick a random face of a dice (list of X numbers)
+
+    Parameters:
+        dice: The dice (list of numbers)
+
+    Returns: A random dice face (a number)
+    '''
     if isinstance(dice, list):
         return dice[random.randint(0,len(dice)-1)]
 
@@ -83,20 +113,14 @@ while isEnded == False:
     else:
         # Ordinateur
         # Disons que l'ordinateur à 1 chance sur 4 de passer son tour (à part si il tombe sur 1, bien sûr)
-        # printc("Ordi tour")
-        # printc(str(scoreJ))
         time.sleep(random.uniform(0.25,1.5))
-        # tour+=1
         
         isSkip = False
-        # print("L'ordinateur choisi une action: Jouer (Entrer) / Passer (q): ")
         choice = getComputerAction()
-        # print("choice = " + choice)
         if choice == "":
             # Jouer
             print("L'ordinateur a choisis de jouer.")
             pick = shuffle(dice)
-            # print("pick = " + str(pick))
             if pick == 1:
                 print("L'ordinateur as fait 1 ! Il ne peux donc pas rejouer et son score ne s'incrémentera pas. C'est à ton tour.")
                 scoreTemp = 0
@@ -118,6 +142,3 @@ while isEnded == False:
         if scoreO >= 100:
             isEnded = True
             print("L'ordinateur a gagné !")
-
-    # print(tour)
-
