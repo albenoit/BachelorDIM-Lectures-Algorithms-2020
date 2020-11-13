@@ -219,6 +219,69 @@ def shuffle(shuffleList):
             shuffleList.pop(pick)
     return shuffledList
 
+def sort_selective(nbrlist):
+    '''
+    Sort a list using selective sort sorting method
+
+    Parameters:
+        nbrlist: The list of numbers
+
+    Returns: A list os sorted numbers
+    '''
+    '''
+    b) Yes, the more numbers, the more iterations the algorithm will do
+    c) (x = numbers of items in the list)(i iteration) (x-i)*(x-i)
+    d) 5
+    e) 6
+    f) 4/10
+    '''
+    if isinstance(nbrlist, list):
+        step = 0
+        current_value = 0
+        min_index = 0
+        temp = 0
+
+        for i in range(step, len(nbrlist)):
+            min_index = i
+
+            for j in range(i+1, len(nbrlist)):
+                if nbrlist[j] < nbrlist[min_index]:
+                    min_index = j
+
+            temp = nbrlist[i]
+            nbrlist[i] = nbrlist[min_index]
+            nbrlist[min_index] = temp
+
+        return nbrlist
+
+def sort_bubble(nbrlist):
+    '''
+    Sort a list using the bubble sorting method
+
+    Parameters:
+        nbrlist: The list of numbers
+
+    Returns: A list of sorted numbers
+    '''
+    '''
+    b) No
+    c) the size of the list
+    d) 5
+    e) 6
+    f) 3/10
+    '''
+    if isinstance(nbrlist, list):
+        temp = 0
+
+        for i in range(0, len(nbrlist)):
+            for j in range(0, len(nbrlist)-i-1):
+                if nbrlist[j+1] < nbrlist[j]:
+                    temp = nbrlist[j]
+                    nbrlist[j+1] = nbrlist[j]
+                    nbrlist[j] = temp
+
+        return nbrlist
+
 
 nbr_list = [1, -5, 3]
 h = 12
@@ -229,6 +292,7 @@ mtrx[2:5, 1:3] = np.ones(1)
 mtrx2 = np.zeros((h, w))
 wsarray = [" test", "test2 ", "   test3  "]
 shufflearray = [0,1,2,3,4,5,6,7,8,9]
+nbrlist = [10,15,7,1,3,3,9]
 
 print('Average of list is: ' + str(average_above_zero(nbr_list)))
 print('Max biggest number index is: ' + str(max_value(nbr_list)))
@@ -238,3 +302,5 @@ print(random_fill_parse(mtrx2, 120))
 # print(mtrx2.size)
 print("wsarray without whitespace is: " + str(remove_whitespace(wsarray)))
 print("Randomized optimized array: " + str(shuffle(shufflearray)))
+print("Selective sorting: " + str(sort_selective(nbrlist)))
+print("Bubble sorting: " + str(sort_bubble(nbrlist)))
