@@ -158,6 +158,7 @@ def shuffle(list_in: list):
     return new_list
 
 
+"""
 Tab = [4, 2, 45, -4, 14, -95, -4, 2, 87, -56, 65, 1, 3]
 print("Averaging above zero : ", average_above_zero(Tab))
 
@@ -179,3 +180,5 @@ print("random_fill_sparse : ", random_fill_sparse(test_array, 4))
 print(remove_whitespace("ceci est un test"))
 
 print(shuffle(['test1', 'test2']))
+
+"""
