@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 
 # img = cv2.imread("BachelorDIM-Lectures-Algorithms-2020/assignements/IMG_0825.JPG")
-img = img = np.array([[[0, 0, 254]]], dtype=np.uint8)
+img = np.array([[[0, 0, 254]]], dtype=np.uint8)
 img_gray = cv2.imread(
     "BachelorDIM-Lectures-Algorithms-2020/assignements/IMG_0825.JPG", 0
 )
@@ -36,10 +36,10 @@ def invert_gray_lvl_image_light(img: np.ndarray):
         imgRet image inverted
     """
     # imgRet=np.zeros(img.shape, dtype=np.uint8)
-    # if img is None:
-    #     raise ValueError('expected an uint8 nd array')
-    # if not(isinstance(img, np.ndarray)):
-    #     raise TypeError('expected an nd array')
+    if img is None:
+        raise ValueError("expected an uint8 nd array")
+    if not (isinstance(img, np.ndarray)):
+        raise TypeError("expected an nd array")
     if img.dtype != np.dtype(np.uint8):
         raise TypeError("expected uint8 typed nd array")
 
