@@ -1,8 +1,12 @@
-[![Coverage Status](https://coveralls.io/repos/github/albenoit/BachelorDIM-Lectures-Algorithms-2020/badge.svg?branch=master)](https://coveralls.io/github/albenoit/BachelorDIM-Lectures-Algorithms-2020?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/nathan-cuvellier/BachelorDIM-Lectures-Algorithms-2020/badge.svg?branch=master)](https://coveralls.io/github/nathan-cuvellier/BachelorDIM-Lectures-Algorithms-2020?branch=master)
 
 # BachelorDIM-Lectures-Algorithms-2020
 Algorithms, code writing and continuous integration @ DIM Bachelor, Université Savoie Mont Blanc, France
 
+## Larger scale application : multiple concurrent queue readers
+**demo question 5 and 6 : delay and interrupt :**
+
+![demo delay and interrupt](https://raw.githubusercontent.com/nathan-cuvellier/BachelorDIM-Lectures-Algorithms-2020/master/img/algo.gif)
 
 Those lessons are addressed to the "Développeur Informatique Multisupports" (DIM) Bachelor proposed at Université Savoie Mont Blanc in France.
 Students are expected to be familiar with programming. The aim is to get more familiar with code quality, maintainability and efficacy... and Python.
