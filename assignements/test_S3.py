@@ -2,10 +2,23 @@ import S3_imgproc_tools as tFile
 import pytest
 import numpy as np
 
+# Invert color manual function
+def test_invert_color_manual_tuNone():
+    with pytest.raises(AttributeError):
+        tFile.invert_color_manual(None)
 
-# 1 - chargement image non définie
-# If imgArray is none
-# raise value("Img not found")
+
+def test_invert_color_manual_tuArray():
+    with pytest.raises(AttributeError):
+        tFile.invert_color_manual(1)
+
+
+def test_invert_color_manual_tuuint8():
+    with pytest.raises(TypeError):
+        tFile.invert_color_manual(np.zeros((2, 2), dtype=np.float32))
+
+
+# invert_gray_lvl_image_light function
 def test_invert_gray_lvl_image_light_tuNone():
     with pytest.raises(ValueError):
         tFile.invert_gray_lvl_image_light(None)

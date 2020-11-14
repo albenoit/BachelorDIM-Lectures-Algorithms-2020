@@ -1,8 +1,8 @@
 import cv2
 import numpy as np
 
-# img = cv2.imread("BachelorDIM-Lectures-Algorithms-2020/assignements/IMG_0825.JPG")
-img = np.array([[[0, 0, 254]]], dtype=np.uint8)
+img = cv2.imread("BachelorDIM-Lectures-Algorithms-2020/assignements/IMG_0825.JPG")
+# img = np.array([[[0, 0, 254]]], dtype=np.uint8)
 img_gray = cv2.imread(
     "BachelorDIM-Lectures-Algorithms-2020/assignements/IMG_0825.JPG", 0
 )
@@ -20,6 +20,14 @@ def invert_color_manual(img: np.ndarray):
         imgRet image inverted
     """
     img_out = np.zeros(img.shape, dtype=np.uint8)
+
+    if img is None:
+        raise ValueError("expected an uint8 nd array")
+    if not (isinstance(img, np.ndarray)):
+        raise TypeError("expected an nd array")
+    if img.dtype != np.dtype(np.uint8):
+        raise TypeError("expected an uint8 nd array")
+
     for row in range(img.shape[0]):
         for col in range(img.shape[1]):
             for channel in range(img.shape[2]):
