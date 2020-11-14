@@ -16,7 +16,7 @@ def shuffle(list_in:list):
         computer_score -> renvoie le score de l'ordinateur
     """
     if isinstance(list_in, list):
-        return list_in[randint(1, len(list_in)-1)]
+        return list_in[randint(0, len(list_in)-1)]
 
 #print(shuffle([1, 2, 3, 4, 5, 6]))
 
@@ -24,9 +24,10 @@ def player(list_in, player_score, tour):
     score = shuffle(list_in)
     scoreTour = 0
     if (score == 1):
-        player_score = 0
+        print("---------------------------------------------------------")
         print("Votre tour est fini, vous avez fait 1. Score total : " + str(player_score))
         tour += 1
+        return player_score, tour
     else:
         print("---------------------------------------------------------")
         print("Dé : " + str(score))
@@ -46,12 +47,13 @@ def player(list_in, player_score, tour):
 
         if (player_score >= 100):
             print("Bravo, vous avez gagné ! Le jeu a duré " + str(tour) + " tours")
-            return
+            return player_score, tour
         if(score != 1):
             player_score += scoreTour
             print("Votre tour est fini. Score total : " + str(player_score))
         else:
             player_score -= scoreTour
+            print(player_score, tour)
             print("Votre tour est fini, vous avez fait 1. Score total : " + str(player_score))
         tour += 1
         print("C'est au tour de l'ordinateur")
@@ -62,9 +64,10 @@ def computer(list_in, computer_score, tour):
     score = shuffle(list_in)
     scoreTour = 0
     if (score == 1):
-        computer_score = 0
+        print("---------------------------------------------------------")
         print("Le tour de l'ordinateur est fini, il a fait 1. Score total : " + str(computer_score))
         tour += 1
+        return computer_score, tour
     else:
         print("---------------------------------------------------------")
         print("Dé : " + str(score))
@@ -83,7 +86,7 @@ def computer(list_in, computer_score, tour):
                 break
         if (computer_score >= 100):
             print("La prochaine, vous gagnerez ! Le jeu a duré " + str(tour) + " tours et l'ordinateur a fait " + str(computer_score))
-            return
+            return computer_score, tour
         if (score != 1):
             computer_score += scoreTour
             print("Le tour de l'ordinateur est fini. Score total : " + str(computer_score))
