@@ -52,11 +52,25 @@ def test_remove_whitespace():
     assert algotools.remove_whitespace("this is a test") == "thisisatest"
 
 
+def test_roi_bbox():
+    matrix_bounding_box = np.array([[False, False, True, True, False, False, False, False, False, False],
+                                    [False, False, True, True, False, False, False, False, False, False],
+                                    [False, False, False, False, False, True, True, False, False, False],
+                                    [False, False, False, False, False, True, True, False, False, False],
+                                    [False, False, False, False, False, False, False, False, False, False]])
+
+    assert np.array_equal(algotools.roi_bbox(matrix_bounding_box), np.array([0, 2, 3, 6]))
+
+
 def test_roi_bbox_no_pixel_found():
     matrix_bounding_box = np.array([[False, False],
                                     [False, False]])
     with pytest.raises(ValueError, match="No pixel found"):
         algotools.roi_bbox(matrix_bounding_box)
+
+
+def test_reverse_table():
+    assert np.array_equal(algotools.reverse_table([1, 2, 3]), [3, 2, 1])
 
 
 def test_shuffle():
