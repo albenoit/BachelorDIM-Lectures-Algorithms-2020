@@ -1,4 +1,5 @@
 import random
+import time
 
 
 class Player(object):
@@ -21,6 +22,7 @@ def dice_game():
     first_roll = True
     winner = -1
     current_score = 0
+    computer_dices = random.randint(1, 5)
 
     # Start game with user
     print("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
@@ -38,10 +40,18 @@ def dice_game():
             enter = input("ENTER to roll the dice: ")
 
         else:
-            enter = input(
-                "Do you want to play again or stop and add %d to your score? (C to continue / S to stop)"
-                % current_score
-            )
+            if current_player.name == "Computer":
+                if computer_dices >= 0:
+                    enter = ""
+                    computer_dices = computer_dices - 1
+                else:
+                    enter = "Q"
+                time.sleep(1)
+            else:
+                enter = input(
+                    "Do you want to play again or stop and add %d to your score? (C or Enter to continue / Q to quit)"
+                    % current_score
+                )
 
         if enter == "" or (
             first_roll == False and (enter == "C" or enter == "c")
@@ -50,10 +60,6 @@ def dice_game():
             if roll != 1:
                 current_score = current_score + roll
             else:
-                if current_player.name == "User":
-                    current_player = players[1]
-                else:
-                    current_player = players[0]
                 print("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
                 print("+                    Faillllllll                        +")
                 print("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
@@ -62,18 +68,29 @@ def dice_game():
                     "You roll a one, you loose %d pts. %s play"
                     % (current_score, current_player.name)
                 )
-                first_roll = True
+
+                if current_player.name == "User":
+                    current_player = players[1]
+                    first_roll = False
+                    computer_dices = random.randint(1, 5)
+                else:
+                    current_player = players[0]
+                    first_roll = True
+
                 current_score = 0
 
         else:
             current_player.score = current_player.score + current_score
-            first_roll = True
             exit_roll = True
             current_score = 0
+
             if current_player.name == "User":
                 current_player = players[1]
+                first_roll = False
+                computer_dices = random.randint(1, 5)
             else:
                 current_player = players[0]
+                first_roll = True
 
             print("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
             print("+                    Current Scores                     +")
