@@ -38,6 +38,33 @@ def test_invert_gray_lvl_image_light_process():
     """TODO"""
 
 
+# invert_color_opencv function
+def test_invert_color_opencv_tuNone():
+    with pytest.raises(ValueError):
+        tFile.invert_color_opencv(None)
+
+
+def test_invert_color_opencv_tuArray():
+    with pytest.raises(TypeError):
+        tFile.invert_color_opencv(1)
+
+
+def test_invert_color_opencv_tuuint8():
+    with pytest.raises(TypeError):
+        tFile.invert_color_opencv(np.zeros((2, 2), dtype=np.float32))
+
+
+# threshold function
+def test_threshold_tuNone():
+    with pytest.raises(ValueError):
+        tFile.threshold(None)
+
+
+def test_threshold_tuuint8():
+    with pytest.raises(TypeError):
+        tFile.threshold(np.zeros((2, 2), dtype=np.float32))
+
+
 # 2 - chargement image non array
 # Vérifier le type de img array == uint8
 

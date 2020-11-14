@@ -63,11 +63,28 @@ def invert_color_opencv(img: np.ndarray):
     Returns :
         imgRet image inverted
     """
+    if img is None:
+        raise ValueError("expected an uint8 nd array")
+    if not (isinstance(img, np.ndarray)):
+        raise TypeError("expected an nd array")
+    if img.dtype != np.dtype(np.uint8):
+        raise TypeError("expected uint8 typed nd array")
+
     return ~img
 
 
 def threshold(img: np.ndarray):
+    """
+    tresholde image
+    Parameters :
+        img: image nd array
+    Returns :
+        imgRet image tresholded
+    """
+
     threshold_value = 128
+    if img is None:
+        raise ValueError("expected an uint8 nd array")
     if img.dtype != np.dtype(np.uint8):
         raise TypeError("expected uint8 typed nd array")
     return img > threshold_value
