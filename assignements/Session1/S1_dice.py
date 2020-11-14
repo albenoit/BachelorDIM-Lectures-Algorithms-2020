@@ -3,18 +3,39 @@ import time
 
 
 class Player(object):
+    """
+    Class to instance players
+    Parameters :
+        name: name of player,
+        score: score of player
+    """
+
     def __init__(self, name, score):
         self.name = name
         self.score = score
 
 
 def dice_roll(current_player):
+    """
+    Function to roll dice
+    Parameters :
+        current_player: current player name for print
+    Returns :
+        roll: dice value
+    """
     roll = random.randint(1, 6)
     print("%s rolled a %d " % (current_player, roll))
     return roll
 
 
 def dice_game():
+    """
+    A dice game computer vs player
+    Player always play first.
+    Computer play a ramdon roll between 1 and 6
+    Returns :
+        player winner
+    """
     players = []
     players.append(Player("User", 0))
     players.append(Player("Computer", 0))
@@ -111,3 +132,6 @@ def dice_game():
     print("")
     print("%s win with %s pts" % (players[winner].name, players[winner].score))
     print("")
+
+
+dice_game()
