@@ -90,7 +90,7 @@ def threshold(img: np.ndarray):
     return img > threshold_value
 
 
-print(threshold(img))
+# print(threshold(img))
 # thresholded = threshold(img_bgr)
 # thresholded_display = thresholded.astype(np.uint8) * 255
 # cv2.imshow("testimg", thresholded_display)
