@@ -27,12 +27,6 @@ def invert_colors_manual(input_img):
     Returns: a reversed image 
     
     '''
-    '''
-    if input_img is None:
-        raise ValueError('expected an uint8 nd array')
-    if not(isinstance(input_img, np.ndarray)):
-        raise TypeError('expected an nd array')
-    '''
     if input_img.dtype!=np.dtype(np.uint8):
         raise TypeError('expected uint8 typed nd array')
     return 255-input_img

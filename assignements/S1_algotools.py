@@ -1,85 +1,82 @@
 # -*- coding: utf-8 -*-
-"""
-Éditeur de Spyder
 
-Ceci est un script temporaire.
-"""
+import numpy as np
+import cv2
+import random
 
 """
-Session 1 Averaging 
-"""
+Session 1 Averaging
 
+"""
 """
 Questions
 What happens if Som initialization is forgotten ?
-    if Som never existed then it will make an eror 
-    if Som already existed before this code, then Sum will already have a value
+    It will return an error
 
 What can you expect if all the values are below zero ?
-    N value will be 0 and because we divide a number with N there will be an error 
+    It will return an error because it's impossible to divide by negative value
 
 Translate this algorithm in the python3.x language within script of name:
+
 """
 
-def average_above_zero(Tab):
+def average_above_zero(tab):
     '''
-    This function return th average of all he numbers above 0 in array
+    This function give the average of positive values
     Parameters:
-        Tab: a table of numner
-    Returns: a reversed table
-    Raises: an error if there is no positive values in the list (Tab)
+        tab: table of positive number
+    Returns: average
+    Raises: error if no positive values in tab
     '''
-    Som = 0
-    N = 0
-    for i in Tab:
+    som = 0
+    n = 0
+    for i in tab:
         if i > 0:
-            Som = Som + i
-            N = N + 1
-    if N > 0:
-        Moy = Som / N
+            som = som + i
+            n = n + 1
+    if n > 0:
+        moy = som / n
     else:
-        raise ValueError('division par zero')
-    return Moy
+        raise ValueError('impossible de diviser par zero')
+    return moy
+
+print('\nAverage above 0 : {0}'.format(average_above_zero([10, 2]))+ "\n")
 
 
-print(average_above_zero([-1, 2]))
 """
 Session 1 Table maximum value
-"""
-
-"""
 Propose changes on the previous algorithm to get the maximum value of
 a table.
+
 """
 
-
-def max_value_without_index(Tab):
+def max_value_without_index(tab):
     '''
     This function return the highest value finded in a list
     Parameters:
-        Tab: a list of number
-    Returns: highest value
+        tab: list of number
+    Returns: max value
     '''
     Max = 0
-    for i in Tab:
+    for i in tab:
         if i > Max:
-            Max = Max
+            Max = i
     return Max
 
+print('Max value without index : {0}'.format(max_value_without_index([1,2,3,10]))+ "\n")
 
-print(max_value_without_index([1, 2, 3]))
-"""
-Improve the previous changes by capturing the index of the last maximum
-value.
 """
 
+Improve the previous changes by capturing the index of the last maximum value.
+
+"""
 
 def max_value(Tab):
     '''
     This function return the highest value finded in a list
     Parameters:
-        Tab: a list of number
-    Returns: highest value and it's index (highestvalue,Index)
+        Tab: list of number
+    Returns: max value and his index
     '''
     Max = 0
     N = 0
@@ -93,26 +90,21 @@ def max_value(Tab):
     return (Max, Index)
 
 
-print(max_value([4, 2, 3]))
+print('Max value with index : {0}'.format(max_value([8, 3, 15])) + "\n")
 
 """
 Session 1 Reverse a table 
-"""
 
+"""
 
 def reverse_table(tab):
     '''
     This function reverse a table
     Parameters:
-        Tab: a table of numner
-    Returns: a reversed table
+        Tab: table of number
+    Returns: the reversed table
     '''
-    # ce code consome beaucoup plus de mémoire a cause de pop et insert
-    # listlen = len(tab)
-    # for i in range (listlen):
-    #    last=tab[-1]
-    #    tab.pop(listlen-1)
-    #    tab.insert(i,last)
+
     listlen = len(tab)
     for i in range(listlen // 2):
         tmp = tab[i]
@@ -121,27 +113,17 @@ def reverse_table(tab):
         tab[endid] = tmp
     return tab
 
+print('Reverse table : {0}'.format(reverse_table([1, 2, 3, 4, 5, 6, 7, 8]))+ "\n")
 
-print(reverse_table([1, 2, 3, 4, 5, 6]))
 
 """
 Session 1 Bounding box
+
 """
-
-import numpy as np
-
 H = 1000
 W = 1000
 n = np.zeros((H, W), dtype=np.uint8)
 n[45:200, 70:91] = 1
-
-
-# on peut aussi écrire:
-# n[2:4,3:5] = np.ones((2,2)) avec deux tableau de même taille
-# trop lent
-# for c in range (45,55):
-#    for d in range (70,91):
-#        n[c,d]=1
 
 def find_top_y(matrix):
     for y in range(matrix.shape[0]):
@@ -175,46 +157,18 @@ def roi_bbox(image):
     '''
     This function return a numpy array with the coord of a bounding box
     Parameters:
-        image: a numpy array
-    Returns: a numpy array with 4 coordinates
+        image: numpy array
+    Returns: numpy array with 4 coordinates
     '''
-    # en créant 4 fonctions on peut lancer plusieurs thread pour l'éxécution
     return np.array([find_top_x(image), find_top_y(image), find_down_x(image), find_down_y(image)])
 
-    # upper_x =image.shape[1]+1
-    # upper_y =image.shape[0]+1
-    # lower_x =0
-    # lower_y =0
-    # x=0
-    # y=0
-    # for ligne in image:
-    #    for point in ligne:
-    #        if point != 0:
-    #            if upper_x > x:
-    #                upper_x = x
-    #            if upper_y > y:
-    #                upper_y = y
-    #            if lower_x < x:
-    #                lower_x = x
-    #            if lower_y < y:
-    #                lower_y = y
-    #        y+=1
-    #    y=0
-    #    x+=1
+print('Bounding Box : {0}'.format(roi_bbox(n))+ "\n")
 
-    # return np.array([upper_x,upper_y,lower_x,lower_y])
-
-
-print(roi_bbox(n))
 
 """
 Session 1 Random array filling 
 
 """
-
-# random.sample
-import random
-
 
 def fill_a_rand_cell(table):
     coord = (random.randint(0, table.shape[0] - 1), random.randint(0, table.shape[1] - 1))
@@ -223,7 +177,6 @@ def fill_a_rand_cell(table):
     else:
         table = fill_a_rand_cell(table)
     return table
-
 
 n = np.full((20, 20), [""], dtype=str)
 
@@ -240,22 +193,36 @@ def random_fill_sparse(table, K):
     if numberofcase > K:
         for x in range(K):
             table = fill_a_rand_cell(table)
-            print("yo")
     else:
         raise ValueError("too much cross for the table")
     return table
 
-
-print(random_fill_sparse(n, 10))
-
-"""
-Session 1 Remove whitespace in string
+print('Random fill sparse : \n {0}'.format(random_fill_sparse(n, 10))+ "\n")
 
 """
 
+#Session 1 Remove whitespace in string
 
-def remove_whitespace(table):
-    return table
+"""
+
+def remove_whitespace(str):
+    '''
+    This function return a string without whitespace
+    Parameters:
+        table: str string
+    Returns: the string without whitespace
+    '''
+    if len(str) == 0:
+        raise ValueError('expected a non empty string')
+
+    strReturn=""
+    for i in str:
+        if i != ' ':
+            strReturn += i  
+            
+    return(strReturn)
+
+print('Remove white space : {0}'.format(remove_whitespace("A L G O I S G O O D"))+ "\n")
 
 
 """
@@ -263,6 +230,89 @@ Session 1 Random item selection
 
 """
 
+def shuffle(tab):
+    '''
+    This function randomize index of values in table
+        tab: a table
+    Returns: the string randomized
+    '''
+    listlen = len(tab)
+    for i in range(listlen):
+        tmp=tab[i]
+        pos=random.randint(0,listlen-1)
+        tab[i] = tab[pos]
+        tab[pos]=tmp
+ 
+    return tab
 
-def shuffle(list_in):
-    return list_in
+print('Shuffle list : {0}'.format(shuffle([1,"hello",7,10]))+ "\n")
+
+
+"""
+Session 1 Selection Sort
+
+"""
+
+def sort_selective(list):
+    '''
+    This function sort value in ascending order
+    Parameters:
+        table: table of integer
+    Returns: the table sorted ascendingly
+    '''   
+
+    for i in range(len(list)):
+       min_index = i
+       for j in range(i+1, len(list)):
+           if list[min_index] > list[j]:
+               min_index = j
+                     
+       temp = list[i]
+       list[i] = list[min_index]
+       list[min_index] = temp
+
+    return list
+
+print('Selective Sort : {0}'.format(sort_selective([10,15,7,1,3,3,9]))+ "\n")
+
+"""
+Questions :
+    b- Yes, the more the vector will be longer more the number of iternation will be important 
+    c- As many as there is number in the list
+    d- As many as there is number in the list
+    e- The number of item squared
+    f- it's a difficulty of list squared
+
+"""
+
+"""
+Session 1 Bubble Sort
+
+"""
+def sort_bubble(list):
+    '''
+    This function sort value in ascending order
+    Parameters:
+        table: table of integer
+    Returns: the table sorted ascendingly
+    ''' 
+
+    for passnum in range(len(list)-1,0,-1):
+        for i in range(passnum):
+            if list[i]>list[i+1]:
+                temp = list[i]
+                list[i] = list[i+1]
+                list[i+1] = temp
+    return list
+
+print('Bubble Sort : {0}'.format(sort_bubble([10,15,7,1,3,3,9]))+ "\n")
+
+"""
+Questions :
+    b- Yes, the more the vector will be longer more the number of permutation will be important  
+    c- As many as permutation is needed
+    d- As many needed until the value of every entry is lower than the next entry
+    e- As many as there is iteration
+    f- The list squared
+
+"""

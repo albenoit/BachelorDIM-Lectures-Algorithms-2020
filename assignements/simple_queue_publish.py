@@ -1,10 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Éditeur de Spyder
-
-Ceci est un script temporaire.
-"""
-
 import pika
 import myKeysCloudAMQP
 import os
