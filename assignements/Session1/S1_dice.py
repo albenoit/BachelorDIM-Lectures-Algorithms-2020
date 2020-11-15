@@ -92,7 +92,7 @@ print("----------------------------------------")
 print("|              DICE GAME               |")
 print("----------------------------------------\n")
 state = True
-while my_score <= 20 and computer_score <= 20:
+while my_score <= 100 and computer_score <= 100:
     game(state)
     print(bcolors.WARNING + "\n---------------- SCORES ----------------")
     print("Mon score total " + str(my_score))
