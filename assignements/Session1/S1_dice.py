@@ -10,14 +10,11 @@ from random import *
 #https://stackoverflow.com/a/287944/13988436
 class bcolors:
     HEADER = '\033[95m'
-    OKBLUE = '\033[94m'
     OKCYAN = '\033[96m'
     OKGREEN = '\033[92m'
-    WARNING = '\033[93m'
+    GREEN = '\033[32m'
     FAIL = '\033[91m'
     ENDC = '\033[0m'
-    BOLD = '\033[1m'
-    UNDERLINE = '\033[4m'
     MAGENTA = '\033[35m'
 
 """
@@ -37,16 +34,6 @@ Définition des variables globales
 my_score = 0
 computer_score = 0
 dice = [1, 2, 3, 4, 5, 6]
-
-"""
-Fonction qui vérifie si le score est égal à 1 ou non
-param:
-    score : integer, score qui représente le lancer de dé 
-returns:
-
-"""
-def isScore1(score):
-
 
 
 """
@@ -76,7 +63,9 @@ def tour(player):
     while (choice == "y"):
         score = shuffle(dice)
         if (score == 1):
-            print(bcolors.FAIL + "Dé = 1, tour fini" + bcolors.ENDC)
+            print(bcolors.FAIL + "-------------------:(-------------------")
+            print("Dé est égal à 1. Tour fini.")
+            print("----------------------------------------" + bcolors.ENDC)
             scoreTour = 0
             return scoreTour
         scoreTour += score
@@ -110,7 +99,9 @@ while my_score <= 20 and computer_score <= 20:
     print("Score total de l'IA " + str(computer_score))
     print("----------------------------------------\n" + bcolors.ENDC)
     state = not state
-print("gagné")
+print(bcolors.GREEN + "-------------------:)-------------------")
+print("L'IA a gagné !") if state else print("J'ai gagné !")
+print("----------------------------------------" + bcolors.ENDC)
 
 
 
