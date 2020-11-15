@@ -16,10 +16,10 @@ params.socket_timeout = 5
 # connexion
 connection = pika.BlockingConnection(params)
 channel = connection.channel()
-channel.exchange_declare(exchange="caramail", exchange_type="topic")
+channel.exchange_declare(exchange="caramail", exchange_type="direct")
 # channel.basic_qos(prefetch_count=1)
 
-result = channel.queue_declare(queue="", exclusive=True)
+result = channel.queue_declare(queue="", exclusive=False)
 queue_name = result.method.queue  # get the reader specific queue name
 
 
@@ -38,7 +38,8 @@ def callback(ch, method, properties, body):
     counter = counter + 1
     print(" [x] Reveived %r" % body)
     print(" Route = %r" % method.routing_key)
-    print(" Prop = %r" % json.dumps(method.__dict__))
+    print(" Prop = %r" % json.dumps(properties.__dict__))
+    print(" CH = %r" % ch)
 
 
 channel.basic_consume(queue=queue_name, on_message_callback=callback, auto_ack=False)
