@@ -7,8 +7,21 @@ Created on Wed Sep 16 11:39:41 2020
 
 from random import *
 
+#https://stackoverflow.com/a/287944/13988436
+class bcolors:
+    HEADER = '\033[95m'
+    OKBLUE = '\033[94m'
+    OKCYAN = '\033[96m'
+    OKGREEN = '\033[92m'
+    WARNING = '\033[93m'
+    FAIL = '\033[91m'
+    ENDC = '\033[0m'
+    BOLD = '\033[1m'
+    UNDERLINE = '\033[4m'
+    MAGENTA = '\033[35m'
+
 """
-Fonction qui mélange un liste donnée
+Fonction qui mélange un liste donnée - représente le lancé de dés
 param:
     list_in : liste d'éléments
 returns:
@@ -18,117 +31,68 @@ def shuffle(list_in:list):
     if isinstance(list_in, list):
         return list_in[randint(0, len(list_in)-1)]
 
-#print(shuffle([1, 2, 3, 4, 5, 6]))
+player_score = 0
+computer_score = 0
+dice = [1, 2, 3, 4, 5, 6]
+
 """
-Fonction qui regarde si le joueur/computer a gagné
+Fonction qui illustre le tour d'un lancer de dé
 param:
-    player_score : integer
-    tour : integer
+    state : bool, qui représente si True = joueur, False = ordinateur
 returns:
-    player_score : renvoie notre score
-    tour : renvoie le nombre de tours qu'il a fallu pour gagner
+    
 """
-def isWin(score, tour):
-    if(score >= 100):
-        print("C'est gagné ! Le jeu a duré " + str(tour) + " tours")
-    return score, tour
+def tour(state):
+    global player_score
+    global computer_score
+    score = shuffle(dice)
+    scoreTour = score
 
-"""
-Fonction qui illustre notre tour de jeu
-param:
-    list_in : liste (représente les faces du dé)
-    player_score : integer
-    tour : integer
-returns:
-    player_score : renvoie notre score à la fin du tour
-    tour : renvoie le tour actuel
-"""
-def player(list_in, player_score, tour):
-    score = shuffle(list_in)
-    scoreTour = 0
-    if (score == 1):
-        print("---------------------------------------------------------")
-        print("Votre tour est fini, vous avez fait 1. Score total : " + str(player_score))
-        tour += 1
+    if(state):
+        if (score == 1):
+            print("dé est égal à 1")
+            return
+        print(bcolors.MAGENTA + "--- PLAYER ---" + bcolors.ENDC)
+        choice = input("Vous avez fait : " + str(score) + " Continuer ? y/n ")
+        while(choice == "y"):
+            score = shuffle(dice)
+            if(score == 1):
+                print("1, tour fini")
+                return
+            scoreTour += score
+            choice = input("Vous avez fait : " + str(score) + " Continuer ? y/n ")
+        player_score += scoreTour
+        return
     else:
-        print("---------------------------------------------------------")
-        print("Dé : " + str(score))
-        scoreTour += score
-        print("Score joueur : " + str(scoreTour))
-        choice = input("Voulez-vous continuer ? y/n ")
-        while (choice == "y" and score > 1 and player_score < 100):
-            score = shuffle(list_in)
-            if(score != 1):
-                print("Dé : " + str(score))
-                scoreTour += score
-                print("Score joueur :" + str(scoreTour))
-                choice = input("Voulez-vous continuer ? y/n ")
-            else:
-                scoreTour = 0
-                break
-        #on vérifie si le joueur a gagné
-        isWin(player_score, tour)
+        if (score == 1):
+            print("dé est égal à 1")
+            return
+        print(bcolors.OKCYAN +"--- COMPUTER ---" + bcolors.ENDC)
+        #0 = non , 1 = oui
+        choice = shuffle([0, 1])
+        while (choice == 1):
+            score = shuffle(dice)
+            if (score == 1):
+                print("1, tour fini")
+                return
+            scoreTour += score
+            print("Computer a fait " + str(score))
+            choice = shuffle([0, 1])
+        computer_score += scoreTour
+        return
 
-        #si on ne veut pas continuer le tour, si choice = "n"
-        if(score != 1):
-            player_score += scoreTour
-            print("Votre tour est fini. Score total : " + str(player_score))
-        else:
-            player_score -= scoreTour
-            print("Votre tour est fini, vous avez fait 1. Score total : " + str(player_score))
-        tour += 1
-    print("C'est au tour de l'ordinateur")
-    return player_score, tour
+print("")
+state = True
+while player_score <= 20 and computer_score <= 20:
+    tour(state)
+    print("player score " + str(player_score))
+    print("computer score " + str(computer_score))
+    state = not state
+print("gagné")
 
 
-def computer(list_in, computer_score, tour):
-    score = shuffle(list_in)
-    scoreTour = 0
-    if (score == 1):
-        print("---------------------------------------------------------")
-        print("Le tour de l'ordinateur est fini, il a fait 1. Score total : " + str(computer_score))
-        tour += 1
-    else:
-        print("---------------------------------------------------------")
-        print("Dé : " + str(score))
-        scoreTour += score
-        choiceStat = randint(1, 2)
-        choice = "y"
-        if (choiceStat == 2):
-            choice = "n"
-        while (choice == "y" and score > 1 and computer_score < 100):
-            score = shuffle(list_in)
-            if (score != 1):
-                print("Dé : " + str(score))
-                scoreTour += score
-            else:
-                scoreTour = 0
-                break
-        #on vérifie si l'ordinateur a gagné
-        isWin(computer_score, tour)
 
-        if (score != 1):
-            computer_score += scoreTour
-            print("Le tour de l'ordinateur est fini. Score total : " + str(computer_score))
-        else:
-            computer_score -= scoreTour
-            print("Le tour de l'ordinateur est fini, il a fait 1. Score total : " + str(computer_score))
-        tour += 1
-    print("C'est à votre tour")
-    return computer_score, tour
 
-game_start = input("Appuyez sur Entrée pour lancer le dé.")
-if game_start == "":
-    dice_faces = [1, 2, 3, 4, 5, 6]
-    player_score = 90
-    computer_score = 0
-    tour = 1
-    while(player_score < 100 or computer_score < 100):
-        if(tour % 2 == 1):
-            player_score, tour = player(dice_faces, player_score, tour)
-            print("score boucle while player : " + str(player_score))
-        else:
-            computer_score, tour = computer(dice_faces, computer_score, tour)
-            print("score boucle while computer : " + str(computer_score))
+
 
 
