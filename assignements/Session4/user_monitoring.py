@@ -5,6 +5,11 @@ import time
 import sys
 import json
 
+"""
+    File to monitoring users presentation for baby caramil app with CLOUDAMPQ
+    Arguments:
+"""
+
 counter = 0
 subscribers = []
 descriptions = []
@@ -58,6 +63,6 @@ channel.basic_consume(queue=queue_name, on_message_callback=callback, auto_ack=F
 
 print((" [*] Reading %r queue." % queue_name))
 print((" [*] Waiting for messages. To exit press CTRL+C"))
-# if(sleep != False):
-#         print('Running with sleep mode with 5 sec timer')
+
+
 channel.start_consuming()

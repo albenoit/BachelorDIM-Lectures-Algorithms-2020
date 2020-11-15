@@ -9,11 +9,11 @@ import json
 """
     File to connect and publish some message with CLOUDAMPQ
     Arguments:
+        -signin: parameter to publish to presentation channel
         -read: parameter to switch in reader mode
         -message: parameter to add the message to publish in publish mode
-        -concurrency: parameter to set persitent mode in publish mode 
-                    and acknowledging in read mode
-    """
+        -user: parameter to get the user who send message
+"""
 
 counter = 0
 subscribers = []
@@ -36,18 +36,20 @@ connection = pika.BlockingConnection(params)
 channel = connection.channel()
 channel.exchange_declare(exchange="caramail", exchange_type="direct")
 
-user = args.user if args.user else connection.close()
+if args.read == False:
+    user = args.user if args.user else connection.close()
 
 
 def callback(ch, method, properties, body):
-    global counter
-    global subscribers
 
-    counter = counter + 1
-    print(" [x] Reveived %r" % body)
-    print(" Route = %r" % method.routing_key)
-    print(" Prop = %r" % json.dumps(method.__dict__))
-    print(" CH = %r" % ch)
+    body = body.decode("utf-8")
+    body = body.split(",")
+
+    print(" [x] Message de %r :" % body[0])
+    print(" [x] %r" % body[1])
+    print()
+    print("-----------------------------------")
+    print()
 
 
 if args.signin:
@@ -84,6 +86,9 @@ else:
     print(queue_name)
     print((" [*] Reading %r queue." % queue_name))
     print((" [*] Waiting for messages. To exit press CTRL+C"))
+    print()
+    print("-----------------------------------")
+    print()
     # if(sleep != False):
     #         print('Running with sleep mode with 5 sec timer')
     channel.start_consuming()
