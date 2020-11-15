@@ -6,7 +6,11 @@ import time
 import sys
 import json
 
-
+"""
+    File to connect, read adn response in rpc_queue some message with CLOUDAMPQ
+    Methods:
+        on_request: callback method on receive message. Send response to the server with correlation_id
+"""
 # configuration
 url = os.environ.get("CLOUDAMQP_URL", config.amqp_url)
 params = pika.URLParameters(url)

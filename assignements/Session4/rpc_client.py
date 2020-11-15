@@ -6,6 +6,14 @@ import config
 
 class RpcClient(object):
 
+    """
+    Class to instance rpc servers
+    Methods:
+        __init__ : create the connection. get the channel and the callback_queue
+        on_response : method who chekx the response correlation_id and get the response body
+        call : method call to send message to servers and wait for response
+    """
+
     # configuration
     url = os.environ.get("CLOUDAMQP_URL", config.amqp_url)
     params = pika.URLParameters(url)
