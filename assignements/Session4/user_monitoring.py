@@ -7,6 +7,7 @@ import json
 
 counter = 0
 subscribers = []
+descriptions = []
 
 # configuration
 url = os.environ.get("CLOUDAMQP_URL", config.amqp_url)
@@ -29,17 +30,28 @@ channel.queue_bind(exchange="caramail", queue=queue_name, routing_key="presentat
 def callback(ch, method, properties, body):
     global counter
     global subscribers
+    global descriptions
 
-    if method.consumer_tag in subscribers:
-        subscribers.index(method.consumer_tag)
+    body = body.decode("utf-8")
+    body = body.split(",")
+
+    if body[0] in subscribers:
+        descriptions[subscribers.index(body[0])].append(body[1])
     else:
-        subscribers.append(method.consumer_tag)
+        subscribers.append(body[0])
+        descriptions.insert(subscribers.index(body[0]), [body[1]])
 
-    counter = counter + 1
-    print(" [x] Reveived %r" % body)
-    print(" Route = %r" % method.routing_key)
-    print(" Prop = %r" % json.dumps(properties.__dict__))
-    print(" CH = %r" % ch)
+    counter = len(subscribers)
+    print("Il y a %r utilisateurs dans le channel." % counter)
+
+    if counter != 0:
+        for i, user in enumerate(subscribers):
+            print("-------------------------")
+            print("Nom : %r" % user)
+            print("Description : ")
+            for desc in descriptions[i]:
+                print(desc)
+            print("")
 
 
 channel.basic_consume(queue=queue_name, on_message_callback=callback, auto_ack=False)

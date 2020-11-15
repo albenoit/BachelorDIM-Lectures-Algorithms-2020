@@ -20,6 +20,9 @@ subscribers = []
 
 parser = argparse.ArgumentParser()
 parser.add_argument("-signin", action="store_true")
+parser.add_argument("-read", "-r", action="store_true")
+parser.add_argument("-message", "-m", type=str)
+parser.add_argument("-user", "-u", type=str)
 
 args = parser.parse_args()
 
@@ -33,15 +36,12 @@ connection = pika.BlockingConnection(params)
 channel = connection.channel()
 channel.exchange_declare(exchange="caramail", exchange_type="direct")
 
+user = args.user if args.user else connection.close()
+
 
 def callback(ch, method, properties, body):
     global counter
     global subscribers
-
-    if method.consumer_tag in subscribers:
-        subscribers.index(method.consumer_tag)
-    else:
-        subscribers.append(method.consumer_tag)
 
     counter = counter + 1
     print(" [x] Reveived %r" % body)
@@ -52,6 +52,7 @@ def callback(ch, method, properties, body):
 
 if args.signin:
     message = input("Enter your presentation :")
+    message = args.user + "," + message
     channel.basic_publish(
         exchange="caramail",
         routing_key="presentation",
@@ -60,14 +61,18 @@ if args.signin:
             delivery_mode=2,  # make persistent message
         ),
     )
-else:
-    message = input("Enter your message :")
-    channel.basic_publish(
-        exchange="caramail",
-        routing_key="posts",
-        body=message,
-    )
+elif args.read == False:
+    if args.message:
+        message = args.user + "," + args.message
+        channel.basic_publish(
+            exchange="caramail",
+            routing_key="posts",
+            body=message.encode("utf-8"),
+        )
+    else:
+        print("Aucun message passé en paramètre. Action annulée.")
 
+else:
     result = channel.queue_declare(queue="", exclusive=False)
     queue_name = result.method.queue  # get the reader specific queue name
 
@@ -76,11 +81,12 @@ else:
     channel.basic_consume(
         queue=queue_name, on_message_callback=callback, auto_ack=False
     )
-
+    print(queue_name)
     print((" [*] Reading %r queue." % queue_name))
     print((" [*] Waiting for messages. To exit press CTRL+C"))
     # if(sleep != False):
     #         print('Running with sleep mode with 5 sec timer')
     channel.start_consuming()
+
 
 connection.close()
