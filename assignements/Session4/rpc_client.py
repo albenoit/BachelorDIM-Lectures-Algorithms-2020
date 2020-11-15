@@ -58,4 +58,5 @@ rpc_client = RpcClient()
 
 print(" [x] Requesting to client")
 response = rpc_client.call("Hi, how fine?")
+# response = rpc_client.call({"type": 0, "value": "hi, how fine?"})
 print(" [*] Got %r" % response.decode("utf-8"))
