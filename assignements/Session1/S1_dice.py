@@ -31,62 +31,84 @@ def shuffle(list_in:list):
     if isinstance(list_in, list):
         return list_in[randint(0, len(list_in)-1)]
 
-player_score = 0
+"""
+Définition des variables globales
+"""
+my_score = 0
 computer_score = 0
 dice = [1, 2, 3, 4, 5, 6]
 
 """
+Fonction qui vérifie si le score est égal à 1 ou non
+param:
+    score : integer, score qui représente le lancer de dé 
+returns:
+
+"""
+def isScore1(score):
+
+
+
+"""
 Fonction qui illustre le tour d'un lancer de dé
 param:
-    state : bool, qui représente si True = joueur, False = ordinateur
+    player : bool, qui représente si True = joueur, False = ordinateur
 returns:
-    
+    scoreTour : score accumulé pendant ce tour
 """
-def tour(state):
-    global player_score
+def tour(player):
+    global my_score
     global computer_score
     score = shuffle(dice)
     scoreTour = score
 
-    if(state):
+    print(bcolors.MAGENTA + "--- PLAYER ---" + bcolors.ENDC) if player else print(bcolors.OKCYAN + "--- COMPUTER ---" + bcolors.ENDC)
+
+    if (score == 1):
+        print(bcolors.FAIL + "-------------------:(-------------------")
+        print("Dé est égal à 1. Tour fini.")
+        print("----------------------------------------" + bcolors.ENDC)
+        scoreTour = 0
+        return scoreTour
+
+    print("Vous avez fait : " + str(score)) if player else print("Score IA : " + str(score))
+    choice = input("Continuer ? y/n ") if player else shuffle(["y", "n"])
+    while (choice == "y"):
+        score = shuffle(dice)
         if (score == 1):
-            print("dé est égal à 1")
-            return
-        print(bcolors.MAGENTA + "--- PLAYER ---" + bcolors.ENDC)
-        choice = input("Vous avez fait : " + str(score) + " Continuer ? y/n ")
-        while(choice == "y"):
-            score = shuffle(dice)
-            if(score == 1):
-                print("1, tour fini")
-                return
-            scoreTour += score
-            choice = input("Vous avez fait : " + str(score) + " Continuer ? y/n ")
-        player_score += scoreTour
+            print(bcolors.FAIL + "Dé = 1, tour fini" + bcolors.ENDC)
+            scoreTour = 0
+            return scoreTour
+        scoreTour += score
+
+        print("Vous avez fait : " + str(score)) if player else print("Score IA : " + str(score))
+        choice = input("Continuer ? y/n ") if player else shuffle(["y", "n"])
+
+    return scoreTour
+
+def game(state):
+    global my_score
+    global computer_score
+
+    if(state):
+        player = True
+        my_score += tour(player)
         return
     else:
-        if (score == 1):
-            print("dé est égal à 1")
-            return
-        print(bcolors.OKCYAN +"--- COMPUTER ---" + bcolors.ENDC)
-        #0 = non , 1 = oui
-        choice = shuffle([0, 1])
-        while (choice == 1):
-            score = shuffle(dice)
-            if (score == 1):
-                print("1, tour fini")
-                return
-            scoreTour += score
-            print("Computer a fait " + str(score))
-            choice = shuffle([0, 1])
-        computer_score += scoreTour
+        player = False
+        computer_score += tour(player)
         return
 
-print("")
+print("----------------------------------------")
+print("|              DICE GAME               |")
+print("----------------------------------------\n")
 state = True
-while player_score <= 20 and computer_score <= 20:
-    tour(state)
-    print("player score " + str(player_score))
-    print("computer score " + str(computer_score))
+while my_score <= 20 and computer_score <= 20:
+    game(state)
+    print(bcolors.OKGREEN + "\n---------------- SCORES ----------------")
+    print("Mon score total " + str(my_score))
+    print("Score total de l'IA " + str(computer_score))
+    print("----------------------------------------\n" + bcolors.ENDC)
     state = not state
 print("gagné")
 
