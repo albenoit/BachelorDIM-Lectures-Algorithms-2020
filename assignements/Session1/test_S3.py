@@ -28,6 +28,3 @@ def test_type_errors_tuuint8():
     with pytest.raises(TypeError):
         main.type_errors(np.zeros((2, 2), dtype=np.float32))    
 
-
-def test_invert_colors_manual():
-        

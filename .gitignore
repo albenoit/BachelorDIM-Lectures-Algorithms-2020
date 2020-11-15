@@ -1,6 +1,8 @@
 #Ignorer le fichier config.py
 assignements/Session4/config.py
 
+.idea
+
 
 #Ignore les caches
 assignements/__pycache__/
