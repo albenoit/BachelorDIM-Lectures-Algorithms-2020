@@ -11,8 +11,8 @@ from random import *
 class bcolors:
     HEADER = '\033[95m'
     OKCYAN = '\033[96m'
-    OKGREEN = '\033[92m'
     GREEN = '\033[32m'
+    WARNING = '\033[93m'
     FAIL = '\033[91m'
     ENDC = '\033[0m'
     MAGENTA = '\033[35m'
@@ -94,7 +94,7 @@ print("----------------------------------------\n")
 state = True
 while my_score <= 20 and computer_score <= 20:
     game(state)
-    print(bcolors.OKGREEN + "\n---------------- SCORES ----------------")
+    print(bcolors.WARNING + "\n---------------- SCORES ----------------")
     print("Mon score total " + str(my_score))
     print("Score total de l'IA " + str(computer_score))
     print("----------------------------------------\n" + bcolors.ENDC)
